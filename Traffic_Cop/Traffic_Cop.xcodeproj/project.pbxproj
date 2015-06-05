@@ -15,6 +15,7 @@
 		7DE1464E1B223E95005DB874 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE1464D1B223E95005DB874 /* Images.xcassets */; };
 		7DE146511B223E95005DB874 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE1464F1B223E95005DB874 /* LaunchScreen.xib */; };
 		7DE1465D1B223E96005DB874 /* Traffic_CopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE1465C1B223E96005DB874 /* Traffic_CopTests.swift */; };
+		7DE146671B223F4F005DB874 /* CarSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146661B223F4F005DB874 /* CarSprite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		7DE146561B223E96005DB874 /* Traffic_CopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Traffic_CopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE1465B1B223E96005DB874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE1465C1B223E96005DB874 /* Traffic_CopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traffic_CopTests.swift; sourceTree = "<group>"; };
+		7DE146661B223F4F005DB874 /* CarSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarSprite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				7DE146481B223E95005DB874 /* GameViewController.swift */,
 				7DE1464A1B223E95005DB874 /* Main.storyboard */,
 				7DE1464D1B223E95005DB874 /* Images.xcassets */,
+				7DE146661B223F4F005DB874 /* CarSprite.swift */,
 				7DE1464F1B223E95005DB874 /* LaunchScreen.xib */,
 				7DE146401B223E95005DB874 /* Supporting Files */,
 			);
@@ -222,6 +225,7 @@
 				7DE146471B223E95005DB874 /* GameScene.swift in Sources */,
 				7DE146491B223E95005DB874 /* GameViewController.swift in Sources */,
 				7DE146431B223E95005DB874 /* AppDelegate.swift in Sources */,
+				7DE146671B223F4F005DB874 /* CarSprite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +421,7 @@
 				7DE146621B223E96005DB874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7DE146631B223E96005DB874 /* Build configuration list for PBXNativeTarget "Traffic_CopTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +430,7 @@
 				7DE146651B223E96005DB874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
