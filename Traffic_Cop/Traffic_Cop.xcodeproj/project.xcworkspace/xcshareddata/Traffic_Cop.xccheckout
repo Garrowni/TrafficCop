@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1E9D00BA-6F83-47D0-B6CA-F12D0C11913E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B1B571B8437DB11A19643F1B1E65DD17B975D8CA</key>
+		<string>https://github.com/Garrowni/TrafficCop.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Traffic_Cop/Traffic_Cop.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B1B571B8437DB11A19643F1B1E65DD17B975D8CA</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Garrowni/TrafficCop.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B1B571B8437DB11A19643F1B1E65DD17B975D8CA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B1B571B8437DB11A19643F1B1E65DD17B975D8CA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TrafficCop</string>
+		</dict>
+	</array>
+</dict>
+</plist>
