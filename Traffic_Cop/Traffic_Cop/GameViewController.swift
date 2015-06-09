@@ -12,9 +12,10 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
             super.viewDidLoad()
-            let scene               = MainMenuScreen(size: CGSize(width: 1080, height: 1920))
+            let scene               = MainMenuScreen(size: CGSize(width: 1024, height: 1920)) // 16*64 = WIDTH 30*64 = HEIGHT
             let skView              = self.view as! SKView
             skView.showsFPS         = true
             skView.showsNodeCount   = true
@@ -26,7 +27,7 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
-        }
+    }
     
 
 
