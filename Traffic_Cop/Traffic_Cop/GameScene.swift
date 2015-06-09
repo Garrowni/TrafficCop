@@ -14,6 +14,7 @@ class GameScene: SKScene
     var lastUpdateTime: NSTimeInterval  = 0
     var dt: NSTimeInterval              = 0                             //DELTA TIME
     let playableRect: CGRect                                            //GAME BOUNDS
+    let TW                              = 64                            //TILEWIDTH
     
     
     
