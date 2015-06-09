@@ -72,6 +72,42 @@ func /= (inout point: CGPoint, scalar: CGFloat)
     point = point / scalar
 }
 
+func > (left : CGPoint, right : CGPoint) -> Bool
+{
+    if( left.x > right.x && left.y > right.y )
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
+
+func < (left : CGPoint, right : CGPoint) -> Bool
+{
+    if( left.x < right.x && left.y < right.y)
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
+
+func == (left : CGPoint, right : CGPoint) -> Bool
+{
+    if( left.x == right.x && left.y == right.y)
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
+
 
 //CLASS EXTENTIONS
 #if !(arch(x86_64) || arch(arm64))

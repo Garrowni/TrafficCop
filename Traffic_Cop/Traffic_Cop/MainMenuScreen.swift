@@ -8,45 +8,51 @@
 
 import Foundation
 import SpriteKit
+import UIKit
+
+
 
 class MainMenuScreen: SKScene
 {
+   
     override init(size: CGSize)
     {
         super.init(size: size)
     }
     
+    
     required init(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func didMoveToView(view: SKView)
     {
-        var background: SKSpriteNode
+        var background:SKSpriteNode
         background = SKSpriteNode(imageNamed: "MainMenu")
         background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
         self.addChild(background)
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         let touch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         println("x = \(location.x) and y = \(location.y)")
        
-       if location.x > 213 && location.x < 877 && location.y < 1255 && location.y > 993
-       {
+        if location > CGPoint(x: 213, y: 993) && location < CGPoint(x: 877, y: 1255)
+        {
             goToGame()
-       }
-       else if location.x > 231 && location.x < 895 && location.y < 907 && location.y > 643
-       {
+        }
+        else if location > CGPoint(x: 231, y: 643) && location < CGPoint(x: 895, y: 907)
+        {
             goToHelp()
-       }
-        else if location.x > 231 && location.x < 895 && location.y < 541 && location.y > 275
-       {
+        }
+        else if location > CGPoint(x: 231, y: 275) && location < CGPoint(x: 895, y: 541)
+        {
             goToCredits()
-       }
+        }
+
         
     }
     
