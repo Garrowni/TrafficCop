@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */; };
+		08E123D71B26689E00B2127F /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D61B26689E00B2127F /* MyUtils.swift */; };
+		08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
+		08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DA1B266A7300B2127F /* HelpScreen.swift */; };
+		08E123DE1B266C8700B2127F /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DD1B266C8700B2127F /* CreditsScreen.swift */; };
 		7DD730A21B261F2600980765 /* bg_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730751B261F2500980765 /* bg_grass.png */; };
 		7DD730A31B261F2600980765 /* bg_road_one_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730761B261F2500980765 /* bg_road_one_way.png */; };
 		7DD730A41B261F2600980765 /* bg_road_two_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730771B261F2500980765 /* bg_road_two_way.png */; };
@@ -71,6 +76,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMPLATESCREEN.swift; sourceTree = "<group>"; };
+		08E123D61B26689E00B2127F /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		08E123D81B266A2800B2127F /* MainMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScreen.swift; sourceTree = "<group>"; };
+		08E123DA1B266A7300B2127F /* HelpScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpScreen.swift; path = ../HelpScreen.swift; sourceTree = "<group>"; };
+		08E123DD1B266C8700B2127F /* CreditsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScreen.swift; sourceTree = "<group>"; };
 		7DD730751B261F2500980765 /* bg_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_grass.png; sourceTree = "<group>"; };
 		7DD730761B261F2500980765 /* bg_road_one_way.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_road_one_way.png; sourceTree = "<group>"; };
 		7DD730771B261F2500980765 /* bg_road_two_way.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_road_two_way.png; sourceTree = "<group>"; };
@@ -146,6 +156,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08E123DC1B266C3A00B2127F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */,
+				7DE146461B223E95005DB874 /* GameScene.swift */,
+				08E123DA1B266A7300B2127F /* HelpScreen.swift */,
+				08E123D81B266A2800B2127F /* MainMenuScreen.swift */,
+				08E123DD1B266C8700B2127F /* CreditsScreen.swift */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
 		7DD730741B261F2500980765 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,13 +256,14 @@
 			isa = PBXGroup;
 			children = (
 				7DD730741B261F2500980765 /* Assets */,
-				7DE146421B223E95005DB874 /* AppDelegate.swift */,
-				7DE146461B223E95005DB874 /* GameScene.swift */,
+				08E123DC1B266C3A00B2127F /* Screens */,
+				7DE146661B223F4F005DB874 /* CarSprite.swift */,
+				08E123D61B26689E00B2127F /* MyUtils.swift */,
 				7DE146481B223E95005DB874 /* GameViewController.swift */,
+				7DE146421B223E95005DB874 /* AppDelegate.swift */,
+				7DE1464F1B223E95005DB874 /* LaunchScreen.xib */,
 				7DE1464A1B223E95005DB874 /* Main.storyboard */,
 				7DE1464D1B223E95005DB874 /* Images.xcassets */,
-				7DE146661B223F4F005DB874 /* CarSprite.swift */,
-				7DE1464F1B223E95005DB874 /* LaunchScreen.xib */,
 				7DE146401B223E95005DB874 /* Supporting Files */,
 			);
 			path = Traffic_Cop;
@@ -415,6 +438,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DE146471B223E95005DB874 /* GameScene.swift in Sources */,
+				08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */,
+				08E123DE1B266C8700B2127F /* CreditsScreen.swift in Sources */,
+				08E123D71B26689E00B2127F /* MyUtils.swift in Sources */,
+				08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */,
+				08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */,
 				7DE146491B223E95005DB874 /* GameViewController.swift in Sources */,
 				7DE146431B223E95005DB874 /* AppDelegate.swift in Sources */,
 				7DE146671B223F4F005DB874 /* CarSprite.swift in Sources */,

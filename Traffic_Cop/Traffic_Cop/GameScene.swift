@@ -8,11 +8,11 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-
-        
+class GameScene: SKScene
+{
+    
+    override func didMoveToView(view: SKView)
+    {
        // let car = CarSprite(type: 1, spawnX: 500, spawnY: 1000)
        // car.position = car._spawn
        // car.anchorPoint = CGPointZero
@@ -20,5 +20,36 @@ class GameScene: SKScene {
         
        
     }
+    
+    
+    //******************************************TOUCH EVENT HANDLING******************************
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
+    {
+        let touch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        //sceneTouched(location)
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
+    {
+        let touch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        //sceneTouched(location)
+    }
+    
+    
+    //*****************************************AFTER ACTION PROCESS HANDLING*********************
+    override func didEvaluateActions()
+    {
+       // checkCollisions()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
