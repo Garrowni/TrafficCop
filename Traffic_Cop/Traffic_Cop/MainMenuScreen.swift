@@ -33,7 +33,21 @@ class MainMenuScreen: SKScene
     {
         let touch = touches.first as! UITouch
         let location = touch.locationInNode(self)
-        goToGame()
+        println("x = \(location.x) and y = \(location.y)")
+       
+       if location.x > 213 && location.x < 877 && location.y < 1255 && location.y > 993
+       {
+            goToGame()
+       }
+       else if location.x > 231 && location.x < 895 && location.y < 907 && location.y > 643
+       {
+            goToHelp()
+       }
+        else if location.x > 231 && location.x < 895 && location.y < 541 && location.y > 275
+       {
+            goToCredits()
+       }
+        
     }
     
     //TRANSITION
@@ -45,6 +59,32 @@ class MainMenuScreen: SKScene
                 myScene.scaleMode = self.scaleMode
                 let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
                 self.view?.presentScene(myScene, transition: reveal)
+        }
+        self.runAction(block)
+    }
+    
+    func goToHelp()
+    {
+        let block = SKAction.runBlock
+        {
+            let myScene = HelpScreen(size: self.size)
+            myScene.scaleMode = self.scaleMode
+            let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+            self.view?.presentScene(myScene, transition: reveal)
+            
+        }
+        self.runAction(block)
+    }
+    
+    func goToCredits()
+    {
+        let block = SKAction.runBlock
+            {
+                let myScene = CreditsScreen(size: self.size)
+                myScene.scaleMode = self.scaleMode
+                let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+                self.view?.presentScene(myScene, transition: reveal)
+                
         }
         self.runAction(block)
     }
