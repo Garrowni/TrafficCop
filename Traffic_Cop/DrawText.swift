@@ -19,32 +19,38 @@ class Text : SKLabelNode
     
     init(says: String, fontSize: Int , font: String, align: String)
     {
-        font = UIFont
-
-        let label = SKLabelNode(fontNamed: Marion)
+        super.init(fontNamed: Marion)
+        {
+            
+        }
         
-//        switch(font)
-//        {
-//            case "font1":label = SKLabelNode(fontNamed:Marion)
-//                label.text = says
-//                label.position = CGPoint(x: size.width / 2, y: (size.height * (CGFloat(idx+1))) / (CGFloat(fontNames.count)+1))
-//                label.fontSize = fontSize
-//                switch(align)
-//                {
-//                    case "center":label.verticalAlignmentMode = .Center
-//                }
-//            
-//            
-//                addChild(label)
-//            
-//            
-//            
-//            
-//            
-//            default:println("")
-//        }
-//
-       
+        
+        let label = SKLabelNode(fontNamed: Marion)
+        label.text = says;
+        switch(font)
+        {
+        case "font1": label = SKLabelNode(fontNamed:Marion);
+            
+                label.position = CGPoint(x: size.width / 2, y: (size.height * (CGFloat(idx+1))) / (CGFloat(fontNames.count)+1))
+            
+        
+            
+            
+            
+            
+            
+            
+            default:println("")
+        }
+        switch(align)
+        {
+            case "center":label.verticalAlignmentMode = .Center
+        case "left" : label
+            
+        }
+        
+        label.fontSize = fontSize
+        addChild(label)
     }
     
     required init?(coder aDecoder: NSCoder)
