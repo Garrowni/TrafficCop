@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D515991B28BAB200E5289B /* DrawText.swift */; };
+		08D5159C1B28C43D00E5289B /* TileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881CD1B28B78B00C47FD7 /* TileMapLayer.swift */; };
+		08D515A01B28C49400E5289B /* DrawText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D515991B28BAB200E5289B /* DrawText.swift */; };
 		08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */; };
 		08E123D71B26689E00B2127F /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D61B26689E00B2127F /* MyUtils.swift */; };
 		08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
@@ -111,7 +113,6 @@
 		7DD881C61B28B3FD00C47FD7 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881C01B28B30900C47FD7 /* LFCGzipUtility.m */; };
 		7DD881CB1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881CA1B28B50100C47FD7 /* TmxTileMapLayer.swift */; };
 		7DD881CC1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881CA1B28B50100C47FD7 /* TmxTileMapLayer.swift */; };
-		7DD881CF1B28B78B00C47FD7 /* TileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881CD1B28B78B00C47FD7 /* TileMapLayer.swift */; };
 		7DE146431B223E95005DB874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146421B223E95005DB874 /* AppDelegate.swift */; };
 		7DE146471B223E95005DB874 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146461B223E95005DB874 /* GameScene.swift */; };
 		7DE146491B223E95005DB874 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146481B223E95005DB874 /* GameViewController.swift */; };
@@ -717,8 +718,8 @@
 				08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */,
 				08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */,
 				7DD881C61B28B3FD00C47FD7 /* LFCGzipUtility.m in Sources */,
-				7DD881CF1B28B78B00C47FD7 /* TileMapLayer.swift in Sources */,
 				7DD881C51B28B3F700C47FD7 /* JSTileMap.m in Sources */,
+				08D515A01B28C49400E5289B /* DrawText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +737,7 @@
 			files = (
 				08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */,
 				7DE146471B223E95005DB874 /* GameScene.swift in Sources */,
+				08D5159C1B28C43D00E5289B /* TileMapLayer.swift in Sources */,
 				7DD881C21B28B30900C47FD7 /* JSTileMap.m in Sources */,
 				7DD881CB1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */,
 				08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */,

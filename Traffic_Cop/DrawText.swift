@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
-import UIKit
+
 import SpriteKit
+import UIKit
 
 class Text : SKLabelNode
 {
@@ -18,7 +19,7 @@ class Text : SKLabelNode
     
     init(says: String, fontSize: Int , font: String, align: String)
     {
-        
+        font = UIFont
 
         let label = SKLabelNode(fontNamed: Marion)
         
