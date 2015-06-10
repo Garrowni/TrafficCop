@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification)
     {
             let scene               = MainMenuScreen(size: CGSize(width: 1024, height: 1920)) // 16*64 = WIDTH 30*64 = HEIGHT
-            scene.scaleMode         = .AspectFill
+            scene.scaleMode         = .AspectFit
             
             self.skView!.presentScene(scene)
             self.skView!.ignoresSiblingOrder = true
