@@ -11,8 +11,16 @@ import SpriteKit
 
 class CreditsScreen: SKScene
 {
+    let playableRect: CGRect
+    let label1 : Text
+    
     override init(size: CGSize)
     {
+        label1 = Text(pos: CGPoint(x: size.width/2, y: size.height-200), says: "Credits", fontSize: 200, font: "font1", color: "red", align: "center")
+        let maxAspectRatio:CGFloat = 9.0/16.0
+        let playableHeight = size.width / maxAspectRatio
+        let playableMargin = (size.height-playableHeight)/2.0
+        playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
         super.init(size: size)
     }
     
@@ -23,10 +31,16 @@ class CreditsScreen: SKScene
     
     override func didMoveToView(view: SKView)
     {
-        var background: SKSpriteNode
-        background = SKSpriteNode(imageNamed: "MainMenu")
-        background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
-        self.addChild(background)
+        let shape2 = SKShapeNode()
+        let path2 = CGPathCreateMutable()
+        CGPathAddRect(path2, nil, playableRect)
+        shape2.path = path2
+        shape2.fillColor = SKColor.greenColor()
+        shape2.lineWidth = 35.0
+        addChild(shape2)
+        
+       
+        addChild(label1.get())
     }
     
     

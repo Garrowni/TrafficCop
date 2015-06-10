@@ -6,23 +6,24 @@
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
+//label.fontColor = [SKColor colorWithRed:0.1 green:1 blue:0.1 alpha:1.0];
 
 import SpriteKit
 import UIKit
 
-class Text : SKNode
+class Text
 {
-    let label: SKLabelNode(fontNamed:"Marion")
+    let label: SKLabelNode
     
     init(pos: CGPoint, says: String, fontSize: Int , font: String, color: String, align: String)
     {
-        self.label.text = says;
+        
         switch(font)
         {
-            case "font1": label = SKLabelNode(fontNamed:"Marion");
-            case "font2": label = SKLabelNode(fontNamed:"Marion");
-            case "font3": label = SKLabelNode(fontNamed:"Marion");
-            default:println("")
+            case "font1":   label = SKLabelNode(fontNamed:"Marion");
+            case "font2":   label = SKLabelNode(fontNamed:"Marion");
+            case "font3":   label = SKLabelNode(fontNamed:"Marion");
+            default:        label = SKLabelNode(fontNamed:"Marion");
         }
         switch(align)
         {
@@ -33,22 +34,27 @@ class Text : SKNode
         }
         switch(color)
         {
-            case "blue":    label.color = UIColor.blueColor()
-            case "green":   label.color = UIColor.greenColor()
-            case "red":     label.color = UIColor.redColor()
-            case "yellow":  label.color = UIColor.yellowColor()
-            case "cyan":    label.color = UIColor.cyanColor()
-            case "magenta": label.color = UIColor.magentaColor()
-            case "gray":    label.color = UIColor.grayColor()
-            case "white":   label.color = UIColor.whiteColor()
-            case "black":   label.color = UIColor.blackColor()
-            case "purple":  label.color = UIColor.purpleColor()
-            case "brown":   label.color = UIColor.brownColor()
-            default:        label.color = UIColor.blackColor()
+            case "blue":    label.fontColor = SKColor.blueColor()
+            case "green":   label.fontColor = SKColor.greenColor()
+            case "red":     label.fontColor = SKColor.redColor()
+            case "yellow":  label.fontColor = SKColor.yellowColor()
+            case "cyan":    label.fontColor = SKColor.cyanColor()
+            case "magenta": label.fontColor = SKColor.magentaColor()
+            case "gray":    label.fontColor = SKColor.grayColor()
+            case "white":   label.fontColor = SKColor.whiteColor()
+            case "black":   label.fontColor = SKColor.blackColor()
+            case "purple":  label.fontColor = SKColor.purpleColor()
+            case "brown":   label.fontColor = SKColor.brownColor()
+            default:        label.fontColor = SKColor.blackColor()
         }
-        self.label.position = pos
-        self.label.fontSize = CGFloat(fontSize)
-        addChild(self.label)
+        label.text = says;
+        label.position = pos
+        label.fontSize = CGFloat(fontSize)
+    }
+    
+    func get() -> SKLabelNode
+    {
+        return label
     }
     
     required init?(coder aDecoder: NSCoder)
