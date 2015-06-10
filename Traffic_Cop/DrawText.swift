@@ -12,12 +12,7 @@ import UIKit
 
 class Text : SKLabelNode
 {
-    var says: String = ""
-    var fontSize : Int = 0
-    var align : String = ""
-    
-    
-    init(says: String, fontSize: Int , font: String, align: String)
+    init(pos: CGPoint, says: String, fontSize: Int , font: String, align: String)
     {
         super.init(fontNamed: Marion)
         {
@@ -29,17 +24,9 @@ class Text : SKLabelNode
         label.text = says;
         switch(font)
         {
-        case "font1": label = SKLabelNode(fontNamed:Marion);
-            
-                label.position = CGPoint(x: size.width / 2, y: (size.height * (CGFloat(idx+1))) / (CGFloat(fontNames.count)+1))
-            
-        
-            
-            
-            
-            
-            
-            
+            case "font1": label = SKLabelNode(fontNamed:Marion);
+            case "font2": label = SKLabelNode(fontNamed:Marion);
+            case "font3": label = SKLabelNode(fontNamed:Marion);
             default:println("")
         }
         switch(align)
@@ -49,6 +36,7 @@ class Text : SKLabelNode
             
         }
         
+        label.position = CGPoint(x: size.width / 2, y: (size.height * (CGFloat(idx+1))) / (CGFloat(fontNames.count)+1))
         label.fontSize = fontSize
         addChild(label)
     }
