@@ -46,9 +46,17 @@ class GameScene: SKScene
        // car.position = car._spawn
        // car.anchorPoint = CGPointZero
        // addChild(car)
+        var tileMap: JSTileMap?
+        
+        tileMap = JSTileMap(named: "level1.tmx")
+        
+        if tileMap != nil
+        {
+                self.addChild(tileMap!)
+        }
         
         
-       debugDrawPLayableArea()
+       //debugDrawPLayableArea()
     }
     
     
