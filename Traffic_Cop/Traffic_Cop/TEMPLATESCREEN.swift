@@ -47,7 +47,6 @@ class TemplateScreen: SKScene
         let location = touch.locationInNode(self)
         //sceneTouched(location)
     }
-    #else
     #else   //OS X
     override func mouseDown(theEvent: NSEvent)
     {
