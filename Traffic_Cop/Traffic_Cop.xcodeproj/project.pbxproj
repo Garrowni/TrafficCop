@@ -12,6 +12,53 @@
 		08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
 		08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DA1B266A7300B2127F /* HelpScreen.swift */; };
 		08E123DE1B266C8700B2127F /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DD1B266C8700B2127F /* CreditsScreen.swift */; };
+		08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FC6D171B28881D004F4824 /* AppDelegate.swift */; };
+		08FC6D1C1B28881D004F4824 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08FC6D1B1B28881D004F4824 /* GameScene.sks */; };
+		08FC6D211B28881D004F4824 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FC6D1F1B28881D004F4824 /* MainMenu.xib */; };
+		08FC6D2D1B28881D004F4824 /* Traffic_Cop_MacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FC6D2C1B28881D004F4824 /* Traffic_Cop_MacTests.swift */; };
+		08FC6D341B2888EA004F4824 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D61B26689E00B2127F /* MyUtils.swift */; };
+		08FC6D351B2888EA004F4824 /* TEMPLATESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */; };
+		08FC6D361B2888EA004F4824 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146461B223E95005DB874 /* GameScene.swift */; };
+		08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DA1B266A7300B2127F /* HelpScreen.swift */; };
+		08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
+		08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DD1B266C8700B2127F /* CreditsScreen.swift */; };
+		08FC6D421B2888F8004F4824 /* bg_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730751B261F2500980765 /* bg_grass.png */; };
+		08FC6D431B2888F8004F4824 /* bg_road_one_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730761B261F2500980765 /* bg_road_one_way.png */; };
+		08FC6D441B2888F8004F4824 /* bg_road_two_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730771B261F2500980765 /* bg_road_two_way.png */; };
+		08FC6D451B2888F8004F4824 /* bg_road_two_way_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730781B261F2500980765 /* bg_road_two_way_large.png */; };
+		08FC6D461B2888F8004F4824 /* lady.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730791B261F2500980765 /* lady.png */; };
+		08FC6D471B2888F8004F4824 /* LadyBaby.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7307A1B261F2500980765 /* LadyBaby.png */; };
+		08FC6D481B2888F8004F4824 /* littleGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7307B1B261F2500980765 /* littleGirl.png */; };
+		08FC6D491B2888F8004F4824 /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7307C1B261F2500980765 /* MainMenu.png */; };
+		08FC6D4A1B288900004F4824 /* OldMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730841B261F2500980765 /* OldMan.png */; };
+		08FC6D4B1B288900004F4824 /* popo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730851B261F2500980765 /* popo.png */; };
+		08FC6D4C1B288900004F4824 /* single_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730861B261F2500980765 /* single_green.png */; };
+		08FC6D4D1B288900004F4824 /* single_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730871B261F2500980765 /* single_red.png */; };
+		08FC6D4E1B288905004F4824 /* stoplight_2048.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7309E1B261F2500980765 /* stoplight_2048.png */; };
+		08FC6D4F1B288905004F4824 /* stoplight_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7309F1B261F2600980765 /* stoplight_green.png */; };
+		08FC6D501B288905004F4824 /* stoplight_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730A01B261F2600980765 /* stoplight_red.png */; };
+		08FC6D511B288905004F4824 /* stoplight_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730A11B261F2600980765 /* stoplight_yellow.png */; };
+		08FC6D521B28890F004F4824 /* Ambulence1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730891B261F2500980765 /* Ambulence1.png */; };
+		08FC6D531B28890F004F4824 /* Ambulence1L.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7308A1B261F2500980765 /* Ambulence1L.png */; };
+		08FC6D541B28890F004F4824 /* Ambulence1R.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7308B1B261F2500980765 /* Ambulence1R.png */; };
+		08FC6D551B28890F004F4824 /* Ambulence2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7308C1B261F2500980765 /* Ambulence2.png */; };
+		08FC6D561B28890F004F4824 /* Ambulence2L.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7308D1B261F2500980765 /* Ambulence2L.png */; };
+		08FC6D571B28890F004F4824 /* Ambulence2R.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7308E1B261F2500980765 /* Ambulence2R.png */; };
+		08FC6D581B28890F004F4824 /* car_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7308F1B261F2500980765 /* car_blue.png */; };
+		08FC6D591B28890F004F4824 /* car_blue_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730901B261F2500980765 /* car_blue_left.png */; };
+		08FC6D5A1B28890F004F4824 /* car_blue_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730911B261F2500980765 /* car_blue_right.png */; };
+		08FC6D5B1B28890F004F4824 /* car_cop.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730921B261F2500980765 /* car_cop.png */; };
+		08FC6D5C1B28890F004F4824 /* car_cop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730931B261F2500980765 /* car_cop1.png */; };
+		08FC6D5D1B28890F004F4824 /* car_cop1L.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730941B261F2500980765 /* car_cop1L.png */; };
+		08FC6D5E1B28890F004F4824 /* car_cop1R.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730951B261F2500980765 /* car_cop1R.png */; };
+		08FC6D5F1B28890F004F4824 /* car_cop2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730961B261F2500980765 /* car_cop2.png */; };
+		08FC6D601B28890F004F4824 /* car_cop2L.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730971B261F2500980765 /* car_cop2L.png */; };
+		08FC6D611B28890F004F4824 /* car_cop2R.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730981B261F2500980765 /* car_cop2R.png */; };
+		08FC6D621B28890F004F4824 /* car_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730991B261F2500980765 /* car_red.png */; };
+		08FC6D631B28890F004F4824 /* pickup_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7309A1B261F2500980765 /* pickup_green.png */; };
+		08FC6D641B28890F004F4824 /* truck.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7309B1B261F2500980765 /* truck.png */; };
+		08FC6D651B28890F004F4824 /* truckL.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7309C1B261F2500980765 /* truckL.png */; };
+		08FC6D661B28890F004F4824 /* truckR.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7309D1B261F2500980765 /* truckR.png */; };
 		7DD730A21B261F2600980765 /* bg_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730751B261F2500980765 /* bg_grass.png */; };
 		7DD730A31B261F2600980765 /* bg_road_one_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730761B261F2500980765 /* bg_road_one_way.png */; };
 		7DD730A41B261F2600980765 /* bg_road_two_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD730771B261F2500980765 /* bg_road_two_way.png */; };
@@ -66,6 +113,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		08FC6D271B28881D004F4824 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7DE146351B223E95005DB874 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08FC6D121B28881D004F4824;
+			remoteInfo = Traffic_Cop_Mac;
+		};
 		7DE146571B223E96005DB874 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7DE146351B223E95005DB874 /* Project object */;
@@ -77,10 +131,18 @@
 
 /* Begin PBXFileReference section */
 		08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMPLATESCREEN.swift; sourceTree = "<group>"; };
-		08E123D61B26689E00B2127F /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		08E123D61B26689E00B2127F /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = Traffic_Cop/MyUtils.swift; sourceTree = "<group>"; };
 		08E123D81B266A2800B2127F /* MainMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScreen.swift; sourceTree = "<group>"; };
 		08E123DA1B266A7300B2127F /* HelpScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpScreen.swift; path = ../HelpScreen.swift; sourceTree = "<group>"; };
 		08E123DD1B266C8700B2127F /* CreditsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScreen.swift; sourceTree = "<group>"; };
+		08FC6D131B28881D004F4824 /* Traffic_Cop_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traffic_Cop_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08FC6D161B28881D004F4824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08FC6D171B28881D004F4824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		08FC6D1B1B28881D004F4824 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		08FC6D201B28881D004F4824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		08FC6D261B28881D004F4824 /* Traffic_Cop_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Traffic_Cop_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08FC6D2B1B28881D004F4824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08FC6D2C1B28881D004F4824 /* Traffic_Cop_MacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traffic_Cop_MacTests.swift; sourceTree = "<group>"; };
 		7DD730751B261F2500980765 /* bg_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_grass.png; sourceTree = "<group>"; };
 		7DD730761B261F2500980765 /* bg_road_one_way.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_road_one_way.png; sourceTree = "<group>"; };
 		7DD730771B261F2500980765 /* bg_road_two_way.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_road_two_way.png; sourceTree = "<group>"; };
@@ -130,15 +192,29 @@
 		7DE146461B223E95005DB874 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		7DE146481B223E95005DB874 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7DE1464B1B223E95005DB874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7DE1464D1B223E95005DB874 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7DE1464D1B223E95005DB874 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Traffic_Cop/Images.xcassets; sourceTree = "<group>"; };
 		7DE146501B223E95005DB874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7DE146561B223E96005DB874 /* Traffic_CopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Traffic_CopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE1465B1B223E96005DB874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE1465C1B223E96005DB874 /* Traffic_CopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traffic_CopTests.swift; sourceTree = "<group>"; };
-		7DE146661B223F4F005DB874 /* CarSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarSprite.swift; sourceTree = "<group>"; };
+		7DE146661B223F4F005DB874 /* CarSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarSprite.swift; path = Traffic_Cop/CarSprite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		08FC6D101B28881D004F4824 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08FC6D231B28881D004F4824 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DE1463A1B223E95005DB874 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +242,63 @@
 				08E123DD1B266C8700B2127F /* CreditsScreen.swift */,
 			);
 			name = Screens;
+			path = Traffic_Cop;
+			sourceTree = "<group>";
+		};
+		08FC6D0E1B2887CE004F4824 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7DD730741B261F2500980765 /* Assets */,
+				08E123DC1B266C3A00B2127F /* Screens */,
+				08FC6D671B28895E004F4824 /* Classes */,
+				7DE1464D1B223E95005DB874 /* Images.xcassets */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		08FC6D141B28881D004F4824 /* Traffic_Cop_Mac */ = {
+			isa = PBXGroup;
+			children = (
+				08FC6D171B28881D004F4824 /* AppDelegate.swift */,
+				08FC6D1B1B28881D004F4824 /* GameScene.sks */,
+				08FC6D1F1B28881D004F4824 /* MainMenu.xib */,
+				08FC6D151B28881D004F4824 /* Supporting Files */,
+			);
+			path = Traffic_Cop_Mac;
+			sourceTree = "<group>";
+		};
+		08FC6D151B28881D004F4824 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				08FC6D161B28881D004F4824 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08FC6D291B28881D004F4824 /* Traffic_Cop_MacTests */ = {
+			isa = PBXGroup;
+			children = (
+				08FC6D2C1B28881D004F4824 /* Traffic_Cop_MacTests.swift */,
+				08FC6D2A1B28881D004F4824 /* Supporting Files */,
+			);
+			path = Traffic_Cop_MacTests;
+			sourceTree = "<group>";
+		};
+		08FC6D2A1B28881D004F4824 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				08FC6D2B1B28881D004F4824 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08FC6D671B28895E004F4824 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7DE146661B223F4F005DB874 /* CarSprite.swift */,
+				08E123D61B26689E00B2127F /* MyUtils.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		7DD730741B261F2500980765 /* Assets */ = {
@@ -190,7 +323,8 @@
 				7DD730A01B261F2600980765 /* stoplight_red.png */,
 				7DD730A11B261F2600980765 /* stoplight_yellow.png */,
 			);
-			path = Assets;
+			name = Assets;
+			path = Traffic_Cop/Assets;
 			sourceTree = "<group>";
 		};
 		7DD7307D1B261F2500980765 /* Map */ = {
@@ -237,8 +371,11 @@
 		7DE146341B223E95005DB874 = {
 			isa = PBXGroup;
 			children = (
+				08FC6D0E1B2887CE004F4824 /* Shared */,
 				7DE1463F1B223E95005DB874 /* Traffic_Cop */,
 				7DE146591B223E96005DB874 /* Traffic_CopTests */,
+				08FC6D141B28881D004F4824 /* Traffic_Cop_Mac */,
+				08FC6D291B28881D004F4824 /* Traffic_Cop_MacTests */,
 				7DE1463E1B223E95005DB874 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -248,6 +385,8 @@
 			children = (
 				7DE1463D1B223E95005DB874 /* Traffic_Cop.app */,
 				7DE146561B223E96005DB874 /* Traffic_CopTests.xctest */,
+				08FC6D131B28881D004F4824 /* Traffic_Cop_Mac.app */,
+				08FC6D261B28881D004F4824 /* Traffic_Cop_MacTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -255,15 +394,10 @@
 		7DE1463F1B223E95005DB874 /* Traffic_Cop */ = {
 			isa = PBXGroup;
 			children = (
-				7DD730741B261F2500980765 /* Assets */,
-				08E123DC1B266C3A00B2127F /* Screens */,
-				7DE146661B223F4F005DB874 /* CarSprite.swift */,
-				08E123D61B26689E00B2127F /* MyUtils.swift */,
 				7DE146481B223E95005DB874 /* GameViewController.swift */,
 				7DE146421B223E95005DB874 /* AppDelegate.swift */,
 				7DE1464F1B223E95005DB874 /* LaunchScreen.xib */,
 				7DE1464A1B223E95005DB874 /* Main.storyboard */,
-				7DE1464D1B223E95005DB874 /* Images.xcassets */,
 				7DE146401B223E95005DB874 /* Supporting Files */,
 			);
 			path = Traffic_Cop;
@@ -297,6 +431,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		08FC6D121B28881D004F4824 /* Traffic_Cop_Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08FC6D2E1B28881D004F4824 /* Build configuration list for PBXNativeTarget "Traffic_Cop_Mac" */;
+			buildPhases = (
+				08FC6D0F1B28881D004F4824 /* Sources */,
+				08FC6D101B28881D004F4824 /* Frameworks */,
+				08FC6D111B28881D004F4824 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Traffic_Cop_Mac;
+			productName = Traffic_Cop_Mac;
+			productReference = 08FC6D131B28881D004F4824 /* Traffic_Cop_Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		08FC6D251B28881D004F4824 /* Traffic_Cop_MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08FC6D311B28881D004F4824 /* Build configuration list for PBXNativeTarget "Traffic_Cop_MacTests" */;
+			buildPhases = (
+				08FC6D221B28881D004F4824 /* Sources */,
+				08FC6D231B28881D004F4824 /* Frameworks */,
+				08FC6D241B28881D004F4824 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08FC6D281B28881D004F4824 /* PBXTargetDependency */,
+			);
+			name = Traffic_Cop_MacTests;
+			productName = Traffic_Cop_MacTests;
+			productReference = 08FC6D261B28881D004F4824 /* Traffic_Cop_MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7DE1463C1B223E95005DB874 /* Traffic_Cop */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DE146601B223E96005DB874 /* Build configuration list for PBXNativeTarget "Traffic_Cop" */;
@@ -341,6 +510,13 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Mat_Nicole_Justin;
 				TargetAttributes = {
+					08FC6D121B28881D004F4824 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					08FC6D251B28881D004F4824 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 08FC6D121B28881D004F4824;
+					};
 					7DE1463C1B223E95005DB874 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
@@ -365,11 +541,66 @@
 			targets = (
 				7DE1463C1B223E95005DB874 /* Traffic_Cop */,
 				7DE146551B223E96005DB874 /* Traffic_CopTests */,
+				08FC6D121B28881D004F4824 /* Traffic_Cop_Mac */,
+				08FC6D251B28881D004F4824 /* Traffic_Cop_MacTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		08FC6D111B28881D004F4824 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08FC6D511B288905004F4824 /* stoplight_yellow.png in Resources */,
+				08FC6D1C1B28881D004F4824 /* GameScene.sks in Resources */,
+				08FC6D571B28890F004F4824 /* Ambulence2R.png in Resources */,
+				08FC6D641B28890F004F4824 /* truck.png in Resources */,
+				08FC6D651B28890F004F4824 /* truckL.png in Resources */,
+				08FC6D451B2888F8004F4824 /* bg_road_two_way_large.png in Resources */,
+				08FC6D661B28890F004F4824 /* truckR.png in Resources */,
+				08FC6D431B2888F8004F4824 /* bg_road_one_way.png in Resources */,
+				08FC6D4D1B288900004F4824 /* single_red.png in Resources */,
+				08FC6D581B28890F004F4824 /* car_blue.png in Resources */,
+				08FC6D4F1B288905004F4824 /* stoplight_green.png in Resources */,
+				08FC6D601B28890F004F4824 /* car_cop2L.png in Resources */,
+				08FC6D5F1B28890F004F4824 /* car_cop2.png in Resources */,
+				08FC6D5C1B28890F004F4824 /* car_cop1.png in Resources */,
+				08FC6D521B28890F004F4824 /* Ambulence1.png in Resources */,
+				08FC6D5E1B28890F004F4824 /* car_cop1R.png in Resources */,
+				08FC6D531B28890F004F4824 /* Ambulence1L.png in Resources */,
+				08FC6D4C1B288900004F4824 /* single_green.png in Resources */,
+				08FC6D211B28881D004F4824 /* MainMenu.xib in Resources */,
+				08FC6D4E1B288905004F4824 /* stoplight_2048.png in Resources */,
+				08FC6D551B28890F004F4824 /* Ambulence2.png in Resources */,
+				08FC6D421B2888F8004F4824 /* bg_grass.png in Resources */,
+				08FC6D631B28890F004F4824 /* pickup_green.png in Resources */,
+				08FC6D4B1B288900004F4824 /* popo.png in Resources */,
+				08FC6D461B2888F8004F4824 /* lady.png in Resources */,
+				08FC6D561B28890F004F4824 /* Ambulence2L.png in Resources */,
+				08FC6D621B28890F004F4824 /* car_red.png in Resources */,
+				08FC6D541B28890F004F4824 /* Ambulence1R.png in Resources */,
+				08FC6D5D1B28890F004F4824 /* car_cop1L.png in Resources */,
+				08FC6D441B2888F8004F4824 /* bg_road_two_way.png in Resources */,
+				08FC6D611B28890F004F4824 /* car_cop2R.png in Resources */,
+				08FC6D491B2888F8004F4824 /* MainMenu.png in Resources */,
+				08FC6D5B1B28890F004F4824 /* car_cop.png in Resources */,
+				08FC6D591B28890F004F4824 /* car_blue_left.png in Resources */,
+				08FC6D481B2888F8004F4824 /* littleGirl.png in Resources */,
+				08FC6D471B2888F8004F4824 /* LadyBaby.png in Resources */,
+				08FC6D5A1B28890F004F4824 /* car_blue_right.png in Resources */,
+				08FC6D4A1B288900004F4824 /* OldMan.png in Resources */,
+				08FC6D501B288905004F4824 /* stoplight_red.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08FC6D241B28881D004F4824 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DE1463B1B223E95005DB874 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -433,6 +664,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		08FC6D0F1B28881D004F4824 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */,
+				08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */,
+				08FC6D351B2888EA004F4824 /* TEMPLATESCREEN.swift in Sources */,
+				08FC6D361B2888EA004F4824 /* GameScene.swift in Sources */,
+				08FC6D341B2888EA004F4824 /* MyUtils.swift in Sources */,
+				08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */,
+				08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08FC6D221B28881D004F4824 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08FC6D2D1B28881D004F4824 /* Traffic_Cop_MacTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DE146391B223E95005DB874 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,6 +713,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		08FC6D281B28881D004F4824 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08FC6D121B28881D004F4824 /* Traffic_Cop_Mac */;
+			targetProxy = 08FC6D271B28881D004F4824 /* PBXContainerItemProxy */;
+		};
 		7DE146581B223E96005DB874 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7DE1463C1B223E95005DB874 /* Traffic_Cop */;
@@ -468,6 +726,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		08FC6D1F1B28881D004F4824 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08FC6D201B28881D004F4824 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		7DE1464A1B223E95005DB874 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -487,6 +753,80 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		08FC6D2F1B28881D004F4824 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Traffic_Cop_Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		08FC6D301B28881D004F4824 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Traffic_Cop_Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		08FC6D321B28881D004F4824 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Traffic_Cop_MacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Traffic_Cop_Mac.app/Contents/MacOS/Traffic_Cop_Mac";
+			};
+			name = Debug;
+		};
+		08FC6D331B28881D004F4824 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Traffic_Cop_MacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Traffic_Cop_Mac.app/Contents/MacOS/Traffic_Cop_Mac";
+			};
+			name = Release;
+		};
 		7DE1465E1B223E96005DB874 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -625,6 +965,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		08FC6D2E1B28881D004F4824 /* Build configuration list for PBXNativeTarget "Traffic_Cop_Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08FC6D2F1B28881D004F4824 /* Debug */,
+				08FC6D301B28881D004F4824 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		08FC6D311B28881D004F4824 /* Build configuration list for PBXNativeTarget "Traffic_Cop_MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08FC6D321B28881D004F4824 /* Debug */,
+				08FC6D331B28881D004F4824 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		7DE146381B223E95005DB874 /* Build configuration list for PBXProject "Traffic_Cop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -14,7 +14,7 @@ class GameScene: SKScene
     var lastUpdateTime: NSTimeInterval  = 0
     var dt: NSTimeInterval              = 0                             //DELTA TIME
     let playableRect: CGRect                                            //GAME BOUNDS
-    let TW                              = 64                            //TILEWIDTH
+    let TW                              = 128                           //TILEWIDTH
     
     
     
@@ -56,6 +56,9 @@ class GameScene: SKScene
     
     
     //******************************************TOUCH EVENT HANDLING******************************
+    
+    //PRE-COMPILE DIRECTIVES
+    #if os(iOS)
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         let touch = touches.first as! UITouch
@@ -69,7 +72,17 @@ class GameScene: SKScene
         let location = touch.locationInNode(self)
         //sceneTouched(location)
     }
+    #else   //OS X
+    override func mouseDown(theEvent: NSEvent)
+    {
+        let location = theEvent.locationInNode(self)
+    }
     
+    override func mouseDragged(theEvent: NSEvent)
+    {
+        let location = theEvent.locationInNode(self)
+    }
+    #endif
     
     
     //*****************************************THE ALL MIGHTY UPDATE******************************

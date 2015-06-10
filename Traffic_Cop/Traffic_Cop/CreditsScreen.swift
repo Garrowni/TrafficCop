@@ -29,12 +29,24 @@ class CreditsScreen: SKScene
         self.addChild(background)
     }
     
+    
+    //PRE-COMPILE DIRECTIVES
+    #if os(iOS)
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         let touch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         goToGame()
     }
+    #else
+    override func mouseDown(theEvent: NSEvent)
+    {
+        let location = theEvent.locationInNode(self)
+        goToGame()
+    }
+    #endif
+    
+    
     
     //TRANSITION
     func goToGame()

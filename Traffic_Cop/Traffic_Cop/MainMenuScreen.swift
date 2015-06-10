@@ -34,6 +34,10 @@ class MainMenuScreen: SKScene
         self.addChild(background)
     }
     
+    
+    // iOS AND OSX DIFFERENT TOUCH HANDLING
+    //PRE-COMPILE DIRECTIVES
+    #if os(iOS)
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         let touch = touches.first as! UITouch
@@ -52,9 +56,27 @@ class MainMenuScreen: SKScene
         {
             goToCredits()
         }
-
-        
     }
+    #else
+    override func mouseDown(theEvent: NSEvent)
+    {
+        let location = theEvent.locationInNode(self)
+    
+        if location > CGPoint(x: 213, y: 993) && location < CGPoint(x: 877, y: 1255)
+        {
+            goToGame()
+        }
+        else if location > CGPoint(x: 231, y: 643) && location < CGPoint(x: 895, y: 907)
+        {
+            goToHelp()
+        }
+        else if location > CGPoint(x: 231, y: 275) && location < CGPoint(x: 895, y: 541)
+        {
+            goToCredits()
+        }
+    }
+    #endif
+    
     
     //TRANSITION
     func goToGame()

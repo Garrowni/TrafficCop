@@ -30,6 +30,10 @@ class TemplateScreen: SKScene
     }
     
     
+    
+    
+    //PRE-COMPILE DIRECTIVES
+    #if os(iOS)
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         let touch = touches.first as! UITouch
@@ -43,6 +47,21 @@ class TemplateScreen: SKScene
         let location = touch.locationInNode(self)
         //sceneTouched(location)
     }
+    #else
+    #else   //OS X
+    override func mouseDown(theEvent: NSEvent)
+    {
+        let location = theEvent.locationInNode(self)
+    }
+    
+    override func mouseDragged(theEvent: NSEvent)
+    {
+        let location = theEvent.locationInNode(self)
+    }
+    
+    #endif
+    
+    
 
     
     //TRANSITION
