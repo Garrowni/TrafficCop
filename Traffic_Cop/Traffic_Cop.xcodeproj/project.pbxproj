@@ -186,6 +186,7 @@
 		7DD7309F1B261F2600980765 /* stoplight_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoplight_green.png; sourceTree = "<group>"; };
 		7DD730A01B261F2600980765 /* stoplight_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoplight_red.png; sourceTree = "<group>"; };
 		7DD730A11B261F2600980765 /* stoplight_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoplight_yellow.png; sourceTree = "<group>"; };
+		7DD81F291B28AA0A00C47FD7 /* TrafficCop_Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficCop_Bridging_Header.h; sourceTree = "<group>"; };
 		7DE1463D1B223E95005DB874 /* Traffic_Cop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traffic_Cop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE146411B223E95005DB874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE146421B223E95005DB874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -368,9 +369,19 @@
 			path = "Small Cars";
 			sourceTree = "<group>";
 		};
+		7DD850711B28AB9100C47FD7 /* JSTileMap */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = JSTileMap;
+			path = "../../Documents/iOS Games by Tutorials Second Edition/Chapter 16 - Imported Tile Maps/JSTileMap";
+			sourceTree = "<group>";
+		};
 		7DE146341B223E95005DB874 = {
 			isa = PBXGroup;
 			children = (
+				7DD81F291B28AA0A00C47FD7 /* TrafficCop_Bridging_Header.h */,
+				7DD850711B28AB9100C47FD7 /* JSTileMap */,
 				08FC6D0E1B2887CE004F4824 /* Shared */,
 				7DE1463F1B223E95005DB874 /* Traffic_Cop */,
 				7DE146591B223E96005DB874 /* Traffic_CopTests */,
@@ -914,7 +925,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mathewmanton/Documents/iOS,
+					Games,
+					by,
+					Tutorials,
+					Second,
+					Edition/Chapter,
+					7,
+					"-",
+					Labels/BitmapFont/BitmapFont,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Traffic_Cop/TrafficCop_Bridging_Header.h;
 			};
 			name = Debug;
 		};
@@ -924,7 +948,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mathewmanton/Documents/iOS,
+					Games,
+					by,
+					Tutorials,
+					Second,
+					Edition/Chapter,
+					7,
+					"-",
+					Labels/BitmapFont/BitmapFont,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Traffic_Cop/TrafficCop_Bridging_Header.h;
 			};
 			name = Release;
 		};
@@ -972,6 +1009,7 @@
 				08FC6D301B28881D004F4824 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		08FC6D311B28881D004F4824 /* Build configuration list for PBXNativeTarget "Traffic_Cop_MacTests" */ = {
 			isa = XCConfigurationList;
@@ -980,6 +1018,7 @@
 				08FC6D331B28881D004F4824 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7DE146381B223E95005DB874 /* Build configuration list for PBXProject "Traffic_Cop" */ = {
 			isa = XCConfigurationList;
