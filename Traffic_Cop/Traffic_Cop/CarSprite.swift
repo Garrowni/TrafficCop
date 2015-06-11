@@ -13,7 +13,7 @@ import SpriteKit
 
 class CarSprite : SKSpriteNode
 {
-    
+    var _turnCount : Int
      var _car : SKTexture
      var _spawn  : CGPoint
      var _accelX : Float
@@ -35,9 +35,10 @@ class CarSprite : SKSpriteNode
             
             self._car = SKTexture(imageNamed: "Ambulence1")
             self._spawn = spawn
-            self._accelX = 0
-            self._accelY = 0
+            self._accelX = 5
+            self._accelY = 5
             self._size = CGSize(width: 152, height: 66)
+            self._turnCount = 0
             
         case 2:
             self._car = SKTexture(imageNamed:"car_cop")
@@ -45,36 +46,42 @@ class CarSprite : SKSpriteNode
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
+            self._turnCount = 0
         case 3:
             self._car = SKTexture(imageNamed: "car_blue")
            self._spawn = spawn
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
+            self._turnCount = 0
         case 4:
             self._car = SKTexture(imageNamed: "car_red")
             self._spawn = spawn
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
+            self._turnCount = 0
         case 5:
             self._car = SKTexture(imageNamed: "pickup_green")
             self._spawn = spawn
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
+            self._turnCount = 0
         case 6:
             self._car = SKTexture(imageNamed: "truck")
             self._spawn = spawn
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
+            self._turnCount = 0
         default :
             self._car = SKTexture(imageNamed: "")
             self._spawn = spawn
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 0, height: 0)
+            self._turnCount = 0
             
         }
         super.init(texture: _car, color: nil, size: self._size)
@@ -85,13 +92,18 @@ class CarSprite : SKSpriteNode
     func update()
     {}
     
-    func TurnRight()
+    func turnRight()
+    {
+        self._turnCount++
+        let action = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 1.0)
+        self.runAction(action)
+        
+    }
+    
+    func turnLeft()
     {}
     
-    func TurnLeft()
-    {}
-    
-    func GoStraight()
+    func goStraight()
     {}
 }
 
