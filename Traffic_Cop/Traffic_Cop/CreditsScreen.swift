@@ -13,10 +13,22 @@ class CreditsScreen: SKScene
 {
     let playableRect: CGRect
     let label1 : Text
+    let label2 : Text
+    let label3 : Text
+    let label4 : Text
+    let label5 : Text
+
     
     override init(size: CGSize)
     {
-        label1 = Text(pos: CGPoint(x: size.width/2, y: size.height-200), says: "Credits", fontSize: 200, font: "font1", color: "red", align: "center")
+        label1 = Text(pos: CGPoint(x: size.width/2, y: size.height-200),    says: "Credits", fontSize: 200, font: "font1", color: "red",    align: "center")
+        label2 = Text(pos: CGPoint(x: size.width/2, y: size.height-400),    says: "Credits", fontSize: 200, font: "font2", color: "purple", align: "center")
+        label3 = Text(pos: CGPoint(x: size.width/2, y: size.height-600),    says: "FAIL",    fontSize: 200, font: "font3", color: "gray",   align: "center")
+        label4 = Text(pos: CGPoint(x: size.width/2, y: size.height-900),    says: "Credits", fontSize: 300, font: "font4", color: "black",  align: "center")
+        label5 = Text(pos: CGPoint(x: size.width/2, y: size.height-1200),   says: "12:30",   fontSize: 200, font: "font5", color: "blue",   align: "center")
+
+        
+        
         let maxAspectRatio:CGFloat = 9.0/16.0
         let playableHeight = size.width / maxAspectRatio
         let playableMargin = (size.height-playableHeight)/2.0
@@ -41,6 +53,12 @@ class CreditsScreen: SKScene
         
        
         addChild(label1.get())
+        addChild(label2.get())
+        addChild(label3.get())
+        addChild(label4.get())
+        addChild(label5.get())
+
+        
     }
     
     

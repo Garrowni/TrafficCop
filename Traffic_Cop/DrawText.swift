@@ -20,10 +20,12 @@ class Text
         
         switch(font)
         {
-            case "font1":   label = SKLabelNode(fontNamed:"Marion");
-            case "font2":   label = SKLabelNode(fontNamed:"Marion");
-            case "font3":   label = SKLabelNode(fontNamed:"Marion");
-            default:        label = SKLabelNode(fontNamed:"Marion");
+            case "font1":   label = SKLabelNode(fontNamed:"District");
+            case "font2":   label = SKLabelNode(fontNamed:"launica");
+            case "font3":   label = SKLabelNode(fontNamed:"Lintsec");
+            case "font4":   label = SKLabelNode(fontNamed:"Operatinginstructions");
+            case "font5":   label = SKLabelNode(fontNamed:"RADIOLAND");
+            default:        label = SKLabelNode(fontNamed:"launica");
         }
         switch(align)
         {
