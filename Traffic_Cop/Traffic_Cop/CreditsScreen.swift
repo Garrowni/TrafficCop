@@ -23,7 +23,9 @@ class CreditsScreen: SKScene
     
     override init(size: CGSize)
     {
-        label1 = Text(pos: CGPoint(x: size.width/2, y: size.height-200),    says: "Credits", fontSize: 100, font: "font1", color: "black",    align: "center")
+        
+        label1 = Text(pos: CGPoint(x: 0, y: 0),    says: "Credits", fontSize: 150, font: "font1", color: "yellow", align: "center")
+        
         label2 = Text(pos: CGPoint(x: size.width/2, y: size.height-400),    says: "Credits", fontSize: 200, font: "font2", color: "purple", align: "center")
         label3 = Text(pos: CGPoint(x: size.width/2, y: size.height-600),    says: "FAIL",    fontSize: 200, font: "font3", color: "gray",   align: "center")
         label4 = Text(pos: CGPoint(x: size.width/2, y: size.height-900),    says: "Credits", fontSize: 300, font: "font4", color: "black",  align: "center")
@@ -31,7 +33,7 @@ class CreditsScreen: SKScene
 
         
         button1R = CGRect(x: size.width/2-350, y: size.height-1700, width: 700, height: 400)
-        button1 = RectButton(pos: button1R, roundCorner: 200, text: label1, BGcolor: "blue", OLcolor: "red", OLSize: 20, glowWidth: 70)
+        button1 = RectButton(pos: button1R, roundCorner: 200, text: label1, BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 70)
       
         
         

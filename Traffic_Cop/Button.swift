@@ -36,6 +36,7 @@ class RectButton
         
 
         shape.position  = CGPoint(x: pos.maxX - pos.width/2, y: pos.maxY - pos.height/2)
+        OL.position  = CGPoint(x: pos.maxX - pos.width/2, y: pos.maxY - pos.height/2)
         shape.path      = path
         shape.zPosition = CGFloat(5)
         OL.zPosition    = CGFloat(6)
@@ -54,8 +55,8 @@ class RectButton
         
         
         
-        zoom = SKAction.scaleTo(1, duration: 2)
-        offset = SKAction.moveTo(CGPoint(x: (pos.minX + pos.width/2), y: (pos.minY - pos.height/2)), duration: 2)
+        zoom = SKAction.scaleTo(1, duration: 4)
+        offset = SKAction.moveTo(CGPoint(x: 0 , y: 0),  duration:4)
       
         
         
@@ -103,6 +104,7 @@ class RectButton
         shape.runAction(offset)
         shape.runAction(zoom)
         OL.runAction(zoom)
+        OL.runAction(offset)
         label.runAction(zoom)
     }
     
