@@ -159,6 +159,8 @@
 		08D74C141B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */; };
 		08D74C151B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */; };
 		08D74C161B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */; };
+		08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F3E61B29F8BB00FDA871 /* Button.swift */; };
+		08D9F3E81B29F8C100FDA871 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F3E61B29F8BB00FDA871 /* Button.swift */; };
 		08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */; };
 		08E123D71B26689E00B2127F /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D61B26689E00B2127F /* MyUtils.swift */; };
 		08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
@@ -230,7 +232,7 @@
 		08D515B61B28CB8100E5289B /* level4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level4.tmx; sourceTree = "<group>"; };
 		08D515B71B28CB8100E5289B /* level4v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level4v2.tmx; sourceTree = "<group>"; };
 		08D515B81B28CB8100E5289B /* RoadTiles.pdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadTiles.pdn; sourceTree = "<group>"; };
-		08D515BA1B28CB8100E5289B /* RoadTilesV2.pdn */ = {isa = PBXFileReference; lastKnownFileType = file; path = RoadTilesV2.pdn; sourceTree = "<group>"; };
+		08D515BA1B28CB8100E5289B /* RoadTilesV2.pdn */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoadTilesV2.pdn; sourceTree = "<group>"; };
 		08D515BB1B28CB8100E5289B /* RoadTilesV2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoadTilesV2.png; sourceTree = "<group>"; };
 		08D515BC1B28CB8100E5289B /* OldMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OldMan.png; sourceTree = "<group>"; };
 		08D515BD1B28CB8100E5289B /* popo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popo.png; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		08D74BE61B290D4C00E1C8BA /* pizzadude.dk License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pizzadude.dk License.txt"; sourceTree = "<group>"; };
 		08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RADIOLAND.ttf; sourceTree = "<group>"; };
 		08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RADIOLANDSLIM.ttf; sourceTree = "<group>"; };
+		08D9F3E61B29F8BB00FDA871 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMPLATESCREEN.swift; sourceTree = "<group>"; };
 		08E123D61B26689E00B2127F /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = Traffic_Cop/MyUtils.swift; sourceTree = "<group>"; };
 		08E123D81B266A2800B2127F /* MainMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScreen.swift; sourceTree = "<group>"; };
@@ -625,6 +628,7 @@
 				08E123D61B26689E00B2127F /* MyUtils.swift */,
 				08D515991B28BAB200E5289B /* DrawText.swift */,
 				7DD881D51B28C5CF00C47FD7 /* TileMapLayer.swift */,
+				08D9F3E61B29F8BB00FDA871 /* Button.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1018,6 +1022,7 @@
 				7DD881CC1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */,
 				08FC6D351B2888EA004F4824 /* TEMPLATESCREEN.swift in Sources */,
 				08FC6D361B2888EA004F4824 /* GameScene.swift in Sources */,
+				08D9F3E81B29F8C100FDA871 /* Button.swift in Sources */,
 				08FC6D341B2888EA004F4824 /* MyUtils.swift in Sources */,
 				08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */,
 				08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */,
@@ -1047,6 +1052,7 @@
 				08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */,
 				08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */,
 				7DE146491B223E95005DB874 /* GameViewController.swift in Sources */,
+				08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */,
 				7DD881D61B28C5CF00C47FD7 /* TileMapLayer.swift in Sources */,
 				7DE146431B223E95005DB874 /* AppDelegate.swift in Sources */,
 				7DD881DD1B28C8CA00C47FD7 /* JSTileMap.m in Sources */,

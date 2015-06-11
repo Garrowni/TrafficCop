@@ -17,16 +17,22 @@ class CreditsScreen: SKScene
     let label3 : Text
     let label4 : Text
     let label5 : Text
-
+    
+    let button1: RectButton
+    let button1R: CGRect
     
     override init(size: CGSize)
     {
-        label1 = Text(pos: CGPoint(x: size.width/2, y: size.height-200),    says: "Credits", fontSize: 200, font: "font1", color: "red",    align: "center")
+        label1 = Text(pos: CGPoint(x: size.width/2, y: size.height-200),    says: "Credits", fontSize: 100, font: "font1", color: "black",    align: "center")
         label2 = Text(pos: CGPoint(x: size.width/2, y: size.height-400),    says: "Credits", fontSize: 200, font: "font2", color: "purple", align: "center")
         label3 = Text(pos: CGPoint(x: size.width/2, y: size.height-600),    says: "FAIL",    fontSize: 200, font: "font3", color: "gray",   align: "center")
         label4 = Text(pos: CGPoint(x: size.width/2, y: size.height-900),    says: "Credits", fontSize: 300, font: "font4", color: "black",  align: "center")
         label5 = Text(pos: CGPoint(x: size.width/2, y: size.height-1200),   says: "12:30",   fontSize: 200, font: "font5", color: "blue",   align: "center")
 
+        
+        button1R = CGRect(x: size.width/2-350, y: size.height-1700, width: 700, height: 400)
+        button1 = RectButton(pos: button1R, roundCorner: 200, text: label1, BGcolor: "blue", OLcolor: "red", OLSize: 20, glowWidth: 70)
+      
         
         
         let maxAspectRatio:CGFloat = 9.0/16.0
@@ -49,14 +55,21 @@ class CreditsScreen: SKScene
         shape2.path = path2
         shape2.fillColor = SKColor.greenColor()
         shape2.lineWidth = 35.0
+        
         addChild(shape2)
         
        
-        addChild(label1.get())
+        //addChild(label1.get())
         addChild(label2.get())
         addChild(label3.get())
         addChild(label4.get())
         addChild(label5.get())
+        
+        
+        //BUTTON 1
+        addChild(button1.getButtBG())
+        addChild(button1.getButtOL())
+        addChild(button1.getLabel())
 
         
     }
