@@ -138,7 +138,7 @@ class MainMenuScreen: SKScene
         let transition = SKAction.group([SKAction.runBlock(){
             self.playButt.zoomOUT()
             self.titlButt.FadeAway()
-            self.credButt.zoomOUT()
+            self.credButt.FadeAway()
             self.helpButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
@@ -149,7 +149,6 @@ class MainMenuScreen: SKScene
             let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
             self.view?.presentScene(myScene, transition: reveal)
         }
-        self.runAction(block)
         let transSequence = SKAction.sequence([transition,wait,block])
         self.runAction(transSequence)
         

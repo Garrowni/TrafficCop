@@ -16,7 +16,7 @@ class GameScene: SKScene
     let playableRect: CGRect                                            //GAME BOUNDS
     let TW                              = 128                           //TILEWIDTH
     let car : CarSprite
-
+    let level : Int                     = 0
     
     
     

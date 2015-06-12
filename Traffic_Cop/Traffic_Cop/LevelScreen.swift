@@ -50,18 +50,18 @@ class LevelScreen: SKScene
         //Labels
         backLbl     = Text(pos: CGPoint(x: 0, y: 0),    says: "Back",           fontSize: 250, font: "font4", color: "green", align: "center")
         titleLabel  = Text(pos: CGPoint(x: 0, y: 0),    says: "Levels !",       fontSize: 150, font: "font1", color: "yellow", align: "center")
-        lv1Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "1",        fontSize: 150, font: "font3", color: "green", align: "center")
-        lv2Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "2",        fontSize: 150, font: "font3", color: "green", align: "center")
-        lv3Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "3",        fontSize: 150, font: "font3", color: "green", align: "center")
-        lv4Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "4",        fontSize: 150, font: "font3", color: "green", align: "center")
+        lv1Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "1",        fontSize: 200, font: "font3", color: "green", align: "center")
+        lv2Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "2",        fontSize: 200, font: "font3", color: "green", align: "center")
+        lv3Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "3",        fontSize: 200, font: "font3", color: "green", align: "center")
+        lv4Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "4",        fontSize: 200, font: "font3", color: "green", align: "center")
         
         //Rects
-        backButtR   = CGRect(x: size.width/2-250, y: size.height-1800,width: 500, height: 200)
-        titleButtR  = CGRect(x: size.width/2-350, y: size.height-300, width: 700, height: 200)
-        lv1ButtR    = CGRect(x: size.width/2-375, y: size.height-750, width: 300, height: 300)
-        lv2ButtR    = CGRect(x: size.width/2+75, y: size.height-750, width: 300, height: 300)
+        backButtR   = CGRect(x: size.width/2-250, y: size.height-1800, width: 500, height: 200)
+        titleButtR  = CGRect(x: size.width/2-350, y: size.height-300,  width: 700, height: 200)
+        lv1ButtR    = CGRect(x: size.width/2-375, y: size.height-750,  width: 300, height: 300)
+        lv2ButtR    = CGRect(x: size.width/2+75, y: size.height-750,   width: 300, height: 300)
         lv3ButtR    = CGRect(x: size.width/2-375, y: size.height-1150, width: 300, height: 300)
-        lv4ButtR    = CGRect(x: size.width/2+75, y: size.height-1150, width: 300, height: 300)
+        lv4ButtR    = CGRect(x: size.width/2+75, y: size.height-1150,  width: 300, height: 300)
         
         //Buttons
         backButt    = Button(pos: backButtR,    roundCorner: 100, text: backLbl,    BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
@@ -82,10 +82,13 @@ class LevelScreen: SKScene
     
     override func didMoveToView(view: SKView)
     {
-        var background: SKSpriteNode
-        background = SKSpriteNode(imageNamed: "MainMenu")
-        background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
-        self.addChild(background)
+        let shape2 = SKShapeNode()
+        let path2 = CGPathCreateMutable()
+        CGPathAddRect(path2, nil, playableRect)
+        shape2.path = path2
+        shape2.fillColor = SKColor.greenColor()
+        shape2.lineWidth = 35.0
+        addChild(shape2)
         
         
         //BUTTON/Title
@@ -123,7 +126,11 @@ class LevelScreen: SKScene
     {
         let touch = touches.first as! UITouch
         let location = touch.locationInNode(self)
-        //sceneTouched(location)
+        if(backButtR.contains(location)){goToGame(0)}
+        if(lv1ButtR.contains(location)){goToGame(1)}
+        if(lv2ButtR.contains(location)){goToGame(2)}
+        if(lv3ButtR.contains(location)){goToGame(3)}
+        if(lv4ButtR.contains(location)){goToGame(4)}
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
@@ -149,16 +156,77 @@ class LevelScreen: SKScene
     
     
     //TRANSITION
-    func goToGame()
+    func goToGame(lvl: Int)
     {
-        let block = SKAction.runBlock
-            {
-                let myScene = GameScene(size: self.size)
-                myScene.scaleMode = self.scaleMode
-                let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
-                self.view?.presentScene(myScene, transition: reveal)
+        var transition = SKAction()
+        
+        switch(lvl)
+        {
+        case 0:
+            transition = SKAction.group([SKAction.runBlock(){
+            self.backButt.zoomOUT()
+            self.titleButt.FadeAway()
+            self.lv1Butt.FadeAway()
+            self.lv2Butt.FadeAway()
+            self.lv3Butt.FadeAway()
+            self.lv4Butt.FadeAway()
+            }])
+        case 1:
+                transition = SKAction.group([SKAction.runBlock(){
+                self.backButt.FadeAway()
+                self.titleButt.FadeAway()
+                self.lv1Butt.zoomOUT()
+                self.lv2Butt.FadeAway()
+                self.lv3Butt.FadeAway()
+                self.lv4Butt.FadeAway()
+                }])
+        case 2:
+                transition = SKAction.group([SKAction.runBlock(){
+                self.backButt.FadeAway()
+                self.titleButt.FadeAway()
+                self.lv1Butt.FadeAway()
+                self.lv2Butt.zoomOUT()
+                self.lv3Butt.FadeAway()
+                self.lv4Butt.FadeAway()
+                }])
+        case 3:
+                transition = SKAction.group([SKAction.runBlock(){
+                self.backButt.FadeAway()
+                self.titleButt.FadeAway()
+                self.lv1Butt.FadeAway()
+                self.lv2Butt.FadeAway()
+                self.lv3Butt.zoomOUT()
+                self.lv4Butt.FadeAway()
+                }])
+        case 4:
+                transition = SKAction.group([SKAction.runBlock(){
+                self.backButt.FadeAway()
+                self.titleButt.FadeAway()
+                self.lv1Butt.FadeAway()
+                self.lv2Butt.FadeAway()
+                self.lv3Butt.FadeAway()
+                self.lv4Butt.zoomOUT()
+                }])
+        default: transition = SKAction.group([SKAction.runBlock(){println("big boo boo!")}])
+
         }
-        self.runAction(block)
+    
+        let wait = SKAction.waitForDuration(0.5)
+        let block = SKAction.runBlock
+        {
+            let myScene = MainMenuScreen(size: self.size)
+            let myScene2 = GameScene(size: self.size)
+        
+            myScene.scaleMode = self.scaleMode
+            let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+            
+            if lvl == 0
+            {self.view?.presentScene(myScene, transition: reveal)}
+            else{self.view?.presentScene(myScene2, transition: reveal)}
+            
+        }
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
     }
     
 }
