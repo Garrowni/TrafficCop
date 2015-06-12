@@ -144,7 +144,7 @@ class MainMenuScreen: SKScene
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock
         {
-            let myScene = GameScene(size: self.size)
+            let myScene = LevelScreen(size: self.size)
             myScene.scaleMode = self.scaleMode
             let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
             self.view?.presentScene(myScene, transition: reveal)
