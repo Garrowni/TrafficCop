@@ -42,14 +42,14 @@ class MainMenuScreen: SKScene
         //Rects  * remember subtract half the width from the x to get true center *
         titlR = CGRect(x: size.width/2-450, y: size.height-400, width: 900, height: 300)
         playR = CGRect(x: size.width/2-300, y: size.height-840, width: 600, height: 400)
-        helpR = CGRect(x: size.width/2-300, y: size.height-1260, width: 600, height: 400)
+        helpR = CGRect(x: size.width/2-300, y: size.height-1265, width: 600, height: 400)
         credR = CGRect(x: size.width/2-300, y: size.height-1690, width: 600, height: 400)
         
         //Buttons
-        titlButt = Button(pos: titlR, roundCorner: 100, text: titleLabel, BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 40, ZoomIn: true, Bulge: true, glowBulge: false)
-        playButt = Button(pos: playR, roundCorner: 200, text: playLabel, BGcolor: "green", OLcolor: "white", OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
-        helpButt = Button(pos: helpR, roundCorner: 200, text: helpLabel, BGcolor: "yellow", OLcolor: "white", OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
-        credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white", OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
+        titlButt = Button(pos: titlR, roundCorner: 100, text: titleLabel, BGcolor: "blue", OLcolor: "red",      OLSize: 10, glowWidth: 40, ZoomIn: true, Bulge: true,  glowBulge: false)
+        playButt = Button(pos: playR, roundCorner: 200, text: playLabel, BGcolor: "green", OLcolor: "white",    OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
+        helpButt = Button(pos: helpR, roundCorner: 200, text: helpLabel, BGcolor: "yellow", OLcolor: "white",   OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
+        credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         
         super.init(size: size)
     }
