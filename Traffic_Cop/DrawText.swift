@@ -52,6 +52,7 @@ class Text
         label.text = says;
         label.position = pos
         label.fontSize = CGFloat(fontSize)
+      
     }
     
     func get() -> SKLabelNode

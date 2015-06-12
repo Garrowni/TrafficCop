@@ -203,6 +203,52 @@ extension Int
 
 
 
+//STRING EXTENSION FOR MULTI LINE STRINGS
+extension String {
+    init(sep:String, _ lines:String...){
+        self = ""
+        for (idx, item) in enumerate(lines) {
+            self += "\(item)"
+            if idx < lines.count-1 {
+                self += sep
+            }
+        }
+    }
+    
+    init(_ lines:String...){
+        self = ""
+        for (idx, item) in enumerate(lines) {
+            self += "\(item)"
+            if idx < lines.count-1 {
+                self += "\n"
+            }
+        }
+    }
+}
+//USE IT LIKE THIS
+//println(
+//    String(
+//        "Hello",
+//        "World!"
+//    )
+//)
+//"Hello
+//World!"
+//
+//println(
+//String(sep:", ",
+//"Hello",
+//"World!"
+//)
+//)
+//"Hello, World!"
+
+
+
+
+
+
+
 
 //MUSIC
 import AVFoundation
