@@ -15,6 +15,7 @@ class Map
     let level           : Int
     var spawnArray      : [SpawnPoint]
     var roadArray       : [Road]
+	var crossWArray     : [Crosswalk]
     
     //LEVEL1 SPAWNS/ROAD CHOICES
     
@@ -26,6 +27,7 @@ class Map
         TW              = 128
         spawnArray      = []
         roadArray       = []
+		crossWArray     = []
         
         //SET SPAWNS   (point set to center of tile at edge of map)
         switch (level)
@@ -107,10 +109,10 @@ class Map
             self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*4, y: TW*0, width: TW, height: TW*4)))//BOTTOM3
             self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*5, y: TW*0, width: TW, height: TW*4)))//BOTTOM4
             
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*6, y: TW*8, width: TW, height: TW)))//RIGHT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*6, y: TW*7, width: TW, height: TW)))//RIGHT2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*6, y: TW*6, width: TW, height: TW)))//RIGHT3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*6, y: TW*5, width: TW, height: TW)))//RIGHT4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*7, y: TW*8, width: TW, height: TW)))//RIGHT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*7, y: TW*7, width: TW, height: TW)))//RIGHT2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*7, y: TW*6, width: TW, height: TW)))//RIGHT3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*7, y: TW*5, width: TW, height: TW)))//RIGHT4
             
             self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*0, y: TW*8, width: TW, height: TW)))//LEFT
             self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*0, y: TW*7, width: TW, height: TW)))//LEFT2
@@ -121,10 +123,75 @@ class Map
             self.roadArray.append(Road(goto: CGPoint(x:0 ,y:0), roadRect: CGRect(x:0, y:0, width: TW, height: TW)));println("Error in Setting Roads...Level Not compatible")
             
         }
+		
+		//SET CROSSWALK RECTS
+        switch (level)
+        {
+        case 1:
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//TOP
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*7, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*6, width: TW, height: TW)))//RIGHT
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*5, width: TW, height: TW)))//RIGHT2
+        
+		case 2:                     
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*7, width: TW, height: TW)))//TOP
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*7, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*6, width: TW, height: TW)))//RIGHT
+            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*5, width: TW, height: TW)))//RIGHT2
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//LEFT
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*5, width: TW, height: TW)))//LEFT2
+        
+		case 3:                           
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW)))//TOP
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*8, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*8, width: TW, height: TW)))//TOP3
+            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*8, width: TW, height: TW)))//TOP4
+                                    
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*3, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*3, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*3, width: TW, height: TW)))//BOTTOM3
+            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*3, width: TW, height: TW)))//BOTTOM4
+                                    
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//LEFT
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//LEFT2
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*5, width: TW, height: TW)))//LEFT3
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//LEFT4
+                
+        case 4:  
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*9, width: TW, height: TW)))//TOP
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*9, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*9, width: TW, height: TW)))//TOP3
+            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*9, width: TW, height: TW)))//TOP4
+                                         
+            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW)))//BOTTOM3
+            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*4, width: TW, height: TW)))//BOTTOM4
+                                          
+            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*8, width: TW, height: TW)))//RIGHT
+            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*7, width: TW, height: TW)))//RIGHT2
+            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*6, width: TW, height: TW)))//RIGHT3
+            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*5, width: TW, height: TW)))//RIGHT4
+                                          
+            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*8, width: TW, height: TW)))//LEFT
+            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*7, width: TW, height: TW)))//LEFT2
+            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*6, width: TW, height: TW)))//LEFT3
+            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))//LEFT4
+                 
+        default: 
+            self.crossWArray.append(Road(goto: CGPoint(x:0 ,y:0), roadRect: CGRect(x:0, y:0, width: TW, height: TW)));println("Error in Setting Roads...Level Not compatible")
+            
+        }
+		
+		
+		
+		
         
     }
-    
-    
     
     func getSpawns() -> [SpawnPoint]
     {
@@ -136,6 +203,10 @@ class Map
         return roadArray
     }
     
+	func getCrossWalks() -> [Crosswalk]
+    {
+        return crossWArray
+    }
     
     
     
@@ -151,6 +222,16 @@ struct Road
     {
      gotoPoint  = goto
      rect       = roadRect
+    }
+}
+
+
+struct Crosswalk
+{
+    let rect: CGRect
+    init(Rect: CGRect)
+    {
+     rect       = Rect
     }
 }
 
