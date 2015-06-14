@@ -13,7 +13,7 @@ import SpriteKit
 
 class CarSprite : SKSpriteNode
 {
-    var _turnCount : Int
+     var _turnCount : Int
      var _car : SKTexture
      var _spawn  : CGPoint
      var _accelX : Float

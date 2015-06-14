@@ -153,7 +153,7 @@ class Button
     
     func zoomOUT()
     {
-        offSetPoint = CGPoint(x: origRect.maxX - origRect.width/2, y: origRect.maxY - origRect.height/2)
+        offSetPoint     = CGPoint(x: origRect.maxX - origRect.width/2, y: origRect.maxY - origRect.height/2)
         let offsetFirst = SKAction.moveTo(offSetPoint, duration: 0.3)
         let offsetSec   = SKAction.runBlock(){self.buttonDone = true;}
         let offset2     = SKAction.sequence([offsetFirst,offsetSec])

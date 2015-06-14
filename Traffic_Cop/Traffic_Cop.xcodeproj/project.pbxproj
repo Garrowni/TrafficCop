@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
+		08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
+		08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F71B2CE5B900DC56F8 /* Settings.swift */; };
+		08C464F91B2CE5B900DC56F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F71B2CE5B900DC56F8 /* Settings.swift */; };
 		08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D515991B28BAB200E5289B /* DrawText.swift */; };
 		08D515A01B28C49400E5289B /* DrawText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D515991B28BAB200E5289B /* DrawText.swift */; };
 		08D515DB1B28CB8100E5289B /* bg_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D515A21B28CB8100E5289B /* bg_grass.png */; };
@@ -35,16 +39,8 @@
 		08D515F21B28CB8100E5289B /* mad.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D515AF1B28CB8100E5289B /* mad.png */; };
 		08D515F31B28CB8100E5289B /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B01B28CB8100E5289B /* MainMenu.png */; };
 		08D515F41B28CB8100E5289B /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B01B28CB8100E5289B /* MainMenu.png */; };
-		08D515F51B28CB8100E5289B /* level1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B21B28CB8100E5289B /* level1.tmx */; };
-		08D515F61B28CB8100E5289B /* level1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B21B28CB8100E5289B /* level1.tmx */; };
-		08D515F71B28CB8100E5289B /* level2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B31B28CB8100E5289B /* level2.tmx */; };
-		08D515F81B28CB8100E5289B /* level2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B31B28CB8100E5289B /* level2.tmx */; };
 		08D515F91B28CB8100E5289B /* level2v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B41B28CB8100E5289B /* level2v2.tmx */; };
 		08D515FA1B28CB8100E5289B /* level2v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B41B28CB8100E5289B /* level2v2.tmx */; };
-		08D515FB1B28CB8100E5289B /* level3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B51B28CB8100E5289B /* level3.tmx */; };
-		08D515FC1B28CB8100E5289B /* level3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B51B28CB8100E5289B /* level3.tmx */; };
-		08D515FD1B28CB8100E5289B /* level4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B61B28CB8100E5289B /* level4.tmx */; };
-		08D515FE1B28CB8100E5289B /* level4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B61B28CB8100E5289B /* level4.tmx */; };
 		08D515FF1B28CB8100E5289B /* level4v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B71B28CB8100E5289B /* level4v2.tmx */; };
 		08D516001B28CB8100E5289B /* level4v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B71B28CB8100E5289B /* level4v2.tmx */; };
 		08D516011B28CB8100E5289B /* RoadTiles.pdn in Resources */ = {isa = PBXBuildFile; fileRef = 08D515B81B28CB8100E5289B /* RoadTiles.pdn */; };
@@ -179,7 +175,6 @@
 		08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
 		08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DD1B266C8700B2127F /* CreditsScreen.swift */; };
 		7DD850731B28AC8100C47FD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD850721B28AC8100C47FD7 /* libz.dylib */; };
-		7DD881CB1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881CA1B28B50100C47FD7 /* TmxTileMapLayer.swift */; };
 		7DD881CC1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881CA1B28B50100C47FD7 /* TmxTileMapLayer.swift */; };
 		7DD881D61B28C5CF00C47FD7 /* TileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881D51B28C5CF00C47FD7 /* TileMapLayer.swift */; };
 		7DD881DD1B28C8CA00C47FD7 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881D91B28C8CA00C47FD7 /* JSTileMap.m */; };
@@ -213,6 +208,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08C464F41B2CCA1300DC56F8 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		08C464F71B2CE5B900DC56F8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		08D515991B28BAB200E5289B /* DrawText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawText.swift; sourceTree = "<group>"; };
 		08D515A21B28CB8100E5289B /* bg_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_grass.png; sourceTree = "<group>"; };
 		08D515A31B28CB8100E5289B /* bg_road_one_way.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_road_one_way.png; sourceTree = "<group>"; };
@@ -227,11 +224,7 @@
 		08D515AE1B28CB8100E5289B /* littleGirl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = littleGirl.png; sourceTree = "<group>"; };
 		08D515AF1B28CB8100E5289B /* mad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mad.png; sourceTree = "<group>"; };
 		08D515B01B28CB8100E5289B /* MainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu.png; sourceTree = "<group>"; };
-		08D515B21B28CB8100E5289B /* level1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level1.tmx; sourceTree = "<group>"; };
-		08D515B31B28CB8100E5289B /* level2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level2.tmx; sourceTree = "<group>"; };
 		08D515B41B28CB8100E5289B /* level2v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level2v2.tmx; sourceTree = "<group>"; };
-		08D515B51B28CB8100E5289B /* level3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level3.tmx; sourceTree = "<group>"; };
-		08D515B61B28CB8100E5289B /* level4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level4.tmx; sourceTree = "<group>"; };
 		08D515B71B28CB8100E5289B /* level4v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level4v2.tmx; sourceTree = "<group>"; };
 		08D515B81B28CB8100E5289B /* RoadTiles.pdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadTiles.pdn; sourceTree = "<group>"; };
 		08D515BA1B28CB8100E5289B /* RoadTilesV2.pdn */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoadTilesV2.pdn; sourceTree = "<group>"; };
@@ -411,11 +404,7 @@
 		08D515B11B28CB8100E5289B /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				08D515B21B28CB8100E5289B /* level1.tmx */,
-				08D515B31B28CB8100E5289B /* level2.tmx */,
 				08D515B41B28CB8100E5289B /* level2v2.tmx */,
-				08D515B51B28CB8100E5289B /* level3.tmx */,
-				08D515B61B28CB8100E5289B /* level4.tmx */,
 				08D515B71B28CB8100E5289B /* level4v2.tmx */,
 				08D515B81B28CB8100E5289B /* RoadTiles.pdn */,
 				08D515BA1B28CB8100E5289B /* RoadTilesV2.pdn */,
@@ -633,6 +622,8 @@
 				08D515991B28BAB200E5289B /* DrawText.swift */,
 				7DD881D51B28C5CF00C47FD7 /* TileMapLayer.swift */,
 				08D9F3E61B29F8BB00FDA871 /* Button.swift */,
+				08C464F41B2CCA1300DC56F8 /* Map.swift */,
+				08C464F71B2CE5B900DC56F8 /* Settings.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -848,7 +839,6 @@
 				08D516301B28CB8100E5289B /* car_cop2R.png in Resources */,
 				08D5163A1B28CB8100E5289B /* truckR.png in Resources */,
 				08D515E41B28CB8100E5289B /* content.png in Resources */,
-				08D515FE1B28CB8100E5289B /* level4.tmx in Resources */,
 				08D516061B28CB8100E5289B /* RoadTilesV2.pdn in Resources */,
 				08D516021B28CB8100E5289B /* RoadTiles.pdn in Resources */,
 				08D74BF81B290D4C00E1C8BA /* launica.ttf in Resources */,
@@ -875,7 +865,6 @@
 				08D515DC1B28CB8100E5289B /* bg_grass.png in Resources */,
 				08D74BF41B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
 				08D74BF61B290D4C00E1C8BA /* Estefania Hormigo Font License.txt in Resources */,
-				08D515F61B28CB8100E5289B /* level1.tmx in Resources */,
 				08D516401B28CB8100E5289B /* stoplight_red.png in Resources */,
 				08D74C001B290D4C00E1C8BA /* NEORD___.ttf in Resources */,
 				08D5163C1B28CB8100E5289B /* stoplight_2048.png in Resources */,
@@ -904,9 +893,7 @@
 				08D74BFA1B290D4C00E1C8BA /* Freeware License.txt in Resources */,
 				08D74BF21B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */,
 				08D516441B28CB8100E5289B /* thought.png in Resources */,
-				08D515FC1B28CB8100E5289B /* level3.tmx in Resources */,
 				08D516281B28CB8100E5289B /* car_cop1L.png in Resources */,
-				08D515F81B28CB8100E5289B /* level2.tmx in Resources */,
 				08D516221B28CB8100E5289B /* car_blue_right.png in Resources */,
 				08D5162E1B28CB8100E5289B /* car_cop2L.png in Resources */,
 				08D515EE1B28CB8100E5289B /* LadyBaby.png in Resources */,
@@ -928,14 +915,12 @@
 				08D516071B28CB8100E5289B /* RoadTilesV2.png in Resources */,
 				08D5162B1B28CB8100E5289B /* car_cop2.png in Resources */,
 				08D516251B28CB8100E5289B /* car_cop1.png in Resources */,
-				08D515F51B28CB8100E5289B /* level1.tmx in Resources */,
 				08D5163B1B28CB8100E5289B /* stoplight_2048.png in Resources */,
 				08D516231B28CB8100E5289B /* car_cop.png in Resources */,
 				08D516271B28CB8100E5289B /* car_cop1L.png in Resources */,
 				08D74BEF1B290D4C00E1C8BA /* District.ttf in Resources */,
 				08D5162F1B28CB8100E5289B /* car_cop2R.png in Resources */,
 				08D74C0F1B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
-				08D515FB1B28CB8100E5289B /* level3.tmx in Resources */,
 				08D74BF51B290D4C00E1C8BA /* Estefania Hormigo Font License.txt in Resources */,
 				08D515FF1B28CB8100E5289B /* level4v2.tmx in Resources */,
 				08D516331B28CB8100E5289B /* pickup_green.png in Resources */,
@@ -944,7 +929,6 @@
 				08D515E31B28CB8100E5289B /* content.png in Resources */,
 				08D515DB1B28CB8100E5289B /* bg_grass.png in Resources */,
 				08D516091B28CB8100E5289B /* OldMan.png in Resources */,
-				08D515F71B28CB8100E5289B /* level2.tmx in Resources */,
 				7DE146511B223E95005DB874 /* LaunchScreen.xib in Resources */,
 				08D74C111B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
 				08D515F31B28CB8100E5289B /* MainMenu.png in Resources */,
@@ -961,7 +945,6 @@
 				08D515E91B28CB8100E5289B /* irritated.png in Resources */,
 				08D74BE91B290D4C00E1C8BA /* burnstown_dam.otf in Resources */,
 				08D74BF31B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
-				08D515FD1B28CB8100E5289B /* level4.tmx in Resources */,
 				08D5160D1B28CB8100E5289B /* single_green.png in Resources */,
 				08D516131B28CB8100E5289B /* Ambulence1L.png in Resources */,
 				08D74C091B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */,
@@ -1023,6 +1006,7 @@
 			files = (
 				08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */,
 				08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */,
+				08C464F91B2CE5B900DC56F8 /* Settings.swift in Sources */,
 				7DD881CC1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */,
 				08FC6D351B2888EA004F4824 /* TEMPLATESCREEN.swift in Sources */,
 				08FC6D361B2888EA004F4824 /* GameScene.swift in Sources */,
@@ -1031,6 +1015,7 @@
 				08D9710A1B2B44F100F44180 /* LevelScreen.swift in Sources */,
 				08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */,
 				08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */,
+				08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */,
 				08D515A01B28C49400E5289B /* DrawText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1049,7 +1034,8 @@
 			files = (
 				08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */,
 				7DE146471B223E95005DB874 /* GameScene.swift in Sources */,
-				7DD881CB1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */,
+				08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */,
+				08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */,
 				08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */,
 				08D971091B2B44F100F44180 /* LevelScreen.swift in Sources */,
 				7DD881DE1B28C8CA00C47FD7 /* LFCGzipUtility.m in Sources */,
