@@ -39,6 +39,7 @@ class CarSprite : SKSpriteNode
         self._type = type
         self._size = CGSize(width: 152, height: 66)
         self._spawn = direction.pos
+        self.position = _spawn
         
         switch(self._type)
         {
@@ -74,7 +75,7 @@ class CarSprite : SKSpriteNode
             
             
         default :
-            self._car = SKTexture(imageNamed: "")            
+            self._car = SKTexture(imageNamed: "")
             self._MAXSPEED = 0
         }
         
