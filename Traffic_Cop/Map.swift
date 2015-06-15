@@ -288,10 +288,10 @@ struct SpawnPoint
         pos = position
         switch(direction)
         {
-            case "Up":      dir = 0
-            case "Left":    dir = 1
-            case "Right":   dir = 2
-            case "Down":    dir = 3
+            case "up":      dir = 0
+            case "left":    dir = 1
+            case "right":   dir = 2
+            case "down":    dir = 3
             
         default: dir  = 0; println("Mis-Spell on the Spawn Point Direction")
         }
