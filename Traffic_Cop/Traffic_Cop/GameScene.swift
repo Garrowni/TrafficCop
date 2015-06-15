@@ -64,7 +64,7 @@ class GameScene: SKScene
         let playableHeight = size.width / maxAspectRatio
         let playableMargin = (size.height-playableHeight)/2.0
         playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
-        car = CarSprite(type: 1, spawn: CGPoint(x: 709, y: 100), direction: .NORTH)
+        car = CarSprite(type: 1, direction: spawnsArray[0])
 
         super.init(size: size)
         CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))

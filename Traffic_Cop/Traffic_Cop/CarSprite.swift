@@ -18,7 +18,7 @@ class CarSprite : SKSpriteNode
         case WEST, NORTH, EAST, SOUTH
         
     }
-    var dir : SpawnPoint
+   
     var _dir : Direction
     var _turnCount : Int
     var _car : SKTexture
@@ -33,7 +33,7 @@ class CarSprite : SKSpriteNode
     
     init(type : Int , direction : SpawnPoint)
     {
-        var tempDirection = direction.getDir()
+        var tempDirection = direction.dir
         self._type = type
         
         switch(tempDirection)
@@ -46,6 +46,8 @@ class CarSprite : SKSpriteNode
             self._dir = Direction.EAST
         case 3:
             self._dir = Direction.SOUTH
+        default:
+            self._dir = Direction.WEST
         }
         switch(self._type)
         {
@@ -112,13 +114,13 @@ class CarSprite : SKSpriteNode
         
         switch(self._dir)
         {
-        case 0:
+        case .NORTH:
             self.zRotation = CGFloat(M_PI_2 * 3)    
-        case 1:
+        case .WEST:
             self.zRotation = 0
-        case 2:
+        case .EAST:
             self.zRotation = CGFloat(M_PI_2 * 2)
-        case 3:
+        case .SOUTH:
             self.zRotation = CGFloat(M_PI_2)
         default:
             self.zRotation = 0
@@ -148,13 +150,13 @@ class CarSprite : SKSpriteNode
         
         switch(self._dir)
         {
-        case 0:
+        case .NORTH:
             self._dir = .EAST
-        case 2:
+        case .EAST:
             self._dir = .SOUTH
-        case 1:
+        case .WEST:
             self._dir = .NORTH
-        case 3:
+        case .SOUTH:
             self._dir = .WEST
         default:
             self._dir = .WEST
@@ -172,13 +174,13 @@ class CarSprite : SKSpriteNode
     {
         switch(self._dir)
         {
-        case 0:
+        case .NORTH:
             self.position.y += self._accelY
-        case 3:
+        case .SOUTH:
             self.position.y += -self._accelY
-        case 1:
+        case .WEST:
             self.position.x += -self._accelX
-        case 2:
+        case .EAST:
             self.position.x += self._accelY
         }
     }
