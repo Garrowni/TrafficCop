@@ -250,6 +250,7 @@ class GameScene: SKScene
             vehicleArray.append(car)
             car.drive()
             addChild(car)
+            addChild(car)
         }
     }
     
@@ -259,7 +260,7 @@ class GameScene: SKScene
         {
             vehicleArray[i].update()
             
-            if(vehicleArray[i])
+            if(vehicleArray[i].po)
             
             if(vehicleArray[i].isDone(playableRect))
             {

@@ -27,7 +27,7 @@ class GlowCircle
     var offSetPoint:    CGPoint
     var buttonDone:     Bool
     var Alpha:          CGFloat
-
+    var position:       CGPoint
     
     
     init(pos: CGPoint, radius: Int, OLcolor: String, OLSize: Int, glowWidth: Int, ZoomIn: Bool, glowBulge: Bool, alpha: CGFloat)
@@ -42,7 +42,7 @@ class GlowCircle
         glowBulgeAC = SKAction()
         buttonDone  = false
         Alpha       = alpha
- 
+        position    = pos
         
         OL              = SKShapeNode()
         
@@ -103,6 +103,11 @@ class GlowCircle
         if zoomIn {zoomIN()}
         if glowBulge {OL.runAction(glowBulgeAC)}
         
+    }
+    
+    func updatePosition(pos : CGPoint)
+    {
+        OL.position = pos
     }
     
     func zoomIN()
