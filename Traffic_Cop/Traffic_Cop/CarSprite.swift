@@ -22,6 +22,7 @@ class CarSprite : SKSpriteNode
     {
         case DRIVING, STOPPED, TURNING
     }
+    
     let _MAXSPEED : CGFloat
     var _dir : Direction = Direction.WEST
     var _turnCount : Int = 0
@@ -35,6 +36,8 @@ class CarSprite : SKSpriteNode
     var _textures : [SKTexture] = []
     var _size : CGSize
     var _state : State = State.STOPPED
+    var _isSelected : Bool = false
+    var _glowCircle : GlowCircle
     
     
     
@@ -44,8 +47,9 @@ class CarSprite : SKSpriteNode
         self._type = type
         self._size = CGSize(width: 152, height: 66)
         self._spawn = direction.pos
+        self._glowCircle = GlowCircle(pos: self._spawn, radius: 20, OLcolor: "yellow", OLSize: 10, glowWidth: 40, ZoomIn: true, glowBulge: true, alpha: 0.5)
         
-        
+       
         switch(self._type)
         {
         case 1:
@@ -87,6 +91,7 @@ class CarSprite : SKSpriteNode
         super.init(texture: _car, color: nil, size: self._size)
         
         self.position = _spawn
+        
         
         //rotate the sprite to the correct direction
         switch(self._dir)
@@ -150,6 +155,11 @@ class CarSprite : SKSpriteNode
             
         }
         
+        if(_isSelected == true)
+        {
+        
+        }
+        _glowCircle.Alpha = 0.5
         
     } 
     
@@ -221,11 +231,8 @@ class CarSprite : SKSpriteNode
     
     func stop()
     {
-        if self._currSpeed != 0
-        {
-            self._currSpeed -= self._deAccel
-        }
-       
+        self._currSpeed = 0
+        self._state = State.STOPPED
     }
     
     
