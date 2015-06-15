@@ -66,6 +66,7 @@ class GlowCircle
         zoomO = SKAction.scaleTo(0, duration: 0.3)
         
         offset = SKAction.moveTo(offSetPoint,  duration:0.5)
+        
         let scaleUp = SKAction.scaleTo(CGFloat(1.1), duration: 0.5)
         let scaleDown = SKAction.scaleTo(CGFloat(0.9), duration: 0.5)
         let fullBulge = SKAction.sequence([scaleUp, scaleDown])
@@ -107,7 +108,8 @@ class GlowCircle
     
     func updatePosition(pos : CGPoint)
     {
-        
+       let move = SKAction.moveTo(pos, duration: 0)
+        OL.runAction(move)
     }
     
     func zoomIN()
