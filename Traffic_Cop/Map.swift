@@ -128,62 +128,63 @@ class Map
         switch (level)
         {
         case 1:
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//TOP
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*7, width: TW, height: TW)))//TOP2
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//BOTTOM
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM2
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*6, width: TW, height: TW)))//RIGHT
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*5, width: TW, height: TW)))//RIGHT2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//TOP
+
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*7, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*6, width: TW, height: TW)))//RIGHT
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*5, width: TW, height: TW)))//RIGHT2
         
 		case 2:                     
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*7, width: TW, height: TW)))//TOP
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*7, width: TW, height: TW)))//TOP2
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW)))//BOTTOM2
-            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*6, width: TW, height: TW)))//RIGHT
-            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*5, width: TW, height: TW)))//RIGHT2
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//LEFT
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*5, width: TW, height: TW)))//LEFT2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*7, width: TW, height: TW)))//TOP
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*7, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*5, y: TW*6, width: TW, height: TW)))//RIGHT
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*5, y: TW*5, width: TW, height: TW)))//RIGHT2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//LEFT
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*5, width: TW, height: TW)))//LEFT2
         
 		case 3:                           
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW)))//TOP
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*8, width: TW, height: TW)))//TOP2
-            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*8, width: TW, height: TW)))//TOP3
-            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*8, width: TW, height: TW)))//TOP4
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW)))//TOP
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*8, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*5, y: TW*8, width: TW, height: TW)))//TOP3
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*6, y: TW*8, width: TW, height: TW)))//TOP4
                                     
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*3, width: TW, height: TW)))//BOTTOM
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*3, width: TW, height: TW)))//BOTTOM2
-            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*3, width: TW, height: TW)))//BOTTOM3
-            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*3, width: TW, height: TW)))//BOTTOM4
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*3, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*3, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*5, y: TW*3, width: TW, height: TW)))//BOTTOM3
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*6, y: TW*3, width: TW, height: TW)))//BOTTOM4
                                     
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//LEFT
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//LEFT2
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*5, width: TW, height: TW)))//LEFT3
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//LEFT4
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//LEFT
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//LEFT2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*5, width: TW, height: TW)))//LEFT3
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//LEFT4
                 
         case 4:  
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*9, width: TW, height: TW)))//TOP
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*9, width: TW, height: TW)))//TOP2
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*9, width: TW, height: TW)))//TOP3
-            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*9, width: TW, height: TW)))//TOP4
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*9, width: TW, height: TW)))//TOP
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*9, width: TW, height: TW)))//TOP2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*9, width: TW, height: TW)))//TOP3
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*5, y: TW*9, width: TW, height: TW)))//TOP4
                                          
-            self.crossWArray.append(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//BOTTOM
-            self.crossWArray.append(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM2
-            self.crossWArray.append(Rect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW)))//BOTTOM3
-            self.crossWArray.append(Rect: CGRect(x: TW*5, y: TW*4, width: TW, height: TW)))//BOTTOM4
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//BOTTOM
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*3, y: TW*4, width: TW, height: TW)))//BOTTOM2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW)))//BOTTOM3
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*5, y: TW*4, width: TW, height: TW)))//BOTTOM4
                                           
-            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*8, width: TW, height: TW)))//RIGHT
-            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*7, width: TW, height: TW)))//RIGHT2
-            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*6, width: TW, height: TW)))//RIGHT3
-            self.crossWArray.append(Rect: CGRect(x: TW*6, y: TW*5, width: TW, height: TW)))//RIGHT4
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*6, y: TW*8, width: TW, height: TW)))//RIGHT
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*6, y: TW*7, width: TW, height: TW)))//RIGHT2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*6, y: TW*6, width: TW, height: TW)))//RIGHT3
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*6, y: TW*5, width: TW, height: TW)))//RIGHT4
                                           
-            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*8, width: TW, height: TW)))//LEFT
-            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*7, width: TW, height: TW)))//LEFT2
-            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*6, width: TW, height: TW)))//LEFT3
-            self.crossWArray.append(Rect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))//LEFT4
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*1, y: TW*8, width: TW, height: TW)))//LEFT
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*1, y: TW*7, width: TW, height: TW)))//LEFT2
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*1, y: TW*6, width: TW, height: TW)))//LEFT3
+            self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))//LEFT4
                  
         default: 
-            self.crossWArray.append(Road(goto: CGPoint(x:0 ,y:0), roadRect: CGRect(x:0, y:0, width: TW, height: TW)));println("Error in Setting Roads...Level Not compatible")
+             self.crossWArray.append(Crosswalk(Rect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))//LEFT4;println("Error in Setting Roads...Level Not compatible")
             
         }
 		
@@ -209,9 +210,48 @@ class Map
     }
     
     
+    func randomSpawn() -> SpawnPoint
+    {
+        let randSpawn: Int = Int.randomNumberFrom(0...spawnArray.count)
+        return spawnArray[randSpawn]
+    }
+    
+    func atIntersection(rect: CGRect) ->Bool
+    {
+        for Rec in crossWArray
+        {
+            if(rect.intersects(Rec.rect)){return true}
+        }
+        return false
+    }
+    
+    //USE THIS TO CHECK IF ON A ROAD FIRST THEN
+    func isOnRoad(pos: CGPoint) -> Bool
+    {
+        for road in roadArray
+        {
+            if(road.rect.contains(pos)){return true}
+        }
+        return false
+    }
+    
+    //USE THIS TO GET ROAD IF THEY ARE ON ONE USED IN TURNING CALCULATION
+    func getCurRoad(pos: CGPoint) -> Road
+    {
+        for road in roadArray
+        {
+            if(road.rect.contains(pos)){return road}
+        }
+        println("ERROR POINT WASNT ON ANY ROAD")
+        return roadArray[0]
+    }
+  
     
     
 }
+
+
+
 
 struct Road
 {

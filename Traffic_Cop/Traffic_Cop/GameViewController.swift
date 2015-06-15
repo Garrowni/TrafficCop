@@ -12,9 +12,10 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     
-//    let settings : Settings
+//let settings : Settings
 //    settings = Settings() //LATER ON LOAD FROM FILE
 //  
+
 
     override func viewDidLoad()
     {

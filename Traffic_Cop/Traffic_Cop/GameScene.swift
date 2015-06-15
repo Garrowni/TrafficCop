@@ -17,12 +17,14 @@ class GameScene: SKScene
     let TW                              = 128                           //TILEWIDTH
     let car : CarSprite
     let level : Int                     = 0
-    
+    let map : Map
     
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
+        map = Map(lvl: 4)
+        
         let maxAspectRatio:CGFloat = 9.0/16.0
         let playableHeight = size.width / maxAspectRatio
         let playableMargin = (size.height-playableHeight)/2.0
@@ -31,10 +33,10 @@ class GameScene: SKScene
         super.init(size: size)
         
     }
-    required init(coder aDecoder: NSCoder){fatalError("init(coder:) has not been implemented")}
-    
 
-    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     
