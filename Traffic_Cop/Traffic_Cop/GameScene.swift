@@ -258,6 +258,9 @@ class GameScene: SKScene
         for(var i = 0; i < vehicleArray.count; i++)
         {
             vehicleArray[i].update()
+            
+            if(vehicleArray[i])
+            
             if(vehicleArray[i].isDone(playableRect))
             {
                 vehicleArray[i].removeFromParent()

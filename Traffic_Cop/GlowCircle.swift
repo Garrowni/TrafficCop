@@ -159,6 +159,10 @@ class GlowCircle
         }
     }
     
+    func setAlpha(setAlpha: CGFloat)
+    {
+        OL.alpha = setAlpha
+    }
     
     func getOL() -> SKShapeNode
     {
