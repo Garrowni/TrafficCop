@@ -248,18 +248,19 @@ class GameScene: SKScene
         {
             var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
             vehicleArray.append(car)
-            car.goStraight()
             addChild(car)
         }
     }
     
     func updateVehicles()
     {
-        for vehicle in vehicleArray
+        for(var i = 0; i < vehicleArray.count; i++)
         {
-            if(vehicle.isDone(playableRect))
+            vehicleArray[i].update()
+            if(vehicleArray[i].isDone(playableRect))
             {
-                vehicle.removeFromParent()
+                vehicleArray[i].removeFromParent()
+                vehicleArray.removeAtIndex(i)
             }
         }
     }
