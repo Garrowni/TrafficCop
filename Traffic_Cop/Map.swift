@@ -114,10 +114,10 @@ class Map
             self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*7, y: TW*6, width: TW, height: TW)))//RIGHT3
             self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*7, y: TW*5, width: TW, height: TW)))//RIGHT4
             
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*0, y: TW*8, width: TW, height: TW)))//LEFT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*0, y: TW*7, width: TW, height: TW)))//LEFT2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW, height: TW)))//LEFT3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW, height: TW)))//LEFT4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*0, y: TW*8, width: TW, height: TW)))//LEFT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*0, y: TW*7, width: TW, height: TW)))//LEFT2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW, height: TW)))//LEFT3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW, height: TW)))//LEFT4
             
         default:
             self.roadArray.append(Road(goto: CGPoint(x:0 ,y:0), roadRect: CGRect(x:0, y:0, width: TW, height: TW)));println("Error in Setting Roads...Level Not compatible")
@@ -296,6 +296,10 @@ struct SpawnPoint
             
         default: dir  = DIR.Down; println("Mis-Spell on the Spawn Point Direction")
         }
+    }
+    func getDir() -> DIR
+    {
+        return dir
     }
 }
 
