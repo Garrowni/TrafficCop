@@ -249,7 +249,7 @@ class GameScene: SKScene
             var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
             vehicleArray.append(car)
             car.drive()
-            addChild(car)
+            //addChild(car)
             addChild(car)
         }
     }
@@ -260,7 +260,7 @@ class GameScene: SKScene
         {
             vehicleArray[i].update()
             
-            if(vehicleArray[i].po)
+            //if(vehicleArray[i].)
             
             if(vehicleArray[i].isDone(playableRect))
             {
