@@ -39,7 +39,7 @@ class CarSprite : SKSpriteNode
         self._type = type
         self._size = CGSize(width: 152, height: 66)
         self._spawn = direction.pos
-        self.position = _spawn
+        
         
         switch(self._type)
         {
@@ -81,6 +81,7 @@ class CarSprite : SKSpriteNode
         
         super.init(texture: _car, color: nil, size: self._size)
         
+        self.position = _spawn
         
         //rotate the sprite to the correct direction
         switch(self._dir)
