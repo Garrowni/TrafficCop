@@ -18,7 +18,8 @@ class CarSprite : SKSpriteNode
         case WEST, NORTH, EAST, SOUTH
         
     }
-    var _dir : SpawnPoint.DIR
+    var dir : SpawnPoint
+    var _dir : Direction
     var _turnCount : Int
     var _car : SKTexture
     var _spawn  : CGPoint
@@ -30,85 +31,95 @@ class CarSprite : SKSpriteNode
     
     
     
-    init(type : Int , spawn : CGPoint, direction : SpawnPoint.DIR)
+    init(type : Int , direction : SpawnPoint)
     {
-        
+        var tempDirection = direction.getDir()
         self._type = type
+        
+        switch(tempDirection)
+        {
+        case 0:
+            self._dir = Direction.NORTH
+        case 1:
+            self._dir = Direction.WEST
+        case 2:
+            self._dir = Direction.EAST
+        case 3:
+            self._dir = Direction.SOUTH
+        }
         switch(self._type)
         {
         case 1:
             
             self._car = SKTexture(imageNamed: "Ambulence1")
-            self._spawn = spawn
+            self._spawn = direction.pos
             self._accelX = 10
             self._accelY = 10
             self._size = CGSize(width: 152, height: 66)
             self._turnCount = 0
-            self._dir = SpawnPoint.get
             
         case 2:
             self._car = SKTexture(imageNamed:"car_cop")
-            self._spawn = spawn
+            self._spawn = direction.pos
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
             self._turnCount = 0
-            self._dir = direction
+       
         case 3:
             self._car = SKTexture(imageNamed: "car_blue")
-            self._spawn = spawn
+            self._spawn = direction.pos
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
             self._turnCount = 0
-            self._dir = direction
+         
         case 4:
             self._car = SKTexture(imageNamed: "car_red")
-            self._spawn = spawn
+            self._spawn = direction.pos
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
             self._turnCount = 0
-            self._dir = direction
+         
         case 5:
             self._car = SKTexture(imageNamed: "pickup_green")
-            self._spawn = spawn
+            self._spawn = direction.pos
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
             self._turnCount = 0
-            self._dir = direction
+           
         case 6:
             self._car = SKTexture(imageNamed: "truck")
-            self._spawn = spawn
+            self._spawn = direction.pos
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 152, height: 66)
             self._turnCount = 0
-            self._dir = direction
+            
         default :
             self._car = SKTexture(imageNamed: "")
-            self._spawn = spawn
+            self._spawn = direction.pos
             self._accelX = 0
             self._accelY = 0
             self._size = CGSize(width: 0, height: 0)
             self._turnCount = 0
-            self._dir = direction
+          
             
         }
         super.init(texture: _car, color: nil, size: self._size)
         
         switch(self._dir)
         {
-            
-        case .:
+        case 0:
+            self.zRotation = CGFloat(M_PI_2 * 3)    
+        case 1:
             self.zRotation = 0
-        case .SOUTH:
-            self.zRotation = CGFloat(M_PI_2)
-        case .EAST:
+        case 2:
             self.zRotation = CGFloat(M_PI_2 * 2)
-        case .NORTH:
-            self.zRotation = CGFloat(M_PI_2 * 3)
+        case 3:
+            self.zRotation = CGFloat(M_PI_2)
         default:
             self.zRotation = 0
             
@@ -137,13 +148,13 @@ class CarSprite : SKSpriteNode
         
         switch(self._dir)
         {
-        case .NORTH:
+        case 0:
             self._dir = .EAST
-        case .EAST:
+        case 2:
             self._dir = .SOUTH
-        case .WEST:
+        case 1:
             self._dir = .NORTH
-        case .SOUTH:
+        case 3:
             self._dir = .WEST
         default:
             self._dir = .WEST
@@ -161,13 +172,13 @@ class CarSprite : SKSpriteNode
     {
         switch(self._dir)
         {
-        case .NORTH:
+        case 0:
             self.position.y += self._accelY
-        case .SOUTH:
+        case 3:
             self.position.y += -self._accelY
-        case .WEST:
+        case 1:
             self.position.x += -self._accelX
-        case .EAST:
+        case 2:
             self.position.x += self._accelY
         }
     }
