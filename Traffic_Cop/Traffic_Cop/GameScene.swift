@@ -18,12 +18,25 @@ class GameScene: SKScene
     let car : CarSprite
     let level : Int                     = 0
     let map : Map
-    
+    let glowRoads : [GlowBox]
+    let roadArray : [Road]
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
         map = Map(lvl: 4)
+        roadArray = map.getRoads()
+        
+        //SET GLOW ROADS
+        for roads in roadArray
+        {
+            
+        }
+        
+        
+        
+        
+        
         
         let maxAspectRatio:CGFloat = 9.0/16.0
         let playableHeight = size.width / maxAspectRatio

@@ -1,24 +1,20 @@
 //
-//  Button.swift
+//  GlowBox.swift
 //  Traffic_Cop
 //
-//  Created by Justin Morritt on 2015-06-11.
+//  Created by Justin Morritt on 2015-06-15.
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
-import UIKit
 
-class Button
+class GlowBox
 {
     let origRect:       CGRect
-    let label:          SKLabelNode
-    let shape:          SKShapeNode
     var OL:             SKShapeNode
     let zoomIn:         Bool
     let zoomOut:        Bool
-    let bulge:          Bool
     var zoom:           SKAction
     var zoomO:          SKAction
     let offset:         SKAction
@@ -33,12 +29,10 @@ class Button
     var buttonDone:     Bool
     
     
-    init(pos: CGRect, roundCorner: Int, text: Text , BGcolor: String, OLcolor: String, OLSize: Int, glowWidth: Int, ZoomIn: Bool, Bulge: Bool, glowBulge: Bool)
+    init(pos: CGRect, roundCorner: Int, OLcolor: String, OLSize: Int, glowWidth: Int, ZoomIn: Bool, glowBulge: Bool)
     {
-        label       = text.get()
         zoomIn      = ZoomIn
         zoomOut     = false
-        bulge       = Bulge
         origGlow    = glowWidth
         glowUp      = true
         glowDown    = false
@@ -48,35 +42,18 @@ class Button
         origRect    = pos
         buttonDone  = false
         
-        
-        shape           = SKShapeNode()
         OL              = SKShapeNode()
         
-        let path        = CGPathCreateWithRoundedRect(origRect, CGFloat(roundCorner), CGFloat(roundCorner), nil )
         let path2       = CGPathCreateWithRoundedRect(origRect, CGFloat(roundCorner), CGFloat(roundCorner), nil )
-  
         
-        shape.position  = CGPoint(x: origRect.maxX - origRect.width/2, y: origRect.maxY - origRect.height/2)
         OL.position     = CGPoint(x: origRect.maxX - origRect.width/2, y: origRect.maxY - origRect.height/2)
-        shape.path      = path
-        shape.zPosition = CGFloat(5)
-        OL.zPosition    = CGFloat(6)
-        label.zPosition = CGFloat(7)
         OL.path         = path2
+        OL.zPosition    = CGFloat(6)
         OL.lineWidth    = CGFloat(OLSize)
         OL.glowWidth    = CGFloat(glowWidth)
-        label.position.x = origRect.minX + origRect.width/2
-        label.position.y = origRect.minY + origRect.height/2
-        label.xScale    = 0
-        label.yScale    = 0
-        shape.xScale    = 0
-        shape.yScale    = 0
         OL.xScale       = 0
         OL.yScale       = 0
         offSetPoint     = CGPoint(x: 0,y: 0)
-        
-        
-        
         
         zoom  = SKAction.scaleTo(1, duration: 0.5)
         zoomO = SKAction.scaleTo(0, duration: 0.3)
@@ -87,7 +64,7 @@ class Button
         let fullBulge = SKAction.sequence([scaleUp, scaleDown])
         bulgeAction = SKAction.repeatActionForever(fullBulge)
         
-      
+        
         let glowOn = SKAction.runBlock(){self.glowAway()}
         let wait = SKAction.waitForDuration(0.1)
         let glowSequence = SKAction.sequence([glowOn, wait])
@@ -100,24 +77,6 @@ class Button
         fadeAway = SKAction.repeatActionForever(fadeSequence)
         
         
-        
-        
-        switch(BGcolor)
-        {
-        case "blue":    shape.fillColor = SKColor.blueColor()
-        case "green":   shape.fillColor = SKColor.greenColor()
-        case "red":     shape.fillColor = SKColor.redColor()
-        case "yellow":  shape.fillColor = SKColor.yellowColor()
-        case "cyan":    shape.fillColor = SKColor.cyanColor()
-        case "magenta": shape.fillColor = SKColor.magentaColor()
-        case "gray":    shape.fillColor = SKColor.grayColor()
-        case "white":   shape.fillColor = SKColor.whiteColor()
-        case "black":   shape.fillColor = SKColor.blackColor()
-        case "purple":  shape.fillColor = SKColor.purpleColor()
-        case "brown":   shape.fillColor = SKColor.brownColor()
-        default:        shape.fillColor = SKColor.blackColor()
-        }
-
         switch(OLcolor)
         {
         case "blue":    OL.strokeColor = SKColor.blueColor()
@@ -135,20 +94,14 @@ class Button
         }
         
         if zoomIn {zoomIN()}
-        if bulge  {BulgeOn()}
         if glowBulge {OL.runAction(glowBulgeAC)}
         
     }
     
     func zoomIN()
     {
-        shape.runAction(offset)
-        shape.runAction(zoom)
-        
         OL.runAction(zoom)
         OL.runAction(offset)
-        
-        label.runAction(zoom)
     }
     
     func zoomOUT()
@@ -157,12 +110,8 @@ class Button
         let offsetFirst = SKAction.moveTo(offSetPoint, duration: 0.3)
         let offsetSec   = SKAction.runBlock(){self.buttonDone = true;}
         let offset2     = SKAction.sequence([offsetFirst,offsetSec])
-        shape.runAction(zoomO)
-        shape.runAction(offset2)
         OL.runAction(zoomO)
         OL.runAction(offset2)
-        label.runAction(zoomO)
- 
     }
     
     func glowAway()
@@ -173,16 +122,12 @@ class Button
         if glowDown {OL.glowWidth -= CGFloat(3)}
         //println("GW: \(OL.glowWidth)")
     }
-    
-    func BulgeOn()
-    {
-        label.runAction(bulgeAction)
-    }
+
     
     func FadeAway()
     {
         fadeOut = true;
-        shape.runAction(fadeAway)
+        OL.runAction(fadeAway)
     }
     
     func buttonIsDone() -> Bool
@@ -194,37 +139,24 @@ class Button
     {
         if (fadeOut)
         {
-            if(shape.alpha > 0)
+            if(OL.alpha > 0)
             {
-                if(shape.alpha - 0.2 < 0)
+                if(OL.alpha - 0.2 < 0)
                 {
-                    shape.alpha     = 0
                     OL.alpha        = 0
-                    label.alpha     = 0
                 }
                 else
                 {
-                    shape.alpha     -= 0.2
                     OL.alpha        -= 0.2
-                    label.alpha     -= 0.2
                 }
             }
         }
     }
     
-    func getLabel() -> SKLabelNode
-    {
-        return label
-    }
-    func getButtBG() -> SKShapeNode
-    {
-        return shape
-    }
-    func getButtOL() -> SKShapeNode
+
+    func getOL() -> SKShapeNode
     {
         return OL
     }
     
-    
 }
-

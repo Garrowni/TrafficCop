@@ -11,6 +11,8 @@
 		08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
 		08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F71B2CE5B900DC56F8 /* Settings.swift */; };
 		08C464F91B2CE5B900DC56F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F71B2CE5B900DC56F8 /* Settings.swift */; };
+		08C464FB1B2F0F7900DC56F8 /* GlowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */; };
+		08C464FC1B2F0F7900DC56F8 /* GlowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */; };
 		08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D515991B28BAB200E5289B /* DrawText.swift */; };
 		08D515A01B28C49400E5289B /* DrawText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D515991B28BAB200E5289B /* DrawText.swift */; };
 		08D515DB1B28CB8100E5289B /* bg_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D515A21B28CB8100E5289B /* bg_grass.png */; };
@@ -210,6 +212,7 @@
 /* Begin PBXFileReference section */
 		08C464F41B2CCA1300DC56F8 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		08C464F71B2CE5B900DC56F8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlowBox.swift; sourceTree = "<group>"; };
 		08D515991B28BAB200E5289B /* DrawText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawText.swift; sourceTree = "<group>"; };
 		08D515A21B28CB8100E5289B /* bg_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_grass.png; sourceTree = "<group>"; };
 		08D515A31B28CB8100E5289B /* bg_road_one_way.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_road_one_way.png; sourceTree = "<group>"; };
@@ -624,6 +627,7 @@
 				08D9F3E61B29F8BB00FDA871 /* Button.swift */,
 				08C464F41B2CCA1300DC56F8 /* Map.swift */,
 				08C464F71B2CE5B900DC56F8 /* Settings.swift */,
+				08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1016,6 +1020,7 @@
 				08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */,
 				08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */,
 				08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */,
+				08C464FC1B2F0F7900DC56F8 /* GlowBox.swift in Sources */,
 				08D515A01B28C49400E5289B /* DrawText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1044,6 +1049,7 @@
 				08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */,
 				08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */,
 				7DE146491B223E95005DB874 /* GameViewController.swift in Sources */,
+				08C464FB1B2F0F7900DC56F8 /* GlowBox.swift in Sources */,
 				08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */,
 				7DD881D61B28C5CF00C47FD7 /* TileMapLayer.swift in Sources */,
 				7DE146431B223E95005DB874 /* AppDelegate.swift in Sources */,
