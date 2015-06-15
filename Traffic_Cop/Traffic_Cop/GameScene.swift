@@ -80,7 +80,7 @@ class GameScene: SKScene
         
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle()}
-        let wait2 = SKAction.waitForDuration(3)
+        let wait2 = SKAction.waitForDuration(1)                     //SPAWN TIME !
         let spawnSequence = SKAction.sequence([spawn, wait2])
         spawnAction = SKAction.repeatActionForever(spawnSequence)
         
@@ -248,6 +248,7 @@ class GameScene: SKScene
         {
             var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
             vehicleArray.append(car)
+            car.drive()
             addChild(car)
         }
     }
