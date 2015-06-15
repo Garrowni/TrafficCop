@@ -301,5 +301,9 @@ struct SpawnPoint
     {
         return dir
     }
+    func getPos() -> CGPoint
+    {
+        return pos
+    }
 }
 
