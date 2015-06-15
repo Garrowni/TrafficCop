@@ -281,7 +281,6 @@ struct Crosswalk
 struct SpawnPoint
 {
     let pos: CGPoint
-    enum DIR{case Up,Left,Right,Down}
     let dir: Int
     
     init(position: CGPoint, direction: String)
