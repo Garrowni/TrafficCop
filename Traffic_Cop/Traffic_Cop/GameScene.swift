@@ -25,7 +25,9 @@ class GameScene: SKScene
     var roadArray   : [Road]
     var spawnsArray : [SpawnPoint]
     var crossWArray : [Crosswalk]
-      var path = CGPathCreateMutable()
+    var vehicleArray: [CarSprite]
+    var path = CGPathCreateMutable()
+    var spawnAction = SKAction()
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
@@ -34,10 +36,16 @@ class GameScene: SKScene
         glowCWs         = []
         glowSpawns      = []
         gotoPoints      = []
+        vehicleArray    = []
         map             = Map(lvl: 4)
         roadArray       = map.getRoads()
         spawnsArray     = map.getSpawns()
         crossWArray     = map.getCrossWalks()
+      
+        
+        
+   
+        
         
         //SET GLOW ROADS
         for road in roadArray
@@ -67,6 +75,20 @@ class GameScene: SKScene
         car = CarSprite(type: 1, direction: spawnsArray[0])
 
         super.init(size: size)
+        
+      
+        
+        //SET ACTIONS
+        let spawn = SKAction.runBlock(){self.spawnVehicle()}
+        let wait2 = SKAction.waitForDuration(3)
+        let spawnSequence = SKAction.sequence([spawn, wait2])
+        spawnAction = SKAction.repeatActionForever(spawnSequence)
+        
+        
+        
+        
+        
+        
         CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
         CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
         
@@ -83,12 +105,13 @@ class GameScene: SKScene
     //******************************************SCENE INITIALIZATION******************************
     override func didMoveToView(view: SKView)
     {
-        let angle = 1.57079633 * 3
-        car.position = car._spawn
-        car.anchorPoint = CGPointZero
+        //let angle = 1.57079633 * 3
+        //car.position = car._spawn
+        //car.anchorPoint = CGPointZero
         //let action = SKAction.rotateToAngle(CGFloat(angle), duration: 0.1)
        // car.runAction(action)
-        addChild(car)
+        
+   
         var tileMap: JSTileMap?
         
         tileMap = JSTileMap(named: "level4v2.tmx")
@@ -98,6 +121,9 @@ class GameScene: SKScene
                 self.addChild(tileMap!)
         }
         
+        
+        
+        runAction(spawnAction)
         
         
         
@@ -170,12 +196,9 @@ class GameScene: SKScene
         
         //UPDATE ALL OUR STUFFS HERE
         
-        car.goStraight()
         
-        
-        
-      
-        
+        updateVehicles()
+
         
     }
     
@@ -217,6 +240,28 @@ class GameScene: SKScene
         shape.strokeColor = SKColor.blueColor()
         shape.lineWidth = 35.0
         addChild(shape)
+    }
+    
+    func spawnVehicle()
+    {
+        if(vehicleArray.count < 10)
+        {
+            var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
+            vehicleArray.append(car)
+            car.goStraight()
+            addChild(car)
+        }
+    }
+    
+    func updateVehicles()
+    {
+        for vehicle in vehicleArray
+        {
+            if(vehicle.isDone(playableRect))
+            {
+                vehicle.removeFromParent()
+            }
+        }
     }
     
 }
