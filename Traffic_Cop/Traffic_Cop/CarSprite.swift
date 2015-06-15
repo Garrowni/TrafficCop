@@ -18,6 +18,10 @@ class CarSprite : SKSpriteNode
         case WEST, NORTH, EAST, SOUTH
         
     }
+    enum State
+    {
+        case DRIVING, STOPPED, TURNING
+    }
     let _MAXSPEED : CGFloat
     var _dir : Direction = Direction.WEST
     var _turnCount : Int = 0
@@ -30,6 +34,7 @@ class CarSprite : SKSpriteNode
     var _type : Int
     var _textures : [SKTexture] = []
     var _size : CGSize
+    var _state : State = State.STOPPED
     
     
     
@@ -132,6 +137,19 @@ class CarSprite : SKSpriteNode
 //***************************Functions*************************
        func update()
     {
+        if self._state == State.DRIVING
+        {
+            goStraight()
+        }
+        else if self._state == State.STOPPED
+        {
+            
+        }
+        else if self._state == State.TURNING
+        {
+            
+        }
+        
         
     } 
     
@@ -144,10 +162,10 @@ class CarSprite : SKSpriteNode
         
         
         
-        self.runAction(SKAction.group([
-            action,
-            action2
-            ]))
+//        self.runAction(SKAction.group([
+//            action,
+//            action2
+//            ]))
         
         
         switch(self._dir)
@@ -172,8 +190,15 @@ class CarSprite : SKSpriteNode
         
     }
     
+    func drive()
+    {
+        self._state = State.DRIVING
+    }
+    
     func goStraight()
     {
+        self._state = State.DRIVING
+        
         if self._currSpeed != self._MAXSPEED
         {
             self._currSpeed += self._accel
@@ -182,13 +207,13 @@ class CarSprite : SKSpriteNode
         switch(self._dir)
         {
         case .NORTH:
-            self.position.y += _currSpeed
+            self.position.y += self._currSpeed
         case .SOUTH:
-            self.position.y -= _currSpeed
+            self.position.y -= self._currSpeed
         case .WEST:
-            self.position.x -= _currSpeed
+            self.position.x -= self._currSpeed
         case .EAST:
-            self.position.x += _currSpeed
+            self.position.x += self._currSpeed
         default:
             println("No direction")
         }
@@ -196,9 +221,9 @@ class CarSprite : SKSpriteNode
     
     func stop()
     {
-        if _currSpeed != 0
+        if self._currSpeed != 0
         {
-            _currSpeed -= _deAccel
+            self._currSpeed -= self._deAccel
         }
        
     }
