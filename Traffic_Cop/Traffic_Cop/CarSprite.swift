@@ -20,7 +20,7 @@ class CarSprite : SKSpriteNode
     }
     let _MAXSPEED : CGFloat
     var _dir : Direction = Direction.WEST
-    var _turnCount : Int
+    var _turnCount : Int = 0
     var _car : SKTexture
     var _spawn  : CGPoint
     var _accel: CGFloat = 1
@@ -38,61 +38,50 @@ class CarSprite : SKSpriteNode
         var tempDirection = direction.dir
         self._type = type
         self._size = CGSize(width: 152, height: 66)
+        self._spawn = direction.pos
+        
         switch(self._type)
         {
         case 1:
             
             self._car = SKTexture(imageNamed: "Ambulence1")
-            self._spawn = direction.pos
             self._MAXSPEED = 10
-            self._turnCount = 0
+           
             
         case 2:
             self._car = SKTexture(imageNamed:"car_cop")
-            self._spawn = direction.pos
-            self._accel = 0
             self._MAXSPEED = 0
-            self._turnCount = 0
+            
        
         case 3:
             self._car = SKTexture(imageNamed: "car_blue")
-            self._spawn = direction.pos
-            self._accel = 0
             self._MAXSPEED = 0
-            self._turnCount = 0
+           
          
         case 4:
             self._car = SKTexture(imageNamed: "car_red")
-            self._spawn = direction.pos
-            self._accel = 0
             self._MAXSPEED = 0
-            self._turnCount = 0
+           
          
         case 5:
             self._car = SKTexture(imageNamed: "pickup_green")
-            self._spawn = direction.pos
-            self._accel = 0
             self._MAXSPEED = 0
-            self._turnCount = 0
+            
            
         case 6:
             self._car = SKTexture(imageNamed: "truck")
-            self._spawn = direction.pos
-            self._accel = 0
             self._MAXSPEED = 0
-            self._turnCount = 0
+            
             
         default :
-            self._car = SKTexture(imageNamed: "")
-            self._spawn = direction.pos
-            self._accel = 0
+            self._car = SKTexture(imageNamed: "")            
             self._MAXSPEED = 0
-            self._turnCount = 0
-          
-            
         }
+        
         super.init(texture: _car, color: nil, size: self._size)
         
+        
+        //rotate the sprite to the correct direction
         switch(self._dir)
         {
         case .NORTH:
@@ -107,6 +96,7 @@ class CarSprite : SKSpriteNode
             self.zRotation = 0
         
         }
+        //position the car in the middle of the road
         switch(tempDirection)
         {
         case 0:
@@ -135,8 +125,13 @@ class CarSprite : SKSpriteNode
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder: ) has not been implemented")
     }
-    func update()
-    {}
+    
+
+//***************************Functions*************************
+       func update()
+    {
+        
+    } 
     
     func turnRight(path : CGPath)
     {
@@ -146,12 +141,12 @@ class CarSprite : SKSpriteNode
         let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 0.85)
         
         
-//        
-//        self.runAction(SKAction.group([
-//            action,
-//            action2
-//            ]))
-//        
+        
+        self.runAction(SKAction.group([
+            action,
+            action2
+            ]))
+        
         
         switch(self._dir)
         {
@@ -172,21 +167,26 @@ class CarSprite : SKSpriteNode
     
     func turnLeft()
     {
-        //SKAction.
+        
     }
     
     func goStraight()
     {
+        if self._currSpeed != self._MAXSPEED
+        {
+            self._currSpeed += self._accel
+        }
+        
         switch(self._dir)
         {
         case .NORTH:
-            self.position.y += self._accel
+            self.position.y += _currSpeed
         case .SOUTH:
-            self.position.y += -self._accel
+            self.position.y -= _currSpeed
         case .WEST:
-            self.position.x += -self._accel
+            self.position.x -= _currSpeed
         case .EAST:
-            self.position.x += self._accel
+            self.position.x += _currSpeed
         default:
             println("No direction")
         }
@@ -194,14 +194,13 @@ class CarSprite : SKSpriteNode
     
     func stop()
     {
-        self._accel = 0
-        self._accel = 0
+        if _currSpeed != 0
+        {
+            _currSpeed -= _deAccel
+        }
+       
     }
     
-    func turnaright()
-    {
-        self.zRotation *= pie
-    }
     
     func isDone(rect : CGRect) -> Bool
     {
