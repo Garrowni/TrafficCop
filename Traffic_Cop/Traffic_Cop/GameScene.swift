@@ -21,6 +21,7 @@ class GameScene: SKScene
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
     var glowSpawns  : [GlowCircle]
+    var gotoPoints  : [GlowCircle]
     var roadArray   : [Road]
     var spawnsArray : [SpawnPoint]
     var crossWArray : [Crosswalk]
@@ -31,6 +32,7 @@ class GameScene: SKScene
         glowRoads       = []
         glowCWs         = []
         glowSpawns      = []
+        gotoPoints      = []
         map             = Map(lvl: 4)
         roadArray       = map.getRoads()
         spawnsArray     = map.getSpawns()
@@ -50,7 +52,10 @@ class GameScene: SKScene
             glowSpawns.append(GlowCircle(pos: spawn.pos, radius: 20, OLcolor: "green", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
         
-        
+        for road in roadArray
+        {
+            gotoPoints.append(GlowCircle(pos: road.gotoPoint, radius: 20, OLcolor: "blue", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
         
         
         
@@ -107,6 +112,10 @@ class GameScene: SKScene
             addChild(spawn.getOL())
         }
         
+        for goto in gotoPoints
+        {
+            addChild(goto.getOL())
+        }
         
        //debugDrawPLayableArea()
     }
