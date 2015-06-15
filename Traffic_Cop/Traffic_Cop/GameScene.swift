@@ -25,6 +25,7 @@ class GameScene: SKScene
     var roadArray   : [Road]
     var spawnsArray : [SpawnPoint]
     var crossWArray : [Crosswalk]
+      var path = CGPathCreateMutable()
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
@@ -63,8 +64,11 @@ class GameScene: SKScene
         let playableHeight = size.width / maxAspectRatio
         let playableMargin = (size.height-playableHeight)/2.0
         playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
-        car = CarSprite(type: 1, spawn: CGPoint(x: 675, y: 100))
+        car = CarSprite(type: 1, direction: spawnsArray[0])
+
         super.init(size: size)
+        CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
+        CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
         
     }
 
@@ -175,7 +179,7 @@ class GameScene: SKScene
             if(car._turnCount == 0)
             {
                 
-                car.turnRight()
+                car.turnRight(path)
             }
             
         }
