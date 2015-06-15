@@ -91,7 +91,6 @@ class CarSprite : SKSpriteNode
         super.init(texture: _car, color: nil, size: self._size)
         
         self.position = _spawn
-        self._glowCircle.updatePosition(self.position)
         
         //rotate the sprite to the correct direction
         switch(self._dir)
@@ -159,7 +158,7 @@ class CarSprite : SKSpriteNode
         {
         
         }
-        _glowCircle.Alpha = 0.5
+        _glowCircle.updatePosition(self.position)
         
     } 
     
