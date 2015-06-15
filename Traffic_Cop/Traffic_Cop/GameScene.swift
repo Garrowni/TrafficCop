@@ -18,21 +18,37 @@ class GameScene: SKScene
     let car : CarSprite
     let level : Int                     = 0
     let map : Map
-    let glowRoads : [GlowBox]
-    let roadArray : [Road]
+    var glowRoads   : [GlowBox]
+    var glowCWs     : [GlowBox]
+    var glowSpawns  : [GlowCircle]
+    var roadArray   : [Road]
+    var spawnsArray : [SpawnPoint]
+    var crossWArray : [Crosswalk]
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
-        map = Map(lvl: 4)
-        roadArray = map.getRoads()
+        glowRoads       = []
+        glowCWs         = []
+        glowSpawns      = []
+        map             = Map(lvl: 4)
+        roadArray       = map.getRoads()
+        spawnsArray     = map.getSpawns()
+        crossWArray     = map.getCrossWalks()
         
         //SET GLOW ROADS
-        for roads in roadArray
+        for road in roadArray
         {
-            
+            glowRoads.append(GlowBox(pos: road.rect, roundCorner: 5, OLcolor: "red", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
-        
+        for cw in crossWArray
+        {
+            glowCWs.append(GlowBox(pos: cw.rect, roundCorner: 5, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
+        for spawn in spawnsArray
+        {
+            glowSpawns.append(GlowCircle(pos: spawn.pos, radius: 20, OLcolor: "green", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
         
         
         
@@ -71,6 +87,24 @@ class GameScene: SKScene
         if tileMap != nil
         {
                 self.addChild(tileMap!)
+        }
+        
+        
+        
+        
+        for road in glowRoads
+        {
+            addChild(road.getOL())
+        }
+        
+        for cw in glowCWs
+        {
+            addChild(cw.getOL())
+        }
+        
+        for spawn in glowSpawns
+        {
+            addChild(spawn.getOL())
         }
         
         

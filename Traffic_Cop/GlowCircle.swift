@@ -1,5 +1,5 @@
 //
-//  GlowBox.swift
+//  GlowCircle.swift
 //  Traffic_Cop
 //
 //  Created by Justin Morritt on 2015-06-15.
@@ -9,9 +9,8 @@
 import Foundation
 import SpriteKit
 
-class GlowBox
+class GlowCircle
 {
-    var origRect:       CGRect
     var OL:             SKShapeNode
     var zoomIn:         Bool
     var zoomOut:        Bool
@@ -28,9 +27,10 @@ class GlowBox
     var offSetPoint:    CGPoint
     var buttonDone:     Bool
     var Alpha:          CGFloat
+
     
     
-    init(pos: CGRect, roundCorner: Int, OLcolor: String, OLSize: Int, glowWidth: Int, ZoomIn: Bool, glowBulge: Bool, alpha: CGFloat)
+    init(pos: CGPoint, radius: Int, OLcolor: String, OLSize: Int, glowWidth: Int, ZoomIn: Bool, glowBulge: Bool, alpha: CGFloat)
     {
         zoomIn      = ZoomIn
         zoomOut     = false
@@ -40,16 +40,20 @@ class GlowBox
         fadeOut     = false
         fadeAway    = SKAction()
         glowBulgeAC = SKAction()
-        origRect    = pos
         buttonDone  = false
         Alpha       = alpha
+ 
         
         OL              = SKShapeNode()
         
-        let path2       = CGPathCreateWithRoundedRect(origRect, CGFloat(roundCorner), CGFloat(roundCorner), nil )
+     
         
-        OL.position     = CGPoint(x: origRect.maxX - origRect.width/2, y: origRect.maxY - origRect.height/2)
+        let path2  =  CGPathCreateWithEllipseInRect(CGRect(x: pos.x-CGFloat(radius), y: pos.y-CGFloat(radius), width: CGFloat(radius)*2, height: CGFloat(radius)*2), nil)
+        
+
+        OL.position     = pos
         OL.path         = path2
+        
         OL.zPosition    = CGFloat(6)
         OL.lineWidth    = CGFloat(OLSize)
         OL.glowWidth    = CGFloat(glowWidth)
@@ -109,7 +113,6 @@ class GlowBox
     
     func zoomOUT()
     {
-        offSetPoint     = CGPoint(x: origRect.maxX - origRect.width/2, y: origRect.maxY - origRect.height/2)
         let offsetFirst = SKAction.moveTo(offSetPoint, duration: 0.3)
         let offsetSec   = SKAction.runBlock(){self.buttonDone = true;}
         let offset2     = SKAction.sequence([offsetFirst,offsetSec])
@@ -125,7 +128,7 @@ class GlowBox
         if glowDown {OL.glowWidth -= CGFloat(3)}
         //println("GW: \(OL.glowWidth)")
     }
-
+    
     
     func FadeAway()
     {
@@ -156,7 +159,7 @@ class GlowBox
         }
     }
     
-
+    
     func getOL() -> SKShapeNode
     {
         return OL

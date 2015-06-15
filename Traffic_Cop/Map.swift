@@ -33,24 +33,24 @@ class Map
         switch (level)
         {
         case 1:
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*14),   direction: "down")) //TOP
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")) //TOP
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:0 ),      direction: "up"))   //BOTTOM
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*6+TW/2),    direction: "left")) //RIGHT
         case 2:
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:TW*14),   direction: "down")) //TOP
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:TW*15),   direction: "down")) //TOP
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*4+TW/2 ,y:0),       direction: "up"))   //BOTTOM
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*6+TW/2),    direction: "left")) //RIGHT
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*5+TW/2),    direction: "right"))//LEFT
         case 3:
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:TW*14),   direction: "down")) //TOP
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*4+TW/2 ,y:TW*14),   direction: "down")) //TOP2
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:TW*15),   direction: "down")) //TOP
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*4+TW/2 ,y:TW*15),   direction: "down")) //TOP2
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*5+TW/2 ,y:0),       direction: "up"))   //BOTTOM
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*6+TW/2 ,y:0),       direction: "up"))   //BOTTOM2
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*5+TW/2),    direction: "right"))//LEFT
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*6+TW/2),    direction: "right"))//LEFT2
         case 4:
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*14),   direction: "down")) //TOP
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:TW*14),   direction: "down")) //TOP2
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")) //TOP
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:TW*15),   direction: "down")) //TOP2
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*4+TW/2 ,y:0),       direction: "up"))   //BOTTOM
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*5+TW/2 ,y:0),       direction: "up"))   //BOTTOM2
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*7+TW/2),    direction: "left")) //RIGHT
@@ -58,7 +58,7 @@ class Map
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*5+TW/2),    direction: "right"))//LEFT
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*6+TW/2),    direction: "right"))//LEFT2
         default:
-            spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*14),   direction: "down")); println("error in setting the spawns: Map init")
+            spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")); println("error in setting the spawns: Map init")
         }
         
         
@@ -255,8 +255,8 @@ class Map
 
 struct Road
 {
-    let rect: CGRect
-    let gotoPoint: CGPoint  //CENTER OF THE TILE CLOSEST TO THE CROSSWALK ..USED FOR TURNING CALCULATION
+    var rect: CGRect
+    var gotoPoint: CGPoint  //CENTER OF THE TILE CLOSEST TO THE CROSSWALK ..USED FOR TURNING CALCULATION
     
     init(goto: CGPoint, roadRect: CGRect)
     {
