@@ -56,27 +56,27 @@ class CarSprite : SKSpriteNode
             
         case 2:
             self._car = SKTexture(imageNamed:"car_cop")
-            self._MAXSPEED = 0
+            self._MAXSPEED = 5
             
        
         case 3:
             self._car = SKTexture(imageNamed: "car_blue")
-            self._MAXSPEED = 0
+            self._MAXSPEED = 5
            
          
         case 4:
             self._car = SKTexture(imageNamed: "car_red")
-            self._MAXSPEED = 0
+            self._MAXSPEED = 5
            
          
         case 5:
             self._car = SKTexture(imageNamed: "pickup_green")
-            self._MAXSPEED = 0
+            self._MAXSPEED = 5
             
            
         case 6:
             self._car = SKTexture(imageNamed: "truck")
-            self._MAXSPEED = 0
+            self._MAXSPEED = 5
             
             
         default :
