@@ -282,22 +282,22 @@ struct SpawnPoint
 {
     let pos: CGPoint
     enum DIR{case Up,Left,Right,Down}
-    let dir: DIR
+    let dir: Int
     
     init(position: CGPoint, direction: String)
     {
         pos = position
         switch(direction)
         {
-            case "Up":      dir = DIR.Up
-            case "Left":    dir = DIR.Left
-            case "Right":   dir = DIR.Right
-            case "Down":    dir = DIR.Down
+            case "Up":      dir = 0
+            case "Left":    dir = 1
+            case "Right":   dir = 2
+            case "Down":    dir = 3
             
-        default: dir  = DIR.Down; println("Mis-Spell on the Spawn Point Direction")
+        default: dir  = 0; println("Mis-Spell on the Spawn Point Direction")
         }
     }
-    func getDir() -> DIR
+    func getDir() -> Int
     {
         return dir
     }
