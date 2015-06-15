@@ -38,6 +38,7 @@ class CarSprite : SKSpriteNode
     var _state : State = State.STOPPED
     var _isSelected : Bool = false
     var _glowCircle : GlowCircle
+    var _currPos : CGPoint
     
     
     
@@ -48,8 +49,10 @@ class CarSprite : SKSpriteNode
         self._size = CGSize(width: 152, height: 66)
         self._spawn = direction.pos
         self._glowCircle = GlowCircle(pos: self._spawn, radius: 20, OLcolor: "yellow", OLSize: 10, glowWidth: 40, ZoomIn: true, glowBulge: true, alpha: 0.5)
+        self._currPos = _spawn
         
-       
+        
+        
         switch(self._type)
         {
         case 1:
@@ -90,13 +93,13 @@ class CarSprite : SKSpriteNode
         
         super.init(texture: _car, color: nil, size: self._size)
         
-        self.position = _spawn
+        
         
         //rotate the sprite to the correct direction
         switch(self._dir)
         {
         case .NORTH:
-            self.zRotation = CGFloat(M_PI_2 * 3)    
+            self.runAction(SKAction.rotateByAngle(CGFloat(M_PI_2 * 3), duration: 0))
         case .WEST:
             self.zRotation = 0
         case .EAST:
@@ -141,13 +144,19 @@ class CarSprite : SKSpriteNode
 //***************************Functions*************************
        func update()
     {
+        self.position = self._currPos
+     
+        println("Car Pos X: \(self.position.x/128) Car pos Y: \(self.position.y/128)")
+        println("Glow pos X \(self._glowCircle.position.x/128) Glow pos Y: \(self._glowCircle.position.y/128)")
+            
+        
         if self._state == State.DRIVING
         {
             goStraight()
         }
         else if self._state == State.STOPPED
         {
-            
+         
         }
         else if self._state == State.TURNING
         {
@@ -216,13 +225,13 @@ class CarSprite : SKSpriteNode
         switch(self._dir)
         {
         case .NORTH:
-            self.position.y += self._currSpeed
+            self._currPos.y += self._currSpeed
         case .SOUTH:
-            self.position.y -= self._currSpeed
+            self._currPos.y -= self._currSpeed
         case .WEST:
-            self.position.x -= self._currSpeed
+            self._currPos.x -= self._currSpeed
         case .EAST:
-            self.position.x += self._currSpeed
+            self._currPos.x += self._currSpeed
         default:
             println("No direction")
         }
@@ -237,19 +246,19 @@ class CarSprite : SKSpriteNode
     
     func isDone(rect : CGRect) -> Bool
     {
-        if(self._dir == .NORTH && self.position.y > rect.maxY)
+        if(self._dir == .NORTH && self.position.y + self.size.height/2 > rect.maxY)
         {
             return true
         }
-        else if(self._dir == .SOUTH && self.position.y < rect.minY)
+        else if(self._dir == .SOUTH && self.position.y - self.size.height/2 < rect.minY)
         {
             return true
         }
-        else if(self._dir == .WEST && self.position.x < rect.minX)
+        else if(self._dir == .WEST && self.position.x - self.size.height/2 < rect.minX)
         {
             return true
         }
-        else if(self._dir == .EAST && self.position.x > rect.maxX)
+        else if(self._dir == .EAST && self.position.x + self.size.height/2 > rect.maxX)
         {
             return true
         }
