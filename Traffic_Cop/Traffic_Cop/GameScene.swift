@@ -86,8 +86,8 @@ class GameScene: SKScene
         let angle = 1.57079633 * 3
         car.position = car._spawn
         car.anchorPoint = CGPointZero
-        let action = SKAction.rotateToAngle(CGFloat(angle), duration: 0.1)
-        car.runAction(action)
+        //let action = SKAction.rotateToAngle(CGFloat(angle), duration: 0.1)
+       // car.runAction(action)
         addChild(car)
         var tileMap: JSTileMap?
         
@@ -170,19 +170,9 @@ class GameScene: SKScene
         
         //UPDATE ALL OUR STUFFS HERE
         
-        car.position.y += CGFloat(car._accelY)
+        car.goStraight()
         
-        if(car.position.y > 620)
-        {
-            car.position.x += CGFloat(car._accelX)
-            car._accelY = 2
-            if(car._turnCount == 0)
-            {
-                
-                car.turnRight(path)
-            }
-            
-        }
+        
         
       
         
