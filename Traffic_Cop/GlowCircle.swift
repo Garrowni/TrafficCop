@@ -107,7 +107,7 @@ class GlowCircle
     
     func updatePosition(pos : CGPoint)
     {
-        OL.position = pos
+        
     }
     
     func zoomIN()

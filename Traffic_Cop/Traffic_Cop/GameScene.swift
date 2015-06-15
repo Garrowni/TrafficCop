@@ -252,22 +252,34 @@ class GameScene: SKScene
             addChild(car._glowCircle.getOL())
             addChild(car)
         }
+       
     }
     
     func updateVehicles()
     {
+        func atIntersection(rect: CGRect) -> Bool
+        {
+            for Cw in crossWArray
+            {
+                if rect.contains(Cw.rect){return true}
+            }
+            return false
+        }
+        
         for(var i = 0; i < vehicleArray.count; i++)
         {
             vehicleArray[i].update()
             
-            //if(vehicleArray[i].)
+            if(atIntersection(vehicleArray[i].frame)){}      //RECT CHECK
             
             if(vehicleArray[i].isDone(playableRect))
             {
-                vehicleArray[i].removeFromParent()
+                vehicleArray[i]._glowCircle.getOL().removeFromParent()
                 vehicleArray.removeAtIndex(i)
             }
         }
+        
     }
+
     
 }
