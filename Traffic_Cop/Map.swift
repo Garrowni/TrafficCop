@@ -14,6 +14,7 @@ class Map
     let TW              : Int
     let level           : Int
     var spawnArray      : [SpawnPoint]
+    var humanSpawnArray : [SpawnPoint]
     var roadArray       : [Road]
 	var crossWArray     : [Crosswalk]
     
@@ -26,8 +27,10 @@ class Map
         level           = lvl
         TW              = 128
         spawnArray      = []
+        humanSpawnArray = []
         roadArray       = []
 		crossWArray     = []
+        
         
         //SET SPAWNS   (point set to center of tile at edge of map)
         switch (level)
@@ -214,6 +217,12 @@ class Map
     {
         let randSpawn: Int = Int.randomNumberFrom(0...spawnArray.count)
         return spawnArray[randSpawn]
+    }
+    
+    func humanRandomSpawn() -> SpawnPoint
+    {
+        let randSpawn: Int = Int.randomNumberFrom(0...humanSpawnArray.count)
+        return humanSpawnArray[randSpawn]
     }
     
     func atIntersection(rect: CGRect) ->Bool
