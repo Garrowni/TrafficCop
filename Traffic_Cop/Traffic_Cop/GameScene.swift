@@ -36,6 +36,7 @@ class GameScene: SKScene
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
+
         let maxAspectRatio:CGFloat = 9.0/16.0
         let playableHeight = size.width / maxAspectRatio
         let playableMargin = (size.height-playableHeight)/2.0
@@ -80,7 +81,7 @@ class GameScene: SKScene
         
 
         super.init(size: size)
-        
+        scene?.scaleMode = .AspectFit
       
         
         //SET ACTIONS
