@@ -28,6 +28,8 @@ class GameScene: SKScene
     var vehicleArray: [CarSprite]
     var path = CGPathCreateMutable()
     var spawnAction = SKAction()
+    var timerCount  = CGFloat()
+    var timePassed  : Int
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
@@ -41,8 +43,8 @@ class GameScene: SKScene
         roadArray       = map.getRoads()
         spawnsArray     = map.getSpawns()
         crossWArray     = map.getCrossWalks()
-      
-        
+        timerCount      = CGFloat(0.0)
+        timePassed      = 0
         
    
         
@@ -192,7 +194,16 @@ class GameScene: SKScene
         if lastUpdateTime > 0 {dt = currentTime - lastUpdateTime} else {dt = 0}
         lastUpdateTime = currentTime
         
-        //println("\(dt*1000) milliseconds since last update")
+        timerCount += CGFloat(dt*1000)
+        if(timerCount >= 1000)
+        {
+            //ONE SECOND HAS PASSED
+            timerCount = 0
+            timePassed++
+            //println("\(timePassed)")
+        }
+        
+   
         
         //UPDATE ALL OUR STUFFS HERE
         
@@ -275,7 +286,6 @@ class GameScene: SKScene
             
             if(vehicleArray[i].isDone(playableRect))
             {
-                println("isDone = \(vehicleArray[i])")
                 vehicleArray[i].removeFromParent()
                 vehicleArray.removeAtIndex(i)
             }

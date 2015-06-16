@@ -18,14 +18,14 @@ class Clock
     let clockR          : CGRect
     
     
-    init()
+    init(playableR: CGRect)
     {
         time = "10:00"
         
         
         clockLabel  = Text(pos: CGPoint(x: 0, y: 0),    says: time,  fontSize: 250, font: "font4", color: "green", align: "center")
-        clockR  = CGRect(x: size.width/2-350, y: size.height-300, width: 700, height: 200)
-        clockButt     = Button(pos: button1R,     roundCorner: 100, text: label1,     BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
+        clockR      = CGRect(x: playableR.maxX/2-350, y: playableR.maxY-200, width: 700, height: 200)
+        clockButt   = Button(pos: clockR, roundCorner: 100, text: clockLabel, BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         
     }
     
