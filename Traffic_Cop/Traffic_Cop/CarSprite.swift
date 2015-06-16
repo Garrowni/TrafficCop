@@ -96,20 +96,7 @@ class CarSprite : SKSpriteNode
         
         
         //rotate the sprite to the correct direction
-        switch(self._dir)
-        {
-        case .NORTH:
-            self.runAction(SKAction.rotateByAngle(CGFloat(M_PI_2 * 3), duration: 0))
-        case .WEST:
-            self.zRotation = 0
-        case .EAST:
-            self.zRotation = CGFloat(M_PI_2 * 2)
-        case .SOUTH:
-            self.zRotation = CGFloat(-M_PI_2)
-        default:
-            self.zRotation = 0
-        
-        }
+
         //position the car in the middle of the road
         switch(tempDirection)
         {
@@ -144,11 +131,24 @@ class CarSprite : SKSpriteNode
 //***************************Functions*************************
        func update()
     {
+        
+        switch(self._dir)
+        {
+        case .NORTH:
+            self.zRotation = CGFloat(M_PI_2 * 3)
+        case .WEST:
+            self.zRotation = 0
+        case .EAST:
+            self.zRotation = CGFloat(M_PI_2 * 2)
+        case .SOUTH:
+            self.zRotation = CGFloat(M_PI_2)
+        default:
+            self.zRotation = 0
+            
+        }
+        
         self.position = self._currPos
      
-        println("Car Pos X: \(self.position.x/128) Car pos Y: \(self.position.y/128)")
-        println("Glow pos X \(self._glowCircle.position.x/128) Glow pos Y: \(self._glowCircle.position.y/128)")
-            
         
         if self._state == State.DRIVING
         {
@@ -246,19 +246,19 @@ class CarSprite : SKSpriteNode
     
     func isDone(rect : CGRect) -> Bool
     {
-        if(self._dir == .NORTH && self.position.y + self.size.height/2 > rect.maxY)
+        if(self._dir == .NORTH && self.position.y - self.size.height * 2 > rect.maxY)
         {
             return true
         }
-        else if(self._dir == .SOUTH && self.position.y - self.size.height/2 < rect.minY)
+        else if(self._dir == .SOUTH && self.position.y + self.size.height * 2 < rect.minY)
         {
             return true
         }
-        else if(self._dir == .WEST && self.position.x - self.size.height/2 < rect.minX)
+        else if(self._dir == .WEST && self.position.x + self.size.height < rect.minX)
         {
             return true
         }
-        else if(self._dir == .EAST && self.position.x + self.size.height/2 > rect.maxX)
+        else if(self._dir == .EAST && self.position.x - self.size.height > rect.maxX)
         {
             return true
         }
