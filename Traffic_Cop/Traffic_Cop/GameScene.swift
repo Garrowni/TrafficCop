@@ -30,6 +30,8 @@ class GameScene: SKScene
     var spawnAction = SKAction()
     var timerCount  = CGFloat()
     var timePassed  : Int
+    var carSelected : Bool
+    var roadSelected : Bool
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
@@ -45,7 +47,8 @@ class GameScene: SKScene
         crossWArray     = map.getCrossWalks()
         timerCount      = CGFloat(0.0)
         timePassed      = 0
-        
+        carSelected     = false
+        roadSelected    = false
    
         
         
@@ -165,7 +168,9 @@ class GameScene: SKScene
         let touch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         
-        println("x:\(location.x), y:\(location.y)")
+        handleTouchSequence(location)
+
+        //println("x:\(location.x), y:\(location.y)")
         
     }
     
@@ -293,5 +298,40 @@ class GameScene: SKScene
         
     }
 
+    func deSelectCars()
+    {
+        for car in vehicleArray
+        {
+            car._isSelected = false
+        }
+        carSelected = false
+    }
+    
+    func handleTouchSequence(location: CGPoint)
+    {
+        if(!carSelected)
+        {
+            for car in vehicleArray
+            {
+                if(car.frame.contains(location))
+                {
+                    if(!carSelected){car._isSelected = true
+                        carSelected = true;
+                    }
+                }
+            }
+        }
+        if(carSelected)
+        {
+            for road in roadArray
+            {
+                if(road.rect.contains(location))
+                {
+                    //MAKE OUR TURN HANDLE THE EXECUTION
+                }
+            }
+            deSelectCars()
+        }
+    }
     
 }
