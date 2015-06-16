@@ -275,7 +275,8 @@ class GameScene: SKScene
             
             if(vehicleArray[i].isDone(playableRect))
             {
-                vehicleArray[i]._glowCircle.getOL().removeFromParent()
+                println("isDone = \(vehicleArray[i])")
+                vehicleArray[i].removeFromParent()
                 vehicleArray.removeAtIndex(i)
             }
         }
