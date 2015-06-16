@@ -152,6 +152,10 @@ class GameScene: SKScene
             addChild(goto.getOL())
         }
         
+        addChild(clock.clockButt.getButtBG())
+        addChild(clock.clockButt.getButtOL())
+        addChild(clock.clockLabel.get())
+        
        //debugDrawPLayableArea()
     }
     
@@ -205,6 +209,7 @@ class GameScene: SKScene
             //ONE SECOND HAS PASSED
             timerCount = 0
             timePassed++
+            clock.upDateTime(-1)
             //println("\(timePassed)")
         }
         

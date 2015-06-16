@@ -27,7 +27,7 @@ class Clock
         countDownFrom = countFrom
         countDownDone = false
         
-        clockLabel  = Text(pos: CGPoint(x: 0, y: 0),    says: time,  fontSize: 250, font: "font4", color: "green", align: "center")
+        clockLabel  = Text(pos: CGPoint(x: 0, y: 0),    says: time,  fontSize: 250, font: "font5", color: "green", align: "center")
         clockR      = CGRect(x: playableR.maxX/2-350, y: playableR.maxY-200, width: 700, height: 200)
         clockButt   = Button(pos: clockR, roundCorner: 100, text: clockLabel, BGcolor: "black", OLcolor: "red", OLSize: 5, glowWidth: 5, ZoomIn: true, Bulge: true, glowBulge: true)
     }
@@ -53,6 +53,7 @@ class Clock
         var strMin      = String(minutes)
         string += strMin
         string += ":"
+        if(secsLeft < 10){string += String(0)}
         string += strSecs
         clockLabel.get().text = string
     }
