@@ -168,6 +168,8 @@
 		08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
 		08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DA1B266A7300B2127F /* HelpScreen.swift */; };
 		08E123DE1B266C8700B2127F /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DD1B266C8700B2127F /* CreditsScreen.swift */; };
+		08E3B3421B2FBB0D0074DC3E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3B3411B2FBB0C0074DC3E /* Clock.swift */; };
+		08E3B3431B2FBB0D0074DC3E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3B3411B2FBB0C0074DC3E /* Clock.swift */; };
 		08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FC6D171B28881D004F4824 /* AppDelegate.swift */; };
 		08FC6D1C1B28881D004F4824 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08FC6D1B1B28881D004F4824 /* GameScene.sks */; };
 		08FC6D211B28881D004F4824 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FC6D1F1B28881D004F4824 /* MainMenu.xib */; };
@@ -295,6 +297,7 @@
 		08E123D81B266A2800B2127F /* MainMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScreen.swift; sourceTree = "<group>"; };
 		08E123DA1B266A7300B2127F /* HelpScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpScreen.swift; path = ../HelpScreen.swift; sourceTree = "<group>"; };
 		08E123DD1B266C8700B2127F /* CreditsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScreen.swift; sourceTree = "<group>"; };
+		08E3B3411B2FBB0C0074DC3E /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		08FC6D131B28881D004F4824 /* Traffic_Cop_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traffic_Cop_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08FC6D161B28881D004F4824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08FC6D171B28881D004F4824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -632,6 +635,7 @@
 				08C464F71B2CE5B900DC56F8 /* Settings.swift */,
 				08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */,
 				08C464FD1B2F25A600DC56F8 /* GlowCircle.swift */,
+				08E3B3411B2FBB0C0074DC3E /* Clock.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1014,6 +1018,7 @@
 			files = (
 				08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */,
 				08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */,
+				08E3B3431B2FBB0D0074DC3E /* Clock.swift in Sources */,
 				08C464F91B2CE5B900DC56F8 /* Settings.swift in Sources */,
 				7DD881CC1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */,
 				08FC6D351B2888EA004F4824 /* TEMPLATESCREEN.swift in Sources */,
@@ -1056,6 +1061,7 @@
 				08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */,
 				7DE146491B223E95005DB874 /* GameViewController.swift in Sources */,
 				08C464FB1B2F0F7900DC56F8 /* GlowBox.swift in Sources */,
+				08E3B3421B2FBB0D0074DC3E /* Clock.swift in Sources */,
 				08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */,
 				7DD881D61B28C5CF00C47FD7 /* TileMapLayer.swift in Sources */,
 				7DE146431B223E95005DB874 /* AppDelegate.swift in Sources */,

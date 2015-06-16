@@ -46,8 +46,6 @@ class GlowCircle
         
         OL              = SKShapeNode()
         
-     
-        
         let path2  =  CGPathCreateWithEllipseInRect(CGRect(x: pos.x-CGFloat(radius), y: pos.y-CGFloat(radius), width: CGFloat(radius)*2, height: CGFloat(radius)*2), nil)
         
 
@@ -108,8 +106,9 @@ class GlowCircle
     
     func updatePosition(pos : CGPoint)
     {
-       let move = SKAction.moveTo(pos, duration: 0)
-        OL.runAction(move)
+       //let move = SKAction.moveTo(pos, duration: 0)
+        //OL.runAction(move)
+        //OL.runAction(offset)
     }
     
     func zoomIN()
@@ -117,6 +116,7 @@ class GlowCircle
         OL.runAction(zoom)
         OL.runAction(offset)
     }
+    
     
     func zoomOUT()
     {
