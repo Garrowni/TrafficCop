@@ -113,6 +113,7 @@ class Button
         case "gray":    shape.fillColor = SKColor.grayColor()
         case "white":   shape.fillColor = SKColor.whiteColor()
         case "black":   shape.fillColor = SKColor.blackColor()
+        case "halfblack": shape.fillColor = SKColor.blackColor(); shape.alpha = CGFloat(0.5)
         case "purple":  shape.fillColor = SKColor.purpleColor()
         case "brown":   shape.fillColor = SKColor.brownColor()
         default:        shape.fillColor = SKColor.blackColor()
