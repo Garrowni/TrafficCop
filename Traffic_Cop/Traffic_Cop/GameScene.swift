@@ -15,9 +15,9 @@ class GameScene: SKScene
     var dt: NSTimeInterval              = 0                             //DELTA TIME
     let playableRect: CGRect                                            //GAME BOUNDS
     let TW                              = 128                           //TILEWIDTH
-    let car : CarSprite
-    let level : Int                     = 0
-    let map : Map
+    let level       : Int               = 0
+    let map         : Map
+    let clock       : Clock
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
     var glowSpawns  : [GlowCircle]
@@ -26,7 +26,7 @@ class GameScene: SKScene
     var spawnsArray : [SpawnPoint]
     var crossWArray : [Crosswalk]
     var vehicleArray: [CarSprite]
-    var path = CGPathCreateMutable()
+    var path        = CGPathCreateMutable()
     var spawnAction = SKAction()
     var timerCount  = CGFloat()
     var timePassed  : Int
@@ -36,6 +36,11 @@ class GameScene: SKScene
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
+        let maxAspectRatio:CGFloat = 9.0/16.0
+        let playableHeight = size.width / maxAspectRatio
+        let playableMargin = (size.height-playableHeight)/2.0
+        playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
+        
         glowRoads       = []
         glowCWs         = []
         glowSpawns      = []
@@ -49,7 +54,7 @@ class GameScene: SKScene
         timePassed      = 0
         carSelected     = false
         roadSelected    = false
-   
+        clock           = Clock(playableR: playableRect, countFrom: 300)
         
         
         //SET GLOW ROADS
@@ -73,11 +78,6 @@ class GameScene: SKScene
         
         
         
-        let maxAspectRatio:CGFloat = 9.0/16.0
-        let playableHeight = size.width / maxAspectRatio
-        let playableMargin = (size.height-playableHeight)/2.0
-        playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
-        car = CarSprite(type: 1, direction: spawnsArray[0])
 
         super.init(size: size)
         
@@ -309,18 +309,6 @@ class GameScene: SKScene
     
     func handleTouchSequence(location: CGPoint)
     {
-        if(!carSelected)
-        {
-            for car in vehicleArray
-            {
-                if(car.frame.contains(location))
-                {
-                    if(!carSelected){car._isSelected = true
-                        carSelected = true;
-                    }
-                }
-            }
-        }
         if(carSelected)
         {
             for road in roadArray
@@ -332,6 +320,22 @@ class GameScene: SKScene
             }
             deSelectCars()
         }
+        
+        if(!carSelected)
+        {
+            for car in vehicleArray
+            {
+                if(car.frame.contains(location))
+                {
+                    if(!carSelected)
+                    {
+                        car._isSelected = true
+                        carSelected = true;
+                    }
+                }
+            }
+        }
+  
     }
     
 }
