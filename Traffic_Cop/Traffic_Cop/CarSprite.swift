@@ -1,6 +1,6 @@
 //
 //  CarSprite.swift
-//  ZombieConga
+//  Traffic_Cop
 //
 //  Created by Mathew  Manton on 2015-06-04.
 //  Copyright (c) 2015 Mathew  Manton. All rights reserved.
@@ -174,16 +174,17 @@ class CarSprite : SKSpriteNode
     func turnRight(path : CGPath)
     {
         self._turnCount++
-        let pie = -M_PI_2
+        self._state = State.TURNING
+        
         let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
         let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 0.85)
         
         
         
-//        self.runAction(SKAction.group([
-//            action,
-//            action2
-//            ]))
+        self.runAction(SKAction.group([
+            action,
+            action2
+            ]))
         
         
         switch(self._dir)
@@ -201,6 +202,14 @@ class CarSprite : SKSpriteNode
             
         }
         
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+       let touch = touches.first as! UITouch
+       if self.containsPoint(touch.locationInNode(self))
+        {
+            self._isSelected = true
+        }
     }
     
     func turnLeft()
