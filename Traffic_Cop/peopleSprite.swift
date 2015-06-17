@@ -48,7 +48,8 @@ class PeopleSprite : SKSpriteNode
     }
     
     
-    
+
+
     
     let _MAXSPEED : CGFloat
     var _dir : Direction = Direction.WEST
@@ -76,10 +77,12 @@ class PeopleSprite : SKSpriteNode
     // @IBAction func stop(sender: AnyObject) {
     //  timer.invalidate()
     // }
+
     
     
     init(type : Int , direction : SpawnPoint)
     {
+        
         
         
 //        
@@ -239,7 +242,7 @@ class PeopleSprite : SKSpriteNode
             self._MAXSPEED = 4
             // self._spawn = spawn
             
-            self._size = CGSize(width: 64, height: 32)
+            self._size = CGSize(width: 64, height: 50)
             self._currentMood = mood.HAPPY
             
             
@@ -290,7 +293,7 @@ class PeopleSprite : SKSpriteNode
         super.init(texture: _person, color: nil, size: self._size)
         
         
-        self.setScale(CGFloat(2.0))
+        self.setScale(CGFloat(2.5))
         //rotate the sprite to the correct direction
         
         //position the car in the middle of the road
@@ -353,6 +356,26 @@ class PeopleSprite : SKSpriteNode
         }
         
         self.position = self._currPos
+        //var TW  = 128
+        
+        /*
+        
+        LR1  moving from left side to right side, hit end of sidewalk begining of cross walk at TW*2 (TH*6 - TH*7) DIRECTION EAST
+        LR2  moving from left side to right side, hit end of sidewalk begining of cross walk at TW*2 (TH*11 - TH*12) DIRECTION EAST
+        RL1  moving from right side to left side, hit end of sidewalk begining of cross walk at TW*6 (TH*6 - TH*7) DIRECTION WEST
+        RL2  moving from right side to left side, hit end of sidewalk begining of cross walk at TW*6 (TH*11 - TH*12) DIRECTION WEST
+        TB1  moving from top side to bottom side, hit end of sidewalk begining of cross walk at (TW*1 - TW*2) TH*7 DIRECTION SOUTH
+        TB2  moving from top side to bottom side, hit end of sidewalk begining of cross walk at (TW*6 - TW*7) TH*7 DIRECTION SOUTH
+        BT1  moving from bottom side to top side, hit end of sidewalk begining of cross walk at (TW*1 - TW*2) TH*11 DIRECTION NORTH
+        BT2  moving from bottom side to top side, hit end of sidewalk begining of cross walk at (TW*6 - TW*7) TH*11 DIRECTION NORTH
+        
+        
+        */
+        if(self.position == CGPoint(x:128*2, y: 128*7))
+       {
+        stop()
+        }
+        
         
         
         if self._state == State.WALKING //inactive
@@ -416,8 +439,10 @@ class PeopleSprite : SKSpriteNode
     }
     
     func walk() //timer should be inactive
+        
     {
         self._state = State.WALKING
+    
     }
     
     func goStraight()//timer should be inactive
@@ -512,7 +537,19 @@ crash: -75 per pedestrian,
 
 
 
+/*
 
+LR1  moving from left side to right side, hit end of sidewalk begining of cross walk at TW*2 (TH*6 - TH*7) DIRECTION EAST
+LR2  moving from left side to right side, hit end of sidewalk begining of cross walk at TW*2 (TH*11 - TH*12) DIRECTION EAST
+RL1  moving from right side to left side, hit end of sidewalk begining of cross walk at TW*6 (TH*6 - TH*7) DIRECTION WEST
+RL2  moving from right side to left side, hit end of sidewalk begining of cross walk at TW*6 (TH*11 - TH*12) DIRECTION WEST
+TB1  moving from top side to bottom side, hit end of sidewalk begining of cross walk at (TW*1 - TW*2) TH*7 DIRECTION SOUTH
+TB2  moving from top side to bottom side, hit end of sidewalk begining of cross walk at (TW*6 - TW*7) TH*7 DIRECTION SOUTH
+BT1  moving from bottom side to top side, hit end of sidewalk begining of cross walk at (TW*1 - TW*2) TH*11 DIRECTION NORTH
+BT2  moving from bottom side to top side, hit end of sidewalk begining of cross walk at (TW*6 - TW*7) TH*11 DIRECTION NORTH
+
+
+*/
 
 
 
