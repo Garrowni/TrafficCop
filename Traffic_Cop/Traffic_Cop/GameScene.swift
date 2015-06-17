@@ -157,10 +157,7 @@ class GameScene: SKScene
         
         
         
-        for road in glowRoads
-        {
-            addChild(road.getOL())
-        }
+  
         
         for cw in glowCWs
         {
@@ -391,12 +388,24 @@ class GameScene: SKScene
     
     func deSelectCars()
     {
+        
         for car in vehicleArray
         {
             car._isSelected = false
         }
         carSelected = false
-        selection.OL.removeFromParent()
+      
+        let transition = SKAction.group([SKAction.runBlock()
+            {
+                self.deIlluminateRoads()
+                self.selection.zoomOUT()
+            }])
+        let block = SKAction.runBlock(){self.selection.OL.removeFromParent()}
+        let wait = SKAction.waitForDuration(0.3)
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
+        
+        
     }
     func selectCar(car : CarSprite)
     {
@@ -443,22 +452,32 @@ class GameScene: SKScene
                     if(road.rect.contains(location))
                     {
                         //MAKE OUR TURN HANDLE THE EXECUTION
+                        
                     }
                 }
-                deSelectCars()
+                
+                let transition = SKAction.group([SKAction.runBlock()
+                    {
+                        self.deSelectCars()
+                    }])
+                let wait = SKAction.waitForDuration(0.3)
+                let transSequence = SKAction.sequence([transition,wait])
+                self.runAction(transSequence)
+                
             }
             
             if(!carSelected)
             {
                 for car in vehicleArray
                 {
-                    if(car.frame.contains(location))
+                    if(car.frame.contains(location) && car._state == .STOPPED)
                     {
                         if(!carSelected)
                         {
                             car._isSelected = true
                             carSelected = true;
                             selectCar(car)
+                            illuminateRoads(car)
                         }
                     }
                 }
@@ -486,4 +505,57 @@ class GameScene: SKScene
         self.runAction(transSequence)
     }
     
+    func illuminateRoads(car : CarSprite)
+    {
+            var carOn : Road = map.getCurRoad(car.position)
+            
+            let transition = SKAction.group([SKAction.runBlock()
+                {
+                    for road in self.glowRoads
+                    {
+                        if road.origRect.contains(carOn.rect)
+                        {
+                            //NOTHING
+                        }
+                        else
+                        {
+                            self.addChild(road.getOL())
+                            road.zoomIN()
+                        }
+                    }
+                }])
+            
+            let wait = SKAction.waitForDuration(0.3)
+            
+            let block = SKAction.runBlock{  }
+            
+            let transSequence = SKAction.sequence([transition,wait,block])
+            self.runAction(transSequence)
+    
+        
+    }
+    func deIlluminateRoads()
+    {
+        let transition = SKAction.group([SKAction.runBlock()
+            {
+                for road in self.glowRoads
+                {
+                    road.zoomOUT()
+                }
+            }])
+        
+        let wait = SKAction.waitForDuration(0.3)
+        
+        let block = SKAction.runBlock{
+            for road in self.glowRoads
+            {
+                road.getOL().removeFromParent()
+            }
+        }
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
+        
+        
+   
+    }
 }
