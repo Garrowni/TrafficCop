@@ -371,10 +371,28 @@ class PeopleSprite : SKSpriteNode
         
         
         */
-        if(self.position == CGPoint(x:128*2, y: 128*7))
-       {
+        
+        if ((self._type != 2 && (self._dir == Direction.EAST) && (self.position.x + self.size.width/2 >= 129*2)) && ((self.position.y >= 128*4 && self.position.y <= 128*6+64 )||(self.position.y >= 128*7+64 && self.position.y <= 128*9+64)))
+        {
+        self._currSpeed == 0
         stop()
         }
+        if ((self._type != 2 && (self._dir == Direction.WEST) && (self.position.x + self.size.width/4 <= 129*6)) && ((self.position.y >= 128*4 && self.position.y <= 128*6+64 )||(self.position.y >= 128*7+64 && self.position.y <= 128*9+64)))
+        {
+            self._currSpeed == 0
+            stop()
+        }
+        if ((self._type != 2  && (self._dir == Direction.NORTH) && (self.position.y  >= 129 * 5)) && ((self.position.x >= 0 && self.position.x <= 128*2) || (self.position.x >= 128*6 && self.position.x <= 128 * 7.5)))
+        {
+            self._currSpeed == 0
+            stop()
+        }
+        if ((self._type != 2  && (self._dir == Direction.SOUTH) && (self.position.y  <= 129 * 7)) && ((self.position.x >= 0 && self.position.x <= 128*2) || (self.position.x >= 128*6 && self.position.x <= 128 * 7.5)))
+        {
+            self._currSpeed == 0
+            stop()
+        }
+        
         
         
         
@@ -385,7 +403,7 @@ class PeopleSprite : SKSpriteNode
         }
         else if self._state == State.STOPPED //active
         {
-            
+            self._currSpeed = 0
         }
         else if self._state == State.TURNING //inactive
         {
