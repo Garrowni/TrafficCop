@@ -370,7 +370,7 @@ class PeopleSprite : SKSpriteNode
             self._currSpeed == 0
             stop()
         }
-        else if ((self._type != 2  && (self._dir == Direction.NORTH) && (self.position.y + self.size.height/2.5 >= 129*5)) && ((self.position.x >= 0 && self.position.x <= 128*2) || (self.position.x >= 128*6 && self.position.x <= 128 * 7.5)))
+        else if ((self._type != 2  && (self._dir == Direction.NORTH) && (self.position.y + (3*(self.size.height/4)) >= 129*5)) && ((self.position.x >= 0 && self.position.x <= 128*2) || (self.position.x >= 128*6 && self.position.x <= 128 * 7.5)))
         {
             self._currSpeed == 0
             stop()
