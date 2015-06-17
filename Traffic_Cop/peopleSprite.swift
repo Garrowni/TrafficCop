@@ -392,6 +392,10 @@ class PeopleSprite : SKSpriteNode
         else if self._state == State.STOPPED //active
         {
             self._currSpeed = 0
+            
+            //choose the direction you want to go in next
+            //wait for player to say where to go
+            //activate timer
         }
         else if self._state == State.TURNING //inactive
         {
