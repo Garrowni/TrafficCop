@@ -23,6 +23,7 @@ class GameScene: SKScene
     let soundButt   : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
+    var selection   : GlowBox
     var glowSpawns  : [GlowCircle]
     var gotoPoints  : [GlowCircle]
     var roadArray   : [Road]
@@ -57,7 +58,7 @@ class GameScene: SKScene
         gotoPoints      = []
         vehicleArray    = []
         peopleArray     = []
-      
+        selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
         map             = Map(lvl: 4)
         roadArray       = map.getRoads()
         spawnsArray     = map.getSpawns()
@@ -187,7 +188,7 @@ class GameScene: SKScene
         addChild(soundButt.getButtBG())
         addChild(soundButt.getButtOL())
         addChild(soundButt.getLabel())
-        
+        addChild(selection.OL)
         
        //debugDrawPLayableArea()
     }
@@ -395,8 +396,17 @@ class GameScene: SKScene
             car._isSelected = false
         }
         carSelected = false
+        selection.OL.removeFromParent()
     }
-    
+    func selectCar(car : CarSprite)
+    {
+        if car._state == .STOPPED
+        {
+        selection.OL.removeFromParent()
+        selection = GlowBox(pos: car.frame, roundCorner: 20, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 1)
+        addChild(selection.OL)
+        }
+    }
     func handleTouchSequence(location: CGPoint)
     {
         if(pausedOn)
@@ -448,6 +458,7 @@ class GameScene: SKScene
                         {
                             car._isSelected = true
                             carSelected = true;
+                            selectCar(car)
                         }
                     }
                 }
