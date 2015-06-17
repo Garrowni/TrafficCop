@@ -118,8 +118,7 @@ class GameScene: SKScene
         
         
         
-        CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
-        CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
+ 
         
     }
 
@@ -431,17 +430,13 @@ class GameScene: SKScene
             if(pauseButt.origRect.contains(location))
             {
                 pausedOn = true
-                
-                
                 //PAUSED POPUP
                 pausedPopUp.getButtBG().name = "pausePopUp"
                 pausedPopUp.getButtOL().name = "pausePopUp"
                 pausedPopUp.getLabel().name = "pausePopUp"
-                
                 addChild(pausedPopUp.getButtBG())
                 addChild(pausedPopUp.getButtOL())
                 addChild(pausedPopUp.getLabel())
-                
                 pausedPopUp.zoomIN()
             }
         
@@ -452,6 +447,8 @@ class GameScene: SKScene
                     if(road.rect.contains(location))
                     {
                         //MAKE OUR TURN HANDLE THE EXECUTION
+                        CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
+                        CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
                         
                     }
                 }

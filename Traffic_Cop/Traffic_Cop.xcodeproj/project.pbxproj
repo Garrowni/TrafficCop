@@ -161,6 +161,10 @@
 		08D74C141B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */; };
 		08D74C151B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */; };
 		08D74C161B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */; };
+		08D8875B1B321454007B860F /* level1v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D887591B321454007B860F /* level1v2.tmx */; };
+		08D8875C1B321454007B860F /* level1v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D887591B321454007B860F /* level1v2.tmx */; };
+		08D8875D1B321454007B860F /* level3v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D8875A1B321454007B860F /* level3v2.tmx */; };
+		08D8875E1B321454007B860F /* level3v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D8875A1B321454007B860F /* level3v2.tmx */; };
 		08D971091B2B44F100F44180 /* LevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D971081B2B44F100F44180 /* LevelScreen.swift */; };
 		08D9710A1B2B44F100F44180 /* LevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D971081B2B44F100F44180 /* LevelScreen.swift */; };
 		08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F3E61B29F8BB00FDA871 /* Button.swift */; };
@@ -293,6 +297,8 @@
 		08D74BE61B290D4C00E1C8BA /* pizzadude.dk License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pizzadude.dk License.txt"; sourceTree = "<group>"; };
 		08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RADIOLAND.ttf; sourceTree = "<group>"; };
 		08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RADIOLANDSLIM.ttf; sourceTree = "<group>"; };
+		08D887591B321454007B860F /* level1v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level1v2.tmx; sourceTree = "<group>"; };
+		08D8875A1B321454007B860F /* level3v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level3v2.tmx; sourceTree = "<group>"; };
 		08D971081B2B44F100F44180 /* LevelScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelScreen.swift; sourceTree = "<group>"; };
 		08D9F3E61B29F8BB00FDA871 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMPLATESCREEN.swift; sourceTree = "<group>"; };
@@ -416,6 +422,8 @@
 		08D515B11B28CB8100E5289B /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				08D887591B321454007B860F /* level1v2.tmx */,
+				08D8875A1B321454007B860F /* level3v2.tmx */,
 				08D515B41B28CB8100E5289B /* level2v2.tmx */,
 				08D515B71B28CB8100E5289B /* level4v2.tmx */,
 				08D515B81B28CB8100E5289B /* RoadTiles.pdn */,
@@ -894,12 +902,14 @@
 				08D516421B28CB8100E5289B /* stoplight_yellow.png in Resources */,
 				08D515FA1B28CB8100E5289B /* level2v2.tmx in Resources */,
 				08D5160E1B28CB8100E5289B /* single_green.png in Resources */,
+				08D8875E1B321454007B860F /* level3v2.tmx in Resources */,
 				08D515E61B28CB8100E5289B /* exclamation.png in Resources */,
 				08D5161E1B28CB8100E5289B /* car_blue.png in Resources */,
 				08D74C0E1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */,
 				08D74C061B290D4C00E1C8BA /* nervous_rex.ttf in Resources */,
 				08D74C041B290D4C00E1C8BA /* NEORS___.ttf in Resources */,
 				08D74C0C1B290D4C00E1C8BA /* old_stamper.ttf in Resources */,
+				08D8875C1B321454007B860F /* level1v2.tmx in Resources */,
 				08D516261B28CB8100E5289B /* car_cop1.png in Resources */,
 				08D5162C1B28CB8100E5289B /* car_cop2.png in Resources */,
 				08D516001B28CB8100E5289B /* level4v2.tmx in Resources */,
@@ -949,6 +959,7 @@
 				7DE146511B223E95005DB874 /* LaunchScreen.xib in Resources */,
 				08D74C111B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
 				08D515F31B28CB8100E5289B /* MainMenu.png in Resources */,
+				08D8875B1B321454007B860F /* level1v2.tmx in Resources */,
 				08D515DF1B28CB8100E5289B /* bg_road_two_way.png in Resources */,
 				08D516151B28CB8100E5289B /* Ambulence1R.png in Resources */,
 				08D74C131B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */,
@@ -995,6 +1006,7 @@
 				08D516411B28CB8100E5289B /* stoplight_yellow.png in Resources */,
 				08D74C011B290D4C00E1C8BA /* NEORF___.ttf in Resources */,
 				08D74BF71B290D4C00E1C8BA /* launica.ttf in Resources */,
+				08D8875D1B321454007B860F /* level3v2.tmx in Resources */,
 				08D515EF1B28CB8100E5289B /* littleGirl.png in Resources */,
 				08D516111B28CB8100E5289B /* Ambulence1.png in Resources */,
 				08D515DD1B28CB8100E5289B /* bg_road_one_way.png in Resources */,
