@@ -250,6 +250,10 @@ class Map
         return crossWArray
     }
     
+    func getPeopleSpawns() -> [SpawnPoint]
+    {
+        return humanSpawnArray
+    }
     
     func randomSpawn() -> SpawnPoint
     {

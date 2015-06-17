@@ -24,12 +24,15 @@ class GameScene: SKScene
     var gotoPoints  : [GlowCircle]
     var roadArray   : [Road]
     var spawnsArray : [SpawnPoint]
+    var peopleSpawns: [SpawnPoint]
     var crossWArray : [Crosswalk]
     var vehicleArray: [CarSprite]
+    var peopleArray : [PeopleSprite]
  
     
     var path        = CGPathCreateMutable()
     var spawnAction = SKAction()
+    var spawnAction2 = SKAction()
     var timerCount  = CGFloat()
     var timePassed  : Int
     var carSelected : Bool
@@ -49,11 +52,13 @@ class GameScene: SKScene
         glowSpawns      = []
         gotoPoints      = []
         vehicleArray    = []
+        peopleArray     = []
       
         map             = Map(lvl: 4)
         roadArray       = map.getRoads()
         spawnsArray     = map.getSpawns()
         crossWArray     = map.getCrossWalks()
+        peopleSpawns    = map.getPeopleSpawns()
         timerCount      = CGFloat(0.0)
         timePassed      = 0
         carSelected     = false
@@ -70,7 +75,7 @@ class GameScene: SKScene
         {
             glowCWs.append(GlowBox(pos: cw.rect, roundCorner: 5, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
-        for spawn in spawnsArray
+        for spawn in peopleSpawns
         {
             glowSpawns.append(GlowCircle(pos: spawn.pos, radius: 20, OLcolor: "green", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
@@ -89,11 +94,14 @@ class GameScene: SKScene
         
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle();}
-        let wait2 = SKAction.waitForDuration(1)                     //SPAWN TIME !
-        let spawnSequence = SKAction.sequence([spawn, wait2])
+        let wait = SKAction.waitForDuration(1)                     //SPAWN TIME !
+        let spawnSequence = SKAction.sequence([spawn, wait])
         spawnAction = SKAction.repeatActionForever(spawnSequence)
         
-        
+        let spawn2 = SKAction.runBlock(){self.spawnPerson();}
+        let wait2 = SKAction.waitForDuration(2)                     //SPAWN PEOPLE TIME !
+        let spawnSequence2 = SKAction.sequence([spawn2, wait2])
+        spawnAction2 = SKAction.repeatActionForever(spawnSequence)
         
         
         
@@ -131,8 +139,9 @@ class GameScene: SKScene
         }
         
         
-        
+        //RUN ACTIONS
         runAction(spawnAction)
+        runAction(spawnAction2)
         
         
         
@@ -271,7 +280,7 @@ class GameScene: SKScene
     {
         if(vehicleArray.count < 10)
         {
-            var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
+            var car = CarSprite(type: Int.randomNumberFrom(1...4), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
             vehicleArray.append(car)
             car.drive()
             
@@ -279,6 +288,17 @@ class GameScene: SKScene
             addChild(car)
         }
        
+    }
+    
+    func spawnPerson()
+    {
+        if(vehicleArray.count < 10)
+        {
+            var person = PeopleSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
+            peopleArray.append(person)
+            person.walk()
+            addChild(person)
+        }
     }
     
  
