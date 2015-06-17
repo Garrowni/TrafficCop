@@ -18,6 +18,9 @@ class GameScene: SKScene
     let level       : Int               = 0
     let map         : Map
     let clock       : Clock
+    let pauseButt   : Button
+    let pausedPopUp : Button
+    let soundButt   : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
     var glowSpawns  : [GlowCircle]
@@ -37,6 +40,7 @@ class GameScene: SKScene
     var timePassed  : Int
     var carSelected : Bool
     var roadSelected : Bool
+    var pausedOn     : Bool
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
@@ -63,9 +67,16 @@ class GameScene: SKScene
         timePassed      = 0
         carSelected     = false
         roadSelected    = false
+        pausedOn        = false
         clock           = Clock(playableR: playableRect, countFrom: 300)
         
-        
+        var pauseLabel  = Text(pos: CGPoint(x: size.width/2, y:0),    says: "ll",       fontSize: 70, font: "font2", color: "green",  align: "center")
+        var pausedLabel = Text(pos: CGPoint(x: size.width/2, y:0),    says: "Paused",   fontSize: 300, font: "font2", color: "green",  align: "center")
+        var soundLabel  = Text(pos: CGPoint(x: size.width/2, y:0),    says: "(=",       fontSize: 70, font: "font2", color: "green",  align: "center")
+        pauseButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*14), size: CGSize(width: 128, height: 128)), roundCorner: 64, text: pauseLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 2, glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        pausedPopUp     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2), size: CGSize(width: Int(size.width-32), height: TW*9)), roundCorner: 70, text: pausedLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 8, ZoomIn: true, Bulge: true, glowBulge: true)
+        soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*14), size: CGSize(width: 128, height: 128)), roundCorner: 64, text: soundLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 2, glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+
         //SET GLOW ROADS
         for road in roadArray
         {
@@ -169,6 +180,15 @@ class GameScene: SKScene
         addChild(clock.clockButt.getButtOL())
         addChild(clock.clockLabel.get())
         
+        addChild(pauseButt.getButtBG())
+        addChild(pauseButt.getButtOL())
+        addChild(pauseButt.getLabel())
+        
+        addChild(soundButt.getButtBG())
+        addChild(soundButt.getButtOL())
+        addChild(soundButt.getLabel())
+        
+        
        //debugDrawPLayableArea()
     }
     
@@ -213,6 +233,7 @@ class GameScene: SKScene
     //*****************************************THE ALL MIGHTY UPDATE******************************
     override func update(currentTime: CFTimeInterval)
     {
+        if(!pausedOn){
         if lastUpdateTime > 0 {dt = currentTime - lastUpdateTime} else {dt = 0}
         lastUpdateTime = currentTime
         
@@ -224,15 +245,16 @@ class GameScene: SKScene
             timePassed++
             clock.upDateTime(-1)
             //println("\(timePassed)")
-        }
-        
-   
+        }}
         
         //UPDATE ALL OUR STUFFS HERE
         
-        
-        updateVehicles()
-        updatePeople()
+        if(!pausedOn)
+        {
+            updateVehicles()
+            updatePeople()
+        }
+      
 
         
     }
@@ -279,6 +301,8 @@ class GameScene: SKScene
     
     func spawnVehicle()
     {
+        if(!pausedOn)
+        {
         if(vehicleArray.count < 10)
         {
             var car = CarSprite(type: Int.randomNumberFrom(1...4), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
@@ -287,19 +311,21 @@ class GameScene: SKScene
             
             //car.addChild(car._glowCircle.getOL())
             addChild(car)
-        }
+            }}
        
     }
     
     func spawnPerson()
     {
+        if(!pausedOn)
+        {
         if(vehicleArray.count < 10)
         {
             var person = PeopleSprite(type: Int.randomNumberFrom(1...6), direction: peopleSpawns[Int.randomNumberFrom(0...peopleSpawns.count-1)])
             peopleArray.append(person)
             person.walk()
             addChild(person)
-        }
+        }}
     }
     
  
@@ -365,33 +391,80 @@ class GameScene: SKScene
     
     func handleTouchSequence(location: CGPoint)
     {
-        if(carSelected)
+        if(pausedOn)
         {
-            for road in roadArray
+            if(playableRect.contains(location))
             {
-                if(road.rect.contains(location))
-                {
-                    //MAKE OUR TURN HANDLE THE EXECUTION
-                }
+                unPauseGame()
             }
-            deSelectCars()
         }
         
-        if(!carSelected)
+        if(!pausedOn)
         {
-            for car in vehicleArray
+            if(pauseButt.origRect.contains(location))
             {
-                if(car.frame.contains(location))
+                pausedOn = true
+                
+                
+                //PAUSED POPUP
+                pausedPopUp.getButtBG().name = "pausePopUp"
+                pausedPopUp.getButtOL().name = "pausePopUp"
+                pausedPopUp.getLabel().name = "pausePopUp"
+                
+                addChild(pausedPopUp.getButtBG())
+                addChild(pausedPopUp.getButtOL())
+                addChild(pausedPopUp.getLabel())
+                
+                pausedPopUp.zoomIN()
+            }
+        
+            if(carSelected)
+            {
+                for road in roadArray
                 {
-                    if(!carSelected)
+                    if(road.rect.contains(location))
                     {
-                        car._isSelected = true
-                        carSelected = true;
+                        //MAKE OUR TURN HANDLE THE EXECUTION
+                    }
+                }
+                deSelectCars()
+            }
+            
+            if(!carSelected)
+            {
+                for car in vehicleArray
+                {
+                    if(car.frame.contains(location))
+                    {
+                        if(!carSelected)
+                        {
+                            car._isSelected = true
+                            carSelected = true;
+                        }
                     }
                 }
             }
         }
-  
+    }
+    
+    func unPauseGame()
+    {
+        let transition = SKAction.group([SKAction.runBlock()
+            {
+            self.pausedPopUp.zoomOUT()
+            }])
+        
+        let wait = SKAction.waitForDuration(0.2)
+        
+        let block = SKAction.runBlock{
+            self.childNodeWithName("pausePopUp")?.removeFromParent()
+            self.childNodeWithName("pausePopUp")?.removeFromParent()
+            self.childNodeWithName("pausePopUp")?.removeFromParent()
+            self.pausedOn = false
+          
+        }
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
     }
     
 }
