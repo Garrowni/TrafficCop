@@ -291,7 +291,7 @@ class PeopleSprite : SKSpriteNode
         
         
         super.init(texture: _person, color: nil, size: self._size)
-        
+        self.position = self._currPos
         
         self.setScale(CGFloat(2.5))
         //rotate the sprite to the correct direction

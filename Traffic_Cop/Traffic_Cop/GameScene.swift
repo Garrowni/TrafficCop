@@ -303,7 +303,7 @@ class GameScene: SKScene
         {
         if(vehicleArray.count < 10)
         {
-            var car = CarSprite(type: Int.randomNumberFrom(1...4), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
+            var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
             vehicleArray.append(car)
             car.drive()
             
@@ -317,9 +317,9 @@ class GameScene: SKScene
     {
         if(!pausedOn)
         {
-        if(vehicleArray.count < 10)
+        if(peopleArray.count < 20)
         {
-            var person = PeopleSprite(type: Int.randomNumberFrom(1...6), direction: peopleSpawns[Int.randomNumberFrom(0...peopleSpawns.count-1)])
+            var person = PeopleSprite(type: Int.randomNumberFrom(1...4), direction: peopleSpawns[Int.randomNumberFrom(0...peopleSpawns.count-1)])
             peopleArray.append(person)
             person.walk()
             addChild(person)
