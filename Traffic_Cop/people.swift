@@ -54,6 +54,7 @@ class PeopleSprite : SKSpriteNode
     var _dir : Direction = Direction.WEST
     var _turnCount : Int = 0
     var _person : SKTexture
+   // var _emotion : SKTexture
     var _spawn  : CGPoint
     var _accel: CGFloat = 1
     var _currSpeed: CGFloat = 0
@@ -69,11 +70,11 @@ class PeopleSprite : SKSpriteNode
     var _currentMood = mood.HAPPY
     
     
-   // var startTime = NSTimeInterval()
+    var startTime = NSTimeInterval()
     
-  //  var timer:NSTimer = NSTimer()
-  //  @IBAction func stop(sender: AnyObject) {
-  //      timer.invalidate()
+    var timer:NSTimer = NSTimer()
+   // @IBAction func stop(sender: AnyObject) {
+     //  timer.invalidate()
    // }
     
     
@@ -81,25 +82,19 @@ class PeopleSprite : SKSpriteNode
     {
         
             
-            
-     /*       var currentTime = NSDate.timeIntervalSinceReferenceDate()
+
+           var currentTime = NSDate.timeIntervalSinceReferenceDate()
             
             //Find the difference between current time and start time.
             var elapsedTime: NSTimeInterval = currentTime - startTime
-            
-            //calculate the minutes in elapsed time.
-            let minutes = UInt8(elapsedTime / 60.0)
-            elapsedTime -= (NSTimeInterval(minutes) * 60)
-            
+        
             //calculate the seconds in elapsed time.
             let seconds = UInt8(elapsedTime)
             elapsedTime -= NSTimeInterval(seconds)
-            
-            //find out the fraction of milliseconds to be displayed.
-            let fraction = UInt8(elapsedTime * 100)
-            
-        */
-            
+        
+    
+
+        
 
         var tempDirection = direction.dir
         
@@ -120,38 +115,44 @@ class PeopleSprite : SKSpriteNode
             self._MAXSPEED = 5
             //self._spawn = spawn
             
-            //self._size = CGSize(width: 32, height: 32)
+           // self._size = CGSize(width: 32, height: 32)
             self._currentMood = mood.HAPPY
             
             
             // mood timer
             
-        /*    if (seconds == 0)
+           if (seconds == 0)
             {
                 self._currentMood = mood.HAPPY
+            //    self._emotion = SKTexture(imageNamed: "happy")
             }
             else if (seconds == 5)
             {
                 self._currentMood = mood.CONTENT
+                  //self._emotion = SKTexture(imageNamed: "content")
             }
             else if (seconds == 10)
             {
                 self._currentMood = mood.IRRITATED
+                     //self._emotion = SKTexture(imageNamed: "irritated")
             }
             else if (seconds == 15)
             {
                 self._currentMood = mood.MAD
+                //self._emotion = SKTexture(imageNamed: "mad")
             }
             else if (seconds == 17)
             {
                 self._currentMood = mood.DANGER
+                 //self._emotion = SKTexture(imageNamed: "exclamation")
             }
             else
             {
                 self._currentMood = mood.DANGER
+                 //self._emotion = SKTexture(imageNamed: "exclamation")
             }
             
-         */
+         
             
             //stop when they are told
             
@@ -170,15 +171,17 @@ class PeopleSprite : SKSpriteNode
             
             // mood timer
             
-         /*   if (seconds == 0)
+           if (seconds == 0)
             {
                 self._currentMood = mood.HAPPY
+              //self._emotion = SKTexture(imageNamed: "happy")
             }
             else
             {
                 self._currentMood = mood.DANGER
+                 //self._emotion = SKTexture(imageNamed: "exclamation")
             }
-     */
+    
             
             //do not stop at lights
             
@@ -194,30 +197,34 @@ class PeopleSprite : SKSpriteNode
             
             // mood timer
             
-     /*
+     
             if (seconds ==  0)
             {
                 self._currentMood = mood.HAPPY
+               // self._emotion = SKTexture(imageNamed: "happy")
             }
             else if (seconds ==  5)
             {
                 self._currentMood = mood.IRRITATED
+                     //self._emotion = SKTexture(imageNamed: "irritated")
             }
                 
             else if (seconds == 10)
             {
                 self._currentMood = mood.MAD
+                //self._emotion = SKTexture(imageNamed: "mad")
             }
             else if (seconds ==  12)
             {
                 self._currentMood = mood.DANGER
+                //self._emotion = SKTexture(imageNamed: "exclamation")
             }
             else
             {
                 self._currentMood = mood.DANGER
             }
             
-       */
+       
             
             
             //get angry faster
@@ -232,35 +239,40 @@ class PeopleSprite : SKSpriteNode
             self._MAXSPEED = 4
             // self._spawn = spawn
             
-            //self._size = CGSize(width: 64, height: 32)
+            self._size = CGSize(width: 64, height: 32)
             self._currentMood = mood.HAPPY
             
             
             
             // mood timer
-    /*
+    
             if (seconds ==  0)
             {
                 self._currentMood = mood.HAPPY
+               // self._emotion = SKTexture(imageNamed: "happy")
             }
             else if (seconds ==  10)
             {
                 self._currentMood = mood.CONTENT
+                //self._emotion = SKTexture(imageNamed: "content")
             }
             else if (seconds == 15)
             {
                 self._currentMood = mood.IRRITATED
+                //self._emotion = SKTexture(imageNamed: "irritated")
             }
             else if (seconds == 20)
             {
                 self._currentMood = mood.MAD
+                //self._emotion = SKTexture(imageNamed: "mad")
             }
             else
             {
                 self._currentMood = mood.MAD
+                //self._emotion = SKTexture(imageNamed: "mad")
             }
             
-         */
+         
             
             // take up more room on corner
             //more patient then others
@@ -270,6 +282,7 @@ class PeopleSprite : SKSpriteNode
             
         default :
             self._person = SKTexture(imageNamed: "")
+            //self._emotion = SKTexture(imageNamed: "")
             self._MAXSPEED = 0
         }
         
@@ -342,16 +355,18 @@ class PeopleSprite : SKSpriteNode
         self.position = self._currPos
         
         
-        if self._state == State.WALKING
+        if self._state == State.WALKING //inactive
         {
+            timer.invalidate()
             goStraight()
         }
-        else if self._state == State.STOPPED
+        else if self._state == State.STOPPED //active
         {
             
         }
-        else if self._state == State.TURNING
+        else if self._state == State.TURNING //inactive
         {
+            timer.invalidate()
             
         }
         
@@ -360,7 +375,7 @@ class PeopleSprite : SKSpriteNode
     }
     
     
-    func turnRight(path : CGPath)
+    func turnRight(path : CGPath) //timer should be deactivated
     {
         self._turnCount++
         self._state = State.TURNING
@@ -395,17 +410,17 @@ class PeopleSprite : SKSpriteNode
     
     
     
-    func turnLeft()
+    func turnLeft() //tiner should be inactive
     {
         
     }
     
-    func walk()
+    func walk() //timer should be inactive
     {
         self._state = State.WALKING
     }
     
-    func goStraight()
+    func goStraight()//timer should be inactive
     {
         self._state = State.WALKING
         
@@ -429,14 +444,14 @@ class PeopleSprite : SKSpriteNode
         }
     }
     
-    func stop()
+    func stop() //is when timer should activate
     {
         self._currSpeed = 0
         self._state = State.STOPPED
     }
     
     
-    func isDone(rect : CGRect) -> Bool
+    func isDone(rect : CGRect) -> Bool //timer should be inactive
     {
         if(self._dir == .NORTH && self.position.y - self._size.height * 2 > rect.maxY)
         {
