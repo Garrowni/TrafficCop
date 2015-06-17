@@ -356,25 +356,31 @@ class PeopleSprite : SKSpriteNode
         }
         
         self.position = self._currPos
-        //var TW  = 128
+     
         
-        /*
+     
         
-        LR1  moving from left side to right side, hit end of sidewalk begining of cross walk at TW*2 (TH*6 - TH*7) DIRECTION EAST
-        LR2  moving from left side to right side, hit end of sidewalk begining of cross walk at TW*2 (TH*11 - TH*12) DIRECTION EAST
-        RL1  moving from right side to left side, hit end of sidewalk begining of cross walk at TW*6 (TH*6 - TH*7) DIRECTION WEST
-        RL2  moving from right side to left side, hit end of sidewalk begining of cross walk at TW*6 (TH*11 - TH*12) DIRECTION WEST
-        TB1  moving from top side to bottom side, hit end of sidewalk begining of cross walk at (TW*1 - TW*2) TH*7 DIRECTION SOUTH
-        TB2  moving from top side to bottom side, hit end of sidewalk begining of cross walk at (TW*6 - TW*7) TH*7 DIRECTION SOUTH
-        BT1  moving from bottom side to top side, hit end of sidewalk begining of cross walk at (TW*1 - TW*2) TH*11 DIRECTION NORTH
-        BT2  moving from bottom side to top side, hit end of sidewalk begining of cross walk at (TW*6 - TW*7) TH*11 DIRECTION NORTH
-        
-        
-        */
-        if(self.position == CGPoint(x:128*2, y: 128*7))
-       {
+        if ((self._type != 2 && (self._dir == Direction.EAST) && (self.position.x + self.size.width/2 >= 129*2)) && ((self.position.y >= 128*4 && self.position.y <= 128*6+64 )||(self.position.y >= 128*7+64 && self.position.y <= 128*9+64)))
+        {
+        self._currSpeed == 0
         stop()
         }
+       else if ((self._type != 2 && (self._dir == Direction.WEST) && (self.position.x - self.size.width/2 <= 129*6)) && ((self.position.y >= 128*4 && self.position.y <= 128*6+64 )||(self.position.y >= 128*7+64 && self.position.y <= 128*9+64)))
+        {
+            self._currSpeed == 0
+            stop()
+        }
+        else if ((self._type != 2  && (self._dir == Direction.NORTH) && (self.position.y + (3*(self.size.height/4)) >= 129*5)) && ((self.position.x >= 0 && self.position.x <= 128*2) || (self.position.x >= 128*6 && self.position.x <= 128 * 7.5)))
+        {
+            self._currSpeed == 0
+            stop()
+        }
+        else if ((self._type != 2  && (self._dir == Direction.SOUTH) && (self.position.y - self.size.height/2  <= 129 * 9)) && ((self.position.x >= 0 && self.position.x <= 128*2) || (self.position.x >= 128*6 && self.position.x <= 128 * 7.5)))
+        {
+            self._currSpeed == 0
+            stop()
+        }
+        
         
         
         
@@ -385,7 +391,11 @@ class PeopleSprite : SKSpriteNode
         }
         else if self._state == State.STOPPED //active
         {
+            self._currSpeed = 0
             
+            //choose the direction you want to go in next
+            //wait for player to say where to go
+            //activate timer
         }
         else if self._state == State.TURNING //inactive
         {
