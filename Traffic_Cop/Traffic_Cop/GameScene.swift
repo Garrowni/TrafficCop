@@ -331,11 +331,16 @@ class GameScene: SKScene
  
     func updateVehicles()
     {
-        func atIntersection(rect: CGRect) -> Bool
+        func atIntersection(pos: CGPoint) -> Bool
         {
             for Cw in crossWArray
             {
-                if rect.contains(Cw.rect){return true}
+                if Cw.rect.contains(CGPoint(x: pos.x-80, y: pos.y-80)) || Cw.rect.contains(CGPoint(x: pos.x+80, y: pos.y+80)) ||
+                    Cw.rect.contains(CGPoint(x: pos.x-80, y: pos.y+80)) || Cw.rect.contains(CGPoint(x: pos.x+80, y: pos.y-80))
+                {
+                    return true
+                }
+                
             }
             return false
         }
@@ -344,7 +349,10 @@ class GameScene: SKScene
         {
             vehicleArray[i].update()
             
-            if(atIntersection(vehicleArray[i].frame)){}      //RECT CHECK
+            if(atIntersection(vehicleArray[i].position))
+            {
+                vehicleArray[i].stop()
+            }      //RECT CHECK
             
             if(vehicleArray[i].isDone(playableRect))
             {
