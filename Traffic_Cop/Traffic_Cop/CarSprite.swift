@@ -37,7 +37,9 @@ class CarSprite : SKSpriteNode
     var _size : CGSize
     var _state : State = State.STOPPED
     var _isSelected : Bool = false
-    var _glowCircle : GlowCircle
+    var _glowRect : GlowBox
+    var _rect : CGRect
+    var _selectionColor : String = ""
     var _currPos : CGPoint
     
     
@@ -48,10 +50,9 @@ class CarSprite : SKSpriteNode
         self._type = type
         self._size = CGSize(width: 152, height: 66)
         self._spawn = direction.pos
-        self._glowCircle = GlowCircle(pos: self._spawn, radius: 20, OLcolor: "yellow", OLSize: 10, glowWidth: 40, ZoomIn: true, glowBulge: true, alpha: 0.5)
         self._currPos = _spawn
-        
-        
+        self._rect = CGRect(x: self._spawn.x, y: self._spawn.y, width: self._size.width, height: self._size.height)
+        self._glowRect = GlowBox(pos: self._rect, roundCorner: 1, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha:1)
         
         switch(self._type)
         {
@@ -92,10 +93,11 @@ class CarSprite : SKSpriteNode
         }
         
         super.init(texture: _car, color: nil, size: self._size)
+
+        self.position = self._currPos
+        self._glowRect = GlowBox(pos: super.frame, roundCorner: 1, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 1)
+        self.addChild(self._glowRect.OL)
         
-        
-        
-        //rotate the sprite to the correct direction
 
         //position the car in the middle of the road
         switch(tempDirection)
@@ -129,11 +131,15 @@ class CarSprite : SKSpriteNode
     
 
 //***************************Functions*************************
-       func update()
+    func update()
     {
-        println("isSelected: \(self._isSelected)")
+      // println("self.frame pos = \(self.position)")
+      // println("self._glowRect pos= \(self._glowRect.OL.position)")
+       self._glowRect = GlowBox(pos: super.frame, roundCorner: 1, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 1)
+        //println("isSelected: \(self._isSelected)")
         switch(self._dir)
         {
+        //rotate the sprite to the correct direction
         case .NORTH:
             self.zRotation = CGFloat(M_PI_2 * 3)
         case .WEST:
@@ -147,7 +153,7 @@ class CarSprite : SKSpriteNode
             
         }
         
-        self.position = self._currPos
+        
      
         
         if self._state == State.DRIVING
@@ -164,7 +170,7 @@ class CarSprite : SKSpriteNode
         }
         
 
-        
+       self.position = self._currPos
     } 
 
     
