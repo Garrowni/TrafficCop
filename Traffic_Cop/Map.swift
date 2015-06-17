@@ -64,6 +64,44 @@ class Map
             spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")); println("error in setting the spawns: Map init")
         }
         
+		//SET HUMAN SPAWNS
+		switch (level)
+        {
+        case 1:
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*1+TW/2 ,y:TW*15),   direction: "down")) //TOP
+			self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*4+TW/2 ,y:TW*15),   direction: "down")) //TOP2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*1+TW/2 ,y:0 ),      direction: "up"))   //BOTTOM
+			self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*4+TW/2 ,y:0 ),      direction: "up"))   //BOTTOM2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*4+TW/2),    direction: "left")) //RIGHT
+			self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*7+TW/2),    direction: "left")) //RIGHT2
+        case 2:  
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")) //TOP
+			self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*5+TW/2 ,y:TW*15),   direction: "down")) //TOP2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:0),       direction: "up"))   //BOTTOM
+			self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*5+TW/2 ,y:0),       direction: "up"))   //BOTTOM2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*4+TW/2),    direction: "left")) //RIGHT
+			self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*7+TW/2),    direction: "left")) //RIGHT
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*4+TW/2),    direction: "right"))//LEFT
+			self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*7+TW/2),    direction: "right"))//LEFT
+        case 3:  
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")) //TOP
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*7+TW/2 ,y:TW*15),   direction: "down")) //TOP2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:0),       direction: "up"))   //BOTTOM
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*7+TW/2 ,y:0),       direction: "up"))   //BOTTOM2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*3+TW/2),    direction: "right"))//LEFT
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*8+TW/2),    direction: "right"))//LEFT2
+        case 4:  
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*1+TW/2 ,y:TW*15),   direction: "down")) //TOP
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*6+TW/2 ,y:TW*15),   direction: "down")) //TOP2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*1+TW/2 ,y:0),       direction: "up"))   //BOTTOM
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*6+TW/2 ,y:0),       direction: "up"))   //BOTTOM2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*4+TW/2),    direction: "left")) //RIGHT
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*8 ,y:TW*9+TW/2),    direction: "left")) //RIGHT2
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*4+TW/2),    direction: "right"))//LEFT
+            self.humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*9+TW/2),    direction: "right"))//LEFT2
+        default:
+            humanSpawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")); println("error in setting the spawns: Map init")
+        }
         
         //SET ROAD RECTS
         switch (level)
