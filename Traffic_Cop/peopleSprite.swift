@@ -82,15 +82,15 @@ class PeopleSprite : SKSpriteNode
     {
         
         
-        
-        var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        
-        //Find the difference between current time and start time.
-        var elapsedTime: NSTimeInterval = currentTime - startTime
-        
+//        
+//        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+//        
+//        //Find the difference between current time and start time.
+//        var elapsedTime: NSTimeInterval = currentTime - startTime
+//        
         //calculate the seconds in elapsed time.
-        let seconds = UInt8(elapsedTime)
-        elapsedTime -= NSTimeInterval(seconds)
+//        let seconds = UInt8(elapsedTime)
+//        elapsedTime -= NSTimeInterval(seconds)
         
         
         
@@ -121,39 +121,39 @@ class PeopleSprite : SKSpriteNode
             
             // mood timer
             
-            if (seconds == 0)
-            {
-                self._currentMood = mood.HAPPY
-                //    self._emotion = SKTexture(imageNamed: "happy")
-            }
-            else if (seconds == 5)
-            {
-                self._currentMood = mood.CONTENT
-                //self._emotion = SKTexture(imageNamed: "content")
-            }
-            else if (seconds == 10)
-            {
-                self._currentMood = mood.IRRITATED
-                //self._emotion = SKTexture(imageNamed: "irritated")
-            }
-            else if (seconds == 15)
-            {
-                self._currentMood = mood.MAD
-                //self._emotion = SKTexture(imageNamed: "mad")
-            }
-            else if (seconds == 17)
-            {
-                self._currentMood = mood.DANGER
-                //self._emotion = SKTexture(imageNamed: "exclamation")
-            }
-            else
-            {
-                self._currentMood = mood.DANGER
-                //self._emotion = SKTexture(imageNamed: "exclamation")
-            }
-            
-            
-            
+//            if (seconds == 0)
+//            {
+//                self._currentMood = mood.HAPPY
+//                //    self._emotion = SKTexture(imageNamed: "happy")
+//            }
+//            else if (seconds == 5)
+//            {
+//                self._currentMood = mood.CONTENT
+//                //self._emotion = SKTexture(imageNamed: "content")
+//            }
+//            else if (seconds == 10)
+//            {
+//                self._currentMood = mood.IRRITATED
+//                //self._emotion = SKTexture(imageNamed: "irritated")
+//            }
+//            else if (seconds == 15)
+//            {
+//                self._currentMood = mood.MAD
+//                //self._emotion = SKTexture(imageNamed: "mad")
+//            }
+//            else if (seconds == 17)
+//            {
+//                self._currentMood = mood.DANGER
+//                //self._emotion = SKTexture(imageNamed: "exclamation")
+//            }
+//            else
+//            {
+//                self._currentMood = mood.DANGER
+//                //self._emotion = SKTexture(imageNamed: "exclamation")
+//            }
+//            
+//            
+//            
             //stop when they are told
             
             
@@ -170,21 +170,21 @@ class PeopleSprite : SKSpriteNode
             
             
             // mood timer
-            
-            if (seconds == 0)
-            {
-                self._currentMood = mood.HAPPY
-                //self._emotion = SKTexture(imageNamed: "happy")
-            }
-            else
-            {
-                self._currentMood = mood.DANGER
-                //self._emotion = SKTexture(imageNamed: "exclamation")
-            }
-            
-            
-            //do not stop at lights
-            
+//            
+//            if (seconds == 0)
+//            {
+//                self._currentMood = mood.HAPPY
+//                //self._emotion = SKTexture(imageNamed: "happy")
+//            }
+//            else
+//            {
+//                self._currentMood = mood.DANGER
+//                //self._emotion = SKTexture(imageNamed: "exclamation")
+//            }
+//            
+//            
+//            //do not stop at lights
+//            
             
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
@@ -198,35 +198,35 @@ class PeopleSprite : SKSpriteNode
             // mood timer
             
             
-            if (seconds ==  0)
-            {
-                self._currentMood = mood.HAPPY
-                // self._emotion = SKTexture(imageNamed: "happy")
-            }
-            else if (seconds ==  5)
-            {
-                self._currentMood = mood.IRRITATED
-                //self._emotion = SKTexture(imageNamed: "irritated")
-            }
-                
-            else if (seconds == 10)
-            {
-                self._currentMood = mood.MAD
-                //self._emotion = SKTexture(imageNamed: "mad")
-            }
-            else if (seconds ==  12)
-            {
-                self._currentMood = mood.DANGER
-                //self._emotion = SKTexture(imageNamed: "exclamation")
-            }
-            else
-            {
-                self._currentMood = mood.DANGER
-            }
-            
-            
-            
-            
+//            if (seconds ==  0)
+//            {
+//                self._currentMood = mood.HAPPY
+//                // self._emotion = SKTexture(imageNamed: "happy")
+//            }
+//            else if (seconds ==  5)
+//            {
+//                self._currentMood = mood.IRRITATED
+//                //self._emotion = SKTexture(imageNamed: "irritated")
+//            }
+//                
+//            else if (seconds == 10)
+//            {
+//                self._currentMood = mood.MAD
+//                //self._emotion = SKTexture(imageNamed: "mad")
+//            }
+//            else if (seconds ==  12)
+//            {
+//                self._currentMood = mood.DANGER
+//                //self._emotion = SKTexture(imageNamed: "exclamation")
+//            }
+//            else
+//            {
+//                self._currentMood = mood.DANGER
+//            }
+//            
+//            
+//            
+//            
             //get angry faster
             //cause traffic holdups when crossing
             
@@ -246,34 +246,34 @@ class PeopleSprite : SKSpriteNode
             
             // mood timer
             
-            if (seconds ==  0)
-            {
-                self._currentMood = mood.HAPPY
-                // self._emotion = SKTexture(imageNamed: "happy")
-            }
-            else if (seconds ==  10)
-            {
-                self._currentMood = mood.CONTENT
-                //self._emotion = SKTexture(imageNamed: "content")
-            }
-            else if (seconds == 15)
-            {
-                self._currentMood = mood.IRRITATED
-                //self._emotion = SKTexture(imageNamed: "irritated")
-            }
-            else if (seconds == 20)
-            {
-                self._currentMood = mood.MAD
-                //self._emotion = SKTexture(imageNamed: "mad")
-            }
-            else
-            {
-                self._currentMood = mood.MAD
-                //self._emotion = SKTexture(imageNamed: "mad")
-            }
-            
-            
-            
+//            if (seconds ==  0)
+//            {
+//                self._currentMood = mood.HAPPY
+//                // self._emotion = SKTexture(imageNamed: "happy")
+//            }
+//            else if (seconds ==  10)
+//            {
+//                self._currentMood = mood.CONTENT
+//                //self._emotion = SKTexture(imageNamed: "content")
+//            }
+//            else if (seconds == 15)
+//            {
+//                self._currentMood = mood.IRRITATED
+//                //self._emotion = SKTexture(imageNamed: "irritated")
+//            }
+//            else if (seconds == 20)
+//            {
+//                self._currentMood = mood.MAD
+//                //self._emotion = SKTexture(imageNamed: "mad")
+//            }
+//            else
+//            {
+//                self._currentMood = mood.MAD
+//                //self._emotion = SKTexture(imageNamed: "mad")
+//            }
+//            
+//            
+//            
             // take up more room on corner
             //more patient then others
             
@@ -290,7 +290,7 @@ class PeopleSprite : SKSpriteNode
         super.init(texture: _person, color: nil, size: self._size)
         
         
-        
+        self.setScale(CGFloat(2.0))
         //rotate the sprite to the correct direction
         
         //position the car in the middle of the road

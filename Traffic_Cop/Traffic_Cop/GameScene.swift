@@ -101,7 +101,7 @@ class GameScene: SKScene
         let spawn2 = SKAction.runBlock(){self.spawnPerson();}
         let wait2 = SKAction.waitForDuration(2)                     //SPAWN PEOPLE TIME !
         let spawnSequence2 = SKAction.sequence([spawn2, wait2])
-        spawnAction2 = SKAction.repeatActionForever(spawnSequence)
+        spawnAction2 = SKAction.repeatActionForever(spawnSequence2)
         
         
         
@@ -232,6 +232,7 @@ class GameScene: SKScene
         
         
         updateVehicles()
+        updatePeople()
 
         
     }
@@ -294,7 +295,7 @@ class GameScene: SKScene
     {
         if(vehicleArray.count < 10)
         {
-            var person = PeopleSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
+            var person = PeopleSprite(type: Int.randomNumberFrom(1...6), direction: peopleSpawns[Int.randomNumberFrom(0...peopleSpawns.count-1)])
             peopleArray.append(person)
             person.walk()
             addChild(person)
@@ -326,6 +327,31 @@ class GameScene: SKScene
             }
         }
         
+    }
+    
+    func updatePeople()
+    {
+        func atIntersection(rect: CGRect) -> Bool
+        {
+            for Cw in crossWArray
+            {
+                if rect.contains(Cw.rect){return true}
+            }
+            return false
+        }
+        
+        for(var i = 0; i < peopleArray.count; i++)
+        {
+            peopleArray[i].update()
+            
+            if(atIntersection(peopleArray[i].frame)){}      //RECT CHECK
+            
+            if(peopleArray[i].isDone(playableRect))
+            {
+                peopleArray[i].removeFromParent()
+                peopleArray.removeAtIndex(i)
+            }
+        }
     }
     
     func deSelectCars()
