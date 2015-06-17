@@ -26,6 +26,8 @@ class GameScene: SKScene
     var spawnsArray : [SpawnPoint]
     var crossWArray : [Crosswalk]
     var vehicleArray: [CarSprite]
+ 
+    
     var path        = CGPathCreateMutable()
     var spawnAction = SKAction()
     var timerCount  = CGFloat()
@@ -47,6 +49,7 @@ class GameScene: SKScene
         glowSpawns      = []
         gotoPoints      = []
         vehicleArray    = []
+      
         map             = Map(lvl: 4)
         roadArray       = map.getRoads()
         spawnsArray     = map.getSpawns()
@@ -85,7 +88,7 @@ class GameScene: SKScene
       
         
         //SET ACTIONS
-        let spawn = SKAction.runBlock(){self.spawnVehicle()}
+        let spawn = SKAction.runBlock(){self.spawnVehicle();}
         let wait2 = SKAction.waitForDuration(1)                     //SPAWN TIME !
         let spawnSequence = SKAction.sequence([spawn, wait2])
         spawnAction = SKAction.repeatActionForever(spawnSequence)
@@ -278,6 +281,7 @@ class GameScene: SKScene
        
     }
     
+ 
     func updateVehicles()
     {
         func atIntersection(rect: CGRect) -> Bool
@@ -303,7 +307,7 @@ class GameScene: SKScene
         }
         
     }
-
+    
     func deSelectCars()
     {
         for car in vehicleArray

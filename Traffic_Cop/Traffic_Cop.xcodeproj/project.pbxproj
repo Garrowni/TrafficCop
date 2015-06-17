@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05E39AD71B31CD9A00D0F164 /* people.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39AD61B31CD9A00D0F164 /* people.swift */; };
+		05E39ADA1B31DB0100D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39AD91B31DB0100D0F164 /* peopleSprite.swift */; };
+		05E39ADB1B31DB0100D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39AD91B31DB0100D0F164 /* peopleSprite.swift */; };
 		08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
 		08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
 		08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F71B2CE5B900DC56F8 /* Settings.swift */; };
@@ -215,7 +216,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05E39AD61B31CD9A00D0F164 /* people.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = people.swift; sourceTree = "<group>"; };
+		05E39AD91B31DB0100D0F164 /* peopleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = peopleSprite.swift; sourceTree = "<group>"; };
 		08C464F41B2CCA1300DC56F8 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		08C464F71B2CE5B900DC56F8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlowBox.swift; sourceTree = "<group>"; };
@@ -630,7 +631,7 @@
 				7DD850741B28ADEB00C47FD7 /* TrafficCop-Bridging-Header.h */,
 				7DE146661B223F4F005DB874 /* CarSprite.swift */,
 				08E123D61B26689E00B2127F /* MyUtils.swift */,
-				05E39AD61B31CD9A00D0F164 /* people.swift */,
+				05E39AD91B31DB0100D0F164 /* peopleSprite.swift */,
 				08D515991B28BAB200E5289B /* DrawText.swift */,
 				7DD881D51B28C5CF00C47FD7 /* TileMapLayer.swift */,
 				08D9F3E61B29F8BB00FDA871 /* Button.swift */,
@@ -1029,6 +1030,7 @@
 				08FC6D361B2888EA004F4824 /* GameScene.swift in Sources */,
 				08D9F3E81B29F8C100FDA871 /* Button.swift in Sources */,
 				08FC6D341B2888EA004F4824 /* MyUtils.swift in Sources */,
+				05E39ADB1B31DB0100D0F164 /* peopleSprite.swift in Sources */,
 				08D9710A1B2B44F100F44180 /* LevelScreen.swift in Sources */,
 				08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */,
 				08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */,
@@ -1052,6 +1054,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */,
+				05E39ADA1B31DB0100D0F164 /* peopleSprite.swift in Sources */,
 				7DE146471B223E95005DB874 /* GameScene.swift in Sources */,
 				08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */,
 				08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */,
@@ -1065,7 +1068,6 @@
 				08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */,
 				7DE146491B223E95005DB874 /* GameViewController.swift in Sources */,
 				08C464FB1B2F0F7900DC56F8 /* GlowBox.swift in Sources */,
-				05E39AD71B31CD9A00D0F164 /* people.swift in Sources */,
 				08E3B3421B2FBB0D0074DC3E /* Clock.swift in Sources */,
 				08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */,
 				7DD881D61B28C5CF00C47FD7 /* TileMapLayer.swift in Sources */,
