@@ -35,7 +35,7 @@ class CarSprite : SKSpriteNode
     var _type : Int
     var _textures : [SKTexture] = []
     var _size : CGSize
-    var _state : State = State.STOPPED
+    var _state : State = State.DRIVING
     var _isSelected : Bool = false
     
   
@@ -100,22 +100,27 @@ class CarSprite : SKSpriteNode
             self._dir = Direction.NORTH
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y - self._size.height
+            self.zRotation = CGFloat(M_PI_2 * 3)
         case 1:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
+            self.zRotation = 0
         case 2:
             self._dir = Direction.EAST
             self._spawn.x = direction.pos.x - self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
+            self.zRotation = CGFloat(M_PI_2 * 2)
         case 3:
             self._dir = Direction.SOUTH
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y + self._size.height
+            self.zRotation = CGFloat(M_PI_2)
         default:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.height
             self._spawn.y = direction.pos.y - self._size.width/2
+            self.zRotation = 0
         }
 
     }
@@ -128,25 +133,7 @@ class CarSprite : SKSpriteNode
     func update()
     {
     
-        
-        switch(self._dir)
-        {
-        //rotate the sprite to the correct direction
-        case .NORTH:
-            self.zRotation = CGFloat(M_PI_2 * 3)
-        case .WEST:
-            self.zRotation = 0
-        case .EAST:
-            self.zRotation = CGFloat(M_PI_2 * 2)
-        case .SOUTH:
-            self.zRotation = CGFloat(M_PI_2)
-        default:
-            self.zRotation = 0
-            
-        }
-        
-        
-     
+        self._currPos = self.position
         
         if self._state == State.DRIVING
         {
@@ -165,15 +152,15 @@ class CarSprite : SKSpriteNode
        self.position = self._currPos
     } 
 
-    
     func turnRight(path : CGPath)
     {
+        
         self._turnCount++
         self._state = State.TURNING
         
         let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
         let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 0.85)
-        
+       
         
         
         self.runAction(SKAction.group([
@@ -195,14 +182,49 @@ class CarSprite : SKSpriteNode
         default:
             self._dir = .WEST
             
+         
         }
         
     }
     
     
     
-    func turnLeft()
+    func turnLeft(path : CGPath)
     {
+        
+       
+            self._turnCount++
+            self._state = State.TURNING
+            
+            let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
+            let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 0.85)
+            
+            
+            
+            self.runAction(SKAction.group([
+                action,
+                action2
+                ]))
+            
+            
+            switch(self._dir)
+            {
+            case .NORTH:
+                self._dir = .WEST
+            case .EAST:
+                self._dir = .NORTH
+            case .WEST:
+                self._dir = .SOUTH
+            case .SOUTH:
+                self._dir = .EAST
+            default:
+                self._dir = .WEST
+                
+                
+            }
+            
+        
+        
         
     }
     
@@ -213,7 +235,11 @@ class CarSprite : SKSpriteNode
     
     func goStraight()
     {
-        self._state = State.DRIVING
+        if(self._state == .STOPPED)
+        {
+            self._state = State.DRIVING
+            self._turnCount++
+        }
         
         if self._currSpeed != self._MAXSPEED
         {
