@@ -32,7 +32,6 @@ class GameScene: SKScene
     var crossWArray : [Crosswalk]
     var vehicleArray: [CarSprite]
     var peopleArray : [PeopleSprite]
-    var roadsOnSide : [Road]
     var chooseRoads : [Road]
  
     
@@ -61,7 +60,6 @@ class GameScene: SKScene
         gotoPoints      = []
         vehicleArray    = []
         peopleArray     = []
-        roadsOnSide     = []
         chooseRoads     = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
         map             = Map(lvl: 4)
@@ -459,17 +457,15 @@ class GameScene: SKScene
         
             if(carSelected)
             {
-                for road in roadArray
+                for theRoad in chooseRoads
                 {
-                    if(road.rect.contains(location))
+                    if(theRoad.rect.contains(location))
                     {
-                        for car in vehicleArray
+                        for theCar in vehicleArray
                         {
+                            if (theCar._isSelected){self.drawDrivePath(theCar, road: theRoad); break;}
                         }
-                        //MAKE OUR TURN HANDLE THE EXECUTION
-                        CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
-                        CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
-                        
+                        break
                     }
                 }
                 
@@ -532,8 +528,8 @@ class GameScene: SKScene
                     
                     for road in self.map.roadArray
                     {
-                        if road.Side == roadSide {self.roadsOnSide.append(road)}    //SAME SIDE ROADS..Throw em in an array
-                        else{self.chooseRoads.append(road)}                         //ROADS NOT ON SAME SIDE
+                        if road.Side == roadSide {}                                 //SAME SIDE ROADS..DO Natta
+                        else{self.chooseRoads.append(road)}                         //ROADS NOT ON SAME SIDE ... array em up
                     }
                     
                     for road in self.glowRoads
@@ -574,8 +570,7 @@ class GameScene: SKScene
         let block = SKAction.runBlock{
             for road in self.glowRoads
             {
-                self.roadsOnSide.removeAll(keepCapacity: false)
-                self.chooseRoads.removeAll(keepCapacity: false)
+                self.chooseRoads.removeAll(keepCapacity: false) //CLEAR ALL ROADS THAT COULD BE CHOSEN
                 road.getOL().removeFromParent()
             }
         }
@@ -589,8 +584,37 @@ class GameScene: SKScene
     
     func drawDrivePath(car: CarSprite, road: Road)
     {
+        CGPathMoveToPoint(path, nil , car.position.x, car.position.y)
         
+        let midPoint = CGPoint(x: (car.position.x+road.gotoPoint.x)/2, y: (car.position.y+road.gotoPoint.y)/2)
+      
+        if(road.Side == "left" || road.Side == "right")
+        {
+//            CGPathAddArcToPoint(path,nil, <#x1: CGFloat#>, <#y1: CGFloat#>, road.gotoPoint.x, road.gotoPoint.y, radius: CGFloat.())
+           
+            CGPathAddCurveToPoint(path, nil,
+                size.width/2, CGFloat(TW*7),
+                midPoint.x, midPoint.y,
+                road.gotoPoint.x, road.gotoPoint.y);
+        }
+        if(road.Side == "top" || road.Side == "bottom")
+        {
+            CGPathAddCurveToPoint(path, nil,
+                size.width/2, CGFloat(TW*7),
+                midPoint.x, midPoint.y,
+                road.gotoPoint.x, road.gotoPoint.y);
+        }
+    
         
+        let thePath = SKShapeNode()
+        thePath.path = path
+        thePath.strokeColor = SKColor.cyanColor()
+        thePath.name = "path"
+        addChild(thePath)
+        
+//        //MAKE OUR TURN HANDLE THE EXECUTION
+//        CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
+//        CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
     }
     
 }

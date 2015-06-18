@@ -127,6 +127,13 @@ func == (left : CGPoint, right : CGPoint) -> Bool
 
 extension CGPoint
 {
+    func lengthBetween(a: CGPoint, b: CGPoint) ->CGFloat
+    {
+        var x = pow((a.x-b.x), CGFloat(2.0))
+        var y = pow((a.y-b.y), CGFloat(2.0))
+        return sqrt(x + y)
+    }
+    
     func length() -> CGFloat
     {
         return sqrt(x*x + y*y)
