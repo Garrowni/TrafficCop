@@ -21,6 +21,7 @@ class GameScene: SKScene
     let clock       : Clock
     let pauseButt   : Button
     let pausedPopUp : Button
+    let quitButt    : Button
     let soundButt   : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
