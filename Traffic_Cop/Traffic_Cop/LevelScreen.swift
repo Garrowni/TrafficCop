@@ -215,8 +215,8 @@ class LevelScreen: SKScene
         let block = SKAction.runBlock
         {
             let myScene = MainMenuScreen(size: self.size)
-            let myScene2 = GameScene(size: self.size)
-        
+            let myScene2 = GameScene.level(lvl)
+    
             myScene.scaleMode = self.scaleMode
             let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
             

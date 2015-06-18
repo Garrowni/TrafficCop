@@ -16,7 +16,8 @@ class GameScene: SKScene
     let playableRect: CGRect                                            //GAME BOUNDS
     let TW                              = 128                           //TILEWIDTH
     let level       : Int               = 0
-    let map         : Map
+    var map         : Map?
+    var tileMap     : JSTileMap?
     let clock       : Clock
     let pauseButt   : Button
     let pausedPopUp : Button
@@ -26,15 +27,15 @@ class GameScene: SKScene
     var selection   : GlowBox
     var glowSpawns  : [GlowCircle]
     var gotoPoints  : [GlowCircle]
-    var roadArray   : [Road]
-    var spawnsArray : [SpawnPoint]
-    var peopleSpawns: [SpawnPoint]
-    var crossWArray : [Crosswalk]
+    var roadArray   : [Road]?
+    var spawnsArray : [SpawnPoint]?
+    var peopleSpawns: [SpawnPoint]?
+    var crossWArray : [Crosswalk]?
     var vehicleArray: [CarSprite]
-    var peopleArray: [PeopleSprite]
-    var feelsArray: [Feels]
+    var peopleArray : [PeopleSprite]
+    var feelsArray  : [Feels]
     var chooseRoads : [Road]
- 
+    var currentLevel: Int = 0
     
     var path            = CGPathCreateMutable()
     var spawnAction     = SKAction()
@@ -49,7 +50,8 @@ class GameScene: SKScene
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
-
+        
+        
         let maxAspectRatio:CGFloat = 9.0/16.0
         let playableHeight = size.width / maxAspectRatio
         let playableMargin = (size.height-playableHeight)/2.0
@@ -60,15 +62,11 @@ class GameScene: SKScene
         glowSpawns      = []
         gotoPoints      = []
         vehicleArray    = []
-        peopleArray    = []
-        feelsArray = []
+        peopleArray     = []
+        feelsArray      = []
         chooseRoads     = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
-        map             = Map(lvl: 4)
-        roadArray       = map.getRoads()
-        spawnsArray     = map.getSpawns()
-        crossWArray     = map.getCrossWalks()
-        peopleSpawns    = map.getPeopleSpawns()
+
         timerCount      = CGFloat(0.0)
         timePassed      = 0
         carSelected     = false
@@ -84,31 +82,15 @@ class GameScene: SKScene
         pausedPopUp     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2), size: CGSize(width: Int(size.width-32), height: TW*9)), roundCorner: 70, text: pausedLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 8, ZoomIn: true, Bulge: true, glowBulge: true)
         soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*14), size: CGSize(width: 128, height: 128)), roundCorner: 64, text: soundLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 2, glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
 
-        //SET GLOW ROADS
-        for road in roadArray
-        {
-            glowRoads.append(GlowBox(pos: road.rect, roundCorner: 64, OLcolor: "green", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
-        }
-        for cw in crossWArray
-        {
-            glowCWs.append(GlowBox(pos: cw.rect, roundCorner: 40, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
-        }
-        for spawn in peopleSpawns
-        {
-            glowSpawns.append(GlowCircle(pos: spawn.pos, radius: 20, OLcolor: "green", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
-        }
-        
-        for road in roadArray
-        {
-            gotoPoints.append(GlowCircle(pos: road.gotoPoint, radius: 20, OLcolor: "blue", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
-        }
+
         
         
         
 
         super.init(size: size)
         scene?.scaleMode = .AspectFit
-      
+       
+        
         
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle();}
@@ -120,11 +102,6 @@ class GameScene: SKScene
         let wait2 = SKAction.waitForDuration(2)                     //SPAWN PEOPLE TIME !
         let spawnSequence2 = SKAction.sequence([spawn2, wait2])
         spawnAction2 = SKAction.repeatActionForever(spawnSequence2)
-        
-        
-        
-        
- 
         
     }
 
@@ -139,6 +116,7 @@ class GameScene: SKScene
     //******************************************SCENE INITIALIZATION******************************
     override func didMoveToView(view: SKView)
     {
+         startGame()
         //let angle = 1.57079633 * 3
         //car.position = car._spawn
         //car.anchorPoint = CGPointZero
@@ -146,15 +124,6 @@ class GameScene: SKScene
        // car.runAction(action)
         
    
-        var tileMap: JSTileMap?
-        
-        tileMap = JSTileMap(named: "level4v2.tmx")
-        
-        if tileMap != nil
-        {
-                self.addChild(tileMap!)
-        }
-        
         
 
         //WAIT 1 SEC BEFORE STARTING UP THE SPAWN ACTIONS
@@ -318,7 +287,7 @@ class GameScene: SKScene
         {
         if(vehicleArray.count < 10)
         {
-            var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray[Int.randomNumberFrom(0...spawnsArray.count-1)])
+            var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![Int.randomNumberFrom(0...spawnsArray!.count-1)])
             vehicleArray.append(car)
             car.drive()
             
@@ -334,7 +303,7 @@ class GameScene: SKScene
         {
         if(peopleArray.count < 20)
         {
-            var person = PeopleSprite(type: Int.randomNumberFrom(1...4), direction: peopleSpawns[Int.randomNumberFrom(0...peopleSpawns.count-1)])
+            var person = PeopleSprite(type: Int.randomNumberFrom(1...4), direction: peopleSpawns![Int.randomNumberFrom(0...peopleSpawns!.count-1)])
             peopleArray.append(person)
             person.walk()
             addChild(person)
@@ -346,7 +315,7 @@ class GameScene: SKScene
     {
         func atIntersection(pos: CGPoint) -> Bool
         {
-            for Cw in crossWArray
+            for Cw in crossWArray!
             {
                 if Cw.rect.contains(CGPoint(x: pos.x-80, y: pos.y-80)) || Cw.rect.contains(CGPoint(x: pos.x+80, y: pos.y+80)) ||
                     Cw.rect.contains(CGPoint(x: pos.x-80, y: pos.y+80)) || Cw.rect.contains(CGPoint(x: pos.x+80, y: pos.y-80))
@@ -384,7 +353,7 @@ class GameScene: SKScene
     {
         func atIntersection(pos: CGPoint ) -> Bool
         {
-            for Cw in crossWArray
+            for Cw in crossWArray!
             {
                 if Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y-63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y+63.5)) ||
                     Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y+63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y-63.5))
@@ -540,13 +509,13 @@ class GameScene: SKScene
     
     func illuminateRoads(car : CarSprite)
     {
-            var carOn : Road = map.getCurRoad(car.position)
+            var carOn : Road = map!.getCurRoad(car.position)
             
             let transition = SKAction.group([SKAction.runBlock()
                 {
                     var roadSide = carOn.Side
                     
-                    for road in self.map.roadArray
+                    for road in self.map!.roadArray
                     {
                         if road.Side == roadSide {}                                 //SAME SIDE ROADS..DO Natta
                         else{self.chooseRoads.append(road)}                         //ROADS NOT ON SAME SIDE ... array em up
@@ -686,7 +655,7 @@ class GameScene: SKScene
                 car.goStraight()
             case "top":
                 car.turnRight(path)
-            case "right":
+            case "bottom":
                 car.turnLeft(path)
             default:
                 car.goStraight()
@@ -697,4 +666,66 @@ class GameScene: SKScene
         
         
     }
+    
+    
+    func startGame()
+    {
+        map = Map(lvl: currentLevel)
+        switch(currentLevel)
+        {
+        case 1: tileMap = JSTileMap(named: "level1v2.tmx")
+        case 2: tileMap = JSTileMap(named: "level2v2.tmx")
+        case 3: tileMap = JSTileMap(named: "level3v2.tmx")
+        case 4: tileMap = JSTileMap(named: "level4v2.tmx")
+        default: tileMap = JSTileMap(named: "level1v2.tmx"); println("error in the level assigning !")
+        }
+        
+        if tileMap != nil
+        {
+            self.addChild(tileMap!)
+        }
+        
+        roadArray       = map!.getRoads()
+        spawnsArray     = map!.getSpawns()
+        crossWArray     = map!.getCrossWalks()
+        peopleSpawns    = map!.getPeopleSpawns()
+        
+        
+        //SET GLOW ROADS
+        for road in roadArray!
+        {
+            glowRoads.append(GlowBox(pos: road.rect, roundCorner: 64, OLcolor: "green", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
+        for cw in crossWArray!
+        {
+            glowCWs.append(GlowBox(pos: cw.rect, roundCorner: 40, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
+        for spawn in peopleSpawns!
+        {
+            glowSpawns.append(GlowCircle(pos: spawn.pos, radius: 20, OLcolor: "green", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
+        
+        for road in roadArray!
+        {
+            gotoPoints.append(GlowCircle(pos: road.gotoPoint, radius: 20, OLcolor: "blue", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
+        
+    }
+    
+    func newGame()
+    {
+        view!.presentScene(GameScene.level(currentLevel))
+    }
+    
+    class func level(levelNum: Int) -> GameScene?
+    {
+        var scene = GameScene(size: CGSize(width: 1024, height: 1920))
+        scene.currentLevel = levelNum
+        scene.scaleMode = .AspectFit
+        return scene
+    }
+
+    
+    
 }
+
