@@ -93,16 +93,16 @@ class PeopleSprite : SKSpriteNode
         case 1:
             
             self._person = SKTexture(imageNamed: "lady")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 4
             self._currentMood = mood.HAPPY
         case 2:
             self._person = SKTexture(imageNamed: "LadyBaby")
-            self._MAXSPEED = 4
+            self._MAXSPEED = 3
             self._size = CGSize(width: 64, height: 50)
             self._currentMood = mood.HAPPY
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 2
             self._currentMood = mood.HAPPY
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
