@@ -376,12 +376,12 @@ class GameScene: SKScene
     
     func updatePeople()
     {
-        func atIntersection(pos: CGPoint) -> Bool
+        func atIntersection(pos: CGPoint ) -> Bool
         {
             for Cw in crossWArray
             {
-                if Cw.rect.contains(CGPoint(x: pos.x-30, y: pos.y-30)) || Cw.rect.contains(CGPoint(x: pos.x+30, y: pos.y+30)) ||
-                    Cw.rect.contains(CGPoint(x: pos.x-30, y: pos.y+30)) || Cw.rect.contains(CGPoint(x: pos.x+30, y: pos.y-30))
+                if Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y-63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y+63.5)) ||
+                    Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y+63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y-63.5))
                 {return true}
             }
             return false
