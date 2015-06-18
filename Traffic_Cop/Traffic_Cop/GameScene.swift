@@ -32,16 +32,19 @@ class GameScene: SKScene
     var crossWArray : [Crosswalk]
     var vehicleArray: [CarSprite]
     var peopleArray : [PeopleSprite]
+    var roadsOnSide : [Road]
+    var chooseRoads : [Road]
  
     
-    var path        = CGPathCreateMutable()
-    var spawnAction = SKAction()
-    var spawnAction2 = SKAction()
-    var timerCount  = CGFloat()
-    var timePassed  : Int
-    var carSelected : Bool
-    var roadSelected : Bool
-    var pausedOn     : Bool
+    var path            = CGPathCreateMutable()
+    var spawnAction     = SKAction()
+    var spawnAction2    = SKAction()
+    var timerCount      = CGFloat()
+    var timePassed      : Int
+    var carSelected     : Bool
+    var roadSelected    : Bool
+    var pausedOn        : Bool
+    var deSelecting     : Bool
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
@@ -58,6 +61,8 @@ class GameScene: SKScene
         gotoPoints      = []
         vehicleArray    = []
         peopleArray     = []
+        roadsOnSide     = []
+        chooseRoads     = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
         map             = Map(lvl: 4)
         roadArray       = map.getRoads()
@@ -69,6 +74,7 @@ class GameScene: SKScene
         carSelected     = false
         roadSelected    = false
         pausedOn        = false
+        deSelecting     = false
         clock           = Clock(playableR: playableRect, countFrom: 300)
         
         var pauseLabel  = Text(pos: CGPoint(x: size.width/2, y:0),    says: "ll",       fontSize: 70, font: "font2", color: "green",  align: "center")
@@ -81,11 +87,11 @@ class GameScene: SKScene
         //SET GLOW ROADS
         for road in roadArray
         {
-            glowRoads.append(GlowBox(pos: road.rect, roundCorner: 5, OLcolor: "red", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+            glowRoads.append(GlowBox(pos: road.rect, roundCorner: 64, OLcolor: "green", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
         for cw in crossWArray
         {
-            glowCWs.append(GlowBox(pos: cw.rect, roundCorner: 5, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+            glowCWs.append(GlowBox(pos: cw.rect, roundCorner: 40, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
         for spawn in peopleSpawns
         {
@@ -150,11 +156,17 @@ class GameScene: SKScene
         }
         
         
-        //RUN ACTIONS
-        runAction(spawnAction)
-        runAction(spawnAction2)
-        
-        
+
+        //WAIT 1 SEC BEFORE STARTING UP THE SPAWN ACTIONS
+        let transition = SKAction.runBlock()
+            {
+                //RUN ACTIONS
+                self.runAction(self.spawnAction)
+                self.runAction(self.spawnAction2)
+            }
+        let wait = SKAction.waitForDuration(1)
+        let transSequence = SKAction.sequence([wait,transition])
+        self.runAction(transSequence)
         
   
         
@@ -172,6 +184,10 @@ class GameScene: SKScene
         {
             addChild(goto.getOL())
         }
+    
+        clock.clockButt.getButtBG().zPosition = 100
+        clock.clockButt.getButtOL().zPosition = 100
+        clock.clockLabel.get().zPosition = 100
         
         addChild(clock.clockButt.getButtBG())
         addChild(clock.clockButt.getButtOL())
@@ -396,10 +412,11 @@ class GameScene: SKScene
       
         let transition = SKAction.group([SKAction.runBlock()
             {
+                self.deSelecting = true
                 self.deIlluminateRoads()
                 self.selection.zoomOUT()
             }])
-        let block = SKAction.runBlock(){self.selection.OL.removeFromParent()}
+        let block = SKAction.runBlock(){self.selection.OL.removeFromParent(); self.deSelecting = false}
         let wait = SKAction.waitForDuration(0.3)
         let transSequence = SKAction.sequence([transition,wait,block])
         self.runAction(transSequence)
@@ -425,7 +442,7 @@ class GameScene: SKScene
             }
         }
         
-        if(!pausedOn)
+        if(!pausedOn && !deSelecting)
         {
             if(pauseButt.origRect.contains(location))
             {
@@ -446,6 +463,9 @@ class GameScene: SKScene
                 {
                     if(road.rect.contains(location))
                     {
+                        for car in vehicleArray
+                        {
+                        }
                         //MAKE OUR TURN HANDLE THE EXECUTION
                         CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
                         CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
@@ -508,16 +528,24 @@ class GameScene: SKScene
             
             let transition = SKAction.group([SKAction.runBlock()
                 {
+                    var roadSide = carOn.Side
+                    
+                    for road in self.map.roadArray
+                    {
+                        if road.Side == roadSide {self.roadsOnSide.append(road)}    //SAME SIDE ROADS..Throw em in an array
+                        else{self.chooseRoads.append(road)}                         //ROADS NOT ON SAME SIDE
+                    }
+                    
                     for road in self.glowRoads
                     {
-                        if road.origRect.contains(carOn.rect)
+                        for theRoad in self.chooseRoads
                         {
-                            //NOTHING
-                        }
-                        else
-                        {
-                            self.addChild(road.getOL())
-                            road.zoomIN()
+                            if road.origRect.contains(theRoad.rect)
+                            {
+                                self.addChild(road.getOL())
+                                road.zoomIN()
+                                break;
+                            }
                         }
                     }
                 }])
@@ -546,6 +574,8 @@ class GameScene: SKScene
         let block = SKAction.runBlock{
             for road in self.glowRoads
             {
+                self.roadsOnSide.removeAll(keepCapacity: false)
+                self.chooseRoads.removeAll(keepCapacity: false)
                 road.getOL().removeFromParent()
             }
         }
@@ -555,4 +585,12 @@ class GameScene: SKScene
         
    
     }
+    
+    
+    func drawDrivePath(car: CarSprite, road: Road)
+    {
+        
+        
+    }
+    
 }

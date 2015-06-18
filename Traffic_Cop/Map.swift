@@ -107,64 +107,64 @@ class Map
         switch (level)
         {
         case 1:
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*2, y: TW*8, width: TW, height: TW*7)))//TOP
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW*7)))//TOP2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*2, y: TW*0, width: TW, height: TW*4)))//BOTTOM
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4)))//BOTTOM2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*5, y: TW*6, width: TW*3, height: TW)))//RIGHT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*5, y: TW*5, width: TW*3, height: TW)))//RIGHT2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*2, y: TW*8, width: TW, height: TW*7), side: "top"))//TOP
+            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW*7), side: "top"))//TOP2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*2, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM
+            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*5, y: TW*6, width: TW*3, height: TW), side: "right"))//RIGHT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*5, y: TW*5, width: TW*3, height: TW), side: "right"))//RIGHT2
         case 2:
-            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW*7)))//TOP
-            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*4, y: TW*8, width: TW, height: TW*7)))//TOP2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4)))//BOTTOM
-            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*4, y: TW*0, width: TW, height: TW*4)))//BOTTOM2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*6, y: TW*6, width: TW*2, height: TW)))//RIGHT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*6, y: TW*5, width: TW*2, height: TW)))//RIGHT2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW*2, height: TW)))//LEFT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW*2, height: TW)))//LEFT2
-
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW*7), side: "top"))//TOP
+            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*4, y: TW*8, width: TW, height: TW*7), side: "top"))//TOP2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM
+            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*4, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*6, y: TW*6, width: TW*2, height: TW), side: "right"))//RIGHT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*6, y: TW*5, width: TW*2, height: TW), side: "right"))//RIGHT2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW*2, height: TW), side: "left"))//LEFT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW*2, height: TW), side: "left"))//LEFT2
+            
         case 3:
-            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*3, y: TW*9, width: TW, height: TW*6)))//TOP
-            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*4, y: TW*9, width: TW, height: TW*6)))//TOP2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*5, y: TW*9, width: TW, height: TW*6)))//TOP3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*6, y: TW*9, width: TW, height: TW*6)))//TOP4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*3, y: TW*9, width: TW, height: TW*6), side: "top"))//TOP
+            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*4, y: TW*9, width: TW, height: TW*6), side: "top"))//TOP2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*5, y: TW*9, width: TW, height: TW*6), side: "top"))//TOP3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*9+TW/2), roadRect: CGRect(x: TW*6, y: TW*9, width: TW, height: TW*6), side: "top"))//TOP4
             
-            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*3)))//BOTTOM
-            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*4, y: TW*0, width: TW, height: TW*3)))//BOTTOM2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*5, y: TW*0, width: TW, height: TW*3)))//BOTTOM3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*6, y: TW*0, width: TW, height: TW*3)))//BOTTOM4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*3), side: "bottom"))//BOTTOM
+            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*4, y: TW*0, width: TW, height: TW*3), side: "bottom"))//BOTTOM2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*5, y: TW*0, width: TW, height: TW*3), side: "bottom"))//BOTTOM3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*6+TW/2 ,y:TW*2+TW/2), roadRect: CGRect(x: TW*6, y: TW*0, width: TW, height: TW*3), side: "bottom"))//BOTTOM4
             
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*0, y: TW*7, width: TW*2, height: TW)))//LEFT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW*2, height: TW)))//LEFT2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW*2, height: TW)))//LEFT3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*4+TW/2), roadRect: CGRect(x: TW*0, y: TW*4, width: TW*2, height: TW)))//LEFT4
-
+            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*0, y: TW*7, width: TW*2, height: TW), side: "left"))//LEFT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW*2, height: TW), side: "left"))//LEFT2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW*2, height: TW), side: "left"))//LEFT3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*1+TW/2 ,y:TW*4+TW/2), roadRect: CGRect(x: TW*0, y: TW*4, width: TW*2, height: TW), side: "left"))//LEFT4
+            
         case 4:
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*2, y: TW*10, width: TW, height: TW*5)))//TOP
-            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*3, y: TW*10, width: TW, height: TW*5)))//TOP2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*4, y: TW*10, width: TW, height: TW*5)))//TOP3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*5, y: TW*10, width: TW, height: TW*5)))//TOP4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*2, y: TW*10, width: TW, height: TW*5), side: "top"))//TOP
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*3, y: TW*10, width: TW, height: TW*5), side: "top"))//TOP2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*4, y: TW*10, width: TW, height: TW*5), side: "top"))//TOP3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*10+TW/2), roadRect: CGRect(x: TW*5, y: TW*10, width: TW, height: TW*5), side: "top"))//TOP4
             
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*2, y: TW*0, width: TW, height: TW*4)))//BOTTOM
-            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4)))//BOTTOM2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*4, y: TW*0, width: TW, height: TW*4)))//BOTTOM3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*5, y: TW*0, width: TW, height: TW*4)))//BOTTOM4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*2, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*4+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*4, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*5, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM4
             
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*7, y: TW*8, width: TW, height: TW)))//RIGHT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*7, y: TW*7, width: TW, height: TW)))//RIGHT2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*7, y: TW*6, width: TW, height: TW)))//RIGHT3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*7, y: TW*5, width: TW, height: TW)))//RIGHT4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*7, y: TW*8, width: TW, height: TW), side: "right"))//RIGHT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*7, y: TW*7, width: TW, height: TW), side: "right"))//RIGHT2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*7, y: TW*6, width: TW, height: TW), side: "right"))//RIGHT3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*7+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*7, y: TW*5, width: TW, height: TW), side: "right"))//RIGHT4
             
-            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*0, y: TW*8, width: TW, height: TW)))//LEFT
-            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*0, y: TW*7, width: TW, height: TW)))//LEFT2
-            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW, height: TW)))//LEFT3
-            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW, height: TW)))//LEFT4
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*0, y: TW*8, width: TW, height: TW), side: "left"))//LEFT
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*7+TW/2), roadRect: CGRect(x: TW*0, y: TW*7, width: TW, height: TW), side: "left"))//LEFT2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*0, y: TW*6, width: TW, height: TW), side: "left"))//LEFT3
+            self.roadArray.append(Road(goto: CGPoint(x:TW*0+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*0, y: TW*5, width: TW, height: TW), side: "left"))//LEFT4
             
         default:
-            self.roadArray.append(Road(goto: CGPoint(x:0 ,y:0), roadRect: CGRect(x:0, y:0, width: TW, height: TW)));println("Error in Setting Roads...Level Not compatible")
+            self.roadArray.append(Road(goto: CGPoint(x:0 ,y:0), roadRect: CGRect(x:0, y:0, width: TW, height: TW), side: "error")); println("Error in Setting Roads...Level Not compatible")
             
         }
-		
+        
 		//SET CROSSWALK RECTS
         switch (level)
         {
@@ -308,9 +308,11 @@ struct Road
 {
     var rect: CGRect
     var gotoPoint: CGPoint  //CENTER OF THE TILE CLOSEST TO THE CROSSWALK ..USED FOR TURNING CALCULATION
+    var Side : String
     
-    init(goto: CGPoint, roadRect: CGRect)
+    init(goto: CGPoint, roadRect: CGRect, side: String)
     {
+     Side       = side
      gotoPoint  = goto
      rect       = roadRect
     }
