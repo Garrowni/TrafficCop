@@ -603,24 +603,24 @@ class GameScene: SKScene
         CGPathMoveToPoint(path, nil , car.position.x, car.position.y)
         
         let midPoint = CGPoint(x: (car.position.x+road.gotoPoint.x)/2, y: (car.position.y+road.gotoPoint.y)/2)
-      
+        
         if(road.Side == "left" || road.Side == "right")
         {
-//            CGPathAddArcToPoint(path,nil, <#x1: CGFloat#>, <#y1: CGFloat#>, road.gotoPoint.x, road.gotoPoint.y, radius: CGFloat.())
-           
+            //            CGPathAddArcToPoint(path,nil, <#x1: CGFloat#>, <#y1: CGFloat#>, road.gotoPoint.x, road.gotoPoint.y, radius: CGFloat.())
+            
             CGPathAddCurveToPoint(path, nil,
-                size.width/2, CGFloat(TW*7),
-                midPoint.x, midPoint.y,
+                car.position.x, car.position.y,
+                playableRect.width/2, playableRect.height/2,
                 road.gotoPoint.x, road.gotoPoint.y);
         }
         if(road.Side == "top" || road.Side == "bottom")
         {
             CGPathAddCurveToPoint(path, nil,
-                size.width/2, CGFloat(TW*7),
-                midPoint.x, midPoint.y,
+                car.position.x, car.position.y,
+                playableRect.width/2, playableRect.height/2,
                 road.gotoPoint.x, road.gotoPoint.y);
         }
-    
+        
         
         let thePath = SKShapeNode()
         thePath.path = path
@@ -628,9 +628,69 @@ class GameScene: SKScene
         thePath.name = "path"
         addChild(thePath)
         
-//        //MAKE OUR TURN HANDLE THE EXECUTION
-//        CGPathMoveToPoint(path, nil, CGFloat(709), CGFloat(528))
-//        CGPathAddQuadCurveToPoint(path, nil,CGFloat(718), CGFloat(690), CGFloat(878), CGFloat(690))
+        //        //MAKE OUR TURN HANDLE THE EXECUTION
+        if car._dir == .NORTH
+        {
+            switch(road.Side)
+            {
+            case "top":
+                car.goStraight()
+            case "left":
+                car.turnLeft(path)
+            case "right":
+                car.turnRight(path)
+            default:
+                car.drive()
+                
+            }
+        }
+        else if car._dir == .SOUTH
+        {
+            switch(road.Side)
+            {
+            case "bottom":
+                car.goStraight()
+            case "left":
+                car.turnRight(path)
+            case "right":
+                car.turnLeft(path)
+            default:
+                car.drive()
+                
+            }
+        }
+        else if car._dir == .EAST
+        {
+            switch(road.Side)
+            {
+            case "right":
+                car.goStraight()
+            case "top":
+                car.turnLeft(path)
+            case "bottom":
+                car.turnRight(path)
+            default:
+                car.drive()
+                
+            }
+        }
+        else if car._dir == .WEST
+        {
+            switch(road.Side)
+            {
+            case "left":
+                car.goStraight()
+            case "top":
+                car.turnRight(path)
+            case "right":
+                car.turnLeft(path)
+            default:
+                car.goStraight()
+                
+            }
+        }
+        path = CGPathCreateMutable()
+        
+        
     }
-    
 }
