@@ -163,32 +163,14 @@ class PeopleSprite : SKSpriteNode
             
             
         case 2:
-            self._person = SKTexture(imageNamed:"littleGirl")
-            self._MAXSPEED = 5
+            self._person = SKTexture(imageNamed: "LadyBaby")
+            
+            self._MAXSPEED = 4
             // self._spawn = spawn
             
-            // self._size = CGSize(width: 32, height: 32)
+            self._size = CGSize(width: 64, height: 50)
             self._currentMood = mood.HAPPY
-            
-            
-            
-            // mood timer
-//            
-//            if (seconds == 0)
-//            {
-//                self._currentMood = mood.HAPPY
-//                //self._emotion = SKTexture(imageNamed: "happy")
-//            }
-//            else
-//            {
-//                self._currentMood = mood.DANGER
-//                //self._emotion = SKTexture(imageNamed: "exclamation")
-//            }
-//            
-//            
-//            //do not stop at lights
-//            
-            
+        
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
             self._MAXSPEED = 5
@@ -237,14 +219,33 @@ class PeopleSprite : SKSpriteNode
             
             
         case 4:
-            self._person = SKTexture(imageNamed: "LadyBaby")
+        
             
-            self._MAXSPEED = 4
+            self._person = SKTexture(imageNamed:"littleGirl")
+            self._MAXSPEED = 5
             // self._spawn = spawn
             
-            self._size = CGSize(width: 64, height: 50)
+            // self._size = CGSize(width: 32, height: 32)
             self._currentMood = mood.HAPPY
             
+            
+            
+            // mood timer
+            //
+            //            if (seconds == 0)
+            //            {
+            //                self._currentMood = mood.HAPPY
+            //                //self._emotion = SKTexture(imageNamed: "happy")
+            //            }
+            //            else
+            //            {
+            //                self._currentMood = mood.DANGER
+            //                //self._emotion = SKTexture(imageNamed: "exclamation")
+            //            }
+            //            
+            //            
+            //            //do not stop at lights
+            //            
             
             
             // mood timer
@@ -360,7 +361,7 @@ class PeopleSprite : SKSpriteNode
         
      
         
-        if ((self._type != 2 && (self._dir == Direction.EAST) && (self.position.x + self.size.width/2 >= 129*2)) && ((self.position.y >= 128*4 && self.position.y <= 128*6+64 )||(self.position.y >= 128*7+64 && self.position.y <= 128*9+64)))
+ /*       if ((self._type != 2 && (self._dir == Direction.EAST) && (self.position.x + self.size.width/2 >= 129*2)) && ((self.position.y >= 128*4 && self.position.y <= 128*6+64 )||(self.position.y >= 128*7+64 && self.position.y <= 128*9+64)))
         {
         self._currSpeed == 0
         stop()
@@ -381,7 +382,7 @@ class PeopleSprite : SKSpriteNode
             stop()
         }
         
-        
+        */
         
         
         if self._state == State.WALKING //inactive

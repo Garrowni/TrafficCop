@@ -31,7 +31,7 @@ class GameScene: SKScene
     var peopleSpawns: [SpawnPoint]
     var crossWArray : [Crosswalk]
     var vehicleArray: [CarSprite]
-    var peopleArray : [PeopleSprite]
+    var peopleArray: [PeopleSprite]
     var chooseRoads : [Road]
  
     
@@ -59,7 +59,7 @@ class GameScene: SKScene
         glowSpawns      = []
         gotoPoints      = []
         vehicleArray    = []
-        peopleArray     = []
+        peopleArray    = []
         chooseRoads     = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
         map             = Map(lvl: 4)
@@ -376,11 +376,13 @@ class GameScene: SKScene
     
     func updatePeople()
     {
-        func atIntersection(rect: CGRect) -> Bool
+        func atIntersection(pos: CGPoint) -> Bool
         {
             for Cw in crossWArray
             {
-                if rect.contains(Cw.rect){return true}
+                if Cw.rect.contains(CGPoint(x: pos.x-30, y: pos.y-30)) || Cw.rect.contains(CGPoint(x: pos.x+30, y: pos.y+30)) ||
+                    Cw.rect.contains(CGPoint(x: pos.x-30, y: pos.y+30)) || Cw.rect.contains(CGPoint(x: pos.x+30, y: pos.y-30))
+                {return true}
             }
             return false
         }
@@ -389,7 +391,18 @@ class GameScene: SKScene
         {
             peopleArray[i].update()
             
-            if(atIntersection(peopleArray[i].frame)){}      //RECT CHECK
+            if(atIntersection(peopleArray[i].position)){
+                if(peopleArray[i]._type == 4)
+                {
+                peopleArray[i].walk()
+                }
+                else
+                {
+                peopleArray[i].stop()
+                }
+            }
+            
+            //RECT CHECK
             
             if(peopleArray[i].isDone(playableRect))
             {
