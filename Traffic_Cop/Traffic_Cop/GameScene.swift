@@ -442,6 +442,10 @@ class GameScene: SKScene
                 addChild(pausedPopUp.getButtOL())
                 addChild(pausedPopUp.getLabel())
                 pausedPopUp.zoomIN()
+                for car in vehicleArray
+                {
+                    car.paused = true
+                }
             }
         
             if(carSelected)
@@ -505,6 +509,11 @@ class GameScene: SKScene
         }
         let transSequence = SKAction.sequence([transition,wait,block])
         self.runAction(transSequence)
+        
+        for car in vehicleArray
+        {
+            car.paused = false
+        }
     }
     
     func illuminateRoads(car : CarSprite)
