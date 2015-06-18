@@ -32,6 +32,7 @@ class GameScene: SKScene
     var crossWArray : [Crosswalk]
     var vehicleArray: [CarSprite]
     var peopleArray: [PeopleSprite]
+    var feelsArray: [Feels]
     var chooseRoads : [Road]
  
     
@@ -60,6 +61,7 @@ class GameScene: SKScene
         gotoPoints      = []
         vehicleArray    = []
         peopleArray    = []
+        feelsArray = []
         chooseRoads     = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
         map             = Map(lvl: 4)
@@ -399,6 +401,7 @@ class GameScene: SKScene
                 else
                 {
                 peopleArray[i].stop()
+                    //spawn feels
                 }
             }
             
