@@ -362,10 +362,14 @@ class GameScene: SKScene
         {
             vehicleArray[i].update()
             
-            if(atIntersection(vehicleArray[i].position))
+            if(atIntersection(vehicleArray[i].position) && vehicleArray[i]._turnCount == 0)
             {
                 vehicleArray[i].stop()
             }      //RECT CHECK
+            else
+            {
+                vehicleArray[i].drive()
+            }
             
             if(vehicleArray[i].isDone(playableRect))
             {
@@ -628,7 +632,7 @@ class GameScene: SKScene
         thePath.name = "path"
         addChild(thePath)
         
-        //        //MAKE OUR TURN HANDLE THE EXECUTION
+        //MAKE OUR TURN HANDLE THE EXECUTION
         if car._dir == .NORTH
         {
             switch(road.Side)
@@ -674,7 +678,7 @@ class GameScene: SKScene
                 
             }
         }
-        else if car._dir == .WEST
+        else
         {
             switch(road.Side)
             {
