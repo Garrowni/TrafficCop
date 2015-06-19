@@ -38,7 +38,8 @@ class PeopleSprite : SKSpriteNode
     }
       
 
-
+    var lastUpdateTime: NSTimeInterval  = 0
+    var dt: NSTimeInterval              = 0                             //DELTA TIME
     
     let _MAXSPEED : CGFloat
     var _dir : Direction = Direction.WEST
@@ -57,11 +58,9 @@ class PeopleSprite : SKSpriteNode
     var _glowCircle : GlowCircle
     var _currPos : CGPoint
     
-    
-    var startTime = NSTimeInterval()
-    
-    var timer:NSTimer = NSTimer()
-   
+
+    var timerCount      = CGFloat()
+    var timePassed      : Int
     
     
     init(type : Int , direction : SpawnPoint)
@@ -74,7 +73,8 @@ class PeopleSprite : SKSpriteNode
         self._glowCircle = GlowCircle(pos: self._spawn, radius: 20, OLcolor: "yellow", OLSize: 10, glowWidth: 40, ZoomIn: true, glowBulge: true, alpha: 0.5)
         self._currPos = _spawn
         self._type = type
-        
+        timerCount      = CGFloat(0.0)
+        timePassed      = 0
         
         switch(self._type)
         {
@@ -148,80 +148,170 @@ class PeopleSprite : SKSpriteNode
         default:
             self.zRotation = 0
             
+           /*
+                timerCount += CGFloat(dt*1000)
+                if(timerCount <= 1000 && self._state == State.STOPPED)
+                {
+                    //ONE SECOND HAS PASSED
+                    timerCount = 0
+                    timePassed++
+                    
+                }
+                if (self._type == 3 && timePassed == 10)
+                {
+                    self._currSpeed = 10
+                }
+           */
+
         }
         
         self.position = self._currPos
      
-        
         if self._state == State.WALKING //inactive
-        {
-            timer.invalidate()
-            goStraight()
+        {            goStraight()
         }
         else if self._state == State.STOPPED //active
         {
-            self._currSpeed = 0
-        }
+              self._currSpeed = 0
+                   }
         else if self._state == State.TURNING //inactive
         {
-            timer.invalidate()
+          
             
         }
     }
     
     
-   /* func pickDirection()
+    func pickDirection()
     {
-       // var _dir = Direction: Int.randomNumberFrom(0...Direction!.count-1)
-    //    if (self._dir == Direction.WEST)
+         //self._dir =  Int.randomNumberFrom(0...3)
+       if (self._dir == Direction.WEST)
         {
-         //choose random direction north south east
-            //exception only choose north or south
-            //exception only choose south or east
-            //exception only choose east or north
-                //exception only choose north
-                //exception only choose east
-                //exception only choose south
+            //if(/*if you can onlyc hoose east*/)
+            //{
+            //  self._dir == Direction.EAST)
+            //}
+            //else if(/*if you can onlyc hoose north*/)
+            //{
+            //  self._dir == Direction.NORTH)
+            //}
+            //else if(/*if you can onlyc hoose south*/)
+            //{
+            //  self._dir == Direction.SOUTH)
+            //}
+            //else if (/*you can choose north or south*/
+            //{
+            //  randomly select either North or SOUTH
+            //}
+            //else if (/*you can choose north or east*/
+            //{
+            //  randomly select either North or east
+            //}
+            //else if (/*you can choose east or south*/
+            //{
+            //  randomly select either EAST or south
+            //}
+            //else
+            //{
+            //  choose from north east or west
+            //}
         }
         if (self._dir == Direction.SOUTH)
         {
-        //choose random direction north east west
-            //exception only choose north or west
-            //exception only choose west or east
-            //exception only choose east or north
-            //exception only choose north
-            //exception only choose west
-          //  if(/*if you can onlyc hoose east*/)
-          //  {
-          //      self._dir == Direction.EAST)
-          //  }
-           // else
-          //  {
-            //choose from north east or west
-           // }
+          //if(/*if you can onlyc hoose east*/)
+            //{
+            //  self._dir == Direction.EAST)
+            //}
+            //else if(/*if you can onlyc hoose north*/)
+            //{
+            //  self._dir == Direction.NORTH)
+            //}
+            //else if(/*if you can onlyc hoose west*/)
+            //{
+            //  self._dir == Direction.WEST)
+            //}
+            //else if (/*you can choose north or west*/
+            //{
+            //  randomly select either North or west
+            //}
+            //else if (/*you can choose north or east*/
+            //{
+            //  randomly select either North or east
+            //}
+            //else if (/*you can choose east or west*/
+            //{
+            //  randomly select either EAST or west
+            //}
+            //else
+            //{
+            //  choose from north east or west
+            //}
         }
         if (self._dir == Direction.EAST)
         {
-        //choose random direction north south west
-            //exception only choose north or south
-            //exception only choose south or west
-            //exception only choose west or north
-            //exception only choose north
-            //exception only choose west
-            //exception only choose south
+            //if(/*if you can onlyc hoose south*/)
+            //{
+            //  self._dir == Direction.SOUTH)
+            //}
+            //else if(/*if you can onlyc hoose north*/)
+            //{
+            //  self._dir == Direction.NORTH)
+            //}
+            //else if(/*if you can onlyc hoose west*/)
+            //{
+            //  self._dir == Direction.WEST)
+            //}
+            //else if (/*you can choose north or west*/
+            //{ 
+            //  randomly select either North or west
+            //}
+            //else if (/*you can choose north or south*/
+            //{ 
+            //  randomly select either North or south
+            //}
+            //else if (/*you can choose south or west*/
+            //{ 
+            //  randomly select either SOUTH or west
+            //}
+            //else
+            //  {
+            //      choose from north south or west
+            //  }
         }
         if (self._dir == Direction.NORTH)
         {
-            //choose random direction south east west
-            //exception only choose west or south
-            //exception only choose south or east
-            //exception only choose east or west
-            //exception only choose east
-            //exception only choose west
-            //exception only choose south
+            
+            //if(/*if you can onlyc hoose east*/)
+            //{
+            //  self._dir == Direction.EAST)
+            //}
+            //else if(/*if you can onlyc hoose south*/)
+            //{
+            //  self._dir == Direction.SOUTH)
+            //}
+            //else if(/*if you can onlyc hoose west*/)
+            //{
+            //  self._dir == Direction.WEST)
+            //}
+            //else if (/*you can choose south or west*/
+            //{
+            //  randomly select either south or west
+            //}
+            //else if (/*you can choose south or east*/
+            //{ 
+            //  randomly select either south or east
+            //}
+            //else if (/*you can choose east or west*/
+            //{ 
+            //  randomly select either EAST or west
+            //}
+            //else
+            //{
+            //choose from south east or west
+            //}
         }
 
-   }*/
+   }
    
     
    
