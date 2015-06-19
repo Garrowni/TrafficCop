@@ -119,26 +119,14 @@
 		08D516441B28CB8100E5289B /* thought.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D515DA1B28CB8100E5289B /* thought.png */; };
 		08D74BE91B290D4C00E1C8BA /* burnstown_dam.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BC91B290D4C00E1C8BA /* burnstown_dam.otf */; };
 		08D74BEA1B290D4C00E1C8BA /* burnstown_dam.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BC91B290D4C00E1C8BA /* burnstown_dam.otf */; };
-		08D74BEB1B290D4C00E1C8BA /* Larabie Fonts License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCA1B290D4C00E1C8BA /* Larabie Fonts License.txt */; };
-		08D74BEC1B290D4C00E1C8BA /* Larabie Fonts License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCA1B290D4C00E1C8BA /* Larabie Fonts License.txt */; };
-		08D74BED1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCC1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */; };
-		08D74BEE1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCC1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */; };
 		08D74BEF1B290D4C00E1C8BA /* District.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCD1B290D4C00E1C8BA /* District.ttf */; };
 		08D74BF01B290D4C00E1C8BA /* District.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCD1B290D4C00E1C8BA /* District.ttf */; };
 		08D74BF11B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCF1B290D4C00E1C8BA /* JUNEBUG_.ttf */; };
 		08D74BF21B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BCF1B290D4C00E1C8BA /* JUNEBUG_.ttf */; };
-		08D74BF31B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD01B290D4C00E1C8BA /* pizzadude.dk License.txt */; };
-		08D74BF41B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD01B290D4C00E1C8BA /* pizzadude.dk License.txt */; };
-		08D74BF51B290D4C00E1C8BA /* Estefania Hormigo Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD21B290D4C00E1C8BA /* Estefania Hormigo Font License.txt */; };
-		08D74BF61B290D4C00E1C8BA /* Estefania Hormigo Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD21B290D4C00E1C8BA /* Estefania Hormigo Font License.txt */; };
 		08D74BF71B290D4C00E1C8BA /* launica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD31B290D4C00E1C8BA /* launica.ttf */; };
 		08D74BF81B290D4C00E1C8BA /* launica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD31B290D4C00E1C8BA /* launica.ttf */; };
-		08D74BF91B290D4C00E1C8BA /* Freeware License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD51B290D4C00E1C8BA /* Freeware License.txt */; };
-		08D74BFA1B290D4C00E1C8BA /* Freeware License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD51B290D4C00E1C8BA /* Freeware License.txt */; };
 		08D74BFB1B290D4C00E1C8BA /* Lintsec.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD61B290D4C00E1C8BA /* Lintsec.ttf */; };
 		08D74BFC1B290D4C00E1C8BA /* Lintsec.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD61B290D4C00E1C8BA /* Lintsec.ttf */; };
-		08D74BFD1B290D4C00E1C8BA /* Font Boutique License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD81B290D4C00E1C8BA /* Font Boutique License.txt */; };
-		08D74BFE1B290D4C00E1C8BA /* Font Boutique License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD81B290D4C00E1C8BA /* Font Boutique License.txt */; };
 		08D74BFF1B290D4C00E1C8BA /* NEORD___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD91B290D4C00E1C8BA /* NEORD___.ttf */; };
 		08D74C001B290D4C00E1C8BA /* NEORD___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BD91B290D4C00E1C8BA /* NEORD___.ttf */; };
 		08D74C011B290D4C00E1C8BA /* NEORF___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BDA1B290D4C00E1C8BA /* NEORF___.ttf */; };
@@ -147,18 +135,10 @@
 		08D74C041B290D4C00E1C8BA /* NEORS___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BDB1B290D4C00E1C8BA /* NEORS___.ttf */; };
 		08D74C051B290D4C00E1C8BA /* nervous_rex.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BDD1B290D4C00E1C8BA /* nervous_rex.ttf */; };
 		08D74C061B290D4C00E1C8BA /* nervous_rex.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BDD1B290D4C00E1C8BA /* nervous_rex.ttf */; };
-		08D74C071B290D4C00E1C8BA /* Vic Fieger License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BDE1B290D4C00E1C8BA /* Vic Fieger License.txt */; };
-		08D74C081B290D4C00E1C8BA /* Vic Fieger License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BDE1B290D4C00E1C8BA /* Vic Fieger License.txt */; };
-		08D74C091B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE01B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */; };
-		08D74C0A1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE01B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */; };
 		08D74C0B1B290D4C00E1C8BA /* old_stamper.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE11B290D4C00E1C8BA /* old_stamper.ttf */; };
 		08D74C0C1B290D4C00E1C8BA /* old_stamper.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE11B290D4C00E1C8BA /* old_stamper.ttf */; };
 		08D74C0D1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE31B290D4C00E1C8BA /* Operatinginstructions.ttf */; };
 		08D74C0E1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE31B290D4C00E1C8BA /* Operatinginstructions.ttf */; };
-		08D74C0F1B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE41B290D4C00E1C8BA /* pizzadude.dk License.txt */; };
-		08D74C101B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE41B290D4C00E1C8BA /* pizzadude.dk License.txt */; };
-		08D74C111B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE61B290D4C00E1C8BA /* pizzadude.dk License.txt */; };
-		08D74C121B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE61B290D4C00E1C8BA /* pizzadude.dk License.txt */; };
 		08D74C131B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */; };
 		08D74C141B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */; };
 		08D74C151B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */; };
@@ -280,26 +260,16 @@
 		08D515D91B28CB8100E5289B /* stoplight_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoplight_yellow.png; sourceTree = "<group>"; };
 		08D515DA1B28CB8100E5289B /* thought.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thought.png; sourceTree = "<group>"; };
 		08D74BC91B290D4C00E1C8BA /* burnstown_dam.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = burnstown_dam.otf; sourceTree = "<group>"; };
-		08D74BCA1B290D4C00E1C8BA /* Larabie Fonts License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Larabie Fonts License.txt"; sourceTree = "<group>"; };
-		08D74BCC1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Cpr.Sparhelt font License.txt"; sourceTree = "<group>"; };
 		08D74BCD1B290D4C00E1C8BA /* District.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = District.ttf; sourceTree = "<group>"; };
 		08D74BCF1B290D4C00E1C8BA /* JUNEBUG_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JUNEBUG_.ttf; sourceTree = "<group>"; };
-		08D74BD01B290D4C00E1C8BA /* pizzadude.dk License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pizzadude.dk License.txt"; sourceTree = "<group>"; };
-		08D74BD21B290D4C00E1C8BA /* Estefania Hormigo Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Estefania Hormigo Font License.txt"; sourceTree = "<group>"; };
 		08D74BD31B290D4C00E1C8BA /* launica.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = launica.ttf; sourceTree = "<group>"; };
-		08D74BD51B290D4C00E1C8BA /* Freeware License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Freeware License.txt"; sourceTree = "<group>"; };
 		08D74BD61B290D4C00E1C8BA /* Lintsec.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lintsec.ttf; sourceTree = "<group>"; };
-		08D74BD81B290D4C00E1C8BA /* Font Boutique License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Font Boutique License.txt"; sourceTree = "<group>"; };
 		08D74BD91B290D4C00E1C8BA /* NEORD___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NEORD___.ttf"; sourceTree = "<group>"; };
 		08D74BDA1B290D4C00E1C8BA /* NEORF___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NEORF___.ttf"; sourceTree = "<group>"; };
 		08D74BDB1B290D4C00E1C8BA /* NEORS___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NEORS___.ttf"; sourceTree = "<group>"; };
 		08D74BDD1B290D4C00E1C8BA /* nervous_rex.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nervous_rex.ttf; sourceTree = "<group>"; };
-		08D74BDE1B290D4C00E1C8BA /* Vic Fieger License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Vic Fieger License.txt"; sourceTree = "<group>"; };
-		08D74BE01B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Cpr.Sparhelt font License.txt"; sourceTree = "<group>"; };
 		08D74BE11B290D4C00E1C8BA /* old_stamper.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = old_stamper.ttf; sourceTree = "<group>"; };
 		08D74BE31B290D4C00E1C8BA /* Operatinginstructions.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Operatinginstructions.ttf; sourceTree = "<group>"; };
-		08D74BE41B290D4C00E1C8BA /* pizzadude.dk License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pizzadude.dk License.txt"; sourceTree = "<group>"; };
-		08D74BE61B290D4C00E1C8BA /* pizzadude.dk License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pizzadude.dk License.txt"; sourceTree = "<group>"; };
 		08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RADIOLAND.ttf; sourceTree = "<group>"; };
 		08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RADIOLANDSLIM.ttf; sourceTree = "<group>"; };
 		08D887591B321454007B860F /* level1v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level1v2.tmx; sourceTree = "<group>"; };
@@ -488,7 +458,6 @@
 			isa = PBXGroup;
 			children = (
 				08D74BC91B290D4C00E1C8BA /* burnstown_dam.otf */,
-				08D74BCA1B290D4C00E1C8BA /* Larabie Fonts License.txt */,
 			);
 			path = "Burnstown-Dam";
 			sourceTree = "<group>";
@@ -496,7 +465,6 @@
 		08D74BCB1B290D4C00E1C8BA /* District */ = {
 			isa = PBXGroup;
 			children = (
-				08D74BCC1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */,
 				08D74BCD1B290D4C00E1C8BA /* District.ttf */,
 			);
 			path = District;
@@ -506,7 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				08D74BCF1B290D4C00E1C8BA /* JUNEBUG_.ttf */,
-				08D74BD01B290D4C00E1C8BA /* pizzadude.dk License.txt */,
 			);
 			path = JuneBug;
 			sourceTree = "<group>";
@@ -514,7 +481,6 @@
 		08D74BD11B290D4C00E1C8BA /* la-unica */ = {
 			isa = PBXGroup;
 			children = (
-				08D74BD21B290D4C00E1C8BA /* Estefania Hormigo Font License.txt */,
 				08D74BD31B290D4C00E1C8BA /* launica.ttf */,
 			);
 			path = "la-unica";
@@ -523,7 +489,6 @@
 		08D74BD41B290D4C00E1C8BA /* Lintsec */ = {
 			isa = PBXGroup;
 			children = (
-				08D74BD51B290D4C00E1C8BA /* Freeware License.txt */,
 				08D74BD61B290D4C00E1C8BA /* Lintsec.ttf */,
 			);
 			path = Lintsec;
@@ -532,7 +497,6 @@
 		08D74BD71B290D4C00E1C8BA /* NeoRetroDraw */ = {
 			isa = PBXGroup;
 			children = (
-				08D74BD81B290D4C00E1C8BA /* Font Boutique License.txt */,
 				08D74BD91B290D4C00E1C8BA /* NEORD___.ttf */,
 				08D74BDA1B290D4C00E1C8BA /* NEORF___.ttf */,
 				08D74BDB1B290D4C00E1C8BA /* NEORS___.ttf */,
@@ -544,7 +508,6 @@
 			isa = PBXGroup;
 			children = (
 				08D74BDD1B290D4C00E1C8BA /* nervous_rex.ttf */,
-				08D74BDE1B290D4C00E1C8BA /* Vic Fieger License.txt */,
 			);
 			path = "Nervous-Rex";
 			sourceTree = "<group>";
@@ -552,7 +515,6 @@
 		08D74BDF1B290D4C00E1C8BA /* Old-Stamper */ = {
 			isa = PBXGroup;
 			children = (
-				08D74BE01B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt */,
 				08D74BE11B290D4C00E1C8BA /* old_stamper.ttf */,
 			);
 			path = "Old-Stamper";
@@ -562,7 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				08D74BE31B290D4C00E1C8BA /* Operatinginstructions.ttf */,
-				08D74BE41B290D4C00E1C8BA /* pizzadude.dk License.txt */,
 			);
 			path = "Operating-instructions";
 			sourceTree = "<group>";
@@ -570,7 +531,6 @@
 		08D74BE51B290D4C00E1C8BA /* Radioland */ = {
 			isa = PBXGroup;
 			children = (
-				08D74BE61B290D4C00E1C8BA /* pizzadude.dk License.txt */,
 				08D74BE71B290D4C00E1C8BA /* RADIOLAND.ttf */,
 				08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */,
 			);
@@ -868,7 +828,6 @@
 				08D516081B28CB8100E5289B /* RoadTilesV2.png in Resources */,
 				08D74C161B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */,
 				08D515EA1B28CB8100E5289B /* irritated.png in Resources */,
-				08D74BEC1B290D4C00E1C8BA /* Larabie Fonts License.txt in Resources */,
 				08D516301B28CB8100E5289B /* car_cop2R.png in Resources */,
 				08D5163A1B28CB8100E5289B /* truckR.png in Resources */,
 				08D515E41B28CB8100E5289B /* content.png in Resources */,
@@ -878,9 +837,7 @@
 				08D515EC1B28CB8100E5289B /* lady.png in Resources */,
 				08D5160A1B28CB8100E5289B /* OldMan.png in Resources */,
 				08D5162A1B28CB8100E5289B /* car_cop1R.png in Resources */,
-				08D74BEE1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */,
 				08D74BFC1B290D4C00E1C8BA /* Lintsec.ttf in Resources */,
-				08D74C121B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
 				08D515DE1B28CB8100E5289B /* bg_road_one_way.png in Resources */,
 				08D515F41B28CB8100E5289B /* MainMenu.png in Resources */,
 				08D516321B28CB8100E5289B /* car_red.png in Resources */,
@@ -889,20 +846,15 @@
 				08FC6D211B28881D004F4824 /* MainMenu.xib in Resources */,
 				08D516201B28CB8100E5289B /* car_blue_left.png in Resources */,
 				08D516381B28CB8100E5289B /* truckL.png in Resources */,
-				08D74C101B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
-				08D74C081B290D4C00E1C8BA /* Vic Fieger License.txt in Resources */,
 				08D74C021B290D4C00E1C8BA /* NEORF___.ttf in Resources */,
 				08D516161B28CB8100E5289B /* Ambulence1R.png in Resources */,
 				08D74C141B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */,
 				08D74BF01B290D4C00E1C8BA /* District.ttf in Resources */,
 				08D515DC1B28CB8100E5289B /* bg_grass.png in Resources */,
-				08D74BF41B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
-				08D74BF61B290D4C00E1C8BA /* Estefania Hormigo Font License.txt in Resources */,
 				08D516401B28CB8100E5289B /* stoplight_red.png in Resources */,
 				08D74C001B290D4C00E1C8BA /* NEORD___.ttf in Resources */,
 				08D5163C1B28CB8100E5289B /* stoplight_2048.png in Resources */,
 				08D515F01B28CB8100E5289B /* littleGirl.png in Resources */,
-				08D74C0A1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */,
 				08D516121B28CB8100E5289B /* Ambulence1.png in Resources */,
 				08D516181B28CB8100E5289B /* Ambulence2.png in Resources */,
 				08D74BEA1B290D4C00E1C8BA /* burnstown_dam.otf in Resources */,
@@ -922,10 +874,8 @@
 				08D5162C1B28CB8100E5289B /* car_cop2.png in Resources */,
 				08D516001B28CB8100E5289B /* level4v2.tmx in Resources */,
 				08D515E81B28CB8100E5289B /* happy.png in Resources */,
-				08D74BFE1B290D4C00E1C8BA /* Font Boutique License.txt in Resources */,
 				08D516141B28CB8100E5289B /* Ambulence1L.png in Resources */,
 				08D5163E1B28CB8100E5289B /* stoplight_green.png in Resources */,
-				08D74BFA1B290D4C00E1C8BA /* Freeware License.txt in Resources */,
 				08D74BF21B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */,
 				08D516441B28CB8100E5289B /* thought.png in Resources */,
 				08D516281B28CB8100E5289B /* car_cop1L.png in Resources */,
@@ -955,8 +905,6 @@
 				08D516271B28CB8100E5289B /* car_cop1L.png in Resources */,
 				08D74BEF1B290D4C00E1C8BA /* District.ttf in Resources */,
 				08D5162F1B28CB8100E5289B /* car_cop2R.png in Resources */,
-				08D74C0F1B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
-				08D74BF51B290D4C00E1C8BA /* Estefania Hormigo Font License.txt in Resources */,
 				08D515FF1B28CB8100E5289B /* level4v2.tmx in Resources */,
 				08D516331B28CB8100E5289B /* pickup_green.png in Resources */,
 				08D516051B28CB8100E5289B /* RoadTilesV2.pdn in Resources */,
@@ -965,7 +913,6 @@
 				08D515DB1B28CB8100E5289B /* bg_grass.png in Resources */,
 				08D516091B28CB8100E5289B /* OldMan.png in Resources */,
 				7DE146511B223E95005DB874 /* LaunchScreen.xib in Resources */,
-				08D74C111B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
 				08D515F31B28CB8100E5289B /* MainMenu.png in Resources */,
 				08D8875B1B321454007B860F /* level1v2.tmx in Resources */,
 				08D515DF1B28CB8100E5289B /* bg_road_two_way.png in Resources */,
@@ -980,15 +927,11 @@
 				7DE1464C1B223E95005DB874 /* Main.storyboard in Resources */,
 				08D515E91B28CB8100E5289B /* irritated.png in Resources */,
 				08D74BE91B290D4C00E1C8BA /* burnstown_dam.otf in Resources */,
-				08D74BF31B290D4C00E1C8BA /* pizzadude.dk License.txt in Resources */,
 				08D5160D1B28CB8100E5289B /* single_green.png in Resources */,
 				08D516131B28CB8100E5289B /* Ambulence1L.png in Resources */,
-				08D74C091B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */,
 				08D74C0B1B290D4C00E1C8BA /* old_stamper.ttf in Resources */,
 				08D516211B28CB8100E5289B /* car_blue_right.png in Resources */,
 				08D515ED1B28CB8100E5289B /* LadyBaby.png in Resources */,
-				08D74BF91B290D4C00E1C8BA /* Freeware License.txt in Resources */,
-				08D74BEB1B290D4C00E1C8BA /* Larabie Fonts License.txt in Resources */,
 				08D516391B28CB8100E5289B /* truckR.png in Resources */,
 				08D515E11B28CB8100E5289B /* bg_road_two_way_large.png in Resources */,
 				08D74C051B290D4C00E1C8BA /* nervous_rex.ttf in Resources */,
@@ -997,10 +940,8 @@
 				08D74BFF1B290D4C00E1C8BA /* NEORD___.ttf in Resources */,
 				08D5160B1B28CB8100E5289B /* popo.png in Resources */,
 				08D5161B1B28CB8100E5289B /* Ambulence2R.png in Resources */,
-				08D74BFD1B290D4C00E1C8BA /* Font Boutique License.txt in Resources */,
 				08D5161D1B28CB8100E5289B /* car_blue.png in Resources */,
 				08D515F11B28CB8100E5289B /* mad.png in Resources */,
-				08D74C071B290D4C00E1C8BA /* Vic Fieger License.txt in Resources */,
 				08D74C0D1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */,
 				08D516431B28CB8100E5289B /* thought.png in Resources */,
 				08D5160F1B28CB8100E5289B /* single_red.png in Resources */,
@@ -1018,7 +959,6 @@
 				08D515EF1B28CB8100E5289B /* littleGirl.png in Resources */,
 				08D516111B28CB8100E5289B /* Ambulence1.png in Resources */,
 				08D515DD1B28CB8100E5289B /* bg_road_one_way.png in Resources */,
-				08D74BED1B290D4C00E1C8BA /* Cpr.Sparhelt font License.txt in Resources */,
 				08D516351B28CB8100E5289B /* truck.png in Resources */,
 				08D516311B28CB8100E5289B /* car_red.png in Resources */,
 				08D74BF11B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */,
