@@ -20,7 +20,7 @@ class CarSprite : SKSpriteNode
     }
     enum State
     {
-        case DRIVING, STOPPED, TURNING
+        case DRIVING, STOPPED, TURNING, WAITING
     }
     
     let _MAXSPEED : CGFloat
@@ -139,14 +139,6 @@ class CarSprite : SKSpriteNode
         {
             goStraight()
         }
-        else if self._state == State.STOPPED
-        {
-         
-        }
-        else if self._state == State.TURNING
-        {
-            
-        }
         
 
        self.position = self._currPos
@@ -241,6 +233,7 @@ class CarSprite : SKSpriteNode
             self._turnCount++
         }
         
+        
         if self._currSpeed != self._MAXSPEED
         {
             self._currSpeed += self._accel
@@ -264,7 +257,10 @@ class CarSprite : SKSpriteNode
     func stop()
     {
         self._currSpeed = 0
-        self._state = State.STOPPED
+        if self._state != .WAITING
+        {
+            self._state = State.STOPPED
+        }
     }
     
     
