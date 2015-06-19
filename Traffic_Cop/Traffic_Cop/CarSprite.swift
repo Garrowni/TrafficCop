@@ -147,11 +147,12 @@ class CarSprite : SKSpriteNode
     func turnRight(path : CGPath)
     {
         self._turned = true
-        self._turnCount++
-        self._state = State.TURNING
         
-        let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
-        let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 0.85)
+        self._state = State.TURNING
+
+        
+        let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
+        let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 2)
        
         
         
@@ -176,7 +177,7 @@ class CarSprite : SKSpriteNode
             
          
         }
-        
+         self._turnCount++
     }
     
     
@@ -185,12 +186,12 @@ class CarSprite : SKSpriteNode
     {
         
        
-            self._turnCount++
+           
             self._turned = true
             self._state = State.TURNING
             
-            let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
-            let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 0.85)
+            let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
+            let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 2)
           
             
             
@@ -217,7 +218,7 @@ class CarSprite : SKSpriteNode
             }
             
         
-        
+         self._turnCount++
         
     }
     
