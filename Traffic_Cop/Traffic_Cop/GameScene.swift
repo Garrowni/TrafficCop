@@ -832,7 +832,7 @@ class GameScene: SKScene
     
     func levelDone()
     {
-        if(currentScore > 500) // CAN BE CHANGED DEPENDING ON THE GOAL ... TODO//MAKE A SEPERATE GOAL FOR EACH LV
+        if(currentScore >= goalScore) // CAN BE CHANGED DEPENDING ON THE GOAL ... TODO//MAKE A SEPERATE GOAL FOR EACH LV
         {
             levPassed = true
             addChild(levDonePopUp.getButtBG())
@@ -868,10 +868,7 @@ class GameScene: SKScene
             retryButt.zoomIN()
             quitButt.zoomIN()
         }
-        
-        nextLevButt.zoomIN()
         quitButt.zoomIN()
-        
         pausedOn = true;
     }
     
