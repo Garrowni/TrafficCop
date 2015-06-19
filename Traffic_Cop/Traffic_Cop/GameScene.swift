@@ -913,10 +913,9 @@ class GameScene: SKScene
     
     func addPoints(points: Int, pos: CGPoint)
     {
-        var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+250), y: CGFloat(TW*12)))
+        var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+350), y: CGFloat(TW*12)))
         pointsArray.append(pointAdd)
         addChild(pointAdd.text.get())
-        currentScore += points
     }
     
     
@@ -928,6 +927,7 @@ class GameScene: SKScene
             {
                 if(pointsArray[i].done)
                 {
+                    currentScore += pointsArray[i].points
                     pointsArray[i].text.get().removeFromParent()
                     pointsArray.removeAtIndex(i)
                 }
