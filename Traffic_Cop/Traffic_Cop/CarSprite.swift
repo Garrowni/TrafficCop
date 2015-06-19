@@ -28,7 +28,7 @@ class CarSprite : SKSpriteNode
     var _turnCount : Int = 0
     var _car : SKTexture
     var _spawn  : CGPoint
-    var _accel: CGFloat = 1
+    var _accel: CGFloat = 0.5
     var _currSpeed: CGFloat = 0
     var _deAccel: CGFloat = 0
     var _isDone : Bool = false
@@ -56,32 +56,32 @@ class CarSprite : SKSpriteNode
         case 1:
             
             self._car = SKTexture(imageNamed: "Ambulence1")
-            self._MAXSPEED = 10
+            self._MAXSPEED = 15
            
             
         case 2:
             self._car = SKTexture(imageNamed:"car_cop")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 15
             
        
         case 3:
             self._car = SKTexture(imageNamed: "car_blue")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 15
            
          
         case 4:
             self._car = SKTexture(imageNamed: "car_red")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 15
            
          
         case 5:
             self._car = SKTexture(imageNamed: "pickup_green")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 15
             
            
         case 6:
             self._car = SKTexture(imageNamed: "truck")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 15
             
             
         default :
@@ -194,7 +194,6 @@ class CarSprite : SKSpriteNode
         
        
            
-            self._turned = true
             self._state = State.TURNING
             
             let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
@@ -247,9 +246,18 @@ class CarSprite : SKSpriteNode
     {
         if(self._state == .STOPPED)
         {
-            self._state = State.DRIVING
             self._turnCount++
-            self._turned = true
+            
+            self._state = State.DRIVING
+            var block = SKAction.runBlock()
+                {
+                    self._turned = true
+                }
+            var wait = SKAction.waitForDuration(2)
+            
+            
+            var sequence = SKAction.sequence([wait,block])
+            self.runAction(sequence)
         }
         
         
