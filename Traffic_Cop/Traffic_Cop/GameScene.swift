@@ -281,8 +281,6 @@ class GameScene: SKScene
             updatePeople()
         }
       
-
-        
     }
     
     
@@ -391,7 +389,7 @@ class GameScene: SKScene
             }
             if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
             {
-               //addPoints()
+               addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)
             }
         }
         
@@ -924,6 +922,31 @@ class GameScene: SKScene
         
         let transSequence = SKAction.sequence([transition,wait,block])
         self.runAction(transSequence)
+    }
+    
+    
+    func addPoints(points: Int, pos: CGPoint)
+    {
+        var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+200), y: CGFloat(TW*12)))
+        pointsArray.append(pointAdd)
+        addChild(pointAdd.text.get())
+        currentScore += points
+    }
+    
+    
+    func updatePoints()
+    {
+        if(pointsArray.count > 0)
+        {
+            for(var i = 0; i < pointsArray.count; i++)
+            {
+                if(pointsArray[i].done)
+                {
+                    pointsArray[i].text.get().removeFromParent()
+                    pointsArray.removeAtIndex(i)
+                }
+            }
+        }
     }
     
     

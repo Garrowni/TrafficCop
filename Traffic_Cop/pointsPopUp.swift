@@ -18,7 +18,7 @@ class PointsPopUp
     var zoomO           : SKAction
     var move            : SKAction
     //var block         : SKAction
-   // var sequence      : SKAction
+    //var sequence      : SKAction
     var done            : Bool
     
     init(Pos : CGPoint, Points: Int, goto: CGPoint)
@@ -31,7 +31,6 @@ class PointsPopUp
         zoomO = SKAction.scaleTo(CGFloat(0.0), duration: 1)
 
         start()
-        
     }
     
     func start()
