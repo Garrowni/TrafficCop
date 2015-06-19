@@ -36,18 +36,7 @@ class PeopleSprite : SKSpriteNode
     {
         case WALKING, STOPPED, TURNING
     }
-    
-    /*moods 0-4*/
-    enum mood
-    {
-        case HAPPY // happy
-        case CONTENT // content
-        case IRRITATED //irritation
-        case MAD //extremely angry
-        case DANGER // leaves sidewalk, gets in crash, etc
-    }
-    
-    
+      
 
 
     
@@ -67,7 +56,6 @@ class PeopleSprite : SKSpriteNode
     var _isSelected : Bool = false
     var _glowCircle : GlowCircle
     var _currPos : CGPoint
-    var _currentMood = mood.HAPPY
     
     
     var startTime = NSTimeInterval()
@@ -94,20 +82,16 @@ class PeopleSprite : SKSpriteNode
             
             self._person = SKTexture(imageNamed: "lady")
             self._MAXSPEED = 4
-            self._currentMood = mood.HAPPY
         case 2:
             self._person = SKTexture(imageNamed: "LadyBaby")
             self._MAXSPEED = 3
             self._size = CGSize(width: 64, height: 50)
-            self._currentMood = mood.HAPPY
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
             self._MAXSPEED = 2
-            self._currentMood = mood.HAPPY
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
             self._MAXSPEED = 5
-            self._currentMood = mood.HAPPY
         default :
             self._person = SKTexture(imageNamed: "")
             self._MAXSPEED = 0
@@ -186,36 +170,61 @@ class PeopleSprite : SKSpriteNode
     }
     
     
-    func turnRight(path : CGPath) //timer should be deactivated
+   /* func pickDirection()
     {
-        self._turnCount++
-        self._state = State.TURNING
-        let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
-        let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 0.85)
-        self.runAction(SKAction.group([
-            action,
-            action2
-            ]))
-        switch(self._dir)
+       // var _dir = Direction: Int.randomNumberFrom(0...Direction!.count-1)
+    //    if (self._dir == Direction.WEST)
         {
-        case .NORTH:
-            self._dir = .EAST
-        case .EAST:
-            self._dir = .SOUTH
-        case .WEST:
-            self._dir = .NORTH
-        case .SOUTH:
-            self._dir = .WEST
-        default:
-            self._dir = .WEST
+         //choose random direction north south east
+            //exception only choose north or south
+            //exception only choose south or east
+            //exception only choose east or north
+                //exception only choose north
+                //exception only choose east
+                //exception only choose south
         }
-    }
+        if (self._dir == Direction.SOUTH)
+        {
+        //choose random direction north east west
+            //exception only choose north or west
+            //exception only choose west or east
+            //exception only choose east or north
+            //exception only choose north
+            //exception only choose west
+          //  if(/*if you can onlyc hoose east*/)
+          //  {
+          //      self._dir == Direction.EAST)
+          //  }
+           // else
+          //  {
+            //choose from north east or west
+           // }
+        }
+        if (self._dir == Direction.EAST)
+        {
+        //choose random direction north south west
+            //exception only choose north or south
+            //exception only choose south or west
+            //exception only choose west or north
+            //exception only choose north
+            //exception only choose west
+            //exception only choose south
+        }
+        if (self._dir == Direction.NORTH)
+        {
+            //choose random direction south east west
+            //exception only choose west or south
+            //exception only choose south or east
+            //exception only choose east or west
+            //exception only choose east
+            //exception only choose west
+            //exception only choose south
+        }
+
+   }*/
+   
     
-    
-    func turnLeft()
-    {
-        
-    }
+   
     
     func walk()
         
@@ -285,20 +294,6 @@ class PeopleSprite : SKSpriteNode
 
 
 
-
-
-/* SCORING
-PLUS
-For every pedestrian that crosses the street your at that is happy:25 points,
-For every pedestrian that crosses the street your at that is OK: 5 points.
-For every pedestrian that crosses the street your at that is irritated: 0 points.
-
-
-MINUS
-For every pedestrian that crosses the street your at that is  angry: -5
-crash: -75 per pedestrian,
-
-*/
 
 
 
