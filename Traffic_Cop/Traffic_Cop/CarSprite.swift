@@ -146,7 +146,7 @@ class CarSprite : SKSpriteNode
 
     func turnRight(path : CGPath)
     {
-        
+        self._turned = true
         self._turnCount++
         self._state = State.TURNING
         
@@ -186,6 +186,7 @@ class CarSprite : SKSpriteNode
         
        
             self._turnCount++
+            self._turned = true
             self._state = State.TURNING
             
             let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
@@ -231,6 +232,7 @@ class CarSprite : SKSpriteNode
         {
             self._state = State.DRIVING
             self._turnCount++
+            self._turned = true
         }
         
         
