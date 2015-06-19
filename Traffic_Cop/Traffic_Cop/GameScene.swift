@@ -389,6 +389,10 @@ class GameScene: SKScene
                 vehicleArray[i].removeFromParent()
                 vehicleArray.removeAtIndex(i)
             }
+            if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
+            {
+               //addPoints()
+            }
         }
         
     }

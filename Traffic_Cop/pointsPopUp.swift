@@ -12,16 +12,18 @@ import SpriteKit
 
 class PointsPopUp
 {
+    var points          : Int
     var text            : Text
     var zoom            : SKAction
     var zoomO           : SKAction
     var move            : SKAction
-//var block           : SKAction
-   // var sequence        : SKAction
+    //var block         : SKAction
+   // var sequence      : SKAction
     var done            : Bool
     
-    init(Pos : CGPoint, points: Int, goto: CGPoint)
+    init(Pos : CGPoint, Points: Int, goto: CGPoint)
     {
+        points = Points
         done = false
         text = Text(pos: Pos, says: String(points), fontSize: 50, font: "font2", color: "green",  align: "center")
         zoom = SKAction.scaleTo(CGFloat(1.0), duration: 1)
