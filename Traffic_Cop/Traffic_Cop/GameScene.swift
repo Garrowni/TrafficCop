@@ -153,7 +153,7 @@ class GameScene: SKScene
         let transSequence = SKAction.sequence([wait,transition])
         self.runAction(transSequence)
         
-  
+// FOR DEBUG
 //        for cw in glowCWs
 //        {
 //            addChild(cw.getOL())
@@ -164,10 +164,10 @@ class GameScene: SKScene
 //            addChild(spawn.getOL())
 //        }
 //        
-        for goto in gotoPoints
-        {
-            addChild(goto.getOL())
-        }
+//        for goto in gotoPoints
+//        {
+//            addChild(goto.getOL())
+//        }
     
         clock.clockButt.getButtBG().zPosition = 100
         clock.clockButt.getButtOL().zPosition = 100
@@ -197,22 +197,7 @@ class GameScene: SKScene
         addChild(soundButt.getButtOL())
         addChild(soundButt.getLabel())
         addChild(selection.OL)
-        
-//        addChild(nextLevButt.getButtBG())
-//        addChild(nextLevButt.getButtOL())
-//        addChild(nextLevButt.getLabel())
-//        
-//        addChild(levDonePopUp.getButtBG())
-//        addChild(levDonePopUp.getButtOL())
-//        addChild(levDonePopUp.getLabel())
-        
-//        addChild(retryButt.getButtBG())
-//        addChild(retryButt.getButtOL())
-//        addChild(retryButt.getLabel())
-//        
-//        addChild(notDonePopUp.getButtBG())
-//        addChild(notDonePopUp.getButtOL())
-//        addChild(notDonePopUp.getLabel())
+    
        //debugDrawPLayableArea()
     }
     
@@ -928,7 +913,7 @@ class GameScene: SKScene
     
     func addPoints(points: Int, pos: CGPoint)
     {
-        var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+200), y: CGFloat(TW*12)))
+        var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+250), y: CGFloat(TW*12)))
         pointsArray.append(pointAdd)
         addChild(pointAdd.text.get())
         currentScore += points
