@@ -26,6 +26,7 @@ class GameScene: SKScene
     let quitButt    : Button
     let retryButt   : Button
     let scoreButt   : Button
+    let goalButt    : Button
     let soundButt   : Button
     let nextLevButt : Button
     var glowRoads   : [GlowBox]
@@ -43,6 +44,7 @@ class GameScene: SKScene
     var chooseRoads : [Road]
     var currentLevel: Int = 0
     var currentScore: Int = 0
+    var goalScore   : Int = 0
     
     var path            = CGPathCreateMutable()
     var spawnAction     = SKAction()
@@ -53,6 +55,7 @@ class GameScene: SKScene
     var roadSelected    : Bool
     var pausedOn        : Bool
     var deSelecting     : Bool
+    var levPassed       : Bool
     
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
@@ -78,17 +81,19 @@ class GameScene: SKScene
         roadSelected    = false
         pausedOn        = false
         deSelecting     = false
+        levPassed       = false
         clock           = Clock(playableR: playableRect, countFrom: 45)
         
-        var pauseLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "ll",              fontSize: 70,   font: "font2", color: "green",  align: "center")
-        var pausedLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Paused",          fontSize: 300,  font: "font2", color: "green",  align: "center")
-        var soundLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "(=",              fontSize: 70,   font: "font2", color: "green",  align: "center")
-        var levDoneLabel = Text(pos: CGPoint(x: 0, y:0),   says: "Level Complete!", fontSize: 130,  font: "font2", color: "green",  align: "center")
-        var notDoneLabel = Text(pos: CGPoint(x: 0, y:0),   says: "Not Complete!",   fontSize: 130,  font: "font2", color: "green",  align: "center")
-        var quitlbl     = Text(pos: CGPoint(x: 0, y:0),    says: "Quit",            fontSize: 150,  font: "font2", color: "green",  align: "center")
-        var retryLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Retry ?",         fontSize: 150,   font: "font2", color: "green",  align: "center")
-        var scoreLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "SCORE",           fontSize: 70,   font: "font2", color: "green",  align: "center")
-        var nextLevLabel = Text(pos: CGPoint(x: 0, y:0),   says: "Next Level!",     fontSize: 150,   font: "font2", color: "green",  align: "center")
+        var pauseLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "ll",              fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var pausedLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Paused",          fontSize: 300,  font: "font2", color: "green",  align: "center")
+        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "(=",              fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var levDoneLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Level Complete!", fontSize: 130,  font: "font2", color: "green",  align: "center")
+        var notDoneLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Not Complete!",   fontSize: 130,  font: "font2", color: "green",  align: "center")
+        var quitlbl      = Text(pos: CGPoint(x: 0, y:0),    says: "Quit",            fontSize: 150,  font: "font2", color: "green",  align: "center")
+        var retryLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Retry ?",         fontSize: 150,   font: "font2", color: "green",  align: "center")
+        var scoreLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "SCORE",           fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var goalLabel    = Text(pos: CGPoint(x: 0, y:0),    says: "GOAL",           fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var nextLevLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Next Level!",     fontSize: 150,   font: "font2", color: "green",  align: "center")
         
         pauseButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*14), size: CGSize(width: 128, height: 128)),                                          roundCorner: 64, text: pauseLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         pausedPopUp     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*9)),                    roundCorner: 70, text: pausedLabel,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: true, glowBulge: true)
@@ -96,6 +101,7 @@ class GameScene: SKScene
         notDonePopUp    = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*4+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*7)),                    roundCorner: 70, text: notDoneLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: false, glowBulge: true)
         soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*14), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         scoreButt       = Button(pos: CGRect(origin: CGPoint(x: CGFloat(playableRect.width/2+64), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),   roundCorner: 50, text: scoreLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        goalButt        = Button(pos: CGRect(origin: CGPoint(x: CGFloat(48), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),   roundCorner: 50, text: goalLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         nextLevButt     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: nextLevLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
         retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
@@ -176,6 +182,10 @@ class GameScene: SKScene
         addChild(scoreButt.getButtBG())
         addChild(scoreButt.getButtOL())
         addChild(scoreButt.getLabel())
+        
+        addChild(goalButt.getButtBG())
+        addChild(goalButt.getButtOL())
+        addChild(goalButt.getLabel())
         
         addChild(pauseButt.getButtBG())
         addChild(pauseButt.getButtOL())
@@ -453,7 +463,16 @@ class GameScene: SKScene
     }
     func handleTouchSequence(location: CGPoint)
     {
-        if(pausedOn)
+        if(pausedOn && clock.countDownDone) //END OF GAME / CHECK TOUCHES
+        {
+            if(levPassed){ if(nextLevButt.origRect.contains(location)){nextLevel(false)}}
+            else{ if(retryButt.origRect.contains(location)){nextLevel(true)}}
+            
+            
+            if(quitButt.origRect.contains(location)){quitGame()}
+        }
+        
+        if(pausedOn && !clock.countDownDone) //NORMAL PAUSE SCREEN
         {
             if(quitButt.origRect.contains(location)){quitGame()}
             else if(pausedPopUp.origRect.contains(location)){unPauseGame()}
@@ -753,13 +772,15 @@ class GameScene: SKScene
     func startGame()
     {
         map = Map(lvl: currentLevel)
+        var goalStr = "Goal: "
+        
         switch(currentLevel)
         {
-        case 1: tileMap = JSTileMap(named: "level1v2.tmx")
-        case 2: tileMap = JSTileMap(named: "level2v2.tmx")
-        case 3: tileMap = JSTileMap(named: "level3v2.tmx")
-        case 4: tileMap = JSTileMap(named: "level4v2.tmx")
-        default: tileMap = JSTileMap(named: "level1v2.tmx"); println("error in the level assigning !")
+        case 1: tileMap = JSTileMap(named: "level1v2.tmx"); goalScore = 400; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
+        case 2: tileMap = JSTileMap(named: "level2v2.tmx"); goalScore = 500; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
+        case 3: tileMap = JSTileMap(named: "level3v2.tmx"); goalScore = 800; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
+        case 4: tileMap = JSTileMap(named: "level4v2.tmx"); goalScore = 1000; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
+        default: tileMap = JSTileMap(named: "level1v2.tmx"); println("error in the level assigning !"); goalScore = 1000;
         }
         
         if tileMap != nil
@@ -824,44 +845,71 @@ class GameScene: SKScene
     
     func levelDone()
     {
-                addChild(nextLevButt.getButtBG())
-                addChild(nextLevButt.getButtOL())
-                addChild(nextLevButt.getLabel())
-                addChild(quitButt.getButtBG())
-                addChild(quitButt.getButtOL())
-                addChild(quitButt.getLabel())
-                nextLevButt.zoomIN()
-                quitButt.zoomIN()
+        if(currentScore > 500) // CAN BE CHANGED DEPENDING ON THE GOAL ... TODO//MAKE A SEPERATE GOAL FOR EACH LV
+        {
+            levPassed = true
+            addChild(levDonePopUp.getButtBG())
+            addChild(levDonePopUp.getButtOL())
+            addChild(levDonePopUp.getLabel())
+            
+            addChild(nextLevButt.getButtBG())
+            addChild(nextLevButt.getButtOL())
+            addChild(nextLevButt.getLabel())
+            
+            addChild(quitButt.getButtBG())
+            addChild(quitButt.getButtOL())
+            addChild(quitButt.getLabel())
+            nextLevButt.zoomIN()
+            levDonePopUp.zoomIN()
+            quitButt.zoomIN()
+        }
+        else
+        {
+            levPassed = false
+            addChild(notDonePopUp.getButtBG())
+            addChild(notDonePopUp.getButtOL())
+            addChild(notDonePopUp.getLabel())
+            
+            addChild(retryButt.getButtBG())
+            addChild(retryButt.getButtOL())
+            addChild(retryButt.getLabel())
+            
+            addChild(quitButt.getButtBG())
+            addChild(quitButt.getButtOL())
+            addChild(quitButt.getLabel())
+            notDonePopUp.zoomIN()
+            retryButt.zoomIN()
+            quitButt.zoomIN()
+        }
         
-        //        addChild(levDonePopUp.getButtBG())
-        //        addChild(levDonePopUp.getButtOL())
-        //        addChild(levDonePopUp.getLabel())
-        
-        //        addChild(retryButt.getButtBG())
-        //        addChild(retryButt.getButtOL())
-        //        addChild(retryButt.getLabel())
-        //
-        //        addChild(notDonePopUp.getButtBG())
-        //        addChild(notDonePopUp.getButtOL())
-        //        addChild(notDonePopUp.getLabel())
+        nextLevButt.zoomIN()
+        quitButt.zoomIN()
         
         pausedOn = true;
     }
     
     
-    func nextLevel()
+    func nextLevel(retry: Bool)
     {
         var lvl = self.currentLevel + 1
         if(lvl > 4){lvl = 4} //MAX LEVEL FOR NOW
+        if(retry){lvl = currentLevel}
         
         let transition = SKAction.group([SKAction.runBlock()
             {
+                if(retry)
+                {
+                self.retryButt.zoomOUT()
+                self.notDonePopUp.FadeAway()
+                self.quitButt.FadeAway()
+                }
+                else{
                 self.nextLevButt.zoomOUT()
                 self.levDonePopUp.FadeAway()
-                self.quitButt.FadeAway()
+                self.quitButt.FadeAway()}
             }])
         
-        let wait = SKAction.waitForDuration(0.3)
+        let wait = SKAction.waitForDuration(0.2)
         
         let block = SKAction.runBlock{
             
