@@ -21,8 +21,13 @@ class GameScene: SKScene
     let clock       : Clock
     let pauseButt   : Button
     let pausedPopUp : Button
+    let levDonePopUp: Button
+    let notDonePopUp: Button
     let quitButt    : Button
+    let retryButt   : Button
+    let scoreButt   : Button
     let soundButt   : Button
+    let nextLevButt : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
     var selection   : GlowBox
@@ -37,6 +42,7 @@ class GameScene: SKScene
     var feelsArray  : [Feels]
     var chooseRoads : [Road]
     var currentLevel: Int = 0
+    var currentScore: Int = 0
     
     var path            = CGPathCreateMutable()
     var spawnAction     = SKAction()
@@ -51,8 +57,6 @@ class GameScene: SKScene
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
-        
-        
         let maxAspectRatio:CGFloat = 9.0/16.0
         let playableHeight = size.width / maxAspectRatio
         let playableMargin = (size.height-playableHeight)/2.0
@@ -74,17 +78,27 @@ class GameScene: SKScene
         roadSelected    = false
         pausedOn        = false
         deSelecting     = false
-        clock           = Clock(playableR: playableRect, countFrom: 300)
+        clock           = Clock(playableR: playableRect, countFrom: 45)
         
-        var pauseLabel  = Text(pos: CGPoint(x: size.width/2, y:0),    says: "ll",       fontSize: 70, font: "font2", color: "green",  align: "center")
-        var pausedLabel = Text(pos: CGPoint(x: size.width/2, y:0),    says: "Paused",   fontSize: 300, font: "font2", color: "green",  align: "center")
-        var soundLabel  = Text(pos: CGPoint(x: size.width/2, y:0),    says: "(=",       fontSize: 70, font: "font2", color: "green",  align: "center")
-        pauseButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*14), size: CGSize(width: 128, height: 128)), roundCorner: 64, text: pauseLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 2, glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
-        pausedPopUp     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2), size: CGSize(width: Int(size.width-32), height: TW*9)), roundCorner: 70, text: pausedLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 8, ZoomIn: true, Bulge: true, glowBulge: true)
-        soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*14), size: CGSize(width: 128, height: 128)), roundCorner: 64, text: soundLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 2, glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
-
-
+        var pauseLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "ll",              fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var pausedLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Paused",          fontSize: 300,  font: "font2", color: "green",  align: "center")
+        var soundLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "(=",              fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var levDoneLabel = Text(pos: CGPoint(x: 0, y:0),   says: "Level Complete!", fontSize: 130,  font: "font2", color: "green",  align: "center")
+        var notDoneLabel = Text(pos: CGPoint(x: 0, y:0),   says: "Not Complete!",   fontSize: 130,  font: "font2", color: "green",  align: "center")
+        var quitlbl     = Text(pos: CGPoint(x: 0, y:0),    says: "Quit",            fontSize: 150,  font: "font2", color: "green",  align: "center")
+        var retryLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Retry ?",         fontSize: 150,   font: "font2", color: "green",  align: "center")
+        var scoreLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "SCORE",           fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var nextLevLabel = Text(pos: CGPoint(x: 0, y:0),   says: "Next Level!",     fontSize: 150,   font: "font2", color: "green",  align: "center")
         
+        pauseButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*14), size: CGSize(width: 128, height: 128)),                                          roundCorner: 64, text: pauseLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        pausedPopUp     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*9)),                    roundCorner: 70, text: pausedLabel,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: true, glowBulge: true)
+        levDonePopUp    = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*4+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*7)),                    roundCorner: 70, text: levDoneLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: false, glowBulge: true)
+        notDonePopUp    = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*4+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*7)),                    roundCorner: 70, text: notDoneLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: false, glowBulge: true)
+        soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*14), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        scoreButt       = Button(pos: CGRect(origin: CGPoint(x: CGFloat(playableRect.width/2+64), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),   roundCorner: 50, text: scoreLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        nextLevButt     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: nextLevLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
+        quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
+        retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         
         
 
@@ -118,13 +132,6 @@ class GameScene: SKScene
     override func didMoveToView(view: SKView)
     {
          startGame()
-        //let angle = 1.57079633 * 3
-        //car.position = car._spawn
-        //car.anchorPoint = CGPointZero
-        //let action = SKAction.rotateToAngle(CGFloat(angle), duration: 0.1)
-       // car.runAction(action)
-        
-   
         
 
         //WAIT 1 SEC BEFORE STARTING UP THE SPAWN ACTIONS
@@ -139,17 +146,16 @@ class GameScene: SKScene
         self.runAction(transSequence)
         
   
-        
-        for cw in glowCWs
-        {
-            addChild(cw.getOL())
-        }
-        
-        for spawn in glowSpawns
-        {
-            addChild(spawn.getOL())
-        }
-        
+//        for cw in glowCWs
+//        {
+//            addChild(cw.getOL())
+//        }
+//        
+//        for spawn in glowSpawns
+//        {
+//            addChild(spawn.getOL())
+//        }
+//        
         for goto in gotoPoints
         {
             addChild(goto.getOL())
@@ -159,9 +165,17 @@ class GameScene: SKScene
         clock.clockButt.getButtOL().zPosition = 100
         clock.clockLabel.get().zPosition = 100
         
+        scoreButt.getButtBG().zPosition = 100
+        scoreButt.getButtOL().zPosition = 100
+        scoreButt.getLabel().zPosition = 100
+        
         addChild(clock.clockButt.getButtBG())
         addChild(clock.clockButt.getButtOL())
         addChild(clock.clockLabel.get())
+        
+        addChild(scoreButt.getButtBG())
+        addChild(scoreButt.getButtOL())
+        addChild(scoreButt.getLabel())
         
         addChild(pauseButt.getButtBG())
         addChild(pauseButt.getButtOL())
@@ -172,6 +186,21 @@ class GameScene: SKScene
         addChild(soundButt.getLabel())
         addChild(selection.OL)
         
+//        addChild(nextLevButt.getButtBG())
+//        addChild(nextLevButt.getButtOL())
+//        addChild(nextLevButt.getLabel())
+//        
+//        addChild(levDonePopUp.getButtBG())
+//        addChild(levDonePopUp.getButtOL())
+//        addChild(levDonePopUp.getLabel())
+        
+//        addChild(retryButt.getButtBG())
+//        addChild(retryButt.getButtOL())
+//        addChild(retryButt.getLabel())
+//        
+//        addChild(notDonePopUp.getButtBG())
+//        addChild(notDonePopUp.getButtOL())
+//        addChild(notDonePopUp.getLabel())
        //debugDrawPLayableArea()
     }
     
@@ -227,6 +256,7 @@ class GameScene: SKScene
             timerCount = 0
             timePassed++
             clock.upDateTime(-1)
+            if(clock.countDownDone){levelDone()}
             //println("\(timePassed)")
         }}
         
@@ -234,6 +264,7 @@ class GameScene: SKScene
         
         if(!pausedOn)
         {
+            updateScore()
             updateVehicles()
             updatePeople()
         }
@@ -424,29 +455,15 @@ class GameScene: SKScene
     {
         if(pausedOn)
         {
-            if(playableRect.contains(location))
-            {
-                unPauseGame()
-            }
+            if(quitButt.origRect.contains(location)){quitGame()}
+            else if(pausedPopUp.origRect.contains(location)){unPauseGame()}
         }
         
         if(!pausedOn && !deSelecting)
         {
             if(pauseButt.origRect.contains(location))
             {
-                pausedOn = true
-                //PAUSED POPUP
-                pausedPopUp.getButtBG().name = "pausePopUp"
-                pausedPopUp.getButtOL().name = "pausePopUp"
-                pausedPopUp.getLabel().name = "pausePopUp"
-                addChild(pausedPopUp.getButtBG())
-                addChild(pausedPopUp.getButtOL())
-                addChild(pausedPopUp.getLabel())
-                pausedPopUp.zoomIN()
-                for car in vehicleArray
-                {
-                    car.paused = true
-                }
+                pauseGame()
             }
         
             if(carSelected)
@@ -492,22 +509,77 @@ class GameScene: SKScene
         }
     }
     
+    func quitGame()
+    {
+        let transition = SKAction.group([SKAction.runBlock()
+            {
+                self.quitButt.zoomOUT()
+                self.pausedPopUp.FadeAway()
+            }])
+        
+        let wait = SKAction.waitForDuration(0.3)
+        
+        let block = SKAction.runBlock{
+            
+                self.enumerateChildNodesWithName("pausePopUp")
+                    {node, _ in
+                        node.removeFromParent()
+                    }
+                let myScene = MainMenuScreen(size: self.size)
+                myScene.scaleMode = self.scaleMode
+                let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+                self.view?.presentScene(myScene, transition: reveal)
+            }
+    
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
+    }
+    
+    func pauseGame()
+    {
+        pausedOn = true
+        //PAUSED POPUP
+        pausedPopUp.getButtBG().name = "pausePopUp"
+        pausedPopUp.getButtOL().name = "pausePopUp"
+        pausedPopUp.getLabel().name = "pausePopUp"
+        quitButt.getButtBG().name = "pausePopUp"
+        quitButt.getButtOL().name = "pausePopUp"
+        quitButt.getLabel().name = "pausePopUp"
+        addChild(quitButt.getButtBG())
+        addChild(quitButt.getButtOL())
+        addChild(quitButt.getLabel())
+        addChild(pausedPopUp.getButtBG())
+        addChild(pausedPopUp.getButtOL())
+        addChild(pausedPopUp.getLabel())
+        
+        quitButt.zoomIN()
+        pausedPopUp.zoomIN()
+    
+        for car in vehicleArray
+        {
+            car.paused = true
+        }
+    }
+    
     func unPauseGame()
     {
         let transition = SKAction.group([SKAction.runBlock()
             {
+            self.quitButt.zoomOUT()
             self.pausedPopUp.zoomOUT()
             }])
         
         let wait = SKAction.waitForDuration(0.2)
         
         let block = SKAction.runBlock{
-            self.childNodeWithName("pausePopUp")?.removeFromParent()
-            self.childNodeWithName("pausePopUp")?.removeFromParent()
-            self.childNodeWithName("pausePopUp")?.removeFromParent()
+            self.enumerateChildNodesWithName("pausePopUp")
+                {node, _ in
+                    node.removeFromParent()
+            }
             self.pausedOn = false
-          
         }
+
+        
         let transSequence = SKAction.sequence([transition,wait,block])
         self.runAction(transSequence)
         
@@ -735,6 +807,52 @@ class GameScene: SKScene
         return scene
     }
 
+    
+    func updateScore()
+    {
+        if(currentScore < 0)
+        {
+            currentScore = 0
+            //LOSE GAME HERE
+        }
+        
+        var scoreStr = "Score: "
+        scoreStr += String(currentScore)
+        scoreButt.getLabel().text = scoreStr
+    }
+    
+    
+    func levelDone()
+    {
+        //pausedOn = true;
+    }
+    
+    
+    func nextLevel()
+    {
+        var lvl = self.currentLevel + 1
+        if(lvl > 4){lvl = 4} //MAX LEVEL FOR NOW
+        
+        let transition = SKAction.group([SKAction.runBlock()
+            {
+                self.nextLevButt.zoomOUT()
+                self.levDonePopUp.FadeAway()
+                self.quitButt.FadeAway()
+            }])
+        
+        let wait = SKAction.waitForDuration(0.3)
+        
+        let block = SKAction.runBlock{
+            
+            let myScene = GameScene.level(lvl)
+            //myScene.scaleMode = self.scaleMode
+            let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+            self.view?.presentScene(myScene, transition: reveal)
+        }
+        
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
+    }
     
     
 }

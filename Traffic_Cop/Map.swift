@@ -108,9 +108,9 @@ class Map
         {
         case 1:
             self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*2, y: TW*8, width: TW, height: TW*7), side: "top"))//TOP
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW*7), side: "top"))//TOP2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*8+TW/2), roadRect: CGRect(x: TW*3, y: TW*8, width: TW, height: TW*7), side: "top"))//TOP2
             self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*2, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM
-            self.roadArray.append(Road(goto: CGPoint(x:TW*2+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM2
+            self.roadArray.append(Road(goto: CGPoint(x:TW*3+TW/2 ,y:TW*3+TW/2), roadRect: CGRect(x: TW*3, y: TW*0, width: TW, height: TW*4), side: "bottom"))//BOTTOM2
             self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*6+TW/2), roadRect: CGRect(x: TW*5, y: TW*6, width: TW*3, height: TW), side: "right"))//RIGHT
             self.roadArray.append(Road(goto: CGPoint(x:TW*5+TW/2 ,y:TW*5+TW/2), roadRect: CGRect(x: TW*5, y: TW*5, width: TW*3, height: TW), side: "right"))//RIGHT2
         case 2:
