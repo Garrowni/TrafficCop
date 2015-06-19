@@ -31,6 +31,7 @@ class GameScene: SKScene
     let nextLevButt : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
+    var pointsArray : [PointsPopUp]
     var selection   : GlowBox
     var glowSpawns  : [GlowCircle]
     var gotoPoints  : [GlowCircle]
@@ -73,6 +74,7 @@ class GameScene: SKScene
         peopleArray     = []
         feelsArray      = []
         chooseRoads     = []
+        pointsArray     = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
 
         timerCount      = CGFloat(0.0)
@@ -815,10 +817,6 @@ class GameScene: SKScene
         
     }
     
-    func newGame()
-    {
-        view!.presentScene(GameScene.level(currentLevel))
-    }
     
     class func level(levelNum: Int) -> GameScene?
     {

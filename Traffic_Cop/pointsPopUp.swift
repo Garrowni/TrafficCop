@@ -10,10 +10,34 @@ import Foundation
 import SpriteKit
 
 
-class pointsPopUp
+class PointsPopUp
 {
-    init()
+    var text            : Text
+    var zoom            : SKAction
+    var zoomO           : SKAction
+    var move            : SKAction
+//var block           : SKAction
+   // var sequence        : SKAction
+    var done            : Bool
+    
+    init(Pos : CGPoint, points: Int, goto: CGPoint)
     {
+        done = false
+        text = Text(pos: Pos, says: String(points), fontSize: 50, font: "font2", color: "green",  align: "center")
+        zoom = SKAction.scaleTo(CGFloat(1.0), duration: 1)
+        move = SKAction.moveTo(goto, duration: 2)
+        zoomO = SKAction.scaleTo(CGFloat(0.0), duration: 1)
+
+        start()
         
     }
+    
+    func start()
+    {
+        var block = SKAction.runBlock(){self.done = true}
+        var sequence = SKAction.sequence([zoom,move,zoomO,block])
+        text.get().runAction(sequence)
+    }
+
+    
 }
