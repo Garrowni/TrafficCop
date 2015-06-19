@@ -276,6 +276,7 @@ class GameScene: SKScene
         
         if(!pausedOn)
         {
+            updatePoints()
             updateScore()
             updateVehicles()
             updatePeople()

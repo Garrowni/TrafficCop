@@ -26,9 +26,9 @@ class PointsPopUp
         points = Points
         done = false
         text = Text(pos: Pos, says: String(points), fontSize: 70, font: "font2", color: "green",  align: "center")
-        zoom = SKAction.scaleTo(CGFloat(1.0), duration: 0.5)
-        move = SKAction.moveTo(goto, duration: 2)
-        zoomO = SKAction.scaleTo(CGFloat(0.0), duration: 0.5)
+        zoom = SKAction.scaleTo(CGFloat(1.0), duration: 1)
+        move = SKAction.moveTo(goto, duration: 1)
+        zoomO = SKAction.scaleTo(CGFloat(0.0), duration: 1)
 
         start()
     }
