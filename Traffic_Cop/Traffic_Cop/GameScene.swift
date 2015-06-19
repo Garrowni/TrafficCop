@@ -824,7 +824,28 @@ class GameScene: SKScene
     
     func levelDone()
     {
-        //pausedOn = true;
+                addChild(nextLevButt.getButtBG())
+                addChild(nextLevButt.getButtOL())
+                addChild(nextLevButt.getLabel())
+                addChild(quitButt.getButtBG())
+                addChild(quitButt.getButtOL())
+                addChild(quitButt.getLabel())
+                nextLevButt.zoomIN()
+                quitButt.zoomIN()
+        
+        //        addChild(levDonePopUp.getButtBG())
+        //        addChild(levDonePopUp.getButtOL())
+        //        addChild(levDonePopUp.getLabel())
+        
+        //        addChild(retryButt.getButtBG())
+        //        addChild(retryButt.getButtOL())
+        //        addChild(retryButt.getLabel())
+        //
+        //        addChild(notDonePopUp.getButtBG())
+        //        addChild(notDonePopUp.getButtOL())
+        //        addChild(notDonePopUp.getLabel())
+        
+        pausedOn = true;
     }
     
     
