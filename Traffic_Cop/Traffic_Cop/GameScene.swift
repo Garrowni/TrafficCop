@@ -368,15 +368,17 @@ class GameScene: SKScene
                 vehicleArray[i].drive()
             }
             
+            if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
+            {
+                addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)
+            }
+            
             if(vehicleArray[i].isDone(playableRect))
             {
                 vehicleArray[i].removeFromParent()
                 vehicleArray.removeAtIndex(i)
             }
-            if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
-            {
-               addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)
-            }
+      
         }
         
     }
@@ -767,7 +769,7 @@ class GameScene: SKScene
         
         switch(currentLevel)
         {
-        case 1: tileMap = JSTileMap(named: "level1v2.tmx"); goalScore = 400; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
+        case 1: tileMap = JSTileMap(named: "level1v2.tmx"); goalScore = 100; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
         case 2: tileMap = JSTileMap(named: "level2v2.tmx"); goalScore = 500; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
         case 3: tileMap = JSTileMap(named: "level3v2.tmx"); goalScore = 800; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
         case 4: tileMap = JSTileMap(named: "level4v2.tmx"); goalScore = 1000; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
