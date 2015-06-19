@@ -676,26 +676,9 @@ class GameScene: SKScene
     
     func drawDrivePath(car: CarSprite, road: Road)
     {
+        var controlPoint1 : CGPoint
+        
         CGPathMoveToPoint(path, nil , car.position.x, car.position.y)
-        
-        let midPoint = CGPoint(x: (car.position.x+road.gotoPoint.x)/2, y: (car.position.y+road.gotoPoint.y)/2)
-        
-        if(road.Side == "left" || road.Side == "right")
-        {
-            //            CGPathAddArcToPoint(path,nil, <#x1: CGFloat#>, <#y1: CGFloat#>, road.gotoPoint.x, road.gotoPoint.y, radius: CGFloat.())
-            
-            CGPathAddCurveToPoint(path, nil,
-                car.position.x, car.position.y,
-                playableRect.width/2, playableRect.height/2,
-                road.gotoPoint.x, road.gotoPoint.y);
-        }
-        if(road.Side == "top" || road.Side == "bottom")
-        {
-            CGPathAddCurveToPoint(path, nil,
-                car.position.x, car.position.y,
-                playableRect.width/2, playableRect.height/2,
-                road.gotoPoint.x, road.gotoPoint.y);
-        }
         
         
         let thePath = SKShapeNode()
@@ -707,13 +690,18 @@ class GameScene: SKScene
         //MAKE OUR TURN HANDLE THE EXECUTION
         if car._dir == .NORTH
         {
+            
             switch(road.Side)
             {
             case "top":
                 car.goStraight()
             case "left":
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnLeft(path)
             case "right":
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnRight(path)
             default:
                 car.drive()
@@ -722,13 +710,18 @@ class GameScene: SKScene
         }
         else if car._dir == .SOUTH
         {
+            
             switch(road.Side)
             {
             case "bottom":
                 car.goStraight()
             case "left":
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnRight(path)
             case "right":
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnLeft(path)
             default:
                 car.drive()
@@ -742,8 +735,12 @@ class GameScene: SKScene
             case "right":
                 car.goStraight()
             case "top":
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.y)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnLeft(path)
             case "bottom":
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.y)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnRight(path)
             default:
                 car.drive()
@@ -757,8 +754,12 @@ class GameScene: SKScene
             case "left":
                 car.goStraight()
             case "top":
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.x)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnRight(path)
             case "bottom":
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.x)
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
                 car.turnLeft(path)
             default:
                 car.goStraight()
