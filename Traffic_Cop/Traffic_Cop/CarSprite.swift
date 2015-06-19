@@ -37,7 +37,7 @@ class CarSprite : SKSpriteNode
     var _size : CGSize
     var _state : State = State.DRIVING
     var _isSelected : Bool = false
-    
+    var _turned : Bool = false
   
     var _selectionColor : String = ""
     var _currPos : CGPoint
@@ -190,7 +190,7 @@ class CarSprite : SKSpriteNode
             
             let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 1)
             let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 0.85)
-            
+          
             
             
             self.runAction(SKAction.group([
@@ -287,6 +287,18 @@ class CarSprite : SKSpriteNode
             return false
         }
         
+    }
+    func hasTurned() -> Bool
+    {
+        if(!self._turned)
+        {
+            return false
+        }
+        else
+        {
+            self._turned = false
+            return true
+        }
     }
     
 }
