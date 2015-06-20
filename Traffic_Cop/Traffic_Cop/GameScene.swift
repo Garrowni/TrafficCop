@@ -94,7 +94,7 @@ class GameScene: SKScene
         var quitlbl      = Text(pos: CGPoint(x: 0, y:0),    says: "Quit",            fontSize: 150,  font: "font2", color: "green",  align: "center")
         var retryLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Retry ?",         fontSize: 150,   font: "font2", color: "green",  align: "center")
         var scoreLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "SCORE",           fontSize: 70,   font: "font2", color: "green",  align: "center")
-        var goalLabel    = Text(pos: CGPoint(x: 0, y:0),    says: "GOAL",           fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var goalLabel    = Text(pos: CGPoint(x: 0, y:0),    says: "GOAL",            fontSize: 70,   font: "font2", color: "green",  align: "center")
         var nextLevLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Next Level!",     fontSize: 150,   font: "font2", color: "green",  align: "center")
         
         pauseButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*14), size: CGSize(width: 128, height: 128)),                                          roundCorner: 64, text: pauseLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
@@ -103,7 +103,7 @@ class GameScene: SKScene
         notDonePopUp    = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*4+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*7)),                    roundCorner: 70, text: notDoneLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: false, glowBulge: true)
         soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*14), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         scoreButt       = Button(pos: CGRect(origin: CGPoint(x: CGFloat(playableRect.width/2+64), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),   roundCorner: 50, text: scoreLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
-        goalButt        = Button(pos: CGRect(origin: CGPoint(x: CGFloat(48), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),   roundCorner: 50, text: goalLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        goalButt        = Button(pos: CGRect(origin: CGPoint(x: CGFloat(48), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),                        roundCorner: 50, text: goalLabel,       BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         nextLevButt     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: nextLevLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
         retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
@@ -283,7 +283,34 @@ class GameScene: SKScene
     
     //*****************************************SPAWNING VEHICLES / PEOPLE************************
     
+    func spawnVehicle()
+    {
+        if(!pausedOn)
+        {
+            if(vehicleArray.count < 10)
+            {
+                var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![Int.randomNumberFrom(0...spawnsArray!.count-1)])
+                vehicleArray.append(car)
+                car.drive()
+                
+                //car.addChild(car._glowCircle.getOL())
+                addChild(car)
+            }}
+        
+    }
     
+    func spawnPerson()
+    {
+        if(!pausedOn)
+        {
+            if(peopleArray.count < 20)
+            {
+                var person = PeopleSprite(type: Int.randomNumberFrom(1...4), direction: peopleSpawns![Int.randomNumberFrom(0...peopleSpawns!.count-1)])
+                peopleArray.append(person)
+                person.walk()
+                addChild(person)
+            }}
+    }
     
     
     
@@ -309,35 +336,7 @@ class GameScene: SKScene
         addChild(shape)
     }
     
-    func spawnVehicle()
-    {
-        if(!pausedOn)
-        {
-        if(vehicleArray.count < 10)
-        {
-            var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![Int.randomNumberFrom(0...spawnsArray!.count-1)])
-            vehicleArray.append(car)
-            car.drive()
-            
-            //car.addChild(car._glowCircle.getOL())
-            addChild(car)
-            }}
-       
-    }
-    
-    func spawnPerson()
-    {
-        if(!pausedOn)
-        {
-        if(peopleArray.count < 20)
-        {
-            var person = PeopleSprite(type: Int.randomNumberFrom(1...4), direction: peopleSpawns![Int.randomNumberFrom(0...peopleSpawns!.count-1)])
-            peopleArray.append(person)
-            person.walk()
-            addChild(person)
-        }}
-    }
-    
+
  
     func updateVehicles()
     {
@@ -474,6 +473,7 @@ class GameScene: SKScene
         {
             if(pauseButt.origRect.contains(location))
             {
+                deSelectCars()
                 pauseGame()
             }
         
@@ -834,6 +834,7 @@ class GameScene: SKScene
     
     func levelDone()
     {
+        deSelectCars()
         if(currentScore >= goalScore) // CAN BE CHANGED DEPENDING ON THE GOAL ... TODO//MAKE A SEPERATE GOAL FOR EACH LV
         {
             levPassed = true
@@ -914,6 +915,7 @@ class GameScene: SKScene
     {
         var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+350), y: CGFloat(TW*12)))
         pointsArray.append(pointAdd)
+        addChild(pointAdd.sparkEmitter)
         addChild(pointAdd.text.get())
     }
     
@@ -927,11 +929,13 @@ class GameScene: SKScene
                 if(pointsArray[i].done)
                 {
                     currentScore += pointsArray[i].points
+                    pointsArray[i].sparkEmitter.removeFromParent()
                     pointsArray[i].text.get().removeFromParent()
                     pointsArray.removeAtIndex(i)
                 }
             }
         }
+        
     }
     
     

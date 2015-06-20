@@ -149,6 +149,12 @@
 		08D8875E1B321454007B860F /* level3v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D8875A1B321454007B860F /* level3v2.tmx */; };
 		08D971091B2B44F100F44180 /* LevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D971081B2B44F100F44180 /* LevelScreen.swift */; };
 		08D9710A1B2B44F100F44180 /* LevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D971081B2B44F100F44180 /* LevelScreen.swift */; };
+		08D97CB31B34FAD6002A2BDD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB01B34FAD6002A2BDD /* spark.png */; };
+		08D97CB41B34FAD6002A2BDD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB01B34FAD6002A2BDD /* spark.png */; };
+		08D97CB61B34FDD5002A2BDD /* Exhaust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB51B34FDD5002A2BDD /* Exhaust.sks */; };
+		08D97CB71B34FDD5002A2BDD /* Exhaust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB51B34FDD5002A2BDD /* Exhaust.sks */; };
+		08D97CB91B34FFB4002A2BDD /* PointSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB81B34FFB4002A2BDD /* PointSparks.sks */; };
+		08D97CBA1B34FFB4002A2BDD /* PointSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB81B34FFB4002A2BDD /* PointSparks.sks */; };
 		08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F3E61B29F8BB00FDA871 /* Button.swift */; };
 		08D9F3E81B29F8C100FDA871 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F3E61B29F8BB00FDA871 /* Button.swift */; };
 		08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */; };
@@ -275,6 +281,9 @@
 		08D887591B321454007B860F /* level1v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level1v2.tmx; sourceTree = "<group>"; };
 		08D8875A1B321454007B860F /* level3v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level3v2.tmx; sourceTree = "<group>"; };
 		08D971081B2B44F100F44180 /* LevelScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelScreen.swift; sourceTree = "<group>"; };
+		08D97CB01B34FAD6002A2BDD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		08D97CB51B34FDD5002A2BDD /* Exhaust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Exhaust.sks; sourceTree = "<group>"; };
+		08D97CB81B34FFB4002A2BDD /* PointSparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PointSparks.sks; sourceTree = "<group>"; };
 		08D9F3E61B29F8BB00FDA871 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMPLATESCREEN.swift; sourceTree = "<group>"; };
 		08E123D61B26689E00B2127F /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = Traffic_Cop/MyUtils.swift; sourceTree = "<group>"; };
@@ -537,6 +546,16 @@
 			path = Radioland;
 			sourceTree = "<group>";
 		};
+		08D97CAE1B34FA1B002A2BDD /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				08D97CB01B34FAD6002A2BDD /* spark.png */,
+				08D97CB51B34FDD5002A2BDD /* Exhaust.sks */,
+				08D97CB81B34FFB4002A2BDD /* PointSparks.sks */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
 		08E123DC1B266C3A00B2127F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +573,7 @@
 		08FC6D0E1B2887CE004F4824 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				08D97CAE1B34FA1B002A2BDD /* Particles */,
 				08D515A11B28CB8100E5289B /* Assets */,
 				7DD881D71B28C8CA00C47FD7 /* JSTileMap */,
 				08E123DC1B266C3A00B2127F /* Screens */,
@@ -819,6 +839,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08FC6D1C1B28881D004F4824 /* GameScene.sks in Resources */,
+				08D97CB71B34FDD5002A2BDD /* Exhaust.sks in Resources */,
 				08D515E21B28CB8100E5289B /* bg_road_two_way_large.png in Resources */,
 				08D5161A1B28CB8100E5289B /* Ambulence2L.png in Resources */,
 				08D5160C1B28CB8100E5289B /* popo.png in Resources */,
@@ -829,6 +850,7 @@
 				08D74C161B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */,
 				08D515EA1B28CB8100E5289B /* irritated.png in Resources */,
 				08D516301B28CB8100E5289B /* car_cop2R.png in Resources */,
+				08D97CB41B34FAD6002A2BDD /* spark.png in Resources */,
 				08D5163A1B28CB8100E5289B /* truckR.png in Resources */,
 				08D515E41B28CB8100E5289B /* content.png in Resources */,
 				08D516061B28CB8100E5289B /* RoadTilesV2.pdn in Resources */,
@@ -864,6 +886,7 @@
 				08D5160E1B28CB8100E5289B /* single_green.png in Resources */,
 				08D8875E1B321454007B860F /* level3v2.tmx in Resources */,
 				08D515E61B28CB8100E5289B /* exclamation.png in Resources */,
+				08D97CBA1B34FFB4002A2BDD /* PointSparks.sks in Resources */,
 				08D5161E1B28CB8100E5289B /* car_blue.png in Resources */,
 				08D74C0E1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */,
 				08D74C061B290D4C00E1C8BA /* nervous_rex.ttf in Resources */,
@@ -917,6 +940,7 @@
 				08D8875B1B321454007B860F /* level1v2.tmx in Resources */,
 				08D515DF1B28CB8100E5289B /* bg_road_two_way.png in Resources */,
 				08D516151B28CB8100E5289B /* Ambulence1R.png in Resources */,
+				08D97CB91B34FFB4002A2BDD /* PointSparks.sks in Resources */,
 				08D74C131B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */,
 				08D515E71B28CB8100E5289B /* happy.png in Resources */,
 				08D516171B28CB8100E5289B /* Ambulence2.png in Resources */,
@@ -933,6 +957,7 @@
 				08D516211B28CB8100E5289B /* car_blue_right.png in Resources */,
 				08D515ED1B28CB8100E5289B /* LadyBaby.png in Resources */,
 				08D516391B28CB8100E5289B /* truckR.png in Resources */,
+				08D97CB31B34FAD6002A2BDD /* spark.png in Resources */,
 				08D515E11B28CB8100E5289B /* bg_road_two_way_large.png in Resources */,
 				08D74C051B290D4C00E1C8BA /* nervous_rex.ttf in Resources */,
 				7DD881DF1B28C8CA00C47FD7 /* LICENSE.txt in Resources */,
@@ -950,6 +975,7 @@
 				08D516011B28CB8100E5289B /* RoadTiles.pdn in Resources */,
 				08D74C151B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */,
 				08D515F91B28CB8100E5289B /* level2v2.tmx in Resources */,
+				08D97CB61B34FDD5002A2BDD /* Exhaust.sks in Resources */,
 				08D5161F1B28CB8100E5289B /* car_blue_left.png in Resources */,
 				08D516191B28CB8100E5289B /* Ambulence2L.png in Resources */,
 				08D516411B28CB8100E5289B /* stoplight_yellow.png in Resources */,
