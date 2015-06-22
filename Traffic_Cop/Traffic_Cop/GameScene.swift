@@ -835,7 +835,10 @@ class GameScene: SKScene
     func levelDone()
     {
         deSelectCars()
-        if(currentScore >= goalScore) // CAN BE CHANGED DEPENDING ON THE GOAL ... TODO//MAKE A SEPERATE GOAL FOR EACH LV
+        
+        for cars in vehicleArray{cars.paused = true}
+        
+        if(currentScore >= goalScore)
         {
             levPassed = true
             addChild(levDonePopUp.getButtBG())

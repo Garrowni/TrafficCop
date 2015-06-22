@@ -145,7 +145,7 @@ class MainMenuScreen: SKScene
         let block = SKAction.runBlock
         {
             let myScene = LevelScreen(size: self.size)
-            //myScene.scaleMode = self.scaleMode
+            myScene.scaleMode = self.scaleMode
             let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
             self.view?.presentScene(myScene, transition: reveal)
         }
@@ -165,7 +165,7 @@ class MainMenuScreen: SKScene
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock{
             let myScene = HelpScreen(size: self.size)
-            //myScene.scaleMode = self.scaleMode
+            myScene.scaleMode = self.scaleMode
             let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
             self.view?.presentScene(myScene, transition: reveal)
         }
@@ -186,7 +186,7 @@ class MainMenuScreen: SKScene
         let block = SKAction.runBlock
         {
             let myScene = CreditsScreen(size: self.size)
-            //myScene.scaleMode = self.scaleMode
+            myScene.scaleMode = self.scaleMode
             let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
             self.view?.presentScene(myScene, transition: reveal)
         }

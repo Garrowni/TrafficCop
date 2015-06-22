@@ -39,7 +39,6 @@ class PointsPopUp
     {
         var scale2 = SKAction.fadeInWithDuration(0.6)
         var scale3 = SKAction.fadeOutWithDuration(0.3)
-       // text.get().addChild(sparkEmitter)
         var block = SKAction.runBlock(){self.done = true}
         var sequence = SKAction.sequence([zoom,move,zoomO,block])
         var sequence2 = SKAction.sequence([scale2,move,scale3])

@@ -106,22 +106,27 @@ class PeopleSprite : SKSpriteNode
             self._dir = Direction.NORTH
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y - self._size.height
+            self.position.y -= 50
         case 1:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
+            self.position.x += 50
         case 2:
             self._dir = Direction.EAST
             self._spawn.x = direction.pos.x - self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
+            self.position.x -= 50
         case 3:
             self._dir = Direction.SOUTH
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y + self._size.height
+             self.position.y += 50
         default:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.height
             self._spawn.y = direction.pos.y - self._size.width/2
+            self.position.x += 50
         }
                 }
     required init?(coder aDecoder: NSCoder) {
