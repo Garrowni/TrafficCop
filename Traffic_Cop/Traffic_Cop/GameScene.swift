@@ -12,8 +12,8 @@ class GameScene: SKScene
 {
     //*******************************CONSTANTS / VARIABLES******************************
     var lastUpdateTime: NSTimeInterval  = 0
-    var dt: NSTimeInterval              = 0                             //DELTA TIME
-    let playableRect: CGRect                                            //GAME BOUNDS
+    var dt: NSTimeInterval              = 0
+      let playableRect: CGRect                                            //GAME BOUNDS
     let TW                              = 128                           //TILEWIDTH
     let level       : Int               = 0
     var map         : Map?

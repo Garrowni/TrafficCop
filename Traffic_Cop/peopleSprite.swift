@@ -22,6 +22,7 @@
 //YO HO HO
 //import Foundation
 import SpriteKit
+import Foundation
 
 
 
@@ -38,8 +39,6 @@ class PeopleSprite : SKSpriteNode
     }
       
 
-    var lastUpdateTime: NSTimeInterval  = 0
-    var dt: NSTimeInterval              = 0                             //DELTA TIME
     
     let _MAXSPEED : CGFloat
     var _dir : Direction = Direction.WEST
@@ -57,10 +56,7 @@ class PeopleSprite : SKSpriteNode
     var _isSelected : Bool = false
     var _glowCircle : GlowCircle
     var _currPos : CGPoint
-    
-
-    var timerCount      = CGFloat()
-    var timePassed      : Int
+   
     
     
     init(type : Int , direction : SpawnPoint)
@@ -73,8 +69,9 @@ class PeopleSprite : SKSpriteNode
         self._glowCircle = GlowCircle(pos: self._spawn, radius: 20, OLcolor: "yellow", OLSize: 10, glowWidth: 40, ZoomIn: true, glowBulge: true, alpha: 0.5)
         self._currPos = _spawn
         self._type = type
-        timerCount      = CGFloat(0.0)
-        timePassed      = 0
+       
+ 
+       
         
         switch(self._type)
         {
@@ -99,6 +96,7 @@ class PeopleSprite : SKSpriteNode
         
         
         super.init(texture: _person, color: nil, size: self._size)
+      
         self.position = self._currPos
         self.setScale(CGFloat(2.5))
         
@@ -125,7 +123,7 @@ class PeopleSprite : SKSpriteNode
             self._spawn.x = direction.pos.x + self._size.height
             self._spawn.y = direction.pos.y - self._size.width/2
         }
-    }
+                }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder: ) has not been implemented")
     }
@@ -134,6 +132,9 @@ class PeopleSprite : SKSpriteNode
     //***************************Functions*************************
     func update()
     {
+        
+        
+      
         println("isSelected: \(self._isSelected)")
         switch(self._dir)
         {
@@ -147,21 +148,8 @@ class PeopleSprite : SKSpriteNode
             self.zRotation = CGFloat(M_PI_2)
         default:
             self.zRotation = 0
-            
-           /*
-                timerCount += CGFloat(dt*1000)
-                if(timerCount <= 1000 && self._state == State.STOPPED)
-                {
-                    //ONE SECOND HAS PASSED
-                    timerCount = 0
-                    timePassed++
-                    
-                }
-                if (self._type == 3 && timePassed == 10)
-                {
-                    self._currSpeed = 10
-                }
-           */
+       
+
 
         }
         
@@ -173,14 +161,25 @@ class PeopleSprite : SKSpriteNode
         else if self._state == State.STOPPED //active
         {
               self._currSpeed = 0
-                   }
+            if (self._type = 1)
+            var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
+
+       
+        }
         else if self._state == State.TURNING //inactive
         {
           
             
         }
     }
+
+
+   
     
+ 
+
+    
+  
     
     func pickDirection()
     {
