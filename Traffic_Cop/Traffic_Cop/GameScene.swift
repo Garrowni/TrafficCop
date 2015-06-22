@@ -117,7 +117,7 @@ class GameScene: SKScene
         
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle();}
-        let wait = SKAction.waitForDuration(1)                     //SPAWN TIME !
+        let wait = SKAction.waitForDuration(2)                     //SPAWN TIME !
         let spawnSequence = SKAction.sequence([spawn, wait])
         spawnAction = SKAction.repeatActionForever(spawnSequence)
         
@@ -340,6 +340,21 @@ class GameScene: SKScene
  
     func updateVehicles()
     {
+        for(var d = 0; d < vehicleArray.count; ++d )
+        {
+            for(var c = 0; c < vehicleArray.count;++c)
+            {
+                if(d == c )
+                {
+                    continue
+                }
+                if(vehicleArray[d].frame.contains(vehicleArray[c]._stopPoint))
+                {
+                    vehicleArray[c].stop()
+                }
+            }
+        }
+        
         func atIntersection(pos: CGPoint) -> Bool
         {
             for Cw in crossWArray!

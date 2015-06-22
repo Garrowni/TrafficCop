@@ -26,7 +26,7 @@ class CarSprite : SKSpriteNode
     let _MAXSPEED : CGFloat
     var _dir : Direction = Direction.WEST
     var _turnCount : Int = 0
-    var _car : SKTexture
+    //var _car : SKTexture
     var _spawn  : CGPoint
     var _accel: CGFloat = 0.5
     var _currSpeed: CGFloat = 0
@@ -38,10 +38,10 @@ class CarSprite : SKSpriteNode
     var _state : State = State.DRIVING
     var _isSelected : Bool = false
     var _turned : Bool = false
-  
+    var _stopPoint : CGPoint = CGPoint(x: 0, y: 0)
     var _selectionColor : String = ""
     var _currPos : CGPoint
- var smokeEmitter : SKEmitterNode
+    var smokeEmitter : SKEmitterNode
     
     
     init(type : Int , direction : SpawnPoint)
@@ -59,48 +59,72 @@ class CarSprite : SKSpriteNode
         {
         case 1:
             
-            self._car = SKTexture(imageNamed: "Ambulence1")
+            
             self._MAXSPEED = 15
+            self._textures.append(SKTexture(imageNamed: "Ambulence1"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence1R"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence2"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence2L"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence2R"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence2L"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence2"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence1R"))
+            self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
+            ///self._car = self._textures[0]
            
             
         case 2:
-            self._car = SKTexture(imageNamed:"car_cop")
+            //self._car = SKTexture(imageNamed:"car_cop")
             self._MAXSPEED = 15
-            
-       
+            self._textures.append(SKTexture(imageNamed: "car_cop1"))
+            self._textures.append(SKTexture(imageNamed: "car_cop1L"))
+            self._textures.append(SKTexture(imageNamed: "car_cop1R"))
+            self._textures.append(SKTexture(imageNamed: "car_cop2"))
+            self._textures.append(SKTexture(imageNamed: "car_cop2L"))
+            self._textures.append(SKTexture(imageNamed: "car_cop2R"))
+            self._textures.append(SKTexture(imageNamed: "car_cop2L"))
+            self._textures.append(SKTexture(imageNamed: "car_cop1R"))
+            self._textures.append(SKTexture(imageNamed: "car_cop1L"))
         case 3:
-            self._car = SKTexture(imageNamed: "car_blue")
+            //self._car = SKTexture(imageNamed: "car_blue")
             self._MAXSPEED = 15
+            self._textures.append(SKTexture(imageNamed: "car_blue"))
            
          
         case 4:
-            self._car = SKTexture(imageNamed: "car_red")
+            //self._car = SKTexture(imageNamed: "car_red")
             self._MAXSPEED = 15
+            self._textures.append(SKTexture(imageNamed: "car_red"))
            
          
         case 5:
-            self._car = SKTexture(imageNamed: "pickup_green")
+            //self._car = SKTexture(imageNamed: "pickup_green")
             self._MAXSPEED = 15
+            self._textures.append(SKTexture(imageNamed: "pickup_green"))
             
            
         case 6:
-            self._car = SKTexture(imageNamed: "truck")
+            //self._car = SKTexture(imageNamed: "truck")
             self._MAXSPEED = 15
+            self._textures.append(SKTexture(imageNamed: "truck"))
+            
             
             
         default :
-            self._car = SKTexture(imageNamed: "")
+            //self._car = SKTexture(imageNamed: "")
             self._MAXSPEED = 0
+            self._textures.append(SKTexture(imageNamed: "Ambulence1"))
         }
         
-        super.init(texture: _car, color: nil, size: self._size)
+        super.init(texture: self._textures[0], color: nil, size: self._size)
         self.position = self._currPos
         self.addChild(smokeEmitter)
         
         //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
         smokeEmitter.position.x += 85
         
-
+        self.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(self._textures, timePerFrame: 0.1)))
         //position the car in the middle of the road
         switch(tempDirection)
         {
@@ -110,24 +134,28 @@ class CarSprite : SKSpriteNode
             self._spawn.y = direction.pos.y - self._size.height
             self.zRotation = CGFloat(M_PI_2 * 3)
             self.position.y -= size.height
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y + size.height/2 + 20)
         case 1:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
             self.zRotation = 0
             self.position.x += size.height
+            self._stopPoint = CGPoint(x: self.position.x - size.height/2 - 20 , y: self.position.y)
         case 2:
             self._dir = Direction.EAST
             self._spawn.x = direction.pos.x - self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
             self.zRotation = CGFloat(M_PI_2 * 2)
             self.position.x -= size.height
+            self._stopPoint = CGPoint(x: self.position.x + size.height/2 + 20, y: self.position.y)
         case 3:
             self._dir = Direction.SOUTH
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y + self._size.height
             self.zRotation = CGFloat(M_PI_2)
             self.position.y += size.height
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y - size.height/2 - 20)
         default:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.height
@@ -142,14 +170,35 @@ class CarSprite : SKSpriteNode
     
 
 //***************************Functions*************************
+    
+    
     func update()
     {
     
+        switch(self._dir)
+        {
+        case .NORTH:
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y + size.height/2 + 100)
+        case .EAST:
+            self._stopPoint = CGPoint(x: self.position.x + size.height/2 + 100, y: self.position.y)
+        case .WEST:
+            self._stopPoint = CGPoint(x: self.position.x - size.height/2 - 100, y: self.position.y)
+        case .SOUTH:
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y - size.height/2 - 100)
+        default:
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y)
+            
+        }
+        
+        
+        
+        
+                
         self._currPos = self.position
         
         if self._state == State.DRIVING
         {
-            goStraight()
+            self.drive()
         }
         
 
@@ -249,10 +298,32 @@ class CarSprite : SKSpriteNode
          self._turnCount++
         
     }
-    
+    func wait()
+    {
+        
+    }
     func drive()
     {
         self._state = State.DRIVING
+        
+        if self._currSpeed != self._MAXSPEED
+        {
+            self._currSpeed += self._accel
+        }
+        
+        switch(self._dir)
+        {
+        case .NORTH:
+            self._currPos.y += self._currSpeed
+        case .SOUTH:
+            self._currPos.y -= self._currSpeed
+        case .WEST:
+            self._currPos.x -= self._currSpeed
+        case .EAST:
+            self._currPos.x += self._currSpeed
+        default:
+            println("No direction")
+        }
     }
     
     func goStraight()
