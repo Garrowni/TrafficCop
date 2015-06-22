@@ -41,7 +41,7 @@ class CarSprite : SKSpriteNode
   
     var _selectionColor : String = ""
     var _currPos : CGPoint
-   // var smokeEmitter : SKEmitterNode
+ var smokeEmitter : SKEmitterNode
     
     
     init(type : Int , direction : SpawnPoint)
