@@ -96,6 +96,7 @@ class CarSprite : SKSpriteNode
         super.init(texture: _car, color: nil, size: self._size)
         self.position = self._currPos
         self.addChild(smokeEmitter)
+        
         //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
         smokeEmitter.position.x += 85
         
