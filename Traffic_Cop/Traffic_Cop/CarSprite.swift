@@ -51,6 +51,10 @@ class CarSprite : SKSpriteNode
         self._size = CGSize(width: 152, height: 66)
         self._spawn = direction.pos
         self._currPos = _spawn
+        smokeEmitter = SKEmitterNode(fileNamed: "Exhaust.sks")
+        
+    
+        
         switch(self._type)
         {
         case 1:
@@ -91,6 +95,9 @@ class CarSprite : SKSpriteNode
         
         super.init(texture: _car, color: nil, size: self._size)
         self.position = self._currPos
+        self.addChild(smokeEmitter)
+        //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
+        smokeEmitter.position.x += 85
         
 
         //position the car in the middle of the road
@@ -142,6 +149,7 @@ class CarSprite : SKSpriteNode
         
 
        self.position = self._currPos
+      
     } 
 
     func turnRight(path : CGPath)
