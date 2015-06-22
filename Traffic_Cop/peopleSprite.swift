@@ -78,7 +78,7 @@ class PeopleSprite : SKSpriteNode
         case 1:
             
             self._person = SKTexture(imageNamed: "lady")
-            self._MAXSPEED = 4
+            self._MAXSPEED = 3
         case 2:
             self._person = SKTexture(imageNamed: "LadyBaby")
             self._MAXSPEED = 3
