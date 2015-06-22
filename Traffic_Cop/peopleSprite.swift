@@ -330,11 +330,8 @@ class PeopleSprite : SKSpriteNode
     func goStraight()
     {
         self._state = State.WALKING
+        self._currSpeed = self._MAXSPEED
         
-        if self._currSpeed != self._MAXSPEED
-        {
-            self._currSpeed += self._accel
-        }
         
         switch(self._dir)
         {
