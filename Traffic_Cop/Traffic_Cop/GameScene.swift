@@ -340,6 +340,22 @@ class GameScene: SKScene
  
     func updateVehicles()
     {
+        for(var d = 0; d < vehicleArray.count; ++d )
+        {
+            for(var c = 1; c < vehicleArray.count;++c)
+            {
+                if(d == c )
+                {
+                    continue
+                }
+                if(vehicleArray[d].position.lengthBetween(vehicleArray[d].position, b: vehicleArray[c].position) <= 170 && vehicleArray[d]._dir == vehicleArray[c]._dir )
+                {
+                    vehicleArray[c].stop()
+                }
+                
+            }
+        }
+        
         func atIntersection(pos: CGPoint) -> Bool
         {
             for Cw in crossWArray!
