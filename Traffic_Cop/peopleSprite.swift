@@ -166,9 +166,18 @@ class PeopleSprite : SKSpriteNode
         else if self._state == State.STOPPED //active
         {
               self._currSpeed = 0
-            
-            var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
-
+            if (self._type == 1)
+            {
+                var timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
+            }
+            if (self._type == 2)
+            {
+                var timer = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
+            }
+            if (self._type == 3)
+            {
+                var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
+            }
        
         }
         else if self._state == State.TURNING //inactive
