@@ -78,7 +78,7 @@ class PeopleSprite : SKSpriteNode
         case 1:
             
             self._person = SKTexture(imageNamed: "lady")
-            self._MAXSPEED = 4
+            self._MAXSPEED = 3
         case 2:
             self._person = SKTexture(imageNamed: "LadyBaby")
             self._MAXSPEED = 3
@@ -166,9 +166,18 @@ class PeopleSprite : SKSpriteNode
         else if self._state == State.STOPPED //active
         {
               self._currSpeed = 0
-            
-            var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
-
+            if (self._type == 1)
+            {
+                var timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
+            }
+            if (self._type == 2)
+            {
+                var timer = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
+            }
+            if (self._type == 3)
+            {
+                var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
+            }
        
         }
         else if self._state == State.TURNING //inactive
@@ -330,11 +339,8 @@ class PeopleSprite : SKSpriteNode
     func goStraight()
     {
         self._state = State.WALKING
+        self._currSpeed = self._MAXSPEED
         
-        if self._currSpeed != self._MAXSPEED
-        {
-            self._currSpeed += self._accel
-        }
         
         switch(self._dir)
         {
