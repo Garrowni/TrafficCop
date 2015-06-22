@@ -38,7 +38,7 @@ class CarSprite : SKSpriteNode
     var _state : State = State.DRIVING
     var _isSelected : Bool = false
     var _turned : Bool = false
-  
+    var _stopPoint : CGPoint = CGPoint(x: 0, y: 0)
     var _selectionColor : String = ""
     var _currPos : CGPoint
  var smokeEmitter : SKEmitterNode
@@ -110,24 +110,28 @@ class CarSprite : SKSpriteNode
             self._spawn.y = direction.pos.y - self._size.height
             self.zRotation = CGFloat(M_PI_2 * 3)
             self.position.y -= size.height
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y + size.height/2 + 20)
         case 1:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
             self.zRotation = 0
             self.position.x += size.height
+            self._stopPoint = CGPoint(x: self.position.x - size.height/2 - 20 , y: self.position.y)
         case 2:
             self._dir = Direction.EAST
             self._spawn.x = direction.pos.x - self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
             self.zRotation = CGFloat(M_PI_2 * 2)
             self.position.x -= size.height
+            self._stopPoint = CGPoint(x: self.position.x + size.height/2 + 20, y: self.position.y)
         case 3:
             self._dir = Direction.SOUTH
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y + self._size.height
             self.zRotation = CGFloat(M_PI_2)
             self.position.y += size.height
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y - size.height/2 - 20)
         default:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.height
@@ -145,11 +149,27 @@ class CarSprite : SKSpriteNode
     func update()
     {
     
+        switch(self._dir)
+        {
+        case .NORTH:
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y + size.height/2 + 100)
+        case .EAST:
+            self._stopPoint = CGPoint(x: self.position.x + size.height/2 + 100, y: self.position.y)
+        case .WEST:
+            self._stopPoint = CGPoint(x: self.position.x - size.height/2 - 100, y: self.position.y)
+        case .SOUTH:
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y - size.height/2 - 100)
+        default:
+            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y)
+            
+        }
+        
+                
         self._currPos = self.position
         
         if self._state == State.DRIVING
         {
-            goStraight()
+            self.drive()
         }
         
 
@@ -249,10 +269,32 @@ class CarSprite : SKSpriteNode
          self._turnCount++
         
     }
-    
+    func wait()
+    {
+        
+    }
     func drive()
     {
         self._state = State.DRIVING
+        
+        if self._currSpeed != self._MAXSPEED
+        {
+            self._currSpeed += self._accel
+        }
+        
+        switch(self._dir)
+        {
+        case .NORTH:
+            self._currPos.y += self._currSpeed
+        case .SOUTH:
+            self._currPos.y -= self._currSpeed
+        case .WEST:
+            self._currPos.x -= self._currSpeed
+        case .EAST:
+            self._currPos.x += self._currSpeed
+        default:
+            println("No direction")
+        }
     }
     
     func goStraight()

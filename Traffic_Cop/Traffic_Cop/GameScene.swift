@@ -117,7 +117,7 @@ class GameScene: SKScene
         
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle();}
-        let wait = SKAction.waitForDuration(1)                     //SPAWN TIME !
+        let wait = SKAction.waitForDuration(2)                     //SPAWN TIME !
         let spawnSequence = SKAction.sequence([spawn, wait])
         spawnAction = SKAction.repeatActionForever(spawnSequence)
         
@@ -342,17 +342,16 @@ class GameScene: SKScene
     {
         for(var d = 0; d < vehicleArray.count; ++d )
         {
-            for(var c = 1; c < vehicleArray.count;++c)
+            for(var c = 0; c < vehicleArray.count;++c)
             {
                 if(d == c )
                 {
                     continue
                 }
-                if(vehicleArray[d].position.lengthBetween(vehicleArray[d].position, b: vehicleArray[c].position) <= 170 && vehicleArray[d]._dir == vehicleArray[c]._dir )
+                if(vehicleArray[d].frame.contains(vehicleArray[c]._stopPoint))
                 {
                     vehicleArray[c].stop()
                 }
-                
             }
         }
         
