@@ -164,6 +164,14 @@
 		08E123DE1B266C8700B2127F /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DD1B266C8700B2127F /* CreditsScreen.swift */; };
 		08E3B3421B2FBB0D0074DC3E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3B3411B2FBB0C0074DC3E /* Clock.swift */; };
 		08E3B3431B2FBB0D0074DC3E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3B3411B2FBB0C0074DC3E /* Clock.swift */; };
+		08E7B6991B389D5D00F32693 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6981B389D5D00F32693 /* Explosion.sks */; };
+		08E7B69A1B389D5D00F32693 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6981B389D5D00F32693 /* Explosion.sks */; };
+		08E7B69C1B38A08100F32693 /* FireWork1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B69B1B38A08100F32693 /* FireWork1.sks */; };
+		08E7B69D1B38A08100F32693 /* FireWork1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B69B1B38A08100F32693 /* FireWork1.sks */; };
+		08E7B6A51B38A22B00F32693 /* FireWork2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6A41B38A22B00F32693 /* FireWork2.sks */; };
+		08E7B6A61B38A22B00F32693 /* FireWork2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6A41B38A22B00F32693 /* FireWork2.sks */; };
+		08E7B6A81B38A37E00F32693 /* FireWork3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6A71B38A37E00F32693 /* FireWork3.sks */; };
+		08E7B6A91B38A37E00F32693 /* FireWork3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6A71B38A37E00F32693 /* FireWork3.sks */; };
 		08EB81BD1B33B22300E22D82 /* pointsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EB81BC1B33B22200E22D82 /* pointsPopUp.swift */; };
 		08EB81BE1B33B22300E22D82 /* pointsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EB81BC1B33B22200E22D82 /* pointsPopUp.swift */; };
 		08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FC6D171B28881D004F4824 /* AppDelegate.swift */; };
@@ -291,6 +299,10 @@
 		08E123DA1B266A7300B2127F /* HelpScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpScreen.swift; path = ../HelpScreen.swift; sourceTree = "<group>"; };
 		08E123DD1B266C8700B2127F /* CreditsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScreen.swift; sourceTree = "<group>"; };
 		08E3B3411B2FBB0C0074DC3E /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		08E7B6981B389D5D00F32693 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		08E7B69B1B38A08100F32693 /* FireWork1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireWork1.sks; sourceTree = "<group>"; };
+		08E7B6A41B38A22B00F32693 /* FireWork2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireWork2.sks; sourceTree = "<group>"; };
+		08E7B6A71B38A37E00F32693 /* FireWork3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireWork3.sks; sourceTree = "<group>"; };
 		08EB81BC1B33B22200E22D82 /* pointsPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pointsPopUp.swift; sourceTree = "<group>"; };
 		08FC6D131B28881D004F4824 /* Traffic_Cop_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traffic_Cop_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08FC6D161B28881D004F4824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -552,6 +564,10 @@
 				08D97CB01B34FAD6002A2BDD /* spark.png */,
 				08D97CB51B34FDD5002A2BDD /* Exhaust.sks */,
 				08D97CB81B34FFB4002A2BDD /* PointSparks.sks */,
+				08E7B6981B389D5D00F32693 /* Explosion.sks */,
+				08E7B69B1B38A08100F32693 /* FireWork1.sks */,
+				08E7B6A41B38A22B00F32693 /* FireWork2.sks */,
+				08E7B6A71B38A37E00F32693 /* FireWork3.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -840,6 +856,7 @@
 			files = (
 				08FC6D1C1B28881D004F4824 /* GameScene.sks in Resources */,
 				08D97CB71B34FDD5002A2BDD /* Exhaust.sks in Resources */,
+				08E7B69A1B389D5D00F32693 /* Explosion.sks in Resources */,
 				08D515E21B28CB8100E5289B /* bg_road_two_way_large.png in Resources */,
 				08D5161A1B28CB8100E5289B /* Ambulence2L.png in Resources */,
 				08D5160C1B28CB8100E5289B /* popo.png in Resources */,
@@ -888,6 +905,7 @@
 				08D515E61B28CB8100E5289B /* exclamation.png in Resources */,
 				08D97CBA1B34FFB4002A2BDD /* PointSparks.sks in Resources */,
 				08D5161E1B28CB8100E5289B /* car_blue.png in Resources */,
+				08E7B6A61B38A22B00F32693 /* FireWork2.sks in Resources */,
 				08D74C0E1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */,
 				08D74C061B290D4C00E1C8BA /* nervous_rex.ttf in Resources */,
 				08D74C041B290D4C00E1C8BA /* NEORS___.ttf in Resources */,
@@ -900,9 +918,11 @@
 				08D516141B28CB8100E5289B /* Ambulence1L.png in Resources */,
 				08D5163E1B28CB8100E5289B /* stoplight_green.png in Resources */,
 				08D74BF21B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */,
+				08E7B6A91B38A37E00F32693 /* FireWork3.sks in Resources */,
 				08D516441B28CB8100E5289B /* thought.png in Resources */,
 				08D516281B28CB8100E5289B /* car_cop1L.png in Resources */,
 				08D516221B28CB8100E5289B /* car_blue_right.png in Resources */,
+				08E7B69D1B38A08100F32693 /* FireWork1.sks in Resources */,
 				08D5162E1B28CB8100E5289B /* car_cop2L.png in Resources */,
 				08D515EE1B28CB8100E5289B /* LadyBaby.png in Resources */,
 				08D5161C1B28CB8100E5289B /* Ambulence2R.png in Resources */,
@@ -942,11 +962,14 @@
 				08D516151B28CB8100E5289B /* Ambulence1R.png in Resources */,
 				08D97CB91B34FFB4002A2BDD /* PointSparks.sks in Resources */,
 				08D74C131B290D4C00E1C8BA /* RADIOLAND.ttf in Resources */,
+				08E7B69C1B38A08100F32693 /* FireWork1.sks in Resources */,
 				08D515E71B28CB8100E5289B /* happy.png in Resources */,
+				08E7B6A81B38A37E00F32693 /* FireWork3.sks in Resources */,
 				08D516171B28CB8100E5289B /* Ambulence2.png in Resources */,
 				08D74BFB1B290D4C00E1C8BA /* Lintsec.ttf in Resources */,
 				7DE1464E1B223E95005DB874 /* Images.xcassets in Resources */,
 				08D515E51B28CB8100E5289B /* exclamation.png in Resources */,
+				08E7B6A51B38A22B00F32693 /* FireWork2.sks in Resources */,
 				08D5163D1B28CB8100E5289B /* stoplight_green.png in Resources */,
 				7DE1464C1B223E95005DB874 /* Main.storyboard in Resources */,
 				08D515E91B28CB8100E5289B /* irritated.png in Resources */,
@@ -986,6 +1009,7 @@
 				08D516111B28CB8100E5289B /* Ambulence1.png in Resources */,
 				08D515DD1B28CB8100E5289B /* bg_road_one_way.png in Resources */,
 				08D516351B28CB8100E5289B /* truck.png in Resources */,
+				08E7B6991B389D5D00F32693 /* Explosion.sks in Resources */,
 				08D516311B28CB8100E5289B /* car_red.png in Resources */,
 				08D74BF11B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */,
 				08D5162D1B28CB8100E5289B /* car_cop2L.png in Resources */,

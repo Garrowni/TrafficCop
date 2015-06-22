@@ -175,10 +175,12 @@ extension CGFloat{
 }
 
 
+//FLOAT EXTENTIONS
+
 extension CGFloat
 {
     static func random() -> CGFloat {
-        return CGFloat((Float(arc4random()))/(Float(UInt32.max)))      //RANDOM BETWEEN 0-1
+        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)   //RANDOM BETWEEN 0-1
     }
     
     static func random(#min: CGFloat, max: CGFloat) -> CGFloat         //RANDOM BETWEEN Min-Max
@@ -186,6 +188,47 @@ extension CGFloat
         assert(min < max)
         return CGFloat.random() * (max - min) +  min
     }
+    /**
+    * Converts an angle in degrees to radians.
+    */
+    public func degreesToRadians() -> CGFloat {
+        return pie * self / 180.0
+    }
+    
+    /**
+    * Converts an angle in radians to degrees.
+    */
+    public func radiansToDegrees() -> CGFloat {
+        return self * 180.0 / pie
+    }
+    
+    /**
+    * Ensures that the float value stays between the given values, inclusive.
+    */
+    public func clamped(v1: CGFloat, _ v2: CGFloat) -> CGFloat {
+        let min = v1 < v2 ? v1 : v2
+        let max = v1 > v2 ? v1 : v2
+        return self < min ? min : (self > max ? max : self)
+    }
+    
+    /**
+    * Ensures that the float value stays between the given values, inclusive.
+    */
+    public mutating func clamp(v1: CGFloat, _ v2: CGFloat) -> CGFloat {
+        self = clamped(v1, v2)
+        return self
+    }
+
+    
+    /**
+    * Randomly returns either 1.0 or -1.0.
+    */
+    public static func randomSign() -> CGFloat {
+        return (arc4random_uniform(2) == 0) ? 1.0 : -1.0
+    }
+
+    
+
 }
 
 //GET DIRECTION from pos1 -> pos2
@@ -264,6 +307,8 @@ public func SKColorWithRGBA(r: Int, g: Int, b: Int, a: Int) -> SKColor
 {
     return SKColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a)/255.0)
 }
+
+
 
 
 
