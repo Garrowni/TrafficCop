@@ -72,7 +72,7 @@ class HelpScreen: SKScene
         backButt    = Button(pos: backButtR,    roundCorner: 100, text: backLbl,    BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         titleButt   = Button(pos: titleButtR,   roundCorner: 100, text: titleLabel, BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: true, glowBulge: false)
         
-        helpSTR   = "Looking for help eh ?"
+        helpSTR   = "Looking for help?"
         helpSTR2  = "Steps:"
         helpSTR3  = "1)  Click the car to select it"
         helpSTR4  = "Tell the car its  destination"
@@ -83,7 +83,7 @@ class HelpScreen: SKScene
         helpSTR9  = "people will start getting mad"
         helpSTR10 = ""
         helpSTR11 = "3) Be careful of pedestrians"
-        helpSTR12 = "dont  direct traffic into people!"
+        helpSTR12 = "don't direct traffic into people!"
         helpSTR13 = ""
         helpSTR14 = ""
         helpSTR15 = ""

@@ -40,10 +40,10 @@ class MainMenuScreen: SKScene
         credLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Credits",        fontSize: 200, font: "font4", color: "black", align: "center")
         
         //Rects  * remember subtract half the width from the x to get true center *
-        titlR = CGRect(x: size.width/2-450, y: size.height-400, width: 900, height: 300)
-        playR = CGRect(x: size.width/2-300, y: size.height-840, width: 600, height: 400)
-        helpR = CGRect(x: size.width/2-300, y: size.height-1265, width: 600, height: 400)
-        credR = CGRect(x: size.width/2-300, y: size.height-1690, width: 600, height: 400)
+        titlR = CGRect(x: size.width/2-450, y: size.height-350, width: 900, height: 300)
+        playR = CGRect(x: size.width/2-300, y: size.height-790, width: 600, height: 400)
+        helpR = CGRect(x: size.width/2-300, y: size.height-1215, width: 600, height: 400)
+        credR = CGRect(x: size.width/2-300, y: size.height-1640, width: 600, height: 400)
         
         //Buttons
         titlButt = Button(pos: titlR, roundCorner: 100, text: titleLabel, BGcolor: "blue", OLcolor: "red",      OLSize: 10, glowWidth: 40, ZoomIn: true, Bulge: true,  glowBulge: false)
