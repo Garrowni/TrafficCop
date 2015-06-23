@@ -138,9 +138,7 @@ class PeopleSprite : SKSpriteNode
     func update()
     {
         
-        
-      
-        println("isSelected: \(self._isSelected)")
+     
         switch(self._dir)
         {
         case .NORTH:
@@ -172,10 +170,13 @@ class PeopleSprite : SKSpriteNode
             }
             if (self._type == 2)
             {
+                
+                
                 var timer = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
             }
             if (self._type == 3)
             {
+        
                 var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
             }
        
@@ -184,12 +185,6 @@ class PeopleSprite : SKSpriteNode
     }
 
 
-   
-    
- 
-
-    
-  
     
    
     
@@ -204,6 +199,7 @@ class PeopleSprite : SKSpriteNode
     {
         self._state = State.WALKING
         self._currSpeed = self._MAXSPEED
+       
         
         
         switch(self._dir)

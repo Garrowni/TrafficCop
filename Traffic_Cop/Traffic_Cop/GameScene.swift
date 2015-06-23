@@ -154,20 +154,20 @@ class GameScene: SKScene
         self.runAction(transSequence)
         
 // FOR DEBUG
-//        for cw in glowCWs
-//        {
-//            addChild(cw.getOL())
-//        }
+        for cw in glowCWs
+       {
+            addChild(cw.getOL())
+        }
 //        
 //        for spawn in glowSpawns
 //        {
 //            addChild(spawn.getOL())
 //        }
 //        
-//        for goto in gotoPoints
-//        {
-//            addChild(goto.getOL())
-//        }
+//       for goto in gotoPoints
+ //       {
+ //           addChild(goto.getOL())
+ //       }
     
         clock.clockButt.getButtBG().zPosition = 100
         clock.clockButt.getButtOL().zPosition = 100
