@@ -1006,6 +1006,7 @@ class GameScene: SKScene
     
    func fireWorksGo()
    {
+    
     var f1 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
     var f2 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
     var f3 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork3.sks")
@@ -1018,18 +1019,21 @@ class GameScene: SKScene
     self.addChild(f3)
     
     var wait = SKAction.waitForDuration(1.5, withRange: 4)
+    
     var newPosf1 = SKAction.runBlock()
     {
         f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
         f1.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
         f1.resetSimulation()
     }
+    
     var newPosf2 = SKAction.runBlock()
     {
         f2.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
         f2.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
         f2.resetSimulation()
     }
+    
     var newPosf3 = SKAction.runBlock()
     {
         f3.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)

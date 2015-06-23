@@ -461,6 +461,7 @@ class CarSprite : SKSpriteNode
                 if(rand == 3){wantsLeft     = true}
             }
             choiceMade = true
+            println("CHOICE MADE --> Straight:\(wantsStraight) Right: \(wantsRight)  Left: \(wantsLeft)")
         }
     }
     
