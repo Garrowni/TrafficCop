@@ -3,6 +3,7 @@
 //  Traffic_Cop
 //
 //  Created by Justin Morritt on 2015-06-08.
+//  Edited by Nicole Garrow on 2015-06-23
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
@@ -80,12 +81,12 @@ class CreditsScreen: SKScene
         creditsSTR8  = " "
         creditsSTR9  = "Justin Morrit !"
         creditsSTR10 = " "
-        creditsSTR11 = "Nicole!"
+        creditsSTR11 = "Nicole Garrow!"
         creditsSTR12 = " "
-        creditsSTR13 = "Matt!"
+        creditsSTR13 = "Matt Manton!"
         creditsSTR14 = " "
-        creditsSTR15 = "Thanks For Playing !"
-        creditsSTR16 = "See Yah!"
+        creditsSTR15 = "The cars are owned by Razeware LLC (http://www.raywenderlich.com)."
+        creditsSTR16 = "Thanks For Playing!"
        
         credits   = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR,   fontSize: 70, font: "font2", color: "black",  align: "center")
         credits2  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR2,  fontSize: 70, font: "font2", color: "black",  align: "center")
