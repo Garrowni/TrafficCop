@@ -31,6 +31,7 @@ class GameScene: SKScene
     let nextLevButt : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
+    var fireworks   : [SKEmitterNode]
     var pointsArray : [PointsPopUp]
     var selection   : GlowBox
     var glowSpawns  : [GlowCircle]
@@ -75,6 +76,7 @@ class GameScene: SKScene
         feelsArray      = []
         chooseRoads     = []
         pointsArray     = []
+        fireworks       = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
 
         timerCount      = CGFloat(0.0)
@@ -855,6 +857,7 @@ class GameScene: SKScene
         
         if(currentScore >= goalScore)
         {
+            fireWorksGo()
             levPassed = true
             addChild(levDonePopUp.getButtBG())
             addChild(levDonePopUp.getButtOL())
@@ -956,6 +959,43 @@ class GameScene: SKScene
         
     }
     
+    
+   func fireWorksGo()
+   {
+    var f1 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
+    var f2 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
+    var f3 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork3.sks")
+    
+    self.addChild(f1)
+    self.addChild(f2)
+    self.addChild(f3)
+    
+    var wait = SKAction.waitForDuration(CGFloat.random(min: 1, max: 2))
+    var newPosf1 = SKAction.runBlock()
+    {
+        f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        f1.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        f1.resetSimulation()
+    }
+    var newPosf2 = SKAction.runBlock()
+    {
+        f2.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        f2.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        f2.resetSimulation()
+    }
+    var newPosf3 = SKAction.runBlock()
+    {
+        f3.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        f3.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        f3.resetSimulation()
+    }
+    
+    f1.runAction(SKAction.repeatActionForever(SKAction.sequence([newPosf1,wait])))
+    f2.runAction(SKAction.repeatActionForever(SKAction.sequence([newPosf2,wait])))
+    f3.runAction(SKAction.repeatActionForever(SKAction.sequence([newPosf3,wait])))
+    
+   }
+
     
 }
 
