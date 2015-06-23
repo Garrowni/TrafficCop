@@ -49,8 +49,8 @@ class Map
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*4+TW/2 ,y:TW*15),   direction: "down")) //TOP2
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*5+TW/2 ,y:0),       direction: "up"))   //BOTTOM
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*6+TW/2 ,y:0),       direction: "up"))   //BOTTOM2
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*5+TW/2),    direction: "right"))//LEFT
-            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*6+TW/2),    direction: "right"))//LEFT2
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*4+TW/2),    direction: "right"))//LEFT
+            self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*0 ,y:TW*5+TW/2),    direction: "right"))//LEFT2
         case 4:
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*2+TW/2 ,y:TW*15),   direction: "down")) //TOP
             self.spawnArray.append(SpawnPoint(position: CGPoint(x:TW*3+TW/2 ,y:TW*15),   direction: "down")) //TOP2

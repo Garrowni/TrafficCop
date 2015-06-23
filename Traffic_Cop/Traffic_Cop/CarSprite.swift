@@ -42,6 +42,16 @@ class CarSprite : SKSpriteNode
     var _selectionColor : String = ""
     var _currPos : CGPoint
     var smokeEmitter : SKEmitterNode
+    var canTurnLeft     = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
+    var canTurnRight    = false
+    var canGoStraight   = false
+    var wantsRight      = false //RANDOM ROLL FOR THE CARS WANT
+    var wantsStraight   = false
+    var wantsLeft       = false
+    var turningLeft     = false //CHOICE A PERSON CHOOSES AT THE TIME OF DE-LUUMINATION
+    var turningRight    = false
+    var goingStrait     = false
+    var choiceMade      = false //IF THEY HAVE MADE A CHOICE DONT MAKE ANOTHER.
     
     
     init(type : Int , direction : SpawnPoint)
@@ -411,6 +421,49 @@ class CarSprite : SKSpriteNode
             return true
         }
     }
+    
+    func setChoices(forward: Bool, left: Bool, right: Bool)
+    {
+         canTurnLeft     = left
+         canTurnRight    = right
+         canGoStraight   = forward
+         rollChoice()
+    }
+    
+    func rollChoice()
+    {
+        if(!choiceMade)
+        {
+            var rollAmount = 0
+            if(canTurnLeft)  {rollAmount++}
+            if(canTurnRight) {rollAmount++}
+            if(canGoStraight){rollAmount++}
+            var rand = Int.randomNumberFrom(1...rollAmount)
+            if(canTurnLeft && canTurnRight && !canGoStraight)
+            {
+                if(rand == 1){wantsLeft     = true}
+                if(rand == 2){wantsRight    = true}
+            }
+            if(canGoStraight && canTurnLeft && !canTurnRight)
+            {
+                if(rand == 1){wantsStraight = true}
+                if(rand == 2){wantsLeft     = true}
+            }
+            if(canGoStraight && canTurnRight && !canTurnLeft)
+            {
+                if(rand == 1){wantsStraight = true}
+                if(rand == 2){wantsRight    = true}
+            }
+            if(canGoStraight && canTurnRight && canTurnLeft)
+            {
+                if(rand == 1){wantsStraight = true}
+                if(rand == 2){wantsRight    = true}
+                if(rand == 3){wantsLeft     = true}
+            }
+            choiceMade = true
+        }
+    }
+    
     
 }
 

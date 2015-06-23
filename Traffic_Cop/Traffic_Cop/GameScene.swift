@@ -287,13 +287,35 @@ class GameScene: SKScene
     {
         if(!pausedOn)
         {
-            if(vehicleArray.count < 10)
+            if(vehicleArray.count < 20) //TODO maybe vary this number for different levels
             {
-                var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![Int.randomNumberFrom(0...spawnsArray!.count-1)])
+                var cantSpawnThere = false
+                var foundSpot = false
+                var theSpawn = Int.randomNumberFrom(0...spawnsArray!.count-1)
+                
+                while(!foundSpot)
+                {
+                    for car in vehicleArray
+                    {
+                        if(car.frame.contains(spawnsArray![theSpawn].getPos()))
+                        {
+                            cantSpawnThere = true
+                        }
+                    }
+                    if cantSpawnThere
+                    {
+                        theSpawn = Int.randomNumberFrom(0...spawnsArray!.count-1)
+                        cantSpawnThere = false
+                    }
+                    else
+                    {
+                        foundSpot = true
+                    }
+                }
+                
+                var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![theSpawn])
                 vehicleArray.append(car)
                 car.drive()
-                
-                //car.addChild(car._glowCircle.getOL())
                 addChild(car)
             }}
         
@@ -618,14 +640,17 @@ class GameScene: SKScene
     func illuminateRoads(car : CarSprite)
     {
             var carOn : Road = map!.getCurRoad(car.position)
-            
+        var canGoLeft     = false
+        var canGoRight    = false
+        var canGoStraight = false
+        
             let transition = SKAction.group([SKAction.runBlock()
                 {
                     var roadSide = carOn.Side
                     
                     for road in self.map!.roadArray
                     {
-                        if road.Side == roadSide {}                                 //SAME SIDE ROADS..DO Natta
+                        if road.Side == roadSide {}                                 //SAME SIDE ROADS..ADD TO CHOICES
                         else{self.chooseRoads.append(road)}                         //ROADS NOT ON SAME SIDE ... array em up
                     }
                     
@@ -641,6 +666,27 @@ class GameScene: SKScene
                             }
                         }
                     }
+                    //SETTING THE CARS CHOICE OF WHAT ROADS THEY CAN TURN TO AND GETTING THERE CHOICE
+                    for road in self.chooseRoads
+                    {
+                        switch(car._dir)
+                        {
+                        case .EAST: if(road.Side == "top")      {canGoLeft      = true}
+                                    if(road.Side == "bottom")   {canGoRight     = true}
+                                    if(road.Side == "right")    {canGoStraight  = true}
+                        case .NORTH:if(road.Side == "top")      {canGoStraight  = true}
+                                    if(road.Side == "left")     {canGoLeft      = true}
+                                    if(road.Side == "right")    {canGoRight     = true}
+                        case .WEST: if(road.Side == "top")      {canGoRight     = true}
+                                    if(road.Side == "bottom")   {canGoLeft      = true}
+                                    if(road.Side == "left")     {canGoStraight  = true}
+                        case .SOUTH:if(road.Side == "right")    {canGoLeft      = true}
+                                    if(road.Side == "bottom")   {canGoStraight  = true}
+                                    if(road.Side == "left")     {canGoRight     = true}
+                        default: println("something Broke in the passing in roads to choose from")
+                        }
+                    }
+                    car.setChoices(canGoStraight, left: canGoLeft, right: canGoRight)
                 }])
             
             let wait = SKAction.waitForDuration(0.3)
@@ -967,13 +1013,11 @@ class GameScene: SKScene
     f2.zPosition = 1001
     f3.zPosition = 1001
     
-    
     self.addChild(f1)
     self.addChild(f2)
     self.addChild(f3)
     
-    
-    var wait = SKAction.waitForDuration(1, withRange: 2)
+    var wait = SKAction.waitForDuration(1.5, withRange: 4)
     var newPosf1 = SKAction.runBlock()
     {
         f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
