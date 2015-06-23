@@ -427,42 +427,40 @@ class CarSprite : SKSpriteNode
          canTurnLeft     = left
          canTurnRight    = right
          canGoStraight   = forward
+        
          rollChoice()
     }
     
     func rollChoice()
     {
-        if(!choiceMade)
+        var rollAmount = 0
+        if(canTurnLeft)  {rollAmount++}
+        if(canTurnRight) {rollAmount++}
+        if(canGoStraight){rollAmount++}
+        var rand = Int.randomNumberFrom(1...rollAmount)
+        if(canTurnLeft && canTurnRight && !canGoStraight)
         {
-            var rollAmount = 0
-            if(canTurnLeft)  {rollAmount++}
-            if(canTurnRight) {rollAmount++}
-            if(canGoStraight){rollAmount++}
-            var rand = Int.randomNumberFrom(1...rollAmount)
-            if(canTurnLeft && canTurnRight && !canGoStraight)
-            {
-                if(rand == 1){wantsLeft     = true}
-                if(rand == 2){wantsRight    = true}
-            }
-            if(canGoStraight && canTurnLeft && !canTurnRight)
-            {
-                if(rand == 1){wantsStraight = true}
-                if(rand == 2){wantsLeft     = true}
-            }
-            if(canGoStraight && canTurnRight && !canTurnLeft)
-            {
-                if(rand == 1){wantsStraight = true}
-                if(rand == 2){wantsRight    = true}
-            }
-            if(canGoStraight && canTurnRight && canTurnLeft)
-            {
-                if(rand == 1){wantsStraight = true}
-                if(rand == 2){wantsRight    = true}
-                if(rand == 3){wantsLeft     = true}
-            }
-            choiceMade = true
-            println("CHOICE MADE --> Straight:\(wantsStraight) Right: \(wantsRight)  Left: \(wantsLeft)")
+            if(rand == 1){wantsLeft     = true}
+            if(rand == 2){wantsRight    = true}
         }
+        if(canGoStraight && canTurnLeft && !canTurnRight)
+        {
+            if(rand == 1){wantsStraight = true}
+            if(rand == 2){wantsLeft     = true}
+        }
+        if(canGoStraight && canTurnRight && !canTurnLeft)
+        {
+            if(rand == 1){wantsStraight = true}
+            if(rand == 2){wantsRight    = true}
+        }
+        if(canGoStraight && canTurnRight && canTurnLeft)
+        {
+            if(rand == 1){wantsStraight = true}
+            if(rand == 2){wantsRight    = true}
+            if(rand == 3){wantsLeft     = true}
+        }
+        choiceMade = true
+        println("CHOICE MADE --> Straight:\(wantsStraight) Right: \(wantsRight)  Left: \(wantsLeft)")
     }
     
     

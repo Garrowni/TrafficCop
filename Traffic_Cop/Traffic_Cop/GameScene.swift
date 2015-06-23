@@ -293,30 +293,28 @@ class GameScene: SKScene
                 var foundSpot = false
                 var theSpawn = Int.randomNumberFrom(0...spawnsArray!.count-1)
                 
-                while(!foundSpot)
+            
+                for car in vehicleArray
                 {
-                    for car in vehicleArray
+                    if(car.frame.contains(spawnsArray![theSpawn].getPos()))
                     {
-                        if(car.frame.contains(spawnsArray![theSpawn].getPos()))
-                        {
-                            cantSpawnThere = true
-                        }
-                    }
-                    if cantSpawnThere
-                    {
-                        theSpawn = Int.randomNumberFrom(0...spawnsArray!.count-1)
-                        cantSpawnThere = false
-                    }
-                    else
-                    {
-                        foundSpot = true
+                        cantSpawnThere = true
                     }
                 }
+                if cantSpawnThere
+                {
+                    //DONT SPAWN A CAR THERE THEN
+                }
+                else
+                {
+                    var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![theSpawn])
+                    vehicleArray.append(car)
+                    car.drive()
+                    addChild(car)
+                }
                 
-                var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![theSpawn])
-                vehicleArray.append(car)
-                car.drive()
-                addChild(car)
+                
+            
             }}
         
     }
@@ -667,26 +665,29 @@ class GameScene: SKScene
                         }
                     }
                     //SETTING THE CARS CHOICE OF WHAT ROADS THEY CAN TURN TO AND GETTING THERE CHOICE
-                    for road in self.chooseRoads
+                    if (!car.choiceMade)
                     {
-                        switch(car._dir)
+                        for road in self.chooseRoads
                         {
-                        case .EAST: if(road.Side == "top")      {canGoLeft      = true}
-                                    if(road.Side == "bottom")   {canGoRight     = true}
-                                    if(road.Side == "right")    {canGoStraight  = true}
-                        case .NORTH:if(road.Side == "top")      {canGoStraight  = true}
-                                    if(road.Side == "left")     {canGoLeft      = true}
-                                    if(road.Side == "right")    {canGoRight     = true}
-                        case .WEST: if(road.Side == "top")      {canGoRight     = true}
-                                    if(road.Side == "bottom")   {canGoLeft      = true}
-                                    if(road.Side == "left")     {canGoStraight  = true}
-                        case .SOUTH:if(road.Side == "right")    {canGoLeft      = true}
-                                    if(road.Side == "bottom")   {canGoStraight  = true}
-                                    if(road.Side == "left")     {canGoRight     = true}
-                        default: println("something Broke in the passing in roads to choose from")
+                            switch(car._dir)
+                            {
+                            case .EAST: if(road.Side == "top")      {canGoLeft      = true}
+                                        if(road.Side == "bottom")   {canGoRight     = true}
+                                        if(road.Side == "right")    {canGoStraight  = true}
+                            case .NORTH:if(road.Side == "top")      {canGoStraight  = true}
+                                        if(road.Side == "left")     {canGoLeft      = true}
+                                        if(road.Side == "right")    {canGoRight     = true}
+                            case .WEST: if(road.Side == "top")      {canGoRight     = true}
+                                        if(road.Side == "bottom")   {canGoLeft      = true}
+                                        if(road.Side == "left")     {canGoStraight  = true}
+                            case .SOUTH:if(road.Side == "right")    {canGoLeft      = true}
+                                        if(road.Side == "bottom")   {canGoStraight  = true}
+                                        if(road.Side == "left")     {canGoRight     = true}
+                            default: println("something Broke in the passing in roads to choose from")
+                            }
                         }
+                        car.setChoices(canGoStraight, left: canGoLeft, right: canGoRight)
                     }
-                    car.setChoices(canGoStraight, left: canGoLeft, right: canGoRight)
                 }])
             
             let wait = SKAction.waitForDuration(0.3)
