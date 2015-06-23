@@ -31,7 +31,6 @@ class GameScene: SKScene
     let nextLevButt : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
-    var fireworks   : [SKEmitterNode]
     var pointsArray : [PointsPopUp]
     var selection   : GlowBox
     var glowSpawns  : [GlowCircle]
@@ -76,7 +75,6 @@ class GameScene: SKScene
         feelsArray      = []
         chooseRoads     = []
         pointsArray     = []
-        fireworks       = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
 
         timerCount      = CGFloat(0.0)
@@ -965,12 +963,17 @@ class GameScene: SKScene
     var f1 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
     var f2 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
     var f3 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork3.sks")
+    f1.zPosition = 1001
+    f2.zPosition = 1001
+    f3.zPosition = 1001
+    
     
     self.addChild(f1)
     self.addChild(f2)
     self.addChild(f3)
     
-    var wait = SKAction.waitForDuration(CGFloat.random(min: 1, max: 2))
+    
+    var wait = SKAction.waitForDuration(1, withRange: 2)
     var newPosf1 = SKAction.runBlock()
     {
         f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
