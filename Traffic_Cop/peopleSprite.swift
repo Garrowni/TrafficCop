@@ -160,10 +160,10 @@ class PeopleSprite : SKSpriteNode
         
         self.position = self._currPos
      
-        if self._state == State.WALKING //inactive
+        if self._state == State.WALKING
         {            goStraight()
         }
-        else if self._state == State.STOPPED //active
+        else if self._state == State.STOPPED
         {
               self._currSpeed = 0
             if (self._type == 1)
@@ -180,11 +180,7 @@ class PeopleSprite : SKSpriteNode
             }
        
         }
-        else if self._state == State.TURNING //inactive
-        {
-          
-            
-        }
+      
     }
 
 
@@ -357,14 +353,14 @@ class PeopleSprite : SKSpriteNode
         }
     }
     
-    func stop() //is when timer should activate
+    func stop()
     {
         self._currSpeed = 0
         self._state = State.STOPPED
     }
     
     
-    func isDone(rect : CGRect) -> Bool //timer should be inactive
+    func isDone(rect : CGRect) -> Bool
     {
         if(self._dir == .NORTH && self.position.y - self._size.height * 2 > rect.maxY)
         {
