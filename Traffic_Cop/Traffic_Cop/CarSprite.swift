@@ -28,9 +28,9 @@ class CarSprite : SKSpriteNode
     var _turnCount : Int = 0
     //var _car : SKTexture
     var _spawn  : CGPoint
-    var _accel: CGFloat = 0.5
+    var _accel: CGFloat = 1
     var _currSpeed: CGFloat = 0
-    var _deAccel: CGFloat = 0
+    var _velocity : CGFloat = 0
     var _isDone : Bool = false
     var _type : Int
     var _textures : [SKTexture] = []
@@ -41,6 +41,7 @@ class CarSprite : SKSpriteNode
     var _stopPoint : CGPoint = CGPoint(x: 0, y: 0)
     var _selectionColor : String = ""
     var _currPos : CGPoint
+    var _mass    : CGFloat
     var smokeEmitter : SKEmitterNode
     var canTurnLeft     = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
     var canTurnRight    = false
@@ -53,7 +54,7 @@ class CarSprite : SKSpriteNode
     var goingStrait     = false
     var choiceMade      = false //IF THEY HAVE MADE A CHOICE DONT MAKE ANOTHER.
     var theParent       : SKNode
-    
+    var carInFront      : SKSpriteNode?
     
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
@@ -71,7 +72,7 @@ class CarSprite : SKSpriteNode
         case 1:
             
             
-            self._MAXSPEED = 15
+            self._MAXSPEED = 10
             self._textures.append(SKTexture(imageNamed: "Ambulence1"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1R"))
@@ -82,12 +83,12 @@ class CarSprite : SKSpriteNode
             self._textures.append(SKTexture(imageNamed: "Ambulence2"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1R"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
-            ///self._car = self._textures[0]
+            self._mass = 6300
            
             
         case 2:
-            //self._car = SKTexture(imageNamed:"car_cop")
-            self._MAXSPEED = 15
+            
+            self._MAXSPEED = 3
             self._textures.append(SKTexture(imageNamed: "car_cop1"))
             self._textures.append(SKTexture(imageNamed: "car_cop1L"))
             self._textures.append(SKTexture(imageNamed: "car_cop1R"))
@@ -97,40 +98,54 @@ class CarSprite : SKSpriteNode
             self._textures.append(SKTexture(imageNamed: "car_cop2L"))
             self._textures.append(SKTexture(imageNamed: "car_cop1R"))
             self._textures.append(SKTexture(imageNamed: "car_cop1L"))
+            self._mass = 1500
         case 3:
-            //self._car = SKTexture(imageNamed: "car_blue")
-            self._MAXSPEED = 15
+            
+            self._MAXSPEED = 3
             self._textures.append(SKTexture(imageNamed: "car_blue"))
-           
+            self._mass = 1500
          
         case 4:
-            //self._car = SKTexture(imageNamed: "car_red")
-            self._MAXSPEED = 15
+            self._MAXSPEED = 3
             self._textures.append(SKTexture(imageNamed: "car_red"))
-           
+            self._mass = 1500
          
         case 5:
-            //self._car = SKTexture(imageNamed: "pickup_green")
-            self._MAXSPEED = 15
+            self._MAXSPEED = 3
             self._textures.append(SKTexture(imageNamed: "pickup_green"))
-            
+            self._mass = 1500
            
         case 6:
             //self._car = SKTexture(imageNamed: "truck")
-            self._MAXSPEED = 15
+            self._MAXSPEED = 7
             self._textures.append(SKTexture(imageNamed: "truck"))
-            
+            self._mass = 4000
             
             
         default :
-            //self._car = SKTexture(imageNamed: "")
+            
             self._MAXSPEED = 0
             self._textures.append(SKTexture(imageNamed: "Ambulence1"))
+            self._mass = 0
         }
         
         super.init(texture: self._textures[0], color: nil, size: self._size)
         self.position = self._currPos
         self.addChild(smokeEmitter)
+        
+        let physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
+        physicsBody.usesPreciseCollisionDetection = true
+        physicsBody.allowsRotation = true
+        physicsBody.restitution = 0.5
+        physicsBody.friction = 0
+        physicsBody.linearDamping = 0
+        physicsBody.mass = self._mass
+        physicsBody.categoryBitMask = PhysicsCategory.Car
+        physicsBody.contactTestBitMask = PhysicsCategory.All
+        physicsBody.collisionBitMask = PhysicsCategory.Car | PhysicsCategory.Person
+        physicsBody.affectedByGravity = false
+        physicsBody.angularDamping = 1
+        
         
         //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
         smokeEmitter.position.x += 85
@@ -176,7 +191,7 @@ class CarSprite : SKSpriteNode
 
         smokeEmitter.particleTexture!.filteringMode = .Nearest
         smokeEmitter.targetNode = theParent
-
+        self.physicsBody = physicsBody
     }
     required init?(coder aDecoder: NSCoder) {
         smokeEmitter =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
@@ -194,7 +209,8 @@ class CarSprite : SKSpriteNode
     
     func update()
     {
-    
+        
+        println("speed: \(self._currSpeed)")
         switch(self._dir)
         {
         case .NORTH:
@@ -210,18 +226,12 @@ class CarSprite : SKSpriteNode
             
         }
         
-        
-        
-        
-                
         self._currPos = self.position
-        
-        if self._state == State.DRIVING
+        if(self._state == .DRIVING)
         {
             self.drive()
         }
-        
-       self.position = self._currPos
+        self.position = _currPos
       
     } 
 
@@ -265,6 +275,7 @@ class CarSprite : SKSpriteNode
          
         }
          self._turnCount++
+         self.drive()
          
     }
     
@@ -315,11 +326,14 @@ class CarSprite : SKSpriteNode
             
         
          self._turnCount++
+         self.drive()
         
     }
     func wait()
     {
-        
+        self._currSpeed = 0
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        self._state = .WAITING
     }
     func drive()
     {
@@ -333,13 +347,13 @@ class CarSprite : SKSpriteNode
         switch(self._dir)
         {
         case .NORTH:
-            self._currPos.y += self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * self._currSpeed)
         case .SOUTH:
-            self._currPos.y -= self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * -self._currSpeed)
         case .WEST:
-            self._currPos.x -= self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: self.position.x * -self._currSpeed, dy: 0)
         case .EAST:
-            self._currPos.x += self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: self.position.x * self._currSpeed, dy: 0)
         default:
             println("No direction")
         }
@@ -347,8 +361,10 @@ class CarSprite : SKSpriteNode
     
     func goStraight()
     {
+        
         if(self._state == .STOPPED)
         {
+            
             self._turnCount++
             
             self._state = State.DRIVING
@@ -372,25 +388,24 @@ class CarSprite : SKSpriteNode
         switch(self._dir)
         {
         case .NORTH:
-            self._currPos.y += self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * (self._currSpeed/50))
         case .SOUTH:
-            self._currPos.y -= self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * (self._currSpeed/50))
         case .WEST:
-            self._currPos.x -= self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: self.position.x * (self._currSpeed/50), dy: 0)
         case .EAST:
-            self._currPos.x += self._currSpeed
+            self.physicsBody?.velocity = CGVector(dx: self.position.x * (self._currSpeed/50), dy: 0)
         default:
             println("No direction")
         }
+        
     }
     
     func stop()
     {
         self._currSpeed = 0
-        if self._state != .WAITING
-        {
-            self._state = State.STOPPED
-        }
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        self._state = .STOPPED
     }
     
     
