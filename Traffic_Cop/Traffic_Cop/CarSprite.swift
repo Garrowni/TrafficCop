@@ -52,9 +52,10 @@ class CarSprite : SKSpriteNode
     var turningRight    = false
     var goingStrait     = false
     var choiceMade      = false //IF THEY HAVE MADE A CHOICE DONT MAKE ANOTHER.
+    var theParent       : SKNode
     
     
-    init(type : Int , direction : SpawnPoint)
+    init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
         var tempDirection = direction.dir
         self._type = type
@@ -62,7 +63,7 @@ class CarSprite : SKSpriteNode
         self._spawn = direction.pos
         self._currPos = _spawn
         smokeEmitter = SKEmitterNode(fileNamed: "Exhaust.sks")
-        
+        theParent = Parent
     
         
         switch(self._type)
@@ -173,9 +174,18 @@ class CarSprite : SKSpriteNode
             self.zRotation = 0
         }
 
+        smokeEmitter.particleTexture!.filteringMode = .Nearest
+        smokeEmitter.targetNode = theParent
+
     }
     required init?(coder aDecoder: NSCoder) {
+        smokeEmitter =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
         fatalError("init(coder: ) has not been implemented")
+    }
+    
+    override func encodeWithCoder(aCoder: NSCoder) {
+        super.encodeWithCoder(aCoder)
+        aCoder.encodeObject(smokeEmitter, forKey: "Smoke-Emitter")
     }
     
 
@@ -211,7 +221,6 @@ class CarSprite : SKSpriteNode
             self.drive()
         }
         
-
        self.position = self._currPos
       
     } 
@@ -387,19 +396,19 @@ class CarSprite : SKSpriteNode
     
     func isDone(rect : CGRect) -> Bool
     {
-        if(self._dir == .NORTH && self.position.y - self._size.height * 2 > rect.maxY)
+        if(self._dir == .NORTH && self.position.y - 700 > rect.maxY)
         {
             return true
         }
-        else if(self._dir == .SOUTH && self.position.y + self._size.height * 2 < rect.minY)
+        else if(self._dir == .SOUTH && self.position.y + 700 < rect.minY)
         {
             return true
         }
-        else if(self._dir == .WEST && self.position.x + self._size.height < rect.minX)
+        else if(self._dir == .WEST && self.position.x + 700 < rect.minX)
         {
             return true
         }
-        else if(self._dir == .EAST && self.position.x - self._size.height > rect.maxX)
+        else if(self._dir == .EAST && self.position.x - 700 > rect.maxX)
         {
             return true
         }
@@ -427,7 +436,7 @@ class CarSprite : SKSpriteNode
          canTurnLeft     = left
          canTurnRight    = right
          canGoStraight   = forward
-        
+        println("CAN TURN -----> Straight:\(canGoStraight) Right: \(canTurnRight)  Left: \(canTurnLeft)")
          rollChoice()
     }
     

@@ -13,7 +13,8 @@ class GameScene: SKScene
     //*******************************CONSTANTS / VARIABLES******************************
     var lastUpdateTime: NSTimeInterval  = 0
     var dt: NSTimeInterval              = 0
-      let playableRect: CGRect                                            //GAME BOUNDS
+    let playableRect: CGRect                                            //GAME BOUNDS
+    let animLayer : CALayer
     let TW                              = 128                           //TILEWIDTH
     let level       : Int               = 0
     var map         : Map?
@@ -108,11 +109,12 @@ class GameScene: SKScene
         quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
         retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         
+        animLayer = CALayer()
         
 
         super.init(size: size)
         scene?.scaleMode = .AspectFit
-       
+        self.name = "The-Game-Scene"
         
         
         //SET ACTIONS
@@ -154,20 +156,20 @@ class GameScene: SKScene
         self.runAction(transSequence)
         
 // FOR DEBUG
-        for cw in glowCWs
-       {
-            addChild(cw.getOL())
-        }
-//        
+//        for cw in glowCWs
+//       {
+//            addChild(cw.getOL())
+//        }
+//
 //        for spawn in glowSpawns
 //        {
 //            addChild(spawn.getOL())
 //        }
 //        
 //       for goto in gotoPoints
- //       {
- //           addChild(goto.getOL())
- //       }
+//       {
+//           addChild(goto.getOL())
+//       }
     
         clock.clockButt.getButtBG().zPosition = 100
         clock.clockButt.getButtOL().zPosition = 100
@@ -261,10 +263,10 @@ class GameScene: SKScene
         
         if(!pausedOn)
         {
-            updatePoints()
-            updateScore()
+            
             updateVehicles()
             updatePeople()
+            updatePoints()
         }
       
     }
@@ -287,7 +289,7 @@ class GameScene: SKScene
     {
         if(!pausedOn)
         {
-            if(vehicleArray.count < 20) //TODO maybe vary this number for different levels
+            if(vehicleArray.count < 10) //TODO maybe vary this number for different levels
             {
                 var cantSpawnThere = false
                 var foundSpot = false
@@ -307,7 +309,7 @@ class GameScene: SKScene
                 }
                 else
                 {
-                    var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![theSpawn])
+                    var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![theSpawn], Parent: self)
                     vehicleArray.append(car)
                     car.drive()
                     addChild(car)
@@ -355,8 +357,6 @@ class GameScene: SKScene
         shape.lineWidth = 35.0
         addChild(shape)
     }
-    
-
  
     func updateVehicles()
     {
@@ -478,6 +478,7 @@ class GameScene: SKScene
         
         
     }
+    
     func selectCar(car : CarSprite)
     {
         if car._state == .STOPPED
@@ -487,6 +488,7 @@ class GameScene: SKScene
         addChild(selection.OL)
         }
     }
+    
     func handleTouchSequence(location: CGPoint)
     {
         if(pausedOn && clock.countDownDone) //END OF GAME / CHECK TOUCHES
@@ -699,6 +701,7 @@ class GameScene: SKScene
     
         
     }
+    
     func deIlluminateRoads()
     {
         let transition = SKAction.group([SKAction.runBlock()
@@ -724,7 +727,6 @@ class GameScene: SKScene
         
    
     }
-    
     
     func drawDrivePath(car: CarSprite, road: Road)
     {
@@ -823,7 +825,6 @@ class GameScene: SKScene
         
     }
     
-    
     func startGame()
     {
         map = Map(lvl: currentLevel)
@@ -870,7 +871,6 @@ class GameScene: SKScene
         
     }
     
-    
     class func level(levelNum: Int) -> GameScene?
     {
         var scene = GameScene(size: CGSize(width: 1024, height: 1920))
@@ -879,7 +879,6 @@ class GameScene: SKScene
         return scene
     }
 
-    
     func updateScore()
     {
         if(currentScore < 0)
@@ -892,7 +891,6 @@ class GameScene: SKScene
         scoreStr += String(currentScore)
         scoreButt.getLabel().text = scoreStr
     }
-    
     
     func levelDone()
     {
@@ -941,7 +939,6 @@ class GameScene: SKScene
         pausedOn = true;
     }
     
-    
     func nextLevel(retry: Bool)
     {
         var lvl = self.currentLevel + 1
@@ -976,15 +973,13 @@ class GameScene: SKScene
         self.runAction(transSequence)
     }
     
-    
     func addPoints(points: Int, pos: CGPoint)
     {
-        var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+350), y: CGFloat(TW*12)))
+        var pointAdd = PointsPopUp(Pos: pos, Points: points, goto: CGPoint(x: CGFloat(playableRect.width/2+350), y: CGFloat(TW*12)), Parent: self)
         pointsArray.append(pointAdd)
         addChild(pointAdd.sparkEmitter)
         addChild(pointAdd.text.get())
     }
-    
     
     func updatePoints()
     {
@@ -992,21 +987,23 @@ class GameScene: SKScene
         {
             for(var i = 0; i < pointsArray.count; i++)
             {
+                if(pointsArray[i].getAddPoints())
+                {
+                      currentScore += pointsArray[i].points
+                      updateScore()
+                }
                 if(pointsArray[i].done)
                 {
-                    currentScore += pointsArray[i].points
                     pointsArray[i].sparkEmitter.removeFromParent()
                     pointsArray[i].text.get().removeFromParent()
                     pointsArray.removeAtIndex(i)
                 }
             }
         }
-        
     }
     
-    
-   func fireWorksGo()
-   {
+    func fireWorksGo()
+    {
     
     var f1 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
     var f2 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
@@ -1048,6 +1045,6 @@ class GameScene: SKScene
     
    }
 
-    
+
 }
 
