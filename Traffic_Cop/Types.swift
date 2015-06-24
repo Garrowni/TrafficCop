@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
-import Foundation
-
 struct PhysicsCategory
 {
     static let None : UInt32 = 0
