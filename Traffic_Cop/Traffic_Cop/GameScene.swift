@@ -14,7 +14,6 @@ class GameScene: SKScene
     var lastUpdateTime: NSTimeInterval  = 0
     var dt: NSTimeInterval              = 0
     let playableRect: CGRect                                            //GAME BOUNDS
-    let animLayer : CALayer
     let TW                              = 128                           //TILEWIDTH
     let level       : Int               = 0
     var map         : Map?
@@ -94,8 +93,8 @@ class GameScene: SKScene
         var notDoneLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Not Complete!",   fontSize: 130,  font: "font2", color: "green",  align: "center")
         var quitlbl      = Text(pos: CGPoint(x: 0, y:0),    says: "Quit",            fontSize: 150,  font: "font2", color: "green",  align: "center")
         var retryLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Retry ?",         fontSize: 150,   font: "font2", color: "green",  align: "center")
-        var scoreLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "SCORE",           fontSize: 70,   font: "font2", color: "green",  align: "center")
-        var goalLabel    = Text(pos: CGPoint(x: 0, y:0),    says: "GOAL",            fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var scoreLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "SCORE",           fontSize: 50,   font: "font3", color: "green",  align: "center")
+        var goalLabel    = Text(pos: CGPoint(x: 0, y:0),    says: "GOAL",            fontSize: 50,   font: "font3", color: "green",  align: "center")
         var nextLevLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Next Level!",     fontSize: 150,   font: "font2", color: "green",  align: "center")
         
         pauseButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*14), size: CGSize(width: 128, height: 128)),                                          roundCorner: 64, text: pauseLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
@@ -109,13 +108,14 @@ class GameScene: SKScene
         quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
         retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         
-        animLayer = CALayer()
+
         
 
         super.init(size: size)
         scene?.scaleMode = .AspectFit
         self.name = "The-Game-Scene"
         
+        updateScore()
         
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle();}
@@ -263,7 +263,6 @@ class GameScene: SKScene
         
         if(!pausedOn)
         {
-            
             updateVehicles()
             updatePeople()
             updatePoints()
@@ -889,6 +888,7 @@ class GameScene: SKScene
         
         var scoreStr = "Score: "
         scoreStr += String(currentScore)
+        scoreButt.getLabel().text.removeAll(keepCapacity: false)
         scoreButt.getLabel().text = scoreStr
     }
     
