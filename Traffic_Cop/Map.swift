@@ -246,20 +246,20 @@ class Map
             case 2:
                 self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//TOPLeft
                 self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*7, width: TW, height: TW)))//TOPRIGHT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*10, width: TW, height: TW)))//BOTTOMLEFT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*10, width: TW, height: TW)))//BOTTOMRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*4, width: TW, height: TW)))//BOTTOMRIGHT
             
             case 3:
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//TOPLeft
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*6, width: TW, height: TW)))//TOPRIGHT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*11, width: TW, height: TW)))//BOTTOMLEFT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*11, width: TW, height: TW)))//BOTTOMRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*8, width: TW, height: TW)))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*8, width: TW, height: TW)))//TOPRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*3, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*3, width: TW, height: TW)))//BOTTOMRIGHT
             
             case 4:
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))//TOPLeft
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*5, width: TW, height: TW)))//TOPRIGHT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*10, width: TW, height: TW)))//BOTTOMLEFT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*10, width: TW, height: TW)))//BOTTOMRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*9, width: TW, height: TW)))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*9, width: TW, height: TW)))//TOPRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*4, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*4, width: TW, height: TW)))//BOTTOMRIGHT
         
             default:
                 self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))
