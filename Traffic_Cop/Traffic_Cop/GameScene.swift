@@ -375,9 +375,17 @@ class GameScene: SKScene
                 {
                     continue
                 }
-                if(vehicleArray[d].frame.contains(vehicleArray[c]._stopPoint))
+                if(vehicleArray[c].carInFront != nil)
                 {
-                    vehicleArray[c].stop()
+                    if(!vehicleArray[c].carInFront!.containsPoint((vehicleArray[c]._stopPoint)) && vehicleArray[c].carInFront != nil)
+                    {
+                        vehicleArray[c].drive()
+                    }
+                }
+                if(vehicleArray[d].frame.contains(vehicleArray[c]._stopPoint) && vehicleArray[c]._dir == vehicleArray[d]._dir)
+                {
+                    vehicleArray[c].wait()
+                    vehicleArray[c].carInFront = vehicleArray[d]
                 }
             }
         }
@@ -406,7 +414,7 @@ class GameScene: SKScene
             }      //RECT CHECK
             else
             {
-                vehicleArray[i].drive()
+                //vehicleArray[i].drive()
             }
             
             if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
