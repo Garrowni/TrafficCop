@@ -79,13 +79,14 @@ class PeopleSprite : SKSpriteNode
         case 2:
             self._person = SKTexture(imageNamed: "LadyBaby")
             self._MAXSPEED = 3
-            self._size = CGSize(width: 64, height: 50)
+            self._size = CGSize(width: 40, height: 30)
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
-            self._MAXSPEED = 3
+            self._MAXSPEED = 2
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
             self._MAXSPEED = 5
+            self._stopped = 1
         default :
             self._person = SKTexture(imageNamed: "")
             self._MAXSPEED = 0
@@ -178,12 +179,14 @@ class PeopleSprite : SKSpriteNode
     func walk()
     {
         self._state = State.WALKING
+        self._stopped = 0
     }
     
     func goStraight()
     {
         self._state = State.WALKING
         self._currSpeed = self._MAXSPEED
+                self._stopped = 0
         
         
         switch(self._dir)

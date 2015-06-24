@@ -164,10 +164,10 @@ class GameScene: SKScene
             addChild(corner.getOL())
         }
 // FOR DEBUG
-       for cw in glowCWs
-      {
-            addChild(cw.getOL())
-        }
+   //    for cw in glowCWs
+   //   {
+     //       addChild(cw.getOL())
+      //  }
 //
 //        for spawn in glowSpawns
 //        {
@@ -427,28 +427,35 @@ class GameScene: SKScene
     func updatePeople()
     {
         
-        func atCorner(pos: CGPoint) -> Bool
-        {
-            for corner in cornerArray!
-            {
-                if corner.rect.contains(CGPoint(x: pos.x-32, y: pos.y-32)) || corner.rect.contains(CGPoint(x: pos.x+32, y: pos.y+32)) ||
-                    corner.rect.contains(CGPoint(x: pos.x-32, y: pos.y+32)) || corner.rect.contains(CGPoint(x: pos.x+32, y: pos.y-32))
-                {
-                    return true
-                }
-                
-            }
-            return false
-        }
+     
         
         for(var i = 0; i < peopleArray.count; i++)
         {
+           
+            
+            func atCorner(pos: CGPoint) -> Bool
+            {
+                for corner in cornerArray!
+                {
+                    if (corner.rect.contains(CGPoint(x: pos.x-40, y: pos.y-40))||corner.rect.contains(CGPoint(x: pos.x+40, y: pos.y+40))||corner.rect.contains(CGPoint(x: pos.x-40, y: pos.y+40))||corner.rect.contains(CGPoint(x: pos.x+40, y: pos.y-40))){return true}
+                   
+                }
+                return false
+            }
+        
+        
+            
+                
+        
            peopleArray[i].update()
             
             if(atCorner(peopleArray[i].position) )
             {
+                
                 if (peopleArray[i]._stopped != 1)
                 {
+                
+                
                     peopleArray[i].stop()
                 }
              
@@ -456,6 +463,7 @@ class GameScene: SKScene
             else
             {
                 peopleArray[i].walk()
+                
             }
             
             
@@ -468,7 +476,7 @@ class GameScene: SKScene
         }
         
     }
-    
+
     func deSelectCars()
     {
         
