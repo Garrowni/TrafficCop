@@ -210,7 +210,7 @@ class CarSprite : SKSpriteNode
     func update()
     {
         
-        println("speed: \(self._currSpeed)")
+        println("speed: \(self.physicsBody?.velocity.dx) && \(self.physicsBody?.velocity.dy)")
         switch(self._dir)
         {
         case .NORTH:
@@ -339,21 +339,17 @@ class CarSprite : SKSpriteNode
     {
         self._state = State.DRIVING
         
-        if self._currSpeed != self._MAXSPEED
-        {
-            self._currSpeed += self._accel
-        }
         
         switch(self._dir)
         {
         case .NORTH:
-            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * self._currSpeed)
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
         case .SOUTH:
-            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * -self._currSpeed)
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
         case .WEST:
-            self.physicsBody?.velocity = CGVector(dx: self.position.x * -self._currSpeed, dy: 0)
+           self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
         case .EAST:
-            self.physicsBody?.velocity = CGVector(dx: self.position.x * self._currSpeed, dy: 0)
+            self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
         default:
             println("No direction")
         }
@@ -379,22 +375,22 @@ class CarSprite : SKSpriteNode
             self.runAction(sequence)
         }
         
-        
-        if self._currSpeed != self._MAXSPEED
-        {
-            self._currSpeed += self._accel
-        }
-        
+//        
+//        if self._currSpeed != self._MAXSPEED
+//        {
+//            self._currSpeed += self._accel
+//        }
+//        
         switch(self._dir)
         {
         case .NORTH:
-            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * (self._currSpeed/50))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
         case .SOUTH:
-            self.physicsBody?.velocity = CGVector(dx: 0, dy: self.position.y * (self._currSpeed/50))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
         case .WEST:
-            self.physicsBody?.velocity = CGVector(dx: self.position.x * (self._currSpeed/50), dy: 0)
+            self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
         case .EAST:
-            self.physicsBody?.velocity = CGVector(dx: self.position.x * (self._currSpeed/50), dy: 0)
+            self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
         default:
             println("No direction")
         }

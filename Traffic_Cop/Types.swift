@@ -6,11 +6,12 @@
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
+import Foundation
 
 struct PhysicsCategory
 {
-    static let None     : UInt32 = 0
-    static let All      : UInt32 = UInt32.max
-    static let Car      : UInt32 = 0b1 //1
-    static let Person   : UInt32 = 0b10 //2
+    static let None : UInt32 = 0
+    static let All  : UInt32 = UInt32.max
+    static let Car  : UInt32 = 0b1
+    static let Person : UInt32 = 0b10
 }
