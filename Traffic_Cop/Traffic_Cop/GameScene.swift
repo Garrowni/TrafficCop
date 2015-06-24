@@ -870,7 +870,7 @@ class GameScene: SKScene
         }
         for corner in cornerArray!
         {
-            glowCorners.append(GlowBox(pos: corner.rect, roundCorner: 40, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+            glowCorners.append(GlowBox(pos: corner.rect, roundCorner: 40, OLcolor: "blue", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
         for spawn in peopleSpawns!
         {

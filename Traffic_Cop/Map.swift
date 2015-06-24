@@ -239,8 +239,8 @@ class Map
             case 1:
                 self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*7, width: TW, height: TW)))//TOPLeft
                 self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*7, width: TW, height: TW)))//TOPRIGHT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*10, width: TW, height: TW)))//BOTTOMLEFT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*10, width: TW, height: TW)))//BOTTOMRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*4, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW)))//BOTTOMRIGHT
         
           
             case 2:
