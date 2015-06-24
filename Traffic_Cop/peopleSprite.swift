@@ -57,7 +57,7 @@ class PeopleSprite : SKSpriteNode
     var _glowCircle : GlowCircle
     var _currPos : CGPoint
    
-    
+    var _stopped : Int = 0
     
     init(type : Int , direction : SpawnPoint)
     {
@@ -205,6 +205,7 @@ class PeopleSprite : SKSpriteNode
     {
         self._currSpeed = 0
         self._state = State.STOPPED
+        self._stopped = 1
     }
     
     

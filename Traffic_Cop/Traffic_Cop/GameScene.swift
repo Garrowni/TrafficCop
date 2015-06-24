@@ -48,6 +48,7 @@ class GameScene: SKScene
     var currentLevel: Int = 0
     var currentScore: Int = 0
     var goalScore   : Int = 0
+    var peopleStop : Int = 0
     
     var path            = CGPathCreateMutable()
     var spawnAction     = SKAction()
@@ -425,43 +426,47 @@ class GameScene: SKScene
     
     func updatePeople()
     {
-        func atIntersection(pos: CGPoint ) -> Bool
+        
+        func atCorner(pos: CGPoint) -> Bool
         {
-            for Cw in crossWArray!
+            for corner in cornerArray!
             {
+                if corner.rect.contains(CGPoint(x: pos.x-32, y: pos.y-32)) || corner.rect.contains(CGPoint(x: pos.x+32, y: pos.y+32)) ||
+                    corner.rect.contains(CGPoint(x: pos.x-32, y: pos.y+32)) || corner.rect.contains(CGPoint(x: pos.x+32, y: pos.y-32))
+                {
+                    return true
+                }
                 
-                
-                if Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y-63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y+63.5)) ||
-                    Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y+63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y-63.5))
-                {return true}
             }
             return false
         }
         
         for(var i = 0; i < peopleArray.count; i++)
         {
-            peopleArray[i].update()
+           peopleArray[i].update()
             
-            if(atIntersection(peopleArray[i].position)){
-                if(peopleArray[i]._type == 4)
+            if(atCorner(peopleArray[i].position) )
+            {
+                if (peopleArray[i]._stopped != 1)
                 {
+                    peopleArray[i].stop()
+                }
+             
+            }
+            else
+            {
                 peopleArray[i].walk()
-                }
-                else
-                {
-                peopleArray[i].stop()
-                    //spawn feels
-                }
             }
             
-            //RECT CHECK
             
             if(peopleArray[i].isDone(playableRect))
             {
                 peopleArray[i].removeFromParent()
                 peopleArray.removeAtIndex(i)
             }
+            
         }
+        
     }
     
     func deSelectCars()
