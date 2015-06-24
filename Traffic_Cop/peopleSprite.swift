@@ -69,9 +69,6 @@ class PeopleSprite : SKSpriteNode
         self._glowCircle = GlowCircle(pos: self._spawn, radius: 20, OLcolor: "yellow", OLSize: 10, glowWidth: 40, ZoomIn: true, glowBulge: true, alpha: 0.5)
         self._currPos = _spawn
         self._type = type
-       
- 
-       
         
         switch(self._type)
         {
@@ -85,7 +82,7 @@ class PeopleSprite : SKSpriteNode
             self._size = CGSize(width: 64, height: 50)
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
-            self._MAXSPEED = 2
+            self._MAXSPEED = 3
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
             self._MAXSPEED = 5
@@ -96,7 +93,6 @@ class PeopleSprite : SKSpriteNode
         
         
         super.init(texture: _person, color: nil, size: self._size)
-      
         self.position = self._currPos
         self.setScale(CGFloat(2.5))
         
@@ -137,8 +133,6 @@ class PeopleSprite : SKSpriteNode
     //***************************Functions*************************
     func update()
     {
-        
-     
         switch(self._dir)
         {
         case .NORTH:
@@ -151,15 +145,13 @@ class PeopleSprite : SKSpriteNode
             self.zRotation = CGFloat(M_PI_2)
         default:
             self.zRotation = 0
-       
-
-
         }
         
         self.position = self._currPos
      
         if self._state == State.WALKING
-        {            goStraight()
+        {
+            goStraight()
         }
         else if self._state == State.STOPPED
         {
@@ -170,18 +162,13 @@ class PeopleSprite : SKSpriteNode
             }
             if (self._type == 2)
             {
-                
-                
                 var timer = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
             }
             if (self._type == 3)
             {
-        
                 var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
             }
-       
         }
-      
     }
 
 
@@ -189,17 +176,14 @@ class PeopleSprite : SKSpriteNode
    
     
     func walk()
-        
     {
         self._state = State.WALKING
-    
     }
     
     func goStraight()
     {
         self._state = State.WALKING
         self._currSpeed = self._MAXSPEED
-       
         
         
         switch(self._dir)

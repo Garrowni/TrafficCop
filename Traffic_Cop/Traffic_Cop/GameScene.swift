@@ -31,6 +31,7 @@ class GameScene: SKScene
     let nextLevButt : Button
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
+    var glowCorners : [GlowBox]
     var pointsArray : [PointsPopUp]
     var selection   : GlowBox
     var glowSpawns  : [GlowCircle]
@@ -39,6 +40,7 @@ class GameScene: SKScene
     var spawnsArray : [SpawnPoint]?
     var peopleSpawns: [SpawnPoint]?
     var crossWArray : [Crosswalk]?
+    var cornerArray : [Corner]?
     var vehicleArray: [CarSprite]
     var peopleArray : [PeopleSprite]
     var feelsArray  : [Feels]
@@ -68,6 +70,7 @@ class GameScene: SKScene
         
         glowRoads       = []
         glowCWs         = []
+        glowCorners     = []
         glowSpawns      = []
         gotoPoints      = []
         vehicleArray    = []
@@ -155,11 +158,15 @@ class GameScene: SKScene
         let transSequence = SKAction.sequence([wait,transition])
         self.runAction(transSequence)
         
+        for corner in glowCorners
+        {
+            addChild(corner.getOL())
+        }
 // FOR DEBUG
-//        for cw in glowCWs
-//       {
-//            addChild(cw.getOL())
-//        }
+       for cw in glowCWs
+      {
+            addChild(cw.getOL())
+        }
 //
 //        for spawn in glowSpawns
 //        {
@@ -422,6 +429,8 @@ class GameScene: SKScene
         {
             for Cw in crossWArray!
             {
+                
+                
                 if Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y-63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y+63.5)) ||
                     Cw.rect.contains(CGPoint(x: pos.x-63.5, y: pos.y+63.5)) || Cw.rect.contains(CGPoint(x: pos.x+63.5, y: pos.y-63.5))
                 {return true}
@@ -847,6 +856,7 @@ class GameScene: SKScene
         spawnsArray     = map!.getSpawns()
         crossWArray     = map!.getCrossWalks()
         peopleSpawns    = map!.getPeopleSpawns()
+        cornerArray     = map!.getCorners()
         
         
         //SET GLOW ROADS
@@ -857,6 +867,10 @@ class GameScene: SKScene
         for cw in crossWArray!
         {
             glowCWs.append(GlowBox(pos: cw.rect, roundCorner: 40, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
+        }
+        for corner in cornerArray!
+        {
+            glowCorners.append(GlowBox(pos: corner.rect, roundCorner: 40, OLcolor: "yellow", OLSize: 15, glowWidth: 2, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
         for spawn in peopleSpawns!
         {

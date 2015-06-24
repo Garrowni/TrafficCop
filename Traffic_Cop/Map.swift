@@ -17,6 +17,7 @@ class Map
     var humanSpawnArray : [SpawnPoint]
     var roadArray       : [Road]
 	var crossWArray     : [Crosswalk]
+    var cornerArray     : [Corner]
     
     //LEVEL1 SPAWNS/ROAD CHOICES
     
@@ -30,6 +31,7 @@ class Map
         humanSpawnArray = []
         roadArray       = []
 		crossWArray     = []
+        cornerArray     = []
         
         
         //SET SPAWNS   (point set to center of tile at edge of map)
@@ -162,6 +164,8 @@ class Map
             
         default:
             self.roadArray.append(Road(goto: CGPoint(x:0 ,y:0), roadRect: CGRect(x:0, y:0, width: TW, height: TW), side: "error")); println("Error in Setting Roads...Level Not compatible")
+           
+        
             
         }
         
@@ -229,8 +233,38 @@ class Map
             
         }
 		
-		
-		
+        //SET Corner RECTS
+       switch (level)
+       {
+            case 1:
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*7, width: TW, height: TW)))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*7, width: TW, height: TW)))//TOPRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*10, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*10, width: TW, height: TW)))//BOTTOMRIGHT
+        
+          
+            case 2:
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW)))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*7, width: TW, height: TW)))//TOPRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*10, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*10, width: TW, height: TW)))//BOTTOMRIGHT
+            
+            case 3:
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*6, width: TW, height: TW)))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*6, width: TW, height: TW)))//TOPRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*11, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*11, width: TW, height: TW)))//BOTTOMRIGHT
+            
+            case 4:
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*5, width: TW, height: TW)))//TOPRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*10, width: TW, height: TW)))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*10, width: TW, height: TW)))//BOTTOMRIGHT
+        
+            default:
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))
+  
+        }
 		
         
     }
@@ -248,6 +282,10 @@ class Map
 	func getCrossWalks() -> [Crosswalk]
     {
         return crossWArray
+    }
+    func getCorners() -> [Corner]
+    {
+        return cornerArray
     }
     
     func getPeopleSpawns() -> [SpawnPoint]
@@ -327,7 +365,15 @@ struct Crosswalk
      rect       = Rect
     }
 }
+struct Corner
+{
+    var rect: CGRect
 
+    init (CornerRect: CGRect)
+    {
+    rect    = CornerRect
+    }
+}
 
 
 //CENTER POINT OF THE SPAWN LOCATION WILL HAVE TO OFFSET FROM IT THE HEIGHT/OR WIDTH OF VEHICLE DEPENDING ON DIRECTION
