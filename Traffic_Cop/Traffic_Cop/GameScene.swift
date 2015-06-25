@@ -311,7 +311,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     func didBeginContact(contact:SKPhysicsContact)
     {
         let other               = (contact.bodyA.categoryBitMask == PhysicsCategory.Car ? contact.bodyB : contact.bodyA)
-        let other2              = (contact.bodyB.categoryBitMask == PhysicsCategory.Car ? contact.bodyB : contact.bodyA)
+        let other2              = (contact.bodyB.categoryBitMask == PhysicsCategory.Car ? contact.bodyA : contact.bodyB)
         let contactPoint        = contact.contactPoint
         let collisionImpulse    = contact.collisionImpulse
         
@@ -319,6 +319,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         switch other2.categoryBitMask
         {
             case PhysicsCategory.Car:   let Car = other2.node as! CarSprite
+            if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
             Car.crashed()
             explosion(contactPoint)
             crashedCars.append(Car)
@@ -480,7 +481,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
             {
-                addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)
+                if(vehicleArray[i]._state.hashValue != 4){addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)} //IF CAR NOT CRASHED DURING ENTIRETY OF TURN THEN ADD POINTS 
             }
             
             if(vehicleArray[i].isDone(playableRect))

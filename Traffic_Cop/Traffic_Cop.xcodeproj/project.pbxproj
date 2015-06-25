@@ -13,6 +13,8 @@
 		05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		080168E11B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
 		080168E21B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
+		080168E41B3C405A00424A67 /* BlackSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 080168E31B3C405A00424A67 /* BlackSmoke.sks */; };
+		080168E51B3C405A00424A67 /* BlackSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 080168E31B3C405A00424A67 /* BlackSmoke.sks */; };
 		08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
 		08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
 		08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F71B2CE5B900DC56F8 /* Settings.swift */; };
@@ -223,6 +225,7 @@
 		05E000781B3338B6008F60E5 /* Feels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feels.swift; sourceTree = "<group>"; };
 		05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = peopleSprite.swift; sourceTree = "<group>"; };
 		080168E01B3B972C00424A67 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		080168E31B3C405A00424A67 /* BlackSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlackSmoke.sks; sourceTree = "<group>"; };
 		08C464F41B2CCA1300DC56F8 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		08C464F71B2CE5B900DC56F8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlowBox.swift; sourceTree = "<group>"; };
@@ -571,6 +574,7 @@
 				08E7B69B1B38A08100F32693 /* FireWork1.sks */,
 				08E7B6A41B38A22B00F32693 /* FireWork2.sks */,
 				08E7B6A71B38A37E00F32693 /* FireWork3.sks */,
+				080168E31B3C405A00424A67 /* BlackSmoke.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -917,6 +921,7 @@
 				08D8875C1B321454007B860F /* level1v2.tmx in Resources */,
 				08D516261B28CB8100E5289B /* car_cop1.png in Resources */,
 				08D5162C1B28CB8100E5289B /* car_cop2.png in Resources */,
+				080168E51B3C405A00424A67 /* BlackSmoke.sks in Resources */,
 				08D516001B28CB8100E5289B /* level4v2.tmx in Resources */,
 				08D515E81B28CB8100E5289B /* happy.png in Resources */,
 				08D516141B28CB8100E5289B /* Ambulence1L.png in Resources */,
@@ -973,6 +978,7 @@
 				08D74BFB1B290D4C00E1C8BA /* Lintsec.ttf in Resources */,
 				7DE1464E1B223E95005DB874 /* Images.xcassets in Resources */,
 				08D515E51B28CB8100E5289B /* exclamation.png in Resources */,
+				080168E41B3C405A00424A67 /* BlackSmoke.sks in Resources */,
 				08E7B6A51B38A22B00F32693 /* FireWork2.sks in Resources */,
 				08D5163D1B28CB8100E5289B /* stoplight_green.png in Resources */,
 				7DE1464C1B223E95005DB874 /* Main.storyboard in Resources */,

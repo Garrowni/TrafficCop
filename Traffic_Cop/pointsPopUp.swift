@@ -31,7 +31,8 @@ class PointsPopUp : SKNode
         points = Points
         done = false
         addPoints = false
-        text = Text(pos: Pos, says: String(points), fontSize: 100, font: "font3", color: "green",  align: "center")
+        if(Points > 0)  {text = Text(pos: Pos, says: String(points), fontSize: 100, font: "font3", color: "green",  align: "center")}else
+                        {text = Text(pos: Pos, says: String(points), fontSize: 100, font: "font3", color: "red",  align: "center")}
         move = SKAction.moveTo(goto, duration: 1)
         zoom = SKAction.scaleTo(CGFloat(1.0), duration: 0.6)
         zoomO = SKAction.scaleTo(CGFloat(0.0), duration: 0.3)

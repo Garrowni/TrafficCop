@@ -290,6 +290,7 @@ class CarSprite : SKSpriteNode
             self._state = State.TURNING
             
             let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
+
             let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 2)
           
             var block = SKAction.runBlock()
@@ -490,9 +491,11 @@ class CarSprite : SKSpriteNode
     
     func crashed()
     {
-       //TODO: MAKE THE SMOKE CHANGE FROM BACK OF VEHICLE TO THE FRONT OF THE VEHICLE .. CHANGE SIZE AND COLOR TO BLACK ... should be simple
+        smokeEmitter.particleColorSequence = nil;
+        smokeEmitter.particleColorBlendFactor = 1.0;
+        smokeEmitter.particleColor = UIColor.blackColor()
         smokeEmitter.position  = convertPoint(self._stopPoint, fromNode: theParent)
-        smokeEmitter.particleScale = CGFloat(3.0)
+        smokeEmitter.particleScale = CGFloat(1.0)
         self._state = .CRASHED
         println("CRASH!")
     }
