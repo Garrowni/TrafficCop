@@ -218,14 +218,14 @@ class LevelScreen: SKScene
             let myScene2 = GameScene.level(lvl)
     
             myScene.scaleMode = self.scaleMode
-            let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+            let reveal = SKTransition.doorsCloseHorizontalWithDuration(1)
             
             if lvl == 0
             {self.view?.presentScene(myScene, transition: reveal)}
             else{self.view?.presentScene(myScene2, transition: reveal)}
             
         }
-        let transSequence = SKAction.sequence([transition,wait,block])
+        let transSequence = SKAction.sequence([transition,block])
         self.runAction(transSequence)
     }
     
