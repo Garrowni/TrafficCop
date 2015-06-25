@@ -11,6 +11,8 @@
 		05E0007A1B3338B6008F60E5 /* Feels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E000781B3338B6008F60E5 /* Feels.swift */; };
 		05E39ADD1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
+		080168E11B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
+		080168E21B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
 		08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
 		08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F41B2CCA1300DC56F8 /* Map.swift */; };
 		08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C464F71B2CE5B900DC56F8 /* Settings.swift */; };
@@ -220,6 +222,7 @@
 /* Begin PBXFileReference section */
 		05E000781B3338B6008F60E5 /* Feels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feels.swift; sourceTree = "<group>"; };
 		05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = peopleSprite.swift; sourceTree = "<group>"; };
+		080168E01B3B972C00424A67 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		08C464F41B2CCA1300DC56F8 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		08C464F71B2CE5B900DC56F8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		08C464FA1B2F0F7900DC56F8 /* GlowBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlowBox.swift; sourceTree = "<group>"; };
@@ -638,6 +641,7 @@
 		08FC6D671B28895E004F4824 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				080168E01B3B972C00424A67 /* Types.swift */,
 				7DD850741B28ADEB00C47FD7 /* TrafficCop-Bridging-Header.h */,
 				7DE146661B223F4F005DB874 /* CarSprite.swift */,
 				08E123D61B26689E00B2127F /* MyUtils.swift */,
@@ -1034,6 +1038,7 @@
 				08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */,
 				08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */,
 				08EB81BE1B33B22300E22D82 /* pointsPopUp.swift in Sources */,
+				080168E21B3B972C00424A67 /* Types.swift in Sources */,
 				05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */,
 				05E0007A1B3338B6008F60E5 /* Feels.swift in Sources */,
 				08E3B3431B2FBB0D0074DC3E /* Clock.swift in Sources */,
@@ -1068,6 +1073,7 @@
 				08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */,
 				7DE146471B223E95005DB874 /* GameScene.swift in Sources */,
 				08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */,
+				080168E11B3B972C00424A67 /* Types.swift in Sources */,
 				08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */,
 				08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */,
 				05E000791B3338B6008F60E5 /* Feels.swift in Sources */,
