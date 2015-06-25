@@ -29,6 +29,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     let goalButt    : Button
     let soundButt   : Button
     let nextLevButt : Button
+    var f1          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
+    var f2          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
+    var f3          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork3.sks")
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
     var glowCorners : [GlowBox]
@@ -50,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var currentLevel: Int = 0
     var currentScore: Int = 0
     var goalScore   : Int = 0
-    var peopleStop : Int = 0
+    var peopleStop  : Int = 0
     
     var path            = CGPathCreateMutable()
     var spawnAction     = SKAction()
@@ -128,6 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         updateScore()
         
+        
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle();}
         let wait = SKAction.waitForDuration(2)                     //SPAWN TIME !
@@ -145,7 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+ 
     
     
     
@@ -333,6 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             case PhysicsCategory.Car:   let Car = other.node as! CarSprite
                 Car.crashed()
+                //if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
                 Car.removeAllActions()
                 explosion(contactPoint)
                 crashedCars.append(Car)
@@ -1015,6 +1020,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             nextLevButt.zoomIN()
             levDonePopUp.zoomIN()
             quitButt.zoomIN()
+            
         }
         else
         {
@@ -1103,39 +1109,68 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func fireWorksGo()
     {
-    
-    var f1 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
-    var f2 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
-    var f3 : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork3.sks")
-    f1.zPosition = 1001
-    f2.zPosition = 1001
-    f3.zPosition = 1001
-    
+    f1.particleTexture!.filteringMode = .Nearest
+    f1.targetNode = self
+    f1.particleColorSequence = nil;
+    f1.particleColorBlendFactor = 1.0;
+    f1.particleZPosition = CGFloat(1000)
+        
+    f2.particleColorSequence = nil;
+    f2.particleColorBlendFactor = 1.0;        
+    f2.particleTexture!.filteringMode = .Nearest
+    f2.targetNode = self
+    f2.particleZPosition = CGFloat(1100)
+        
+    f3.particleTexture!.filteringMode = .Nearest
+    f3.targetNode = self
+    f3.particleColorSequence = nil;
+    f3.particleColorBlendFactor = 1.0;
+    f3.particleZPosition = CGFloat(1200)
+
+
+
+
     self.addChild(f1)
     self.addChild(f2)
     self.addChild(f3)
     
-    var wait = SKAction.waitForDuration(1.5, withRange: 4)
+    var wait = SKAction.waitForDuration(4, withRange: 2)
     
     var newPosf1 = SKAction.runBlock()
     {
-        f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
-        f1.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
-        f1.resetSimulation()
+        self.f1.particleColor = SKColorWithRGB(
+            Int.randomNumberFrom(0...255),
+            Int.randomNumberFrom(0...255),
+            Int.randomNumberFrom(0...255))
+        self.f1.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
+        self.f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        self.f1.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        self.f1.resetSimulation()
     }
     
     var newPosf2 = SKAction.runBlock()
     {
-        f2.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
-        f2.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
-        f2.resetSimulation()
+        self.f2.particleColor = SKColorWithRGB(
+            Int.randomNumberFrom(0...255),
+            Int.randomNumberFrom(0...255),
+            Int.randomNumberFrom(0...255))
+        self.f2.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
+        self.f2.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        self.f2.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        self.f2.resetSimulation()
     }
     
     var newPosf3 = SKAction.runBlock()
     {
-        f3.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
-        f3.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
-        f3.resetSimulation()
+        self.f3.particleColor = SKColorWithRGB(
+            Int.randomNumberFrom(0...255),
+            Int.randomNumberFrom(0...255),
+            Int.randomNumberFrom(0...255))
+        self.f3.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
+        //f3.particleSize = CGFloat.random(min: 0.3, max: 1.0)
+        self.f3.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        self.f3.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        self.f3.resetSimulation()
     }
     
     f1.runAction(SKAction.repeatActionForever(SKAction.sequence([newPosf1,wait])))
