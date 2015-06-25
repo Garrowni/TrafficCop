@@ -515,7 +515,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 for corner in cornerArray!
                 {
                     if (corner.rect.contains(CGPoint(x: pos.x-40, y: pos.y-40))||corner.rect.contains(CGPoint(x: pos.x+40, y: pos.y+40))||corner.rect.contains(CGPoint(x: pos.x-40, y: pos.y+40))||corner.rect.contains(CGPoint(x: pos.x+40, y: pos.y-40))){return true}
-                   
+                //   func CGRectContainsRect(_rect1: /*corner.rect*/.rect, _rect2: CGRect) -> Bool //re3ct 1 is the corner, rect 2 is the person
+                 //  {
+                 //   peopleArray[i].stop()
+              //  }
                 }
                 return false
             }
