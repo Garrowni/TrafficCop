@@ -494,7 +494,16 @@ class CarSprite : SKSpriteNode
         smokeEmitter.particleColorSequence = nil;
         smokeEmitter.particleColorBlendFactor = 1.0;
         smokeEmitter.particleColor = UIColor.blackColor()
-        smokeEmitter.position  = convertPoint(self._stopPoint, fromNode: theParent)
+        smokeEmitter.xAcceleration = 10
+        smokeEmitter.particleZPosition = 99
+        //smokeEmitter.particlePosition = self.convertPoint(self._stopPoint, fromNode: self.parent!)
+//        var move = SKAction.runBlock()
+//            {
+//               // var goto =
+//                self.smokeEmitter.particlePosition = self.convertPoint(self._stopPoint, fromNode: self.parent!)
+//            }
+//        
+    
         smokeEmitter.particleScale = CGFloat(1.0)
         self._state = .CRASHED
         println("CRASH!")
