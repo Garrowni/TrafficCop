@@ -65,8 +65,10 @@ class CarSprite : SKSpriteNode
         self._spawn         = direction.pos
         self._currPos       = _spawn
         smokeEmitter        = SKEmitterNode(fileNamed: "Exhaust.sks")
-        fireEmitter         = SKEmitterNode(fileNamed: "Exhaust.sks")
-        fireSmokeEmitter    = SKEmitterNode(fileNamed: "Exhaust.sks")
+        fireEmitter         = SKEmitterNode(fileNamed: "Fire.sks")
+        fireSmokeEmitter    = SKEmitterNode(fileNamed: "BlackSmoke.sks")
+        fireSmokeEmitter.name = "fire-Emitter"
+        fireEmitter.name    = "fire-Emitter"
 
         theParent           = Parent
     
@@ -157,6 +159,8 @@ class CarSprite : SKSpriteNode
         
         //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
         smokeEmitter.position.x += 85
+        fireSmokeEmitter.position.x -= 70
+        fireEmitter.position.x -= 70
         
         self.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(self._textures, timePerFrame: 0.1)))
         //position the car in the middle of the road
@@ -198,17 +202,25 @@ class CarSprite : SKSpriteNode
         }
 
         smokeEmitter.particleTexture!.filteringMode = .Nearest
-        smokeEmitter.targetNode = theParent
+        smokeEmitter.targetNode         = theParent
+        fireSmokeEmitter.particleTexture!.filteringMode = .Nearest
+        fireSmokeEmitter.targetNode     = theParent
+        //fireEmitter.particleTexture!.filteringMode = .Nearest
+        fireEmitter.targetNode          = theParent
         self.physicsBody = physicsBody
     }
     required init?(coder aDecoder: NSCoder) {
-        smokeEmitter =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
+        smokeEmitter        =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
+        fireSmokeEmitter    =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
+        fireEmitter         =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
         fatalError("init(coder: ) has not been implemented")
     }
     
     override func encodeWithCoder(aCoder: NSCoder) {
         super.encodeWithCoder(aCoder)
         aCoder.encodeObject(smokeEmitter, forKey: "Smoke-Emitter")
+        aCoder.encodeObject(fireSmokeEmitter, forKey: "Smoke-Emitter")
+        aCoder.encodeObject(fireEmitter, forKey: "Smoke-Emitter")
     }
     
 
@@ -518,22 +530,28 @@ class CarSprite : SKSpriteNode
     
     func crashed()
     {
-        smokeEmitter.particleColorSequence = nil;
-        smokeEmitter.particleColorBlendFactor = 1.0;
-        smokeEmitter.particleColor = UIColor.blackColor()
-        smokeEmitter.xAcceleration = 10
-        smokeEmitter.particleZPosition = 99
-        //smokeEmitter.particlePosition = self.convertPoint(self._stopPoint, fromNode: self.parent!)
-//        var move = SKAction.runBlock()
-//            {
-//               // var goto =
-//                self.smokeEmitter.particlePosition = self.convertPoint(self._stopPoint, fromNode: self.parent!)
-//            }
-//        
-    
-        smokeEmitter.particleScale = CGFloat(1.0)
+        
+        if(self._state.hashValue != 4)
+        {
+            smokeEmitter.removeFromParent()
+            var hasFire = false
+            for child in children
+            {
+                if (child.name == "fire-Emitter") {hasFire = true}
+            }
+            if(!hasFire)
+            {
+                addChild(fireSmokeEmitter)
+                addChild(fireEmitter)
+                fireSmokeEmitter.particleZPosition = 98
+                fireEmitter.particleZPosition = 99
+            }
+        }
+
+        
+        
         self._state = .CRASHED
-        println("CRASH!")
+        //println("CRASH!")
     }
     
     
