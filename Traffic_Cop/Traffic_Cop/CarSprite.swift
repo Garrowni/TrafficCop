@@ -42,6 +42,8 @@ class CarSprite : SKSpriteNode
     var _currPos        : CGPoint
     var _mass           : CGFloat
     var smokeEmitter    : SKEmitterNode
+    var fireEmitter     : SKEmitterNode
+    var fireSmokeEmitter: SKEmitterNode
     var canTurnLeft     = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
     var canTurnRight    = false
     var canGoStraight   = false
@@ -63,6 +65,9 @@ class CarSprite : SKSpriteNode
         self._spawn         = direction.pos
         self._currPos       = _spawn
         smokeEmitter        = SKEmitterNode(fileNamed: "Exhaust.sks")
+        fireEmitter         = SKEmitterNode(fileNamed: "Exhaust.sks")
+        fireSmokeEmitter    = SKEmitterNode(fileNamed: "Exhaust.sks")
+
         theParent           = Parent
     
         

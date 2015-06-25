@@ -318,7 +318,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         let other2              = (contact.bodyB.categoryBitMask == PhysicsCategory.Car ? contact.bodyA : contact.bodyB)
         let contactPoint        = contact.contactPoint
         let collisionImpulse    = contact.collisionImpulse
-        
+       
         
         switch other2.categoryBitMask
         {
