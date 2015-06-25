@@ -321,6 +321,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             case PhysicsCategory.Car:   let Car = other2.node as! CarSprite
             if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
             Car.crashed()
+            Car.removeAllActions()
             explosion(contactPoint)
             crashedCars.append(Car)
             
@@ -332,6 +333,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             case PhysicsCategory.Car:   let Car = other.node as! CarSprite
                 Car.crashed()
+                Car.removeAllActions()
                 explosion(contactPoint)
                 crashedCars.append(Car)
             
@@ -481,7 +483,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
             {
-                if(vehicleArray[i]._state.hashValue != 4){addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)} //IF CAR NOT CRASHED DURING ENTIRETY OF TURN THEN ADD POINTS 
+                if(vehicleArray[i]._state.hashValue != 4){addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)} //IF CAR NOT CRASHED DURING ENTIRETY OF TURN THEN ADD POINTS
             }
             
             if(vehicleArray[i].isDone(playableRect))
