@@ -20,29 +20,28 @@ class CarSprite : SKSpriteNode
     }
     enum State
     {
-        case DRIVING, STOPPED, TURNING, WAITING
+        case DRIVING, STOPPED, TURNING, WAITING, CRASHED
     }
     
-    let _MAXSPEED : CGFloat
-    var _dir : Direction = Direction.WEST
-    var _turnCount : Int = 0
-    //var _car : SKTexture
-    var _spawn  : CGPoint
-    var _accel: CGFloat = 1
-    var _currSpeed: CGFloat = 0
-    var _velocity : CGFloat = 0
-    var _isDone : Bool = false
-    var _type : Int
-    var _textures : [SKTexture] = []
-    var _size : CGSize
-    var _state : State = State.DRIVING
-    var _isSelected : Bool = false
-    var _turned : Bool = false
-    var _stopPoint : CGPoint = CGPoint(x: 0, y: 0)
+    let _MAXSPEED       : CGFloat
+    var _dir            : Direction = Direction.WEST
+    var _turnCount      : Int = 0
+    var _spawn          : CGPoint
+    var _accel          : CGFloat = 1
+    var _currSpeed      : CGFloat = 0
+    var _velocity       : CGFloat = 0
+    var _isDone         : Bool = false
+    var _type           : Int
+    var _textures       : [SKTexture] = []
+    var _size           : CGSize
+    var _state          : State = State.DRIVING
+    var _isSelected     : Bool = false
+    var _turned         : Bool = false
+    var _stopPoint      : CGPoint = CGPoint(x: 0, y: 0)
     var _selectionColor : String = ""
-    var _currPos : CGPoint
-    var _mass    : CGFloat
-    var smokeEmitter : SKEmitterNode
+    var _currPos        : CGPoint
+    var _mass           : CGFloat
+    var smokeEmitter    : SKEmitterNode
     var canTurnLeft     = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
     var canTurnRight    = false
     var canGoStraight   = false
@@ -58,13 +57,13 @@ class CarSprite : SKSpriteNode
     
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
-        var tempDirection = direction.dir
-        self._type = type
-        self._size = CGSize(width: 152, height: 66)
-        self._spawn = direction.pos
-        self._currPos = _spawn
-        smokeEmitter = SKEmitterNode(fileNamed: "Exhaust.sks")
-        theParent = Parent
+        var tempDirection   = direction.dir
+        self._type          = type
+        self._size          = CGSize(width: 152, height: 66)
+        self._spawn         = direction.pos
+        self._currPos       = _spawn
+        smokeEmitter        = SKEmitterNode(fileNamed: "Exhaust.sks")
+        theParent           = Parent
     
         
         switch(self._type)
@@ -130,21 +129,23 @@ class CarSprite : SKSpriteNode
         }
         
         super.init(texture: self._textures[0], color: nil, size: self._size)
+        
         self.position = self._currPos
         self.addChild(smokeEmitter)
         
         let physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
         physicsBody.usesPreciseCollisionDetection = true
         physicsBody.allowsRotation = true
-        physicsBody.restitution = 0.5
-        physicsBody.friction = 0
-        physicsBody.linearDamping = 0
+        physicsBody.restitution = 0.8
+        physicsBody.friction = 0.5
+        physicsBody.linearDamping = 0.3
         physicsBody.mass = self._mass
         physicsBody.categoryBitMask = PhysicsCategory.Car
         physicsBody.contactTestBitMask = PhysicsCategory.All
         physicsBody.collisionBitMask = PhysicsCategory.Car | PhysicsCategory.Person
         physicsBody.affectedByGravity = false
         physicsBody.angularDamping = 1
+        
         
         
         //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
@@ -210,7 +211,7 @@ class CarSprite : SKSpriteNode
     func update()
     {
         
-        println("speed: \(self.physicsBody?.velocity.dx) && \(self.physicsBody?.velocity.dy)")
+        //println("speed: \(self.physicsBody?.velocity.dx) && \(self.physicsBody?.velocity.dy)")
         switch(self._dir)
         {
         case .NORTH:
@@ -337,64 +338,68 @@ class CarSprite : SKSpriteNode
     }
     func drive()
     {
-        self._state = State.DRIVING
-        
-        
-        switch(self._dir)
+        if(self._state != State.CRASHED)
         {
-        case .NORTH:
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
-        case .SOUTH:
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
-        case .WEST:
-           self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
-        case .EAST:
-            self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
-        default:
-            println("No direction")
+            self._state = State.DRIVING
+            
+            
+            switch(self._dir)
+            {
+            case .NORTH:
+                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
+            case .SOUTH:
+                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
+            case .WEST:
+               self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
+            case .EAST:
+                self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
+            default:
+                println("No direction")
+            }
         }
     }
     
     func goStraight()
     {
-        
-        if(self._state == .STOPPED)
+        if(self._state != State.CRASHED)
         {
+            if(self._state == .STOPPED)
+            {
+                
+                self._turnCount++
+                
+                self._state = State.DRIVING
+                var block = SKAction.runBlock()
+                    {
+                        self._turned = true
+                    }
+                var wait = SKAction.waitForDuration(2)
+                
+                
+                var sequence = SKAction.sequence([wait,block])
+                self.runAction(sequence)
+            }
             
-            self._turnCount++
-            
-            self._state = State.DRIVING
-            var block = SKAction.runBlock()
-                {
-                    self._turned = true
-                }
-            var wait = SKAction.waitForDuration(2)
-            
-            
-            var sequence = SKAction.sequence([wait,block])
-            self.runAction(sequence)
+    //        
+    //        if self._currSpeed != self._MAXSPEED
+    //        {
+    //            self._currSpeed += self._accel
+    //        }
+    //        
+            switch(self._dir)
+            {
+            case .NORTH:
+                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
+            case .SOUTH:
+                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
+            case .WEST:
+                self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
+            case .EAST:
+                self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
+            default:
+                println("No direction")
+            }
         }
-        
-//        
-//        if self._currSpeed != self._MAXSPEED
-//        {
-//            self._currSpeed += self._accel
-//        }
-//        
-        switch(self._dir)
-        {
-        case .NORTH:
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
-        case .SOUTH:
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
-        case .WEST:
-            self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
-        case .EAST:
-            self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
-        default:
-            println("No direction")
-        }
-        
     }
     
     func stop()
@@ -481,6 +486,15 @@ class CarSprite : SKSpriteNode
         }
         choiceMade = true
         println("CHOICE MADE --> Straight:\(wantsStraight) Right: \(wantsRight)  Left: \(wantsLeft)")
+    }
+    
+    func crashed()
+    {
+       //TODO: MAKE THE SMOKE CHANGE FROM BACK OF VEHICLE TO THE FRONT OF THE VEHICLE .. CHANGE SIZE AND COLOR TO BLACK ... should be simple
+        smokeEmitter.position  = convertPoint(self._stopPoint, fromNode: theParent)
+        smokeEmitter.particleScale = CGFloat(3.0)
+        self._state = .CRASHED
+        println("CRASH!")
     }
     
     

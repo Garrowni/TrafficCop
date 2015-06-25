@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene
+class GameScene: SKScene, SKPhysicsContactDelegate
 {
     //*******************************CONSTANTS / VARIABLES******************************
     var lastUpdateTime: NSTimeInterval  = 0
@@ -42,7 +42,9 @@ class GameScene: SKScene
     var crossWArray : [Crosswalk]?
     var cornerArray : [Corner]?
     var vehicleArray: [CarSprite]
+    var crashedCars : [CarSprite]
     var peopleArray : [PeopleSprite]
+    var hitPeople   : [PeopleSprite]
     var feelsArray  : [Feels]
     var chooseRoads : [Road]
     var currentLevel: Int = 0
@@ -75,7 +77,9 @@ class GameScene: SKScene
         glowSpawns      = []
         gotoPoints      = []
         vehicleArray    = []
+        crashedCars     = []
         peopleArray     = []
+        hitPeople       = []
         feelsArray      = []
         chooseRoads     = []
         pointsArray     = []
@@ -118,6 +122,9 @@ class GameScene: SKScene
         super.init(size: size)
         scene?.scaleMode = .AspectFit
         self.name = "The-Game-Scene"
+        
+        self.physicsWorld.gravity = CGVector.zeroVector
+         physicsWorld.contactDelegate = self
         
         updateScore()
         
@@ -281,14 +288,68 @@ class GameScene: SKScene
     
     
     
-    //*****************************************AFTER ACTION PROCESS HANDLING*********************
+    //*************************COLLISION/****************AFTER ACTION PROCESS HANDLING*********************
     override func didEvaluateActions()
     {
        // checkCollisions()
     }
+
     
+    override func didSimulatePhysics()
+    {
+//        let target = getCenterPointWithTarget(player.position)
+//        worldNode.position += (target - worldNode.position) * 0.1
+//        
+//        if !bugsToRemove.isEmpty {
+//            for bug in bugsToRemove {
+//                bugHitEffects(bug)
+//            }
+//            bugsToRemove.removeAll()
+//        }
+    }
     
+    func didBeginContact(contact:SKPhysicsContact)
+    {
+        let other               = (contact.bodyA.categoryBitMask == PhysicsCategory.Car ? contact.bodyB : contact.bodyA)
+        let other2              = (contact.bodyB.categoryBitMask == PhysicsCategory.Car ? contact.bodyB : contact.bodyA)
+        let contactPoint        = contact.contactPoint
+        let collisionImpulse    = contact.collisionImpulse
+        
+        
+        switch other2.categoryBitMask
+        {
+            case PhysicsCategory.Car:   let Car = other2.node as! CarSprite
+            Car.crashed()
+            explosion(contactPoint)
+            crashedCars.append(Car)
+            
+            default: break;
+        }
+        
+        switch other.categoryBitMask
+        {
+            
+            case PhysicsCategory.Car:   let Car = other.node as! CarSprite
+                Car.crashed()
+                explosion(contactPoint)
+                crashedCars.append(Car)
+            
+            
+            case PhysicsCategory.Person: let Person = other.node as! PeopleSprite
+            
+                hitPeople.append(Person)
+            
+            default: break;
+        }
+    }
     
+    func didEndContact(contact:SKPhysicsContact)
+    {
+        
+//        let other = (contact.bodyA.categoryBitMask == PhysicsCategory.Player ? contact.bodyB : contact.bodyA)
+//        
+//        if other.categoryBitMask & player.physicsBody!.collisionBitMask != 0 {player.faceCurrentDirection()}
+    }
     
     //*****************************************SPAWNING VEHICLES / PEOPLE************************
     
@@ -1079,7 +1140,18 @@ class GameScene: SKScene
     f3.runAction(SKAction.repeatActionForever(SKAction.sequence([newPosf3,wait])))
     
    }
-
+    
+    func explosion(position: CGPoint)
+    {
+        var explosionEmit = SKEmitterNode(fileNamed: "Explosion.sks")
+        explosionEmit.position = position
+        explosionEmit.zPosition = 1000
+        var spawnExplosion = SKAction.runBlock(){self.addChild(explosionEmit)}
+        var wait = SKAction.waitForDuration(3)
+        var block = SKAction.runBlock(){explosionEmit.removeFromParent()}
+        var sequence = SKAction.sequence([spawnExplosion,wait,block])
+        self.runAction(sequence)
+    }
 
 }
 
