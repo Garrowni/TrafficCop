@@ -345,7 +345,7 @@ class CarSprite : SKSpriteNode
         {
             self._state = State.DRIVING
          
-            if self._currSpeed != self._MAXSPEED
+            if (self._currSpeed < self._MAXSPEED)
             {
                 self._currSpeed += self._accel
             }
@@ -394,8 +394,8 @@ class CarSprite : SKSpriteNode
                 self.runAction(sequence)
             }
             
-            
-            if self._currSpeed != self._MAXSPEED
+
+            if (self._currSpeed < self._MAXSPEED)
             {
                 self._currSpeed += self._accel
             }
