@@ -194,6 +194,7 @@
 		7DD881DD1B28C8CA00C47FD7 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881D91B28C8CA00C47FD7 /* JSTileMap.m */; };
 		7DD881DE1B28C8CA00C47FD7 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881DB1B28C8CA00C47FD7 /* LFCGzipUtility.m */; };
 		7DD881DF1B28C8CA00C47FD7 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7DD881DC1B28C8CA00C47FD7 /* LICENSE.txt */; };
+		7DD8908F1B3C93D7005F05F8 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7DD8908E1B3C93D7005F05F8 /* Fire.sks */; };
 		7DE146431B223E95005DB874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146421B223E95005DB874 /* AppDelegate.swift */; };
 		7DE146471B223E95005DB874 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146461B223E95005DB874 /* GameScene.swift */; };
 		7DE146491B223E95005DB874 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE146481B223E95005DB874 /* GameViewController.swift */; };
@@ -327,6 +328,7 @@
 		7DD881DA1B28C8CA00C47FD7 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
 		7DD881DB1B28C8CA00C47FD7 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
 		7DD881DC1B28C8CA00C47FD7 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		7DD8908E1B3C93D7005F05F8 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 		7DE1463D1B223E95005DB874 /* Traffic_Cop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traffic_Cop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE146411B223E95005DB874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE146421B223E95005DB874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				08E7B6A41B38A22B00F32693 /* FireWork2.sks */,
 				08E7B6A71B38A37E00F32693 /* FireWork3.sks */,
 				080168E31B3C405A00424A67 /* BlackSmoke.sks */,
+				7DD8908E1B3C93D7005F05F8 /* Fire.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -986,6 +989,7 @@
 				08D74BE91B290D4C00E1C8BA /* burnstown_dam.otf in Resources */,
 				08D5160D1B28CB8100E5289B /* single_green.png in Resources */,
 				08D516131B28CB8100E5289B /* Ambulence1L.png in Resources */,
+				7DD8908F1B3C93D7005F05F8 /* Fire.sks in Resources */,
 				08D74C0B1B290D4C00E1C8BA /* old_stamper.ttf in Resources */,
 				08D516211B28CB8100E5289B /* car_blue_right.png in Resources */,
 				08D515ED1B28CB8100E5289B /* LadyBaby.png in Resources */,

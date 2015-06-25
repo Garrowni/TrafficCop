@@ -27,9 +27,9 @@ class CarSprite : SKSpriteNode
     var _dir            : Direction = Direction.WEST
     var _turnCount      : Int = 0
     var _spawn          : CGPoint
-    var _accel          : CGFloat = 1
+    var _accel          : CGFloat = 3
     var _currSpeed      : CGFloat = 0
-    var _velocity       : CGFloat = 0
+    var _impulse        : CGFloat = 0
     var _isDone         : Bool = false
     var _type           : Int
     var _textures       : [SKTexture] = []
@@ -75,8 +75,8 @@ class CarSprite : SKSpriteNode
         {
         case 1:
             
-            
-            self._MAXSPEED = 10
+            self._impulse = 6300
+            self._MAXSPEED = 150
             self._textures.append(SKTexture(imageNamed: "Ambulence1"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1R"))
@@ -91,8 +91,8 @@ class CarSprite : SKSpriteNode
            
             
         case 2:
-            
-            self._MAXSPEED = 3
+            self._impulse = 6000
+            self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "car_cop1"))
             self._textures.append(SKTexture(imageNamed: "car_cop1L"))
             self._textures.append(SKTexture(imageNamed: "car_cop1R"))
@@ -104,24 +104,26 @@ class CarSprite : SKSpriteNode
             self._textures.append(SKTexture(imageNamed: "car_cop1L"))
             self._mass = 1500
         case 3:
-            
-            self._MAXSPEED = 3
+            self._impulse = 6000
+            self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "car_blue"))
             self._mass = 1500
          
         case 4:
-            self._MAXSPEED = 3
+            self._impulse = 6000
+            self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "car_red"))
             self._mass = 1500
          
         case 5:
-            self._MAXSPEED = 3
+            self._impulse = 6000
+            self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "pickup_green"))
             self._mass = 1500
            
         case 6:
-            //self._car = SKTexture(imageNamed: "truck")
-            self._MAXSPEED = 7
+            self._impulse = 4000
+            self._MAXSPEED = 150
             self._textures.append(SKTexture(imageNamed: "truck"))
             self._mass = 4000
             
@@ -144,13 +146,13 @@ class CarSprite : SKSpriteNode
         physicsBody.restitution = 0.8
         physicsBody.friction = 0.5
         physicsBody.linearDamping = 0.3
-        physicsBody.mass = self._mass
+        physicsBody.mass  = self._mass
         physicsBody.categoryBitMask = PhysicsCategory.Car
         physicsBody.contactTestBitMask = PhysicsCategory.All
         physicsBody.collisionBitMask = PhysicsCategory.Car | PhysicsCategory.Person
         physicsBody.affectedByGravity = false
         physicsBody.angularDamping = 1
-        
+
         
         
         //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
@@ -216,7 +218,7 @@ class CarSprite : SKSpriteNode
     func update()
     {
         
-        //println("speed: \(self.physicsBody?.velocity.dx) && \(self.physicsBody?.velocity.dy)")
+    println("velocity dx: \(physicsBody!.velocity.dx), dy: \(physicsBody!.velocity.dy)")
         switch(self._dir)
         {
         case .NORTH:
@@ -347,18 +349,29 @@ class CarSprite : SKSpriteNode
         if(self._state != State.CRASHED)
         {
             self._state = State.DRIVING
-            
+         
+            if (self._currSpeed < self._MAXSPEED)
+            {
+                self._currSpeed += self._accel
+            }
             
             switch(self._dir)
             {
             case .NORTH:
-                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
+
+                    //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: self._impulse))
+                    self.physicsBody!.velocity.dy = self._currSpeed
             case .SOUTH:
-                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
+                    //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -self._impulse))
+                self.physicsBody!.velocity.dy = -self._currSpeed
             case .WEST:
-               self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
+
+                    //self.physicsBody?.applyImpulse(CGVector(dx: -self._impulse, dy: 0))
+               self.physicsBody!.velocity.dx = -self._currSpeed
             case .EAST:
-                self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
+
+                    //self.physicsBody?.applyImpulse(CGVector(dx: self._impulse, dy: 0))
+                self.physicsBody!.velocity.dx = self._currSpeed
             default:
                 println("No direction")
             }
@@ -386,25 +399,34 @@ class CarSprite : SKSpriteNode
                 self.runAction(sequence)
             }
             
-    //        
-    //        if self._currSpeed != self._MAXSPEED
-    //        {
-    //            self._currSpeed += self._accel
-    //        }
-    //        
+
+            if (self._currSpeed < self._MAXSPEED)
+            {
+                self._currSpeed += self._accel
+            }
+            
             switch(self._dir)
             {
             case .NORTH:
-                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10000))
+                
+                //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: self._impulse))
+                self.physicsBody!.velocity.dy = self._currSpeed
             case .SOUTH:
-                self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10000))
+                //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -self._impulse))
+                self.physicsBody!.velocity.dy = -self._currSpeed
             case .WEST:
-                self.physicsBody?.applyImpulse(CGVector(dx: -10000, dy: 0))
+                
+                //self.physicsBody?.applyImpulse(CGVector(dx: -self._impulse, dy: 0))
+                self.physicsBody!.velocity.dx = -self._currSpeed
             case .EAST:
-                self.physicsBody?.applyImpulse(CGVector(dx: 10000, dy: 0))
+                
+                //self.physicsBody?.applyImpulse(CGVector(dx: self._impulse, dy: 0))
+                self.physicsBody!.velocity.dx = self._currSpeed
+                
             default:
                 println("No direction")
             }
+            
         }
     }
     
