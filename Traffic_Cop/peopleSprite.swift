@@ -37,7 +37,11 @@ class PeopleSprite : SKSpriteNode
     {
         case WALKING, STOPPED, TURNING
     }
-      
+    
+    enum Options
+    {
+        case STRAIGHT, LEFT, RIGHT
+    }
 
     
     let _MAXSPEED : CGFloat
@@ -58,6 +62,18 @@ class PeopleSprite : SKSpriteNode
     var _currPos : CGPoint
    
     var _stopped : Int = 0
+    
+    
+    
+    var canTurnLeft     = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
+    var canTurnRight    = false
+    var canGoStraight   = false
+    
+   
+
+    
+    
+    
     
     init(type : Int , direction : SpawnPoint)
     {
@@ -209,6 +225,7 @@ class PeopleSprite : SKSpriteNode
         self._currSpeed = 0
         self._state = State.STOPPED
         self._stopped = 1
+       
     }
     
     
@@ -237,6 +254,166 @@ class PeopleSprite : SKSpriteNode
         
     }
     
+ 
+    func setChoices(forward: Bool, left: Bool, right: Bool)
+    {
+        canTurnLeft     = left
+        canTurnRight    = right
+        canGoStraight   = forward
+        println("CAN TURN -----> Straight:\(canGoStraight) Right: \(canTurnRight)  Left: \(canTurnLeft)")
+        rollChoice()
+    }
+    
+    func rollChoice()
+    {
+        var rollAmount = 0
+        if(canTurnLeft)  {rollAmount++}
+        if(canTurnRight) {rollAmount++}
+        if(canGoStraight){rollAmount++}
+        var rand = Int.randomNumberFrom(1...rollAmount)
+        if(canTurnLeft && canTurnRight && !canGoStraight)
+        {
+            if(rand == 1) //turn left
+            {
+                if (self._dir == .EAST)
+                { 
+                    self._dir = .NORTH
+                }
+                if (self._dir == .WEST)
+                {
+                    self._dir == .SOUTH
+                }
+            }
+            if(rand == 2)//turn right
+            {
+                if (self._dir == .EAST)
+                {
+                    self._dir = .SOUTH
+                }
+                if (self._dir == .WEST)
+                {
+                    self._dir = .NORTH
+                }
+            }
+        }
+    
+        if(canTurnLeft && canGoStraight && !canTurnRight)
+        {
+            if(rand == 1)//turn left
+            {
+                if (self._dir == .NORTH)
+                {
+                    self._dir = .WEST
+                }
+                if (self._dir == .SOUTH)
+                {
+                    self._dir = .EAST
+                }
+            }
+
+            if(rand == 2)//go straight
+            {
+                if (self._dir == .NORTH)
+                {
+                    self._dir = .NORTH
+                }
+                if (self._dir == .SOUTH)
+                {
+                    self._dir = .SOUTH
+                }
+            }
+        }
+    
+        if(canTurnRight && canGoStraight && !canTurnLeft)
+        {
+            if(rand == 1)//go right
+            {
+                if (self._dir == .NORTH)
+                {
+                    self._dir = .EAST
+                }
+                if (self._dir == .SOUTH)
+                {
+                    self._dir = .WEST
+                }
+            }
+            if(rand == 2) //go straight
+            {
+                
+                if (self._dir == .NORTH)
+                {
+                    self._dir = .NORTH
+                }
+                if (self._dir == .SOUTH)
+                {
+                    self._dir = .SOUTH
+                }
+            }
+        }
+        if(canTurnLeft && canTurnRight && canGoStraight)
+        {
+            if(rand == 1)//left
+            {
+                if (self._dir == .NORTH)
+                {
+                    self._dir = .WEST
+                }
+                if (self._dir == .SOUTH)
+                {
+                    self._dir = .EAST
+                }
+                if (self._dir == .EAST)
+                {
+                    self._dir = .NORTH
+                }
+                if (self._dir == .WEST)
+                {
+                    self._dir = .SOUTH
+                }
+            }
+            if(rand == 2)//Right
+            {
+                if (self._dir == .NORTH)
+                {
+                    self._dir = .EAST
+                }
+                if (self._dir == .SOUTH)
+                {
+                    self._dir = .WEST
+                }
+                if (self._dir == .EAST)
+                {
+                    self._dir = .SOUTH
+                }
+                if (self._dir == .WEST)
+                {
+                    self._dir = .NORTH
+                }
+            }
+            if(rand == 3)//Straight
+            {
+                if (self._dir == .NORTH)
+                {
+                    self._dir = .NORTH
+                }
+                if (self._dir == .SOUTH)
+                {
+                    self._dir = .SOUTH
+                }
+                if (self._dir == .EAST)
+                {
+                    self._dir = .EAST
+                }
+                if (self._dir == .WEST)
+                {
+                    self._dir = .WEST
+                }
+            }
+        }
+    
+   
+    }
+    
 }
 
 
@@ -250,15 +427,143 @@ class PeopleSprite : SKSpriteNode
 
 
 
+/*
+
+North --> SR, SLR, SL
+South --> SR, SLR, SL
+East  --> LR, SLR
+West  --> LR, SLR
+
+*/
 
 
 
+/*
+what level?
+    What Spot?
+        What Direction did you come from / are you going in?
+            What Choices?
+                Pick Random Choice
+                    GO.
+
+
+*/
 
 
 
+/*
+Level 1
+    Top Left        --> 2 choices per direction (can't access if your going in East direction)
+                            North   -->Straight, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            South   -->Straight, Left
+                                            --> Pick Random choice
+                                                    -->go
+                            West    -->Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+    Top Right       --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            South   -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            East    -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            West    -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+    Bottom Left     --> 2 choices per direction (can't access if your going in East direction)
+                            North   -->Straight, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            South   -->Straight, Left
+                                            --> Pick Random choice
+                                                    -->go
+                            West    -->Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+    Bottom Right    --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            South   -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            East    -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+                            West    -->Straight, Left, Right
+                                            --> Pick Random choice
+                                                    -->go
+Level 2
+    Top Left        --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Top Right       --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Bottom Left     --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Bottom Right    --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+Level 3
+    Top Left        --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Top Right       --> 2 choices per direction (can't access if your going in West direction)
+                            North   --> Straight, Left
+                            South   -->Straight, Right
+                            East    -->Left, Right
+    Bottom Left     --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Bottom Right    --> 2 choices per direction (can't access if your going in West direction)
+                            North   -->Straight, Left
+                            South   -->Straight, Right
+                            East    -->Left, Right
+Level 4
+    Top Left        --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Top Right       --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Bottom Left     --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
+    Bottom Right    --> 3 choices per direction
+                            North   -->Straight, Left, Right
+                            South   -->Straight, Left, Right
+                            East    -->Straight, Left, Right
+                            West    -->Straight, Left, Right
 
 
 
+*/
 
 
 

@@ -237,47 +237,57 @@ class Map
        switch (level)
        {
             case 1:
-               self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*7-TW/2, width: TW, height: TW)))//TOPLeft
-             
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*4+TW/2, width: TW, height: TW)))//BOTTOMLEFT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: 0, y: TW*7, width:TW, height: TW)))
-                  self.cornerArray.append(Corner(CornerRect: CGRect(x: 0, y: TW*4, width:TW, height: TW)))
-           
+              /* self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*7-TW/2, width: TW, height: TW)))//TOPLeft
+               self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*4+TW/2, width: TW, height: TW)))//BOTTOMLEFT
+               self.cornerArray.append(Corner(CornerRect: CGRect(x: 0, y: TW*7, width:TW, height: TW)))
+               self.cornerArray.append(Corner(CornerRect: CGRect(x: 0, y: TW*4, width:TW, height: TW)))
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*7, width: TW*2, height: TW)))//TOPLeftR*/
                 
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*7, width: TW*2, height: TW)))//TOPLeftR
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*4, width: TW*2, height: TW)))//BOTTOM
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*5, width: TW, height: TW*2)))//RIGHT2
-
+                
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*7, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: false)) //top left
+                    //if towards south : setChoices(true, left: true, right: false)
+                    //if towards North : setChoices(true, left: false, right: true)
+                    //if towards west : setChoices(false, left: true, right: true)
+              
+               self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*7, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide:  true)) //top right
+                    //self.setChoices (true, left: true, right: true)
+                
+               self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: false))//BOTTOM Left
+                    //if dir south : setChoices(true, left: true, right: false)
+                    //if dir North : setChoices(true, left: false, right: true)
+                    //if dir west : setChoices(false, left: true, right: true)
+                           
+               self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//BottomRight
+                    //self.setChoices( true, left: true, right:true)
         
         
           
             case 2:
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*3, y: TW*7, width: TW*2, height: TW)))//TOPLeft
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*5, width: TW, height: TW*2)))//TOPRIGHT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*3, y: TW*4, width: TW*2, height: TW)))//BOTTOMLEFT
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*5, width: TW, height: TW*2)))//BOTTOMRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*7, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*7, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//TOPRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//BOTTOMLEFT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*5, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//BOTTOMRIGHT
         
         
             
             case 3:
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: ((TW*8)-(TW/4)), y: TW*3, width: TW, height: TW)))//grass
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: ((TW*8)-(TW/4)), y: TW*8, width: TW, height: TW)))//grass
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*3, y: TW*8, width: TW*4, height: TW)))//TOP
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*3, y: TW*3, width: TW*4, height: TW)))//BOTTOM
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*7, width: TW, height: TW)))//right side
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*4, width: TW, height: TW)))//right side
-               self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*4, width: TW, height: TW*4)))//left side
+               
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*8, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//TOP left
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*3, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//BOTTOM left
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*8, width: TW, height: TW), northSide: true, southSide: true, eastSide: false, westSide: true))//right top
+                
+               self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*7, y: TW*3, width: TW, height: TW), northSide: true, southSide: true, eastSide: false, westSide: true))//bottomr ight
         
             case 4:
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*9, width: TW*4, height: TW)))//TOP
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*2, y: TW*4, width: TW*4, height: TW)))//Bottom
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW*4)))//Left
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*5, width: TW, height: TW*4)))//RIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*9, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//TOPLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//BottomRIGHT
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//BOTTOMLeft
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*6, y: TW*9, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//TOPRIGHT
         
         
         
             default:
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW)))
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))
   
         }
 		
@@ -383,10 +393,20 @@ struct Crosswalk
 struct Corner
 {
     var rect: CGRect
+    var North: Bool
+    var South: Bool
+    var East: Bool
+    var West: Bool
+    //north east south boolean, when storing that corner, say the options
 
-    init (CornerRect: CGRect)
-    {
+    init (CornerRect: CGRect, northSide: Bool, southSide: Bool, eastSide: Bool, westSide: Bool) // add te 4
+    { //take the 4 booleans
     rect    = CornerRect
+        
+    North = northSide
+    South = southSide
+    East = eastSide
+    West = westSide
     }
 }
 
