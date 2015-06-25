@@ -1113,13 +1113,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     f1.targetNode = self
     f1.particleColorSequence = nil;
     f1.particleColorBlendFactor = 1.0;
-    f1.particleZPosition = CGFloat(1000)
+    f1.particleZPosition = CGFloat(1100)
         
     f2.particleColorSequence = nil;
     f2.particleColorBlendFactor = 1.0;        
     f2.particleTexture!.filteringMode = .Nearest
     f2.targetNode = self
-    f2.particleZPosition = CGFloat(1100)
+    f2.particleZPosition = CGFloat(1101)
         
     f3.particleTexture!.filteringMode = .Nearest
     f3.targetNode = self
