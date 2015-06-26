@@ -52,11 +52,11 @@ class CarSprite : SKSpriteNode
     var wantsLeft       = false
     var turningLeft     = false //CHOICE A PERSON CHOOSES AT THE TIME OF DE-LUUMINATION
     var turningRight    = false
-    var goingStrait     = false
+    var goingStraight     = false
     var choiceMade      = false //IF THEY HAVE MADE A CHOICE DONT MAKE ANOTHER.
     var theParent       : SKNode
     var carInFront      : SKSpriteNode?
-    
+    var _wantDir        : Direction?
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
         var tempDirection   = direction.dir
@@ -266,7 +266,7 @@ class CarSprite : SKSpriteNode
 
         
         let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
-        let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 2)
+        let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 1.85)
         var block = SKAction.runBlock()
                         {
                           self._turned = true
@@ -313,7 +313,7 @@ class CarSprite : SKSpriteNode
             
             let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
 
-            let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 2)
+            let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 1.85)
           
             var block = SKAction.runBlock()
             {
@@ -376,19 +376,12 @@ class CarSprite : SKSpriteNode
             switch(self._dir)
             {
             case .NORTH:
-
-                    //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: self._impulse))
-                    self.physicsBody!.velocity.dy = self._currSpeed
+                self.physicsBody!.velocity.dy = self._currSpeed
             case .SOUTH:
-                    //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -self._impulse))
                 self.physicsBody!.velocity.dy = -self._currSpeed
             case .WEST:
-
-                    //self.physicsBody?.applyImpulse(CGVector(dx: -self._impulse, dy: 0))
-               self.physicsBody!.velocity.dx = -self._currSpeed
+                self.physicsBody!.velocity.dx = -self._currSpeed
             case .EAST:
-
-                    //self.physicsBody?.applyImpulse(CGVector(dx: self._impulse, dy: 0))
                 self.physicsBody!.velocity.dx = self._currSpeed
             default:
                 println("No direction")
@@ -426,21 +419,13 @@ class CarSprite : SKSpriteNode
             switch(self._dir)
             {
             case .NORTH:
-                
-                //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: self._impulse))
                 self.physicsBody!.velocity.dy = self._currSpeed
             case .SOUTH:
-                //self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -self._impulse))
                 self.physicsBody!.velocity.dy = -self._currSpeed
             case .WEST:
-                
-                //self.physicsBody?.applyImpulse(CGVector(dx: -self._impulse, dy: 0))
                 self.physicsBody!.velocity.dx = -self._currSpeed
             case .EAST:
-                
-                //self.physicsBody?.applyImpulse(CGVector(dx: self._impulse, dy: 0))
                 self.physicsBody!.velocity.dx = self._currSpeed
-                
             default:
                 println("No direction")
             }
@@ -496,45 +481,72 @@ class CarSprite : SKSpriteNode
         }
     }
     
-    func setChoices(forward: Bool, left: Bool, right: Bool)
-    {
-         canTurnLeft     = left
-         canTurnRight    = right
-         canGoStraight   = forward
-        println("CAN TURN -----> Straight:\(canGoStraight) Right: \(canTurnRight)  Left: \(canTurnLeft)")
-         rollChoice()
-    }
-    
     func rollChoice()
     {
-        var rollAmount = 0
-        if(canTurnLeft)  {rollAmount++}
-        if(canTurnRight) {rollAmount++}
-        if(canGoStraight){rollAmount++}
-        var rand = Int.randomNumberFrom(1...rollAmount)
-        if(canTurnLeft && canTurnRight && !canGoStraight)
+        var rand = Int.randomNumberFrom(1...3)
+        
+        
+        if(self._dir == .NORTH)
         {
-            if(rand == 1){wantsLeft     = true}
-            if(rand == 2){wantsRight    = true}
+            switch(rand)
+            {
+            case 1:
+                self._wantDir = .NORTH
+            case 2:
+                self._wantDir = .EAST
+            case 3:
+                self._wantDir = .WEST
+            default:
+                println("choice not made")
+            }
         }
-        if(canGoStraight && canTurnLeft && !canTurnRight)
+        else if(self._dir == .EAST)
         {
-            if(rand == 1){wantsStraight = true}
-            if(rand == 2){wantsLeft     = true}
+            switch(rand)
+            {
+            case 1:
+                self._wantDir = .EAST
+            case 2:
+                self._wantDir = .NORTH
+            case 3:
+                self._wantDir = .SOUTH
+            default:
+                println("choice not made")
+            }
         }
-        if(canGoStraight && canTurnRight && !canTurnLeft)
+        else if(self._dir == .SOUTH)
         {
-            if(rand == 1){wantsStraight = true}
-            if(rand == 2){wantsRight    = true}
+            switch(rand)
+            {
+            case 1:
+                self._wantDir = .SOUTH
+            case 2:
+                self._wantDir = .WEST
+            case 3:
+                self._wantDir = .EAST
+            default:
+                println("choice not made")
+            }
         }
-        if(canGoStraight && canTurnRight && canTurnLeft)
+        else if(self._dir == .WEST)
         {
-            if(rand == 1){wantsStraight = true}
-            if(rand == 2){wantsRight    = true}
-            if(rand == 3){wantsLeft     = true}
+            switch(rand)
+            {
+            case 1:
+                self._wantDir = .WEST
+            case 2:
+                self._wantDir = .NORTH
+            case 3:
+                self._wantDir = .SOUTH
+            default:
+                println("choice not made")
+            }
         }
+        
+        
+        
         choiceMade = true
-        println("CHOICE MADE --> Straight:\(wantsStraight) Right: \(wantsRight)  Left: \(wantsLeft)")
+        println("CHOICE MADE --> \(self._wantDir?.hashValue)")
     }
     
     func crashed()
