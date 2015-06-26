@@ -508,6 +508,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 {
                   if(corner.rect.contains(peopleArray[i].frame))
                   {
+                   peopleArray[i].walkOptions(corner)
+                    
                     return true
                   }
                 }
@@ -519,15 +521,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
            peopleArray[i].update()
             
-            if(atCorner(peopleArray[i].position) )
+            if(atCorner(peopleArray[i].position) && peopleArray[i].MadeChoice == false )
             {
                 
-                if (peopleArray[i]._stopped != 1)
-                {
-                
+               
                 
                     peopleArray[i].stop()
-                }
+                
              
             }
             else

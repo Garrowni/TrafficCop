@@ -60,10 +60,13 @@ class PeopleSprite : SKSpriteNode
     var _isSelected : Bool = false
     var _glowCircle : GlowCircle
     var _currPos : CGPoint
+    var _corner: Corner?
+    var canGoNorth : Bool = false
+    var canGoSouth : Bool = false
+    var canGoEast : Bool = false
+    var canGoWest : Bool = false
     
-    
-
-    var _stopped : Int = 0
+    var MadeChoice : Bool = false
     
     
     
@@ -109,7 +112,7 @@ class PeopleSprite : SKSpriteNode
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
             self._MAXSPEED = 5
-            self._stopped = 1
+            
         default :
             self._person = SKTexture(imageNamed: "")
             self._MAXSPEED = 0
@@ -202,24 +205,17 @@ class PeopleSprite : SKSpriteNode
             }
         }
     }
-
-  
- 
-
-    
-   
     
     func walk()
     {
         self._state = State.WALKING
-        self._stopped = 0
+    
     }
     
     func goStraight()
     {
         self._state = State.WALKING
         self._currSpeed = self._MAXSPEED
-                self._stopped = 0
         
         
         switch(self._dir)
@@ -241,11 +237,6 @@ class PeopleSprite : SKSpriteNode
     {
         self._currSpeed = 0
         self._state = State.STOPPED
-        self._stopped = 1
-        
-        self.setChoices( true, left: true, right: true)
-
-       
     }
     
     
@@ -274,165 +265,168 @@ class PeopleSprite : SKSpriteNode
         
     }
     
- 
-    func setChoices(forward: Bool, left: Bool, right: Bool)
+    
+    
+    
+    
+    func walkOptions(corner: Corner)
     {
-        canTurnLeft     = left
-        canTurnRight    = right
-        canGoStraight   = forward
-        println("CAN TURN -----> Straight:\(canGoStraight) Right: \(canTurnRight)  Left: \(canTurnLeft)")
-        rollChoice()
+        if (!MadeChoice)
+        {  canGoNorth = corner.North
+        canGoSouth = corner.South
+        canGoEast = corner.East
+        canGoWest = corner.West
+        ChangeDirection()
+        }
+        
+    }
+    //WEST, NORTH, EAST, SOUTH
+    func ChangeDirection()
+    {
+        switch(self._dir.hashValue)
+        {
+        case 0: //west
+            if(canGoNorth){canTurnRight = true} else {canTurnRight = false}
+            if(canGoSouth){canTurnLeft = true} else {canTurnLeft = false}
+            if(canGoWest){canGoStraight = true} else {canGoStraight = false}
+            
+        case 1: //north
+            if(canGoEast){canTurnRight = true} else {canTurnRight = false}
+            if(canGoWest){canTurnLeft = true} else {canTurnLeft = false}
+            if(canGoNorth){canGoStraight = true} else {canGoStraight = false}
+            
+        case 2: //east
+            if(canGoSouth){canTurnRight = true} else {canTurnRight = false}
+            if(canGoNorth){canTurnLeft = true} else {canTurnLeft = false}
+            if(canGoEast){canGoStraight = true} else {canGoStraight = false}
+        case 3: //south
+            if(canGoEast){canTurnRight = true} else {canTurnRight = false}
+            if(canGoWest){canTurnLeft = true} else {canTurnLeft = false}
+            if(canGoSouth){canGoStraight = true} else {canGoStraight = false}
+        default: break
+        }
+        RollDirection()
     }
     
-    func rollChoice()
+    func RollDirection()
     {
-        var rollAmount = 0
-        if(canTurnLeft)  {rollAmount++}
-        if(canTurnRight) {rollAmount++}
-        if(canGoStraight){rollAmount++}
-        var rand = Int.randomNumberFrom(1...rollAmount)
-        if(canTurnLeft && canTurnRight && !canGoStraight)
+        var Roll = 0
+        if (canTurnRight && canTurnLeft && canGoStraight)
         {
-            if(rand == 1) //turn left
+         Roll = Int.randomNumberFrom(1...3)
+            if (Roll == 1)
             {
-                if (self._dir == .EAST)
-                { 
-                    self._dir = .NORTH
-                }
-                if (self._dir == .WEST)
-                {
-                    self._dir == .SOUTH
-                }
+              TurnLeft()
             }
-            if(rand == 2)//turn right
+            if (Roll == 2)
             {
-                if (self._dir == .EAST)
-                {
-                    self._dir = .SOUTH
-                }
-                if (self._dir == .WEST)
-                {
-                    self._dir = .NORTH
-                }
+                TurnRight()
+            }
+            if (Roll == 3)
+            {
+                GoStraight()
             }
         }
-    
-        if(canTurnLeft && canGoStraight && !canTurnRight)
+       if (canTurnRight && canTurnLeft && !canGoStraight)
         {
-            if(rand == 1)//turn left
+         Roll = Int.randomNumberFrom(1...2)
+            if (Roll == 1)
             {
-                if (self._dir == .NORTH)
-                {
-                    self._dir = .WEST
-                }
-                if (self._dir == .SOUTH)
-                {
-                    self._dir = .EAST
-                }
+                TurnRight()
             }
+            if (Roll == 2)
+            {
+                TurnLeft()
+            }
+        
+        }
+        if (!canTurnRight && canTurnLeft && canGoStraight)
+        {
+            Roll = Int.randomNumberFrom(1...2)
+            if (Roll == 1)
+            {
+                TurnLeft()
+            }
+            if (Roll == 2)
+            {
+                GoStraight()
+            }
+            
+        }
+        if (canTurnRight && !canTurnLeft && canGoStraight)
+        {
+            Roll = Int.randomNumberFrom(1...2)
+            if (Roll == 1)
+            {
+                TurnRight()
+            }
+            if (Roll == 2)
+            {
+                GoStraight()
+            }
+            
+        }
+        self.MadeChoice = true
+        
+        var wait = SKAction.waitForDuration(2.0)
+        var block = SKAction.runBlock(){self.MadeChoice = false}
+        var sequence = SKAction.sequence([wait, block])
+        self.runAction(sequence)
+        
+    }
+    
+    //WEST, NORTH, EAST, SOUTH
+    func TurnLeft()
+    {
+      switch(self._dir.hashValue)
+      {
+      case 0: //west
+        self._dir = .SOUTH
+      case 1: //north
+        self._dir = .WEST
+      case 2: //east
+        self._dir = .NORTH
+      case 3: //south
+        self._dir = .EAST
+        
+      default: break}
+    }
+    func TurnRight()
+    {
+        switch(self._dir.hashValue)
+        {
+        case 0: //west
+            self._dir = .NORTH
+        case 1: //north
+            self._dir = .EAST
+        case 2: //east
+            self._dir = .SOUTH
+        case 3: //south
+            self._dir = .WEST
+            
+        default: break}
 
-            if(rand == 2)//go straight
-            {
-                if (self._dir == .NORTH)
-                {
-                    self._dir = .NORTH
-                }
-                if (self._dir == .SOUTH)
-                {
-                    self._dir = .SOUTH
-                }
-            }
-        }
+    }
+    func GoStraight()
+    {
+        switch(self._dir.hashValue)
+        {
+        case 0: //west
+            self._dir = .WEST
+        case 1: //north
+            self._dir = .NORTH
+        case 2: //east
+            self._dir = .EAST
+        case 3: //south
+            self._dir = .SOUTH
+            
+        default: break}
+
+    }
     
-        if(canTurnRight && canGoStraight && !canTurnLeft)
-        {
-            if(rand == 1)//go right
-            {
-                if (self._dir == .NORTH)
-                {
-                    self._dir = .EAST
-                }
-                if (self._dir == .SOUTH)
-                {
-                    self._dir = .WEST
-                }
-            }
-            if(rand == 2) //go straight
-            {
-                
-                if (self._dir == .NORTH)
-                {
-                    self._dir = .NORTH
-                }
-                if (self._dir == .SOUTH)
-                {
-                    self._dir = .SOUTH
-                }
-            }
-        }
-        if(canTurnLeft && canTurnRight && canGoStraight)
-        {
-            if(rand == 1)//left
-            {
-                if (self._dir == .NORTH)
-                {
-                    self._dir = .WEST
-                }
-                if (self._dir == .SOUTH)
-                {
-                    self._dir = .EAST
-                }
-                if (self._dir == .EAST)
-                {
-                    self._dir = .NORTH
-                }
-                if (self._dir == .WEST)
-                {
-                    self._dir = .SOUTH
-                }
-            }
-            if(rand == 2)//Right
-            {
-                if (self._dir == .NORTH)
-                {
-                    self._dir = .EAST
-                }
-                if (self._dir == .SOUTH)
-                {
-                    self._dir = .WEST
-                }
-                if (self._dir == .EAST)
-                {
-                    self._dir = .SOUTH
-                }
-                if (self._dir == .WEST)
-                {
-                    self._dir = .NORTH
-                }
-            }
-            if(rand == 3)//Straight
-            {
-                if (self._dir == .NORTH)
-                {
-                    self._dir = .NORTH
-                }
-                if (self._dir == .SOUTH)
-                {
-                    self._dir = .SOUTH
-                }
-                if (self._dir == .EAST)
-                {
-                    self._dir = .EAST
-                }
-                if (self._dir == .WEST)
-                {
-                    self._dir = .WEST
-                }
-            }
-        }
     
    
-    }
+    
     
 }
 
@@ -440,150 +434,6 @@ class PeopleSprite : SKSpriteNode
 
 
 
-
-
-
-
-
-
-
-/*
-
-North --> SR, SLR, SL
-South --> SR, SLR, SL
-East  --> LR, SLR
-West  --> LR, SLR
-
-*/
-
-
-
-/*
-what level?
-    What Spot?
-        What Direction did you come from / are you going in?
-            What Choices?
-                Pick Random Choice
-                    GO.
-
-
-*/
-
-
-
-/*
-Level 1
-    Top Left        --> 2 choices per direction (can't access if your going in East direction)
-                            North   -->Straight, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            South   -->Straight, Left
-                                            --> Pick Random choice
-                                                    -->go
-                            West    -->Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-    Top Right       --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            South   -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            East    -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            West    -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-    Bottom Left     --> 2 choices per direction (can't access if your going in East direction)
-                            North   -->Straight, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            South   -->Straight, Left
-                                            --> Pick Random choice
-                                                    -->go
-                            West    -->Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-    Bottom Right    --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            South   -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            East    -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-                            West    -->Straight, Left, Right
-                                            --> Pick Random choice
-                                                    -->go
-Level 2
-    Top Left        --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Top Right       --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Bottom Left     --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Bottom Right    --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-Level 3
-    Top Left        --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Top Right       --> 2 choices per direction (can't access if your going in West direction)
-                            North   --> Straight, Left
-                            South   -->Straight, Right
-                            East    -->Left, Right
-    Bottom Left     --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Bottom Right    --> 2 choices per direction (can't access if your going in West direction)
-                            North   -->Straight, Left
-                            South   -->Straight, Right
-                            East    -->Left, Right
-Level 4
-    Top Left        --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Top Right       --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Bottom Left     --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-    Bottom Right    --> 3 choices per direction
-                            North   -->Straight, Left, Right
-                            South   -->Straight, Left, Right
-                            East    -->Straight, Left, Right
-                            West    -->Straight, Left, Right
-
-
-
-*/
 
 
 
