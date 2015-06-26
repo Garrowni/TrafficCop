@@ -308,6 +308,35 @@ public func SKColorWithRGBA(r: Int, g: Int, b: Int, a: Int) -> SKColor
     return SKColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a)/255.0)
 }
 
+//RANDOM CAR COLOR--(ALL POPULAR CAR COLOURS ON REAL VEHICLES)
+public func randCarColour() ->SKColor
+{
+    var randNum = Int.randomNumberFrom(1...19)
+    switch(randNum)
+    {
+        case 1 :  return SKColorWithRGB(252, 229, 23)   //yellow
+        case 2 :  return SKColorWithRGB(247, 110, 47)   //orange
+        case 3 :  return SKColorWithRGB(230, 53, 53)    //red
+        case 4 :  return SKColorWithRGB(199, 44, 52)    //darker red
+        case 5 :  return SKColorWithRGB(240, 120, 168)  //pink
+        case 6 :  return SKColorWithRGB(217, 48, 110)   //fucia
+        case 7 :  return SKColorWithRGB(105, 68, 150)   //purple
+        case 8 :  return SKColorWithRGB(127, 199, 86)   //light green
+        case 9 :  return SKColorWithRGB(0, 181, 94)     //mint green
+        case 10 : return SKColorWithRGB(0, 97, 66)      //darker green
+        case 11 : return SKColorWithRGB(0, 160, 209)    //cloud blue
+        case 12 : return SKColorWithRGB(50, 69, 128)    //saphire blue
+        case 13 : return SKColorWithRGB(47, 54, 105)    //navy blue
+        case 14 : return SKColorWithRGB(87, 94, 92)     //grey
+        case 15 : return SKColorWithRGB(163, 145, 103)  //sandy
+        case 16 : return SKColorWithRGB(79, 52, 31)     //brown
+        case 17 : return UIColor.whiteColor()
+        case 18 : return UIColor.cyanColor()
+        case 19 : return UIColor.magentaColor()
+
+        default:  return SKColorWithRGB(79, 52, 31)     //brown
+    }
+}
 
 
 
