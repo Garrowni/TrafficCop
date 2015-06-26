@@ -483,10 +483,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 //vehicleArray[i].drive()
             }
             
-            if(vehicleArray[i].hasTurned())// VEHICLE HAS COMPLETED TURN ... ADD POINTS!
-            {
-                if(vehicleArray[i]._state.hashValue != 4){addPoints(Int.randomNumberFrom(10...15), pos: vehicleArray[i].position)} //IF CAR NOT CRASHED DURING ENTIRETY OF TURN THEN ADD POINTS
-            }
             
             if(vehicleArray[i].isDone(playableRect))
             {
@@ -779,7 +775,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                             default: println("something Broke in the passing in roads to choose from")
                             }
                         }
-                        car.rollChoice()
+                        car.rollChoice(self.currentLevel)
                     }
                 }])
             
