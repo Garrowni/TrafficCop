@@ -47,12 +47,6 @@ class CarSprite : SKSpriteNode
     var canTurnLeft     = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
     var canTurnRight    = false
     var canGoStraight   = false
-    var wantsRight      = false //RANDOM ROLL FOR THE CARS WANT
-    var wantsStraight   = false
-    var wantsLeft       = false
-    var turningLeft     = false //CHOICE A PERSON CHOOSES AT THE TIME OF DE-LUUMINATION
-    var turningRight    = false
-    var goingStraight     = false
     var choiceMade      = false //IF THEY HAVE MADE A CHOICE DONT MAKE ANOTHER.
     var theParent       : SKNode
     var carInFront      : SKSpriteNode?
@@ -485,9 +479,20 @@ class CarSprite : SKSpriteNode
         }
     }
     
-    func rollChoice()
+    func rollChoice(level : Int)
     {
-        var rand = Int.randomNumberFrom(1...3)
+        var rand : Int
+        
+        if(level == 1)
+        {
+          rand = Int.randomNumberFrom(1...2)
+        }
+        else
+        {
+            rand = Int.randomNumberFrom(1...3)
+        }
+        
+        
         
         
         if(self._dir == .NORTH)
@@ -525,9 +530,9 @@ class CarSprite : SKSpriteNode
             case 1:
                 self._wantDir = .SOUTH
             case 2:
-                self._wantDir = .WEST
-            case 3:
                 self._wantDir = .EAST
+            case 3:
+                self._wantDir = .WEST
             default:
                 println("choice not made")
             }
@@ -537,20 +542,19 @@ class CarSprite : SKSpriteNode
             switch(rand)
             {
             case 1:
-                self._wantDir = .WEST
-            case 2:
                 self._wantDir = .NORTH
-            case 3:
+            case 2:
                 self._wantDir = .SOUTH
+            case 3:
+                self._wantDir = .WEST
             default:
                 println("choice not made")
             }
-        }
-        
-        
+        }      
         
         choiceMade = true
         println("CHOICE MADE --> \(self._wantDir?.hashValue)")
+        println("\(rand)")
     }
     
     func crashed()
