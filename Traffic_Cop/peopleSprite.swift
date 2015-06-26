@@ -60,7 +60,9 @@ class PeopleSprite : SKSpriteNode
     var _isSelected : Bool = false
     var _glowCircle : GlowCircle
     var _currPos : CGPoint
-   
+    
+    
+
     var _stopped : Int = 0
     
     
@@ -70,13 +72,18 @@ class PeopleSprite : SKSpriteNode
     var canGoStraight   = false
     
    
-
     
     
     
     
     init(type : Int , direction : SpawnPoint)
     {
+        /*CGRectMake(x: self.position.x+8, y: self.position+8, width: 16.0, height: 16.0) ->myRect
+        {
+            return myRect
+        }*/
+      
+       
         
         var tempDirection = direction.dir
         
@@ -140,10 +147,18 @@ class PeopleSprite : SKSpriteNode
             self._spawn.x = direction.pos.x + self._size.height
             self._spawn.y = direction.pos.y - self._size.width/2
             self.position.x += 50
+            
         }
+        //////////////////////////////
+        let myRect: CGRect
+        myRect = CGRectMake(self.position.x+8, self.position.y+8, 16.0, 16.0)
                 }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder: ) has not been implemented")
+        
+        
+        
+        
     }
     
     
@@ -188,6 +203,8 @@ class PeopleSprite : SKSpriteNode
         }
     }
 
+  
+ 
 
     
    
@@ -225,6 +242,9 @@ class PeopleSprite : SKSpriteNode
         self._currSpeed = 0
         self._state = State.STOPPED
         self._stopped = 1
+        
+        self.setChoices( true, left: true, right: true)
+
        
     }
     
