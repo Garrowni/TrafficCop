@@ -166,12 +166,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         let wait = SKAction.waitForDuration(1)
         let transSequence = SKAction.sequence([wait,transition])
         self.runAction(transSequence)
-        
-        for corner in glowCorners
-        {
-            addChild(corner.getOL())
-        }
 // FOR DEBUG
+      //  for corner in glowCorners
+     //   {
+     //       addChild(corner.getOL())
+     //   }
+
    //    for cw in glowCWs
    //   {
      //       addChild(cw.getOL())
