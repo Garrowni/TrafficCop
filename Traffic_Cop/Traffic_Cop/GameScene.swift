@@ -326,7 +326,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
             Car.crashed()
             Car.removeAllActions()
-            explosion(contactPoint)
+            explosion(contactPoint, force: collisionImpulse)
             crashedCars.append(Car)
             
             default: break;
@@ -337,9 +337,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             case PhysicsCategory.Car:   let Car = other.node as! CarSprite
                 Car.crashed()
-                //if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
+                if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
                 Car.removeAllActions()
-                explosion(contactPoint)
+                explosion(contactPoint, force: collisionImpulse)
                 crashedCars.append(Car)
             
             
@@ -365,7 +365,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         if(!pausedOn)
         {
-            if(vehicleArray.count < 10) //TODO maybe vary this number for different levels
+            if(vehicleArray.count < 20) //TODO maybe vary this number for different levels
             {
                 var cantSpawnThere = false
                 var foundSpot = false
@@ -1182,11 +1182,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
    }
     
-    func explosion(position: CGPoint)
+    func explosion(position: CGPoint, force: CGFloat)
     {
+        //println("\(force)")
         var explosionEmit = SKEmitterNode(fileNamed: "Explosion.sks")
         explosionEmit.position = position
         explosionEmit.zPosition = 1000
+//        switch(force)
+//        {
+//            case 0...50000              : explosionEmit.particleScale = -0.5
+//            case 50000...100000         : explosionEmit.particleScale = -0.25
+//            case 100000...200000        : explosionEmit.particleScale =  0.0
+//            case 200000...300000        : explosionEmit.particleScale = 0.25
+//            case 300000...450000        : explosionEmit.particleScale = 0.5
+//            case 450000...1000000000    : explosionEmit.particleScale = 0.75
+//            default : break;
+//        }
         var spawnExplosion = SKAction.runBlock(){self.addChild(explosionEmit)}
         var wait = SKAction.waitForDuration(3)
         var block = SKAction.runBlock(){explosionEmit.removeFromParent()}

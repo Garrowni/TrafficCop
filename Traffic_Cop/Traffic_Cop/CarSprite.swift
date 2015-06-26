@@ -67,6 +67,7 @@ class CarSprite : SKSpriteNode
         smokeEmitter        = SKEmitterNode(fileNamed: "Exhaust.sks")
         fireEmitter         = SKEmitterNode(fileNamed: "Fire.sks")
         fireSmokeEmitter    = SKEmitterNode(fileNamed: "BlackSmoke.sks")
+        smokeEmitter.name   = "Smoke-Emitter"
         fireSmokeEmitter.name = "fire-Emitter"
         fireEmitter.name    = "fire-Emitter"
 
@@ -146,18 +147,17 @@ class CarSprite : SKSpriteNode
         physicsBody.usesPreciseCollisionDetection = true
         physicsBody.allowsRotation = true
         physicsBody.restitution = 0.8
-        physicsBody.friction = 0.5
+        physicsBody.friction = 0.2
         physicsBody.linearDamping = 0.3
         physicsBody.mass  = self._mass
         physicsBody.categoryBitMask = PhysicsCategory.Car
         physicsBody.contactTestBitMask = PhysicsCategory.All
         physicsBody.collisionBitMask = PhysicsCategory.Car | PhysicsCategory.Person
         physicsBody.affectedByGravity = false
-        physicsBody.angularDamping = 1
+        physicsBody.angularDamping = 0.5
 
         
         
-        //smokeEmitter.particleAlpha = CGFloat(Int.randomNumberFrom(1...10)/10)
         smokeEmitter.position.x += 85
         fireSmokeEmitter.position.x -= 70
         fireEmitter.position.x -= 70
@@ -205,22 +205,22 @@ class CarSprite : SKSpriteNode
         smokeEmitter.targetNode         = theParent
         fireSmokeEmitter.particleTexture!.filteringMode = .Nearest
         fireSmokeEmitter.targetNode     = theParent
-        //fireEmitter.particleTexture!.filteringMode = .Nearest
+        fireEmitter.particleTexture!.filteringMode = .Nearest
         fireEmitter.targetNode          = theParent
         self.physicsBody = physicsBody
     }
     required init?(coder aDecoder: NSCoder) {
         smokeEmitter        =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
-        fireSmokeEmitter    =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
-        fireEmitter         =  aDecoder.decodeObjectForKey("Smoke-Emitter") as! SKEmitterNode
+        fireSmokeEmitter    =  aDecoder.decodeObjectForKey("fire-Emitter") as! SKEmitterNode
+        fireEmitter         =  aDecoder.decodeObjectForKey("fire-Emitter") as! SKEmitterNode
         fatalError("init(coder: ) has not been implemented")
     }
     
     override func encodeWithCoder(aCoder: NSCoder) {
         super.encodeWithCoder(aCoder)
         aCoder.encodeObject(smokeEmitter, forKey: "Smoke-Emitter")
-        aCoder.encodeObject(fireSmokeEmitter, forKey: "Smoke-Emitter")
-        aCoder.encodeObject(fireEmitter, forKey: "Smoke-Emitter")
+        aCoder.encodeObject(fireSmokeEmitter, forKey: "fire-Emitter")
+        aCoder.encodeObject(fireEmitter, forKey: "fire-Emitter")
     }
     
 
@@ -230,7 +230,9 @@ class CarSprite : SKSpriteNode
     func update()
     {
         
-    println("velocity dx: \(physicsBody!.velocity.dx), dy: \(physicsBody!.velocity.dy)")
+    //println("velocity dx: \(physicsBody!.velocity.dx), dy: \(physicsBody!.velocity.dy)")
+        if(self._state != State.CRASHED)
+        {
         switch(self._dir)
         {
         case .NORTH:
@@ -252,6 +254,7 @@ class CarSprite : SKSpriteNode
             self.drive()
         }
         self.position = _currPos
+        }
       
     } 
 
@@ -352,9 +355,12 @@ class CarSprite : SKSpriteNode
     }
     func wait()
     {
+        if(self._state != .CRASHED)
+        {
         self._currSpeed = 0
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         self._state = .WAITING
+        }
     }
     func drive()
     {
@@ -444,9 +450,12 @@ class CarSprite : SKSpriteNode
     
     func stop()
     {
+        if(self._state != State.CRASHED)
+        {
         self._currSpeed = 0
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         self._state = .STOPPED
+        }
     }
     
     
@@ -533,18 +542,21 @@ class CarSprite : SKSpriteNode
         
         if(self._state.hashValue != 4)
         {
-            smokeEmitter.removeFromParent()
+           
             var hasFire = false
             for child in children
             {
                 if (child.name == "fire-Emitter") {hasFire = true}
+                if (child.name == "smoke-Emitter") {smokeEmitter.removeFromParent()
+}
             }
             if(!hasFire)
             {
                 addChild(fireSmokeEmitter)
                 addChild(fireEmitter)
-                fireSmokeEmitter.particleZPosition = 98
-                fireEmitter.particleZPosition = 99
+                fireSmokeEmitter.particleZPosition = 3
+                fireEmitter.particleZPosition = 4
+             
             }
         }
 
