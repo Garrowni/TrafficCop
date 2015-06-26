@@ -128,6 +128,7 @@ class CarSprite : SKSpriteNode
             self._impulse = 4000
             self._MAXSPEED = 150
             self._textures.append(SKTexture(imageNamed: "truck"))
+           
             self._mass = 4000
             
             
@@ -142,6 +143,9 @@ class CarSprite : SKSpriteNode
         
         self.position = self._currPos
         self.addChild(smokeEmitter)
+        
+        if (type == 6) {self.runAction(SKAction.colorizeWithColor(randCarColour(), colorBlendFactor: CGFloat(1.0), duration: 0))
+}
         
         let physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
         physicsBody.usesPreciseCollisionDetection = true
@@ -547,13 +551,13 @@ class CarSprite : SKSpriteNode
             for child in children
             {
                 if (child.name == "fire-Emitter") {hasFire = true}
-                if (child.name == "smoke-Emitter") {smokeEmitter.removeFromParent()
-}
+                if (child.name == "Smoke-Emitter") {smokeEmitter.removeFromParent()}
             }
             if(!hasFire)
             {
                 addChild(fireSmokeEmitter)
-                addChild(fireEmitter)
+                var rand = Int.randomNumberFrom(1...10)
+                if (rand > 6) {addChild(fireEmitter)}
                 fireSmokeEmitter.particleZPosition = 3
                 fireEmitter.particleZPosition = 4
              

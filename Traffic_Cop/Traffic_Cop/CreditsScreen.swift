@@ -85,7 +85,7 @@ class CreditsScreen: SKScene
         creditsSTR12 = " "
         creditsSTR13 = "Matt Manton!"
         creditsSTR14 = " "
-        creditsSTR15 = "The cars are owned by Razeware LLC (http://www.raywenderlich.com)."
+        creditsSTR15 = "cars by Razeware LLC."
         creditsSTR16 = "Thanks For Playing!"
        
         credits   = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR,   fontSize: 70, font: "font2", color: "black",  align: "center")

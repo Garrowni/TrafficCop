@@ -29,9 +29,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     let goalButt    : Button
     let soundButt   : Button
     let nextLevButt : Button
-    var f1          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
-    var f2          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
-    var f3          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork3.sks")
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
     var glowCorners : [GlowBox]
@@ -1112,6 +1109,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func fireWorksGo()
     {
+    var f1          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork1.sks")
+    var f2          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork2.sks")
+    var f3          : SKEmitterNode = SKEmitterNode(fileNamed: "FireWork3.sks")
+        
     f1.particleTexture!.filteringMode = .Nearest
     f1.targetNode = self
     f1.particleColorSequence = nil;
@@ -1141,39 +1142,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     var newPosf1 = SKAction.runBlock()
     {
-        self.f1.particleColor = SKColorWithRGB(
+        f1.particleColor = SKColorWithRGB(
             Int.randomNumberFrom(0...255),
             Int.randomNumberFrom(0...255),
             Int.randomNumberFrom(0...255))
-        self.f1.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
-        self.f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
-        self.f1.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
-        self.f1.resetSimulation()
+        f1.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
+        f1.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        f1.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        f1.resetSimulation()
     }
     
     var newPosf2 = SKAction.runBlock()
     {
-        self.f2.particleColor = SKColorWithRGB(
+        f2.particleColor = SKColorWithRGB(
             Int.randomNumberFrom(0...255),
             Int.randomNumberFrom(0...255),
             Int.randomNumberFrom(0...255))
-        self.f2.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
-        self.f2.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
-        self.f2.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
-        self.f2.resetSimulation()
+        f2.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
+        f2.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        f2.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        f2.resetSimulation()
     }
     
     var newPosf3 = SKAction.runBlock()
     {
-        self.f3.particleColor = SKColorWithRGB(
+        f3.particleColor = SKColorWithRGB(
             Int.randomNumberFrom(0...255),
             Int.randomNumberFrom(0...255),
             Int.randomNumberFrom(0...255))
-        self.f3.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
+        f3.particleScaleRange = CGFloat.random(min: 0.3, max: 1.0)
         //f3.particleSize = CGFloat.random(min: 0.3, max: 1.0)
-        self.f3.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
-        self.f3.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
-        self.f3.resetSimulation()
+        f3.position.x = CGFloat.random(min: 0, max: self.playableRect.maxX)
+        f3.position.y = CGFloat.random(min: 0, max: self.playableRect.maxY)
+        f3.resetSimulation()
     }
     
     f1.runAction(SKAction.repeatActionForever(SKAction.sequence([newPosf1,wait])))
