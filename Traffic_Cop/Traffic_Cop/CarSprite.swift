@@ -483,7 +483,7 @@ class CarSprite : SKSpriteNode
     {
         var rand : Int
         
-        if(level == 1)
+        if(level == 1 || level == 3)
         {
           rand = Int.randomNumberFrom(1...2)
         }
