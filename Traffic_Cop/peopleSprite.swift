@@ -67,6 +67,7 @@ class PeopleSprite : SKSpriteNode
     var canGoWest : Bool = false
     
     var MadeChoice : Bool = false
+   
     
     
     
@@ -190,19 +191,10 @@ class PeopleSprite : SKSpriteNode
         }
         else if self._state == State.STOPPED
         {
+        
+        
             self._currSpeed = 0
-            if (self._type == 1)
-            {
-                var timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
-            }
-            if (self._type == 2)
-            {
-                var timer = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
-            }
-            if (self._type == 3)
-            {
-                var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
-            }
+          
         }
     }
     
@@ -214,6 +206,7 @@ class PeopleSprite : SKSpriteNode
     
     func goStraight()
     {
+       
         self._state = State.WALKING
         self._currSpeed = self._MAXSPEED
         
@@ -237,7 +230,8 @@ class PeopleSprite : SKSpriteNode
     {
         self._currSpeed = 0
         self._state = State.STOPPED
-        self.MadeChoice = false
+        //self.MadeChoice = false
+        
     }
     
     
@@ -265,7 +259,6 @@ class PeopleSprite : SKSpriteNode
         }
         
     }
-    
     
     
     
@@ -372,11 +365,33 @@ class PeopleSprite : SKSpriteNode
             }
         }
         self.MadeChoice = true
+        var time = 0
+        self._currSpeed = 0
+        if (self._type == 1)
+        {
+            time = 5
+        }
+        if (self._type == 2)
+        {
+           time = 4
+        }
+        if (self._type == 3)
+        {
+            time = 2
+        }
+        
+        
+        
         
         var wait = SKAction.waitForDuration(2.0)
         var block = SKAction.runBlock(){self.MadeChoice = false}
-        var sequence = SKAction.sequence([wait, block])
+        var block2 = SKAction.runBlock(){self.walk()}
+        var wait2 = SKAction.waitForDuration(NSTimeInterval(time))
+        var stopblock = SKAction.runBlock(){self.stop()}
+        var sequence = SKAction.sequence([stopblock, wait2,block2, wait, block])
         self.runAction(sequence)
+       
+        
         
     }
     
@@ -387,12 +402,16 @@ class PeopleSprite : SKSpriteNode
       {
       case 0: //west
         self._dir = .SOUTH
+   
       case 1: //north
         self._dir = .WEST
+    
       case 2: //east
         self._dir = .NORTH
+  
       case 3: //south
         self._dir = .EAST
+      
         
       default: break}
     }

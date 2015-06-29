@@ -498,49 +498,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         for(var i = 0; i < peopleArray.count; i++)
         {
-            func atCorner(pos: CGPoint) -> Bool
+            func atCorner(pos: CGPoint)
             {
                 for corner in cornerArray!
                 {
                   if(corner.rect.contains(peopleArray[i].frame))
                   {
-                   peopleArray[i].walkOptions(corner)
-                    
-                    return true
+                        peopleArray[i].walkOptions(corner)
                   }
                 }
-                return false
-            }
-         
-            
-                
-        
-           peopleArray[i].update()
-            
-            if(atCorner(peopleArray[i].position) && peopleArray[i].MadeChoice == false )
-            {
-                
-               
-                
-                    peopleArray[i].stop()
-                
              
             }
-            else
-            {
-                peopleArray[i].walk()
-                
-            }
             
+            atCorner(peopleArray[i].position)
             
+        
+           peopleArray[i].update()
+           
             if(peopleArray[i].isDone(playableRect))
             {
                 peopleArray[i].removeFromParent()
                 peopleArray.removeAtIndex(i)
             }
-            
         }
-        
     }
 
     func deSelectCars()
