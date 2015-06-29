@@ -54,13 +54,13 @@ class MainMenuScreen: SKScene
         credR = CGRect(x: size.width/2-300, y: size.height-1640, width: 600, height: 400)
         
         //Buttons
-        titlButt = Button(pos: titlR, roundCorner: 100, text: titleLabel, BGcolor: "blue", OLcolor: "red",      OLSize: 10, glowWidth: 40, ZoomIn: true, Bulge: true,  glowBulge: false)
+        titlButt = Button(pos: titlR, roundCorner: 100, text: titleLabel, BGcolor: "halfblack", OLcolor: "red",      OLSize: 10, glowWidth: 40, ZoomIn: true, Bulge: true,  glowBulge: false)
         playButt = Button(pos: playR, roundCorner: 200, text: playLabel, BGcolor: "green", OLcolor: "white",    OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         helpButt = Button(pos: helpR, roundCorner: 200, text: helpLabel, BGcolor: "yellow", OLcolor: "white",   OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         
-        spawn1 = SpawnPoint(position: CGPoint(x: playableRect.width + 300, y: 128), direction: "left")
-        spawn2 = SpawnPoint(position: CGPoint(x: -300, y: 64), direction: "right")
+        spawn1 = SpawnPoint(position: CGPoint(x: playableRect.width + 200, y: 180), direction: "left")
+        spawn2 = SpawnPoint(position: CGPoint(x: -200, y: 64), direction: "right")
         
         
 
@@ -70,7 +70,7 @@ class MainMenuScreen: SKScene
         
         //SET ACTIONS
         let spawn = SKAction.runBlock(){self.spawnVehicle();}
-        let wait = SKAction.waitForDuration(4)                     //SPAWN TIME !
+        let wait = SKAction.waitForDuration(3)                     //SPAWN TIME !
         let spawnSequence = SKAction.sequence([spawn, wait])
         spawnAction = SKAction.repeatActionForever(spawnSequence)
   
@@ -110,7 +110,7 @@ class MainMenuScreen: SKScene
       
         self.runAction(self.spawnAction)
 
-        
+        background.zPosition = -1
         addChild(background)
         
     }
@@ -251,10 +251,10 @@ class MainMenuScreen: SKScene
         var rand  = Int.randomNumberFrom(1...2)
         var car : CarSprite
         
-        if(vehicleArray.count < 5)
+        if(vehicleArray.count < 15)
         {
-            if rand == 1 {car = CarSprite(type: Int.randomNumberFrom(3...6), direction: spawn1, Parent: self)}
-            else {car = CarSprite(type: Int.randomNumberFrom(3...6), direction: spawn2, Parent: self)}
+            if(rand == 1 ){car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawn1, Parent: self)}
+            else {car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawn2, Parent: self)}
             
             vehicleArray.append(car)
             car.drive()
