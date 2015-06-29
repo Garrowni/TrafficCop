@@ -22,16 +22,24 @@ class MainMenuScreen: SKScene
     let helpButt: Button
     let credButt: Button
     
+    let playableRect : CGRect
     let titlR: CGRect
     let playR: CGRect
     let helpR: CGRect
     let credR: CGRect
-    
-    
+    var vehicleArray: [CarSprite] = []
+    var spawn1 : SpawnPoint
+    var spawn2 : SpawnPoint
+    var spawnAction = SKAction()
    
     override init(size: CGSize)
     {
         TW = 128
+        let maxAspectRatio:CGFloat = 9.0/16.0
+        let playableHeight = size.width / maxAspectRatio
+        let playableMargin = (size.height-playableHeight)/2.0
+        playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
+        
         
         //Labels
         titleLabel      = Text(pos: CGPoint(x: 0, y: 0),    says: "Traffic Cop",    fontSize: 150, font: "font1", color: "yellow", align: "center")
@@ -51,7 +59,21 @@ class MainMenuScreen: SKScene
         helpButt = Button(pos: helpR, roundCorner: 200, text: helpLabel, BGcolor: "yellow", OLcolor: "white",   OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         
+        spawn1 = SpawnPoint(position: CGPoint(x: playableRect.width + 300, y: 128), direction: "left")
+        spawn2 = SpawnPoint(position: CGPoint(x: -300, y: 64), direction: "right")
+        
+        
+
+    
+        
         super.init(size: size)
+        
+        //SET ACTIONS
+        let spawn = SKAction.runBlock(){self.spawnVehicle();}
+        let wait = SKAction.waitForDuration(4)                     //SPAWN TIME !
+        let spawnSequence = SKAction.sequence([spawn, wait])
+        spawnAction = SKAction.repeatActionForever(spawnSequence)
+  
     }
     
     
@@ -85,7 +107,12 @@ class MainMenuScreen: SKScene
         addChild(credButt.getLabel())
         
         
+      
+        self.runAction(self.spawnAction)
+
+        
         addChild(background)
+        
     }
     
     
@@ -131,6 +158,28 @@ class MainMenuScreen: SKScene
     }
     #endif
     
+    override func update(currentTime: CFTimeInterval)
+    {
+            updateVehicles()
+        
+    }
+    
+    func updateVehicles()
+    {
+        
+        for(var i = 0; i < vehicleArray.count; i++)
+        {
+            vehicleArray[i].update()
+
+            if(vehicleArray[i].isDone(playableRect))
+            {
+                vehicleArray[i].removeFromParent()
+                vehicleArray.removeAtIndex(i)
+            }
+            
+        }
+        
+    }
     
     //TRANSITION
     func goToGame()
@@ -196,4 +245,20 @@ class MainMenuScreen: SKScene
         
     }
     
+    func spawnVehicle()
+    {
+     
+        var rand  = Int.randomNumberFrom(1...2)
+        var car : CarSprite
+        
+        if(vehicleArray.count < 5)
+        {
+            if rand == 1 {car = CarSprite(type: Int.randomNumberFrom(3...6), direction: spawn1, Parent: self)}
+            else {car = CarSprite(type: Int.randomNumberFrom(3...6), direction: spawn2, Parent: self)}
+            
+            vehicleArray.append(car)
+            car.drive()
+            addChild(car)
+        }
+    }
 }
