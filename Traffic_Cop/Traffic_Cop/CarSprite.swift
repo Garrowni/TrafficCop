@@ -52,6 +52,9 @@ class CarSprite : SKSpriteNode
     var carInFront      : SKSpriteNode?
     var _wantDir        : Direction?
     var _arrow          : SKSpriteNode?
+    
+    var moveUpAction    : SKAction?
+    var moveBackAction  : SKAction?
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
         var tempDirection   = direction.dir
@@ -228,6 +231,7 @@ class CarSprite : SKSpriteNode
     
     func update()
     {
+        self._currPos = self.position
         if(self._state != State.CRASHED)
         {
             switch(self._dir)
@@ -248,7 +252,6 @@ class CarSprite : SKSpriteNode
             {
                 self.drive()
             }
-
         }
       
     } 
@@ -351,10 +354,10 @@ class CarSprite : SKSpriteNode
                 
             }
             
-        if(self._arrow != nil)
-        {
-            self._arrow!.removeFromParent()
-        }
+            if(self._arrow != nil)
+            {
+                self._arrow!.removeFromParent()
+            }
          self._turnCount++
          self.drive()
         
@@ -365,7 +368,7 @@ class CarSprite : SKSpriteNode
     {
         if(self._state != .CRASHED)
         {
-        self._currSpeed = 0
+        
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         self._state = .WAITING
         }
@@ -449,7 +452,7 @@ class CarSprite : SKSpriteNode
         if(self._state != State.CRASHED)
         {
         self._currSpeed = 0
-        self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        self.physicsBody!.velocity = CGVector(dx: 0, dy: 0)
         self._state = .STOPPED
         }
     }
@@ -499,7 +502,7 @@ class CarSprite : SKSpriteNode
         self._arrow!.xScale = 0.25
         self._arrow!.yScale = 0.25
         self._arrow!.name = "arrow"
-        self._arrow!.zPosition = 5
+        self._arrow!.zPosition = 3
         
         
         
@@ -522,21 +525,29 @@ class CarSprite : SKSpriteNode
             {
             case 1:
                 self._wantDir = .NORTH
+                self.moveBackAction = SKAction.moveToX(self._arrow!.position.x - 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToX(self._arrow!.position.x + 10, duration: 0.5)
             case 2:
                 
                 if(level != 3)
                 {
                 self._wantDir = .EAST
                 self._arrow!.zRotation = CGFloat(-M_PI_2)
+                    self.moveBackAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
+                    self.moveUpAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
                 }
                 else
                 {
                     self._wantDir = .WEST
                     self._arrow!.zRotation = CGFloat(M_PI_2)
+                    self.moveBackAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
+                    self.moveUpAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
                 }
             case 3:
                 self._wantDir = .WEST
                 self._arrow!.zRotation = CGFloat(M_PI_2)
+                self.moveBackAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
             default:
                 println("choice not made")
             }
@@ -548,11 +559,17 @@ class CarSprite : SKSpriteNode
             case 1:
                 self._wantDir = .SOUTH
                 self._arrow!.zRotation = CGFloat(-M_PI_2)
+                self.moveBackAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
             case 2:
                 self._wantDir = .NORTH
                  self._arrow!.zRotation = CGFloat(M_PI_2)
+                self.moveBackAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
             case 3:
                 self._wantDir = .EAST
+                self.moveBackAction = SKAction.moveToX(self._arrow!.position.x - 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToX(self._arrow!.position.x + 10, duration: 0.5)
             default:
                 println("choice not made")
             }
@@ -563,20 +580,28 @@ class CarSprite : SKSpriteNode
             {
             case 1:
                 self._wantDir = .SOUTH
+                self.moveBackAction = SKAction.moveToX(self._arrow!.position.x + 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToX(self._arrow!.position.x - 10, duration: 0.5)
             case 2:
                 if(level != 3)
                 {
                     self._wantDir = .EAST
                     self._arrow!.zRotation = CGFloat(M_PI_2)
+                    self.moveBackAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
+                    self.moveUpAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
                 }
                 else
                 {
                     self._wantDir = .WEST
                     self._arrow!.zRotation = CGFloat(-M_PI_2)
+                    self.moveBackAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
+                    self.moveUpAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
                 }
             case 3:
                 self._wantDir = .WEST
                 self._arrow!.zRotation = CGFloat(-M_PI_2)
+                self.moveBackAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
             default:
                 println("choice not made")
             }
@@ -588,18 +613,27 @@ class CarSprite : SKSpriteNode
             case 1:
                 self._wantDir = .NORTH
                 self._arrow!.zRotation = CGFloat(-M_PI_2)
+                self.moveBackAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
             case 2:
                 self._wantDir = .SOUTH
                 self._arrow!.zRotation = CGFloat(M_PI_2)
+                self.moveBackAction = SKAction.moveToY(self._arrow!.position.y + 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToY(self._arrow!.position.y - 10, duration: 0.5)
             case 3:
                 self._wantDir = .WEST
+                self.moveBackAction = SKAction.moveToX(self._arrow!.position.x + 10, duration: 0.5)
+                self.moveUpAction = SKAction.moveToX(self._arrow!.position.x - 10, duration: 0.5)
             default:
                 println("choice not made")
             }
         }      
         self.addChild(self._arrow!)
+        
+        var sequence = SKAction.sequence([self.moveUpAction!, self.moveBackAction!])
+        self._arrow!.runAction(SKAction.repeatActionForever(sequence))
         choiceMade = true
-        println("CHOICE MADE --> \(self._wantDir?.hashValue)")
+        println("CHOICE MADE --> \(self._wantDir!.hashValue)")
 
     }
     
