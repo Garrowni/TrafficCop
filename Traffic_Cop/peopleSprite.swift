@@ -1,26 +1,10 @@
 //
-//  people.swift
+//  peopleSprite.swift
 //  Traffic_Cop
 //
 //  Created by Nicole Garrow on 2015-06-17.
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
-//
-//
-//  people.swift
-//  trial
-//
-//  Created by Nicole Garrow on 2015-06-09.
-//  Copyright (c) 2015 Nicole Garrow. All rights reserved.
-//
-//
-//  CarSprite.swift
-//  Traffic_Cop
-//
-//  Created by Mathew  Manton on 2015-06-04.
-//  Copyright (c) 2015 Mathew  Manton. All rights reserved.
-//
-//YO HO HO
-//import Foundation
+
 import SpriteKit
 import Foundation
 
@@ -67,28 +51,13 @@ class PeopleSprite : SKSpriteNode
     var canGoWest : Bool = false
     
     var MadeChoice : Bool = false
-   
-    
-    
-    
     var canTurnLeft : Bool    = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
     var canTurnRight : Bool   = false
     var canGoStraight :Bool   = false
     
-   
-    
-    
-    
     
     init(type : Int , direction : SpawnPoint)
     {
-        /*CGRectMake(x: self.position.x+8, y: self.position+8, width: 16.0, height: 16.0) ->myRect
-        {
-            return myRect
-        }*/
-      
-       
-        
         var tempDirection = direction.dir
         
         self._size = CGSize(width: 32, height: 32)
@@ -156,13 +125,10 @@ class PeopleSprite : SKSpriteNode
         //////////////////////////////
         let myRect: CGRect
         myRect = CGRectMake(self.position.x+8, self.position.y+8, 16.0, 16.0)
-                }
-    required init?(coder aDecoder: NSCoder) {
+    }
+    required init?(coder aDecoder: NSCoder)
+    {
         fatalError("init(coder: ) has not been implemented")
-        
-        
-        
-        
     }
     
     
@@ -191,25 +157,19 @@ class PeopleSprite : SKSpriteNode
         }
         else if self._state == State.STOPPED
         {
-        
-        
             self._currSpeed = 0
-          
         }
     }
     
     func walk()
     {
         self._state = State.WALKING
-    
     }
     
     func goStraight()
     {
-       
         self._state = State.WALKING
         self._currSpeed = self._MAXSPEED
-        
         
         switch(self._dir)
         {
@@ -230,11 +190,7 @@ class PeopleSprite : SKSpriteNode
     {
         self._currSpeed = 0
         self._state = State.STOPPED
-        //self.MadeChoice = false
-        
     }
-    
-    
     func isDone(rect : CGRect) -> Bool
     {
         if(self._dir == .NORTH && self.position.y - self._size.height * 2 > rect.maxY)
@@ -259,10 +215,6 @@ class PeopleSprite : SKSpriteNode
         }
         
     }
-    
-    
-    
-    
     func walkOptions(corner: Corner)
     {
         if (!MadeChoice)
@@ -303,7 +255,6 @@ class PeopleSprite : SKSpriteNode
         }
         RollDirection()
     }
-    
     func RollDirection()
     {
         var Roll = 0
@@ -365,36 +316,44 @@ class PeopleSprite : SKSpriteNode
             }
         }
         self.MadeChoice = true
-        var time = 0
+        var time = 0 //stand still time
+        var time2 = 0 //decisiontime
         self._currSpeed = 0
         if (self._type == 1)
         {
             time = 5
+            time2 = 2
         }
         if (self._type == 2)
         {
            time = 4
+            time2 = 2
         }
         if (self._type == 3)
         {
             time = 2
+            time2 = 2
+        }
+        if (self._type == 4)
+        {
+            time = 0
+            time2 = 1
         }
         
         
         
         
-        var wait = SKAction.waitForDuration(2.0)
+        var wait2 = SKAction.waitForDuration(NSTimeInterval(time2))
         var block = SKAction.runBlock(){self.MadeChoice = false}
         var block2 = SKAction.runBlock(){self.walk()}
-        var wait2 = SKAction.waitForDuration(NSTimeInterval(time))
+        var wait = SKAction.waitForDuration(NSTimeInterval(time))
         var stopblock = SKAction.runBlock(){self.stop()}
-        var sequence = SKAction.sequence([stopblock, wait2,block2, wait, block])
+        var sequence = SKAction.sequence([stopblock, wait,block2, wait2, block])
         self.runAction(sequence)
        
         
         
     }
-    
     //WEST, NORTH, EAST, SOUTH
     func TurnLeft()
     {
