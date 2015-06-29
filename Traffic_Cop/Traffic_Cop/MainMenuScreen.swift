@@ -247,7 +247,6 @@ class MainMenuScreen: SKScene
     
     func spawnVehicle()
     {
-     
         var rand  = Int.randomNumberFrom(1...2)
         var car : CarSprite
         
