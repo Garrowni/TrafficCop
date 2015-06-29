@@ -756,25 +756,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                     //SETTING THE CARS CHOICE OF WHAT ROADS THEY CAN TURN TO AND GETTING THERE CHOICE
                     if (!car.choiceMade)
                     {
-                        for road in self.chooseRoads
-                        {
-                            switch(car._dir)
-                            {
-                            case .EAST: if(road.Side == "top")      {canGoLeft      = true}
-                                        if(road.Side == "bottom")   {canGoRight     = true}
-                                        if(road.Side == "right")    {canGoStraight  = true}
-                            case .NORTH:if(road.Side == "top")      {canGoStraight  = true}
-                                        if(road.Side == "left")     {canGoLeft      = true}
-                                        if(road.Side == "right")    {canGoRight     = true}
-                            case .WEST: if(road.Side == "top")      {canGoRight     = true}
-                                        if(road.Side == "bottom")   {canGoLeft      = true}
-                                        if(road.Side == "left")     {canGoStraight  = true}
-                            case .SOUTH:if(road.Side == "right")    {canGoLeft      = true}
-                                        if(road.Side == "bottom")   {canGoStraight  = true}
-                                        if(road.Side == "left")     {canGoRight     = true}
-                            default: println("something Broke in the passing in roads to choose from")
-                            }
-                        }
                         car.rollChoice(self.currentLevel)
                     }
                 }])
@@ -863,9 +844,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 if(car._wantDir == .WEST && car._state != .CRASHED)
                     
                 {
-                    
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
                 }
                 
             case "right":
