@@ -227,31 +227,27 @@ class CarSprite : SKSpriteNode
     
     func update()
     {
-        
-    //println("velocity dx: \(physicsBody!.velocity.dx), dy: \(physicsBody!.velocity.dy)")
         if(self._state != State.CRASHED)
         {
-        switch(self._dir)
-        {
-        case .NORTH:
-            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y + size.height/2 + 100)
-        case .EAST:
-            self._stopPoint = CGPoint(x: self.position.x + size.height/2 + 100, y: self.position.y)
-        case .WEST:
-            self._stopPoint = CGPoint(x: self.position.x - size.height/2 - 100, y: self.position.y)
-        case .SOUTH:
-            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y - size.height/2 - 100)
-        default:
-            self._stopPoint = CGPoint(x: self.position.x, y: self.position.y)
-            
-        }
+            switch(self._dir)
+            {
+            case .NORTH:
+                self._stopPoint = CGPoint(x: self.position.x, y: self.position.y + size.height/2 + 100)
+            case .EAST:
+                self._stopPoint = CGPoint(x: self.position.x + size.height/2 + 100, y: self.position.y)
+            case .WEST:
+                self._stopPoint = CGPoint(x: self.position.x - size.height/2 - 100, y: self.position.y)
+            case .SOUTH:
+                self._stopPoint = CGPoint(x: self.position.x, y: self.position.y - size.height/2 - 100)
+            default:
+                self._stopPoint = CGPoint(x: self.position.x, y: self.position.y)
+            }
         
-        self._currPos = self.position
-        if(self._state == .DRIVING)
-        {
-            self.drive()
-        }
-        self.position = _currPos
+            if(self._state == .DRIVING)
+            {
+                self.drive()
+            }
+
         }
       
     } 
@@ -265,21 +261,23 @@ class CarSprite : SKSpriteNode
         
         let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
         let action2 = SKAction.rotateByAngle(CGFloat(-M_PI_2), duration: 1.85)
-        var block = SKAction.runBlock()
-                        {
-                          self._turned = true
-                        }
-      
         
-            var group = SKAction.group([
+        var block = SKAction.runBlock()
+        {
+            self._turned = true
+        }
+      
+        //Rotate the car while its following the path
+        var group = SKAction.group([
             action,
             action2,
             
             ])
+        
        var sequence = SKAction.sequence([group,block])
        self.runAction(sequence)
         
-        
+        //Change the direction of the car
         switch(self._dir)
         {
         case .NORTH:
@@ -310,7 +308,6 @@ class CarSprite : SKSpriteNode
             self._state = State.TURNING
             
             let action = SKAction.followPath(path, asOffset: false , orientToPath: false, duration: 2)
-
             let action2 = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 1.85)
           
             var block = SKAction.runBlock()
@@ -318,6 +315,7 @@ class CarSprite : SKSpriteNode
                 self._turned = true
             }
         
+        //Rotate the car while its following the path
         
             var group = SKAction.group([
                 action,
@@ -329,7 +327,7 @@ class CarSprite : SKSpriteNode
         
 
             
-            
+           //Change the direction of a car
             switch(self._dir)
             {
             case .NORTH:
@@ -478,7 +476,7 @@ class CarSprite : SKSpriteNode
             return true
         }
     }
-    
+    //Choose a random direction to want to go
     func rollChoice(level : Int)
     {
         var rand : Int
@@ -554,7 +552,7 @@ class CarSprite : SKSpriteNode
         
         choiceMade = true
         println("CHOICE MADE --> \(self._wantDir?.hashValue)")
-        println("\(rand)")
+
     }
     
     func crashed()
