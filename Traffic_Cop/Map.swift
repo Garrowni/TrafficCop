@@ -241,20 +241,15 @@ class Map
             case 1:
                 
                 self.cornerArray.append(Corner(CornerRect: CGRect(x: TW, y: TW*7, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: false)) //top left
-                    //if towards south : setChoices(true, left: true, right: false)
-                    //if towards North : setChoices(true, left: false, right: true)
-                    //if towards west : setChoices(false, left: true, right: true)
+                    
               
                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*7, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide:  true)) //top right
-                    //self.setChoices (true, left: true, right: true)
+                  
                 
                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: false))//BOTTOM Left
-                    //if dir south : setChoices(true, left: true, right: false)
-                    //if dir North : setChoices(true, left: false, right: true)
-                    //if dir west : setChoices(false, left: true, right: true)
+                
                            
                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*4, y: TW*4, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))//BottomRight
-                    //self.setChoices( true, left: true, right:true)
         
         
           
@@ -283,7 +278,7 @@ class Map
         
         
             default:
-                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW), northSide: true, southSide: true, eastSide: true, westSide: true))
+                self.cornerArray.append(Corner(CornerRect: CGRect(x: TW*1, y: TW*5, width: TW, height: TW), northSide: false, southSide: false, eastSide: false, westSide: false))
   
         }
 		

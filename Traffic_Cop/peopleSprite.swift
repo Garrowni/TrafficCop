@@ -70,9 +70,9 @@ class PeopleSprite : SKSpriteNode
     
     
     
-    var canTurnLeft     = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
-    var canTurnRight    = false
-    var canGoStraight   = false
+    var canTurnLeft : Bool    = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
+    var canTurnRight : Bool   = false
+    var canGoStraight :Bool   = false
     
    
     
@@ -190,7 +190,7 @@ class PeopleSprite : SKSpriteNode
         }
         else if self._state == State.STOPPED
         {
-              self._currSpeed = 0
+            self._currSpeed = 0
             if (self._type == 1)
             {
                 var timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("goStraight"), userInfo: nil, repeats: false)
@@ -237,6 +237,7 @@ class PeopleSprite : SKSpriteNode
     {
         self._currSpeed = 0
         self._state = State.STOPPED
+        self.MadeChoice = false
     }
     
     
@@ -272,12 +273,14 @@ class PeopleSprite : SKSpriteNode
     func walkOptions(corner: Corner)
     {
         if (!MadeChoice)
-        {  canGoNorth = corner.North
+        {
+         canGoNorth = corner.North
         canGoSouth = corner.South
         canGoEast = corner.East
         canGoWest = corner.West
         ChangeDirection()
-        }
+    }
+    
         
     }
     //WEST, NORTH, EAST, SOUTH
@@ -300,8 +303,8 @@ class PeopleSprite : SKSpriteNode
             if(canGoNorth){canTurnLeft = true} else {canTurnLeft = false}
             if(canGoEast){canGoStraight = true} else {canGoStraight = false}
         case 3: //south
-            if(canGoEast){canTurnRight = true} else {canTurnRight = false}
-            if(canGoWest){canTurnLeft = true} else {canTurnLeft = false}
+            if(canGoEast){canTurnLeft = true} else {canTurnLeft = false}
+            if(canGoWest){canTurnRight = true} else {canTurnRight = false}
             if(canGoSouth){canGoStraight = true} else {canGoStraight = false}
         default: break
         }
@@ -311,22 +314,7 @@ class PeopleSprite : SKSpriteNode
     func RollDirection()
     {
         var Roll = 0
-        if (canTurnRight && canTurnLeft && canGoStraight)
-        {
-         Roll = Int.randomNumberFrom(1...3)
-            if (Roll == 1)
-            {
-              TurnLeft()
-            }
-            if (Roll == 2)
-            {
-                TurnRight()
-            }
-            if (Roll == 3)
-            {
-                GoStraight()
-            }
-        }
+      
        if (canTurnRight && canTurnLeft && !canGoStraight)
         {
          Roll = Int.randomNumberFrom(1...2)
@@ -340,7 +328,7 @@ class PeopleSprite : SKSpriteNode
             }
         
         }
-        if (!canTurnRight && canTurnLeft && canGoStraight)
+     if (!canTurnRight && canTurnLeft && canGoStraight)
         {
             Roll = Int.randomNumberFrom(1...2)
             if (Roll == 1)
@@ -365,6 +353,23 @@ class PeopleSprite : SKSpriteNode
                 GoStraight()
             }
             
+        }
+        
+      if (canTurnRight && canTurnLeft && canGoStraight)
+        {
+            Roll = Int.randomNumberFrom(1...3)
+            if (Roll == 1)
+            {
+                TurnLeft()
+            }
+            if (Roll == 2)
+            {
+                TurnRight()
+            }
+            if (Roll == 3)
+            {
+                GoStraight()
+            }
         }
         self.MadeChoice = true
         

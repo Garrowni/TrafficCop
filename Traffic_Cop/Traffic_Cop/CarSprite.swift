@@ -51,6 +51,7 @@ class CarSprite : SKSpriteNode
     var theParent       : SKNode
     var carInFront      : SKSpriteNode?
     var _wantDir        : Direction?
+    var _arrow          : SKSpriteNode?
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
         var tempDirection   = direction.dir
@@ -293,6 +294,12 @@ class CarSprite : SKSpriteNode
             
          
         }
+        
+        if(self._arrow != nil)
+        {
+            self._arrow!.removeFromParent()
+        }
+        
          self._turnCount++
          self.drive()
          
@@ -344,9 +351,14 @@ class CarSprite : SKSpriteNode
                 
             }
             
-        
+        if(self._arrow != nil)
+        {
+            self._arrow!.removeFromParent()
+        }
          self._turnCount++
          self.drive()
+        
+        
         
     }
     func wait()
@@ -425,7 +437,10 @@ class CarSprite : SKSpriteNode
             default:
                 println("No direction")
             }
-            
+            if(self._arrow != nil)
+            {
+                self._arrow!.removeFromParent()
+            }
         }
     }
     
@@ -480,6 +495,14 @@ class CarSprite : SKSpriteNode
     func rollChoice(level : Int)
     {
         var rand : Int
+        self._arrow = SKSpriteNode(imageNamed: "Arrow")
+        self._arrow!.xScale = 0.25
+        self._arrow!.yScale = 0.25
+        self._arrow!.name = "arrow"
+        self._arrow!.zPosition = 5
+        
+        
+        
         
         if(level == 1 || level == 3)
         {
@@ -500,9 +523,20 @@ class CarSprite : SKSpriteNode
             case 1:
                 self._wantDir = .NORTH
             case 2:
+                
+                if(level != 3)
+                {
                 self._wantDir = .EAST
+                self._arrow!.zRotation = CGFloat(-M_PI_2)
+                }
+                else
+                {
+                    self._wantDir = .WEST
+                    self._arrow!.zRotation = CGFloat(M_PI_2)
+                }
             case 3:
                 self._wantDir = .WEST
+                self._arrow!.zRotation = CGFloat(M_PI_2)
             default:
                 println("choice not made")
             }
@@ -512,11 +546,13 @@ class CarSprite : SKSpriteNode
             switch(rand)
             {
             case 1:
-                self._wantDir = .EAST
+                self._wantDir = .SOUTH
+                self._arrow!.zRotation = CGFloat(-M_PI_2)
             case 2:
                 self._wantDir = .NORTH
+                 self._arrow!.zRotation = CGFloat(M_PI_2)
             case 3:
-                self._wantDir = .SOUTH
+                self._wantDir = .EAST
             default:
                 println("choice not made")
             }
@@ -528,9 +564,19 @@ class CarSprite : SKSpriteNode
             case 1:
                 self._wantDir = .SOUTH
             case 2:
-                self._wantDir = .EAST
+                if(level != 3)
+                {
+                    self._wantDir = .EAST
+                    self._arrow!.zRotation = CGFloat(M_PI_2)
+                }
+                else
+                {
+                    self._wantDir = .WEST
+                    self._arrow!.zRotation = CGFloat(-M_PI_2)
+                }
             case 3:
                 self._wantDir = .WEST
+                self._arrow!.zRotation = CGFloat(-M_PI_2)
             default:
                 println("choice not made")
             }
@@ -541,15 +587,17 @@ class CarSprite : SKSpriteNode
             {
             case 1:
                 self._wantDir = .NORTH
+                self._arrow!.zRotation = CGFloat(-M_PI_2)
             case 2:
                 self._wantDir = .SOUTH
+                self._arrow!.zRotation = CGFloat(M_PI_2)
             case 3:
                 self._wantDir = .WEST
             default:
                 println("choice not made")
             }
         }      
-        
+        self.addChild(self._arrow!)
         choiceMade = true
         println("CHOICE MADE --> \(self._wantDir?.hashValue)")
 
@@ -564,6 +612,7 @@ class CarSprite : SKSpriteNode
             var hasFire = false
             for child in children
             {
+                if (child.name == "arrow") {self._arrow!.removeFromParent()}
                 if (child.name == "fire-Emitter") {hasFire = true}
                 if (child.name == "Smoke-Emitter") {smokeEmitter.removeFromParent()}
             }
