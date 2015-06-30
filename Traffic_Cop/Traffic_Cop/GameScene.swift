@@ -45,6 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var crashedCars : [CarSprite]
     var peopleArray : [PeopleSprite]
     var hitPeople   : [PeopleSprite]
+    var skidArray   : [Skid]
     var feelsArray  : [Feels]
     var chooseRoads : [Road]
     var currentLevel: Int = 0
@@ -85,6 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         feelsArray      = []
         chooseRoads     = []
         pointsArray     = []
+        skidArray       = []
         selection       = GlowBox(pos: playableRect, roundCorner: 3, OLcolor: "yellow", OLSize: 1, glowWidth: 1, ZoomIn: true, glowBulge: true, alpha: 0)
 
         timerCount      = CGFloat(0.0)
@@ -284,6 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             updateVehicles()
             updatePeople()
             updatePoints()
+            updateSkids()
         }
         
        
@@ -489,6 +492,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             vehicleArray[i].update()
             
+            if(vehicleArray[i].getSkid() && !vehicleArray[i].gotSkid)
+            {
+                skidArray.append(Skid(car: vehicleArray[i], parent: self))
+                vehicleArray[i].gotSkid = true
+            }
+            
             if(atIntersection(vehicleArray[i].position) && vehicleArray[i]._turnCount == 0)
             {
                 vehicleArray[i].stop()
@@ -507,6 +516,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
       
         }
         
+    }
+    
+    func updateSkids()
+    {
+        if(skidArray.count > 0)
+        {
+            for(var i = 0; i < skidArray.count; i++)
+            {
+                skidArray[i].update()
+                if(skidArray[i].done){skidArray[i].removeKids(); skidArray.removeAtIndex(i)}
+            }
+        }
     }
     
     func updatePeople()
@@ -796,275 +817,188 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var controlPoint1 : CGPoint
         
         CGPathMoveToPoint(path, nil , car.position.x, car.position.y)
-//        
-//        
+
+        if car._dir == .NORTH
+        {
+            switch(road.Side)
+            {
+            case "top":
+                
+                car.goStraight()
+                
+                if(car._wantDir == .NORTH && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+            case "left":
+                
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnLeft(path)
+                
+                if(car._wantDir == .WEST && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            case "right":
+                
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnRight(path)
+                
+                if(car._wantDir == .EAST && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+            default:
+                
+                car.drive()
+            }
+        }
+        else if car._dir == .SOUTH
+        {
+            switch(road.Side)
+            {
+            case "bottom":
+                
+                car.goStraight()
+                
+                if(car._wantDir == .SOUTH && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            case "left":
+                
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnRight(path)
+                
+                if(car._wantDir == .WEST && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            case "right":
+                
+                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnLeft(path)
+                
+                if(car._wantDir == .EAST && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            default:
+                
+                car.drive()
+            }
+            
+        }
+        else if car._dir == .EAST
+        {
+            switch(road.Side)
+            {
+            case "right":
+                
+                car.goStraight()
+                
+                if(car._wantDir == .EAST && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            case "top":
+                
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.y)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnLeft(path)
+                
+                if(car._wantDir == .NORTH && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            case "bottom":
+                
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.y)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnRight(path)
+                
+                if(car._wantDir == .SOUTH && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            default:
+                
+                car.drive()
+            }
+        }
+        else
+        {
+            switch(road.Side)
+            {
+            case "left":
+                
+                car.goStraight()
+                
+                if(car._wantDir == .WEST && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            case "top":
+                
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.x)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnRight(path)
+                
+                if(car._wantDir == .NORTH && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+                
+            case "bottom":
+                
+                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.x)
+                
+                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
+                
+                car.turnLeft(path)
+                
+                if(car._wantDir == .SOUTH && car._state != .CRASHED)
+                {
+                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
+                }
+            default:
+                
+                car.goStraight()
+            }
+        }
 //        let thePath = SKShapeNode()
 //        thePath.path = path
 //        thePath.strokeColor = SKColor.cyanColor()
 //        thePath.name = "path"
-//        //addChild(thePath)
-        
-        //MAKE OUR TURN HANDLE THE EXECUTION
-        
-        if car._dir == .NORTH
-            
-        {
-            
-            
-            
-            switch(road.Side)
-                
-            {
-                
-            case "top":
-                
-                car.goStraight()
-                
-                if(car._wantDir == .NORTH && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            case "left":
-                
-                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnLeft(path)
-                
-                if(car._wantDir == .WEST && car._state != .CRASHED)
-                    
-                {
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                }
-                
-            case "right":
-                
-                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnRight(path)
-                
-                if(car._wantDir == .EAST && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            default:
-                
-                car.drive()
-                
-                
-                
-            }
-            
-        }
-            
-        else if car._dir == .SOUTH
-            
-        {
-            
-            
-            
-            switch(road.Side)
-                
-            {
-                
-            case "bottom":
-                
-                car.goStraight()
-                
-                if(car._wantDir == .SOUTH && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            case "left":
-                
-                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnRight(path)
-                
-                if(car._wantDir == .WEST && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            case "right":
-                
-                controlPoint1 = CGPoint(x: car.position.x, y: road.gotoPoint.y)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnLeft(path)
-                
-                if(car._wantDir == .EAST && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            default:
-                
-                car.drive()
-                
-                
-                
-            }
-            
-        }
-            
-        else if car._dir == .EAST
-            
-        {
-            
-            switch(road.Side)
-                
-            {
-                
-            case "right":
-                
-                car.goStraight()
-                
-                if(car._wantDir == .EAST && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            case "top":
-                
-                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.y)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnLeft(path)
-                
-                if(car._wantDir == .NORTH && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            case "bottom":
-                
-                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.y)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnRight(path)
-                
-                if(car._wantDir == .SOUTH && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            default:
-                
-                car.drive()
-                
-                
-                
-            }
-            
-        }
-            
-        else
-            
-        {
-            
-            switch(road.Side)
-                
-            {
-                
-            case "left":
-                
-                car.goStraight()
-                
-                if(car._wantDir == .WEST && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            case "top":
-                
-                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.x)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnRight(path)
-                
-                if(car._wantDir == .NORTH && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            case "bottom":
-                
-                controlPoint1 = CGPoint(x: road.gotoPoint.x, y: car.position.x)
-                
-                CGPathAddQuadCurveToPoint(path, nil, controlPoint1.x, controlPoint1.y, road.gotoPoint.x, road.gotoPoint.y)
-                
-                car.turnLeft(path)
-                
-                if(car._wantDir == .SOUTH && car._state != .CRASHED)
-                    
-                {
-                    
-                    addPoints(Int.randomNumberFrom(10...15), pos: car.position)
-                    
-                }
-                
-            default:
-                
-                car.goStraight()
-                
-                
-                
-            }
-            
-        }
-        
-        let thePath = SKShapeNode()
-        thePath.path = path
-        thePath.strokeColor = SKColor.cyanColor()
-        thePath.name = "path"
-        addChild(thePath)
+//        addChild(thePath)
         
         path = CGPathCreateMutable()
-        
-        
     }
     
     func startGame()
@@ -1355,4 +1289,94 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     }
 
 }
+
+
+struct Skid
+{
+    var theParent       : SKNode
+    var Car             : CarSprite
+    var FLeftSkidPath   = SKShapeNode()
+    var FRightSkidPath  = SKShapeNode()
+    var BRightSkidPath  = SKShapeNode()
+    var BLeftSkidPath   = SKShapeNode()
+    
+    var FLeftTirePath   = CGPathCreateMutable();
+    var FRightTirePath  = CGPathCreateMutable();
+    var BRightTirePath  = CGPathCreateMutable();
+    var BLeftTirePath   = CGPathCreateMutable();
+    
+    var done : Bool = false
+    
+    init(car: CarSprite, parent: SKNode)
+    {
+        Car = car
+        theParent = parent
+
+        //ACTION FADE AWAY AFTER TIME AND REMOVE ITS SELF
+        var wait = SKAction.waitForDuration(5)
+        var fade = SKAction.fadeAlphaTo(0, duration: 4)
+        var wait2 = SKAction.waitForDuration(9) //total of wait and fade
+        var sequence = SKAction.sequence([wait, fade])
+        var block1 = SKAction.runBlock(){self.FLeftSkidPath.runAction(sequence); self.FRightSkidPath.runAction(sequence); self.BRightSkidPath.runAction(sequence);self.BLeftSkidPath.runAction(sequence);}
+        var block2 = SKAction.runBlock(){self.done = true}
+        var fullSequence = SKAction.sequence([block1 ,wait2, block2])
+        theParent.runAction(fullSequence)
+            
+        FLeftSkidPath.strokeColor = SKColor.blackColor()
+        FRightSkidPath.strokeColor = SKColor.blackColor()
+        BRightSkidPath.strokeColor = SKColor.blackColor()
+        BLeftSkidPath.strokeColor = SKColor.blackColor()
+
+        FLeftSkidPath.lineWidth = CGFloat(12)
+        FRightSkidPath.lineWidth = CGFloat(12)
+        BRightSkidPath.lineWidth = CGFloat(12)
+        BLeftSkidPath.lineWidth = CGFloat(12)
+
+        FLeftSkidPath.zPosition = -1
+        FRightSkidPath.zPosition = -1
+        BRightSkidPath.zPosition = -1
+        BLeftSkidPath.zPosition = -1
+            
+        let FL  = car.FLeftTire.convertPoint(car.FLeftTire.position, toNode: theParent)
+        let FR  = car.FRightTire.convertPoint(car.FRightTire.position, toNode: theParent)
+        let BR  = car.BRightTire.convertPoint(car.BRightTire.position, toNode: theParent)
+        let BL  = car.BLeftTire.convertPoint(car.BLeftTire.position, toNode: theParent)
+            
+        CGPathMoveToPoint(FLeftTirePath, nil, FL.x, FL.y);
+        CGPathMoveToPoint(FRightTirePath, nil, FR.x, FR.y);
+        CGPathMoveToPoint(BRightTirePath, nil, BR.x, BR.y);
+        CGPathMoveToPoint(BLeftTirePath, nil, BL.x, BL.y);
+
+        theParent.addChild(FLeftSkidPath)
+        theParent.addChild(FRightSkidPath)
+        theParent.addChild(BRightSkidPath)
+        theParent.addChild(BLeftSkidPath)
+    }
+    
+    func update()
+    {
+        var FL  = Car.FLeftTire.convertPoint(Car.FLeftTire.position, toNode: theParent)
+        var FR  = Car.FRightTire.convertPoint(Car.FRightTire.position, toNode: theParent)
+        var BR  = Car.BRightTire.convertPoint(Car.BRightTire.position, toNode: theParent)
+        var BL  = Car.BLeftTire.convertPoint(Car.BLeftTire.position, toNode: theParent)
+        
+        CGPathAddLineToPoint(FLeftTirePath, nil, FL.x, FL.y);
+        CGPathAddLineToPoint(FRightTirePath, nil, FR.x, FR.y);
+        CGPathAddLineToPoint(BRightTirePath, nil, BR.x, BR.y);
+        CGPathAddLineToPoint(BLeftTirePath, nil, BL.x, BL.y);
+        
+        FLeftSkidPath.path = FLeftTirePath
+        FRightSkidPath.path = FRightTirePath
+        BRightSkidPath.path = BRightTirePath
+        BLeftSkidPath.path = BLeftTirePath
+    }
+    func removeKids()
+    {
+        FLeftSkidPath.removeFromParent()
+        FRightSkidPath.removeFromParent()
+        BRightSkidPath.removeFromParent()
+        BLeftSkidPath.removeFromParent()
+    }
+}
+
 
