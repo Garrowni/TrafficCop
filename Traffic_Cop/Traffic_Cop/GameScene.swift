@@ -781,13 +781,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var controlPoint1 : CGPoint
         
         CGPathMoveToPoint(path, nil , car.position.x, car.position.y)
-        
-        
-        let thePath = SKShapeNode()
-        thePath.path = path
-        thePath.strokeColor = SKColor.cyanColor()
-        thePath.name = "path"
-        addChild(thePath)
+//        
+//        
+//        let thePath = SKShapeNode()
+//        thePath.path = path
+//        thePath.strokeColor = SKColor.cyanColor()
+//        thePath.name = "path"
+//        //addChild(thePath)
         
         //MAKE OUR TURN HANDLE THE EXECUTION
         

@@ -52,6 +52,7 @@ class CarSprite : SKSpriteNode
     var carInFront      : SKSpriteNode?
     var _wantDir        : Direction?
     var _arrow          : SKSpriteNode?
+    var skidAdded       = false
     
     var moveUpAction    : SKAction?
     var moveBackAction  : SKAction?
@@ -62,15 +63,16 @@ class CarSprite : SKSpriteNode
     var BRightTire      : SKShapeNode
     var BLeftTire       : SKShapeNode
     
-    var FLeftSkidPath   = SKShapeNode()
-    var FRightSkidPath  = SKShapeNode()
-    var BRightSkidPath  = SKShapeNode()
-    var BLeftSkidPath   = SKShapeNode()
+    var FLeftSkidPath   : SKShapeNode
+    var FRightSkidPath  : SKShapeNode
+    var BRightSkidPath  : SKShapeNode
+    var BLeftSkidPath   : SKShapeNode
     
     var FLeftTirePath   = CGPathCreateMutable();
     var FRightTirePath  = CGPathCreateMutable();
     var BRightTirePath  = CGPathCreateMutable();
     var BLeftTirePath   = CGPathCreateMutable();
+    
     //==========================================
     
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
@@ -94,6 +96,11 @@ class CarSprite : SKSpriteNode
         BRightTire  = SKShapeNode(circleOfRadius: CGFloat(5))
         BLeftTire   = SKShapeNode(circleOfRadius: CGFloat(5))
         
+        FLeftSkidPath = SKShapeNode()
+        FRightSkidPath = SKShapeNode()
+        BRightSkidPath = SKShapeNode()
+        BLeftSkidPath = SKShapeNode()
+
         
         switch(self._type)
         {
@@ -166,31 +173,35 @@ class CarSprite : SKSpriteNode
         //        BLeftSkidPath
         
         
-//        self.addChild(FRightTire)
-//        self.addChild(FLeftTire)
-//        self.addChild(BRightTire)
-//        self.addChild(BLeftTire)
-        
-        FLeftSkidPath.path = FLeftTirePath
-        FRightSkidPath.path = FLeftTirePath
-        BRightSkidPath.path = FLeftTirePath
-        BLeftSkidPath.path = FLeftTirePath
+        self.addChild(FRightTire)
+        self.addChild(FLeftTire)
+        self.addChild(BRightTire)
+        self.addChild(BLeftTire)
         
         FLeftSkidPath.strokeColor = SKColor.yellowColor()
         FRightSkidPath.strokeColor = SKColor.yellowColor()
         BRightSkidPath.strokeColor = SKColor.yellowColor()
         BLeftSkidPath.strokeColor = SKColor.yellowColor()
         
-        FLeftSkidPath.lineWidth = CGFloat(3)
-        FRightSkidPath.lineWidth = CGFloat(3)
-        BRightSkidPath.lineWidth = CGFloat(3)
-        BLeftSkidPath.lineWidth = CGFloat(3)
+        FLeftSkidPath.lineWidth = CGFloat(30)
+        FRightSkidPath.lineWidth = CGFloat(30)
+        BRightSkidPath.lineWidth = CGFloat(30)
+        BLeftSkidPath.lineWidth = CGFloat(30)
         
-        FLeftSkidPath.name = "skid"
-        FRightSkidPath.name = "skid"
-        BRightSkidPath.name = "skid"
-        BLeftSkidPath.name = "skid"
+                FLeftSkidPath.zPosition = 6
+                FRightSkidPath.zPosition = 6
+                BRightSkidPath.zPosition = 6
+                BLeftSkidPath.zPosition = 6
         
+        FLeftSkidPath.name = "FLskid"
+        FRightSkidPath.name = "FRskid"
+        BRightSkidPath.name = "BRskid"
+        BLeftSkidPath.name = "BLskid"
+        
+        FRightTire.name = "tire"
+        FLeftTire.name = "tire"
+        BRightTire.name = "tire"
+        BLeftTire.name = "tire"
 
         FLeftTire.zPosition = 4
         FRightTire.zPosition = 4
@@ -202,26 +213,25 @@ class CarSprite : SKSpriteNode
         BRightTire.position.x   += 60; BRightTire.position.y    += 18;
         BLeftTire.position.x    += 60;  BLeftTire.position.y    -= 18;
         
-        //        FLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
-        //        FRightTire.fillColor = SKColorWithRGB(255, 0, 0)
-        //        BRightTire.fillColor = SKColorWithRGB(255, 0, 0)
-        //        BLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
+        FLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
+        FRightTire.fillColor = SKColorWithRGB(255, 0, 0)
+        BRightTire.fillColor = SKColorWithRGB(255, 0, 0)
+        BLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
         
-        FLeftTire.alpha = CGFloat(0)
-        FRightTire.alpha = CGFloat(0)
-        BRightTire.alpha = CGFloat(0)
-        BLeftTire.alpha = CGFloat(0)
+        FLeftTire.alpha = CGFloat(1)
+        FRightTire.alpha = CGFloat(1)
+        BRightTire.alpha = CGFloat(1)
+        BLeftTire.alpha = CGFloat(1)
         
+//        FLeftSkidPath.position  = FLeftTire.position
+//        FRightSkidPath.position = FRightTire.position
+//        BRightSkidPath.position = BRightTire.position
+//        BLeftSkidPath.position  = BLeftTire.position
         
-        FLeftSkidPath.position  = FLeftTire.position
-        FRightSkidPath.position = FRightTire.position
-        BRightSkidPath.position = BRightTire.position
-        BLeftSkidPath.position  = BLeftTire.position
+ 
+     
         
-//        self.addChild(FLeftSkidPath)
-//        self.addChild(FRightSkidPath)
-//        self.addChild(BRightSkidPath)
-//        self.addChild(BLeftSkidPath)
+
         //==========================================
         
         
@@ -334,25 +344,42 @@ class CarSprite : SKSpriteNode
                 self.drive()
             }
             
-//            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
-//            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
-//            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
-//            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
-            
-            
         }else //CRASHED
         {
-
+                if(!skidAdded)
+                {
+                    CGPathMoveToPoint(FLeftTirePath,nil ,FLeftTire.position.x, FLeftTire.position.y)
+                    CGPathMoveToPoint(FRightTirePath,nil ,FRightTire.position.x, FRightTire.position.y)
+                    CGPathMoveToPoint(BRightTirePath,nil ,BRightTire.position.x, BRightTire.position.y)
+                    CGPathMoveToPoint(BLeftTirePath,nil ,BLeftTire.position.x, BLeftTire.position.y)
+    
+                    self.addChild(FLeftSkidPath)
+                    self.addChild(FRightSkidPath)
+                    self.addChild(BRightSkidPath)
+                    self.addChild(BLeftSkidPath)
+                    
+                    println("added skid")
+                    skidAdded = true
+                }else
+                {
+                    //ADD THESE IN UPDATES AS
+                    CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
+                    CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
+                    CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
+                    CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
+                    
+                    FLeftSkidPath.path = FLeftTirePath
+                    FRightSkidPath.path = FRightTirePath
+                    BRightSkidPath.path = BRightTirePath
+                    BLeftSkidPath.path = BLeftTirePath
+                    
+                }
             
-//            //ADD THESE IN UPDATES AS
-//            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
-//            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
-//            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
-//            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
-        
+            
+
         }
       
-    } 
+    }
 
     func turnRight(path : CGPath)
     {
