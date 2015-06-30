@@ -74,9 +74,8 @@ class CarSprite : SKSpriteNode
         
         switch(self._type)
         {
-        case 1:
             
-            self._impulse = 6300
+        case 1:
             self._MAXSPEED = 150
             self._textures.append(SKTexture(imageNamed: "Ambulence1"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
@@ -88,11 +87,9 @@ class CarSprite : SKSpriteNode
             self._textures.append(SKTexture(imageNamed: "Ambulence2"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1R"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
-            self._mass = 6300
-           
+            self._mass = 63
             
         case 2:
-            self._impulse = 6000
             self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "car_cop1"))
             self._textures.append(SKTexture(imageNamed: "car_cop1L"))
@@ -103,35 +100,30 @@ class CarSprite : SKSpriteNode
             self._textures.append(SKTexture(imageNamed: "car_cop2L"))
             self._textures.append(SKTexture(imageNamed: "car_cop1R"))
             self._textures.append(SKTexture(imageNamed: "car_cop1L"))
-            self._mass = 1500
+            self._mass = 15
+            
         case 3:
-            self._impulse = 6000
             self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "car_blue"))
-            self._mass = 1500
+            self._mass = 15
          
         case 4:
-            self._impulse = 6000
             self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "car_red"))
-            self._mass = 1500
+            self._mass = 15
          
         case 5:
-            self._impulse = 6000
             self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "pickup_green"))
-            self._mass = 1500
+            self._mass = 15
            
         case 6:
-            self._impulse = 4000
             self._MAXSPEED = 150
             self._textures.append(SKTexture(imageNamed: "truck"))
-           
-            self._mass = 4000
+            self._mass = 27
             
             
         default :
-            
             self._MAXSPEED = 0
             self._textures.append(SKTexture(imageNamed: "Ambulence1"))
             self._mass = 0
@@ -146,7 +138,6 @@ class CarSprite : SKSpriteNode
 }
         
         let physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
-        physicsBody.usesPreciseCollisionDetection = true
         physicsBody.allowsRotation = true
         physicsBody.restitution = 0.8
         physicsBody.friction = 0.2
@@ -451,7 +442,6 @@ class CarSprite : SKSpriteNode
     {
         if(self._state != State.CRASHED)
         {
-        self._currSpeed = 0
         self.physicsBody!.velocity = CGVector(dx: 0, dy: 0)
         self._state = .STOPPED
         }
