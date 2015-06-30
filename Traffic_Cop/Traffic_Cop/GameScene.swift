@@ -798,11 +798,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         CGPathMoveToPoint(path, nil , car.position.x, car.position.y)
         
         
-        let thePath = SKShapeNode()
-        thePath.path = path
-        thePath.strokeColor = SKColor.cyanColor()
-        thePath.name = "path"
-        addChild(thePath)
+
         
         //MAKE OUR TURN HANDLE THE EXECUTION
         
@@ -1056,7 +1052,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
         }
         
-
+        let thePath = SKShapeNode()
+        thePath.path = path
+        thePath.strokeColor = SKColor.cyanColor()
+        thePath.name = "path"
+        addChild(thePath)
+        
         path = CGPathCreateMutable()
         
         
