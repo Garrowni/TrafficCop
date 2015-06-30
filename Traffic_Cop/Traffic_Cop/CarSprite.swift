@@ -55,6 +55,24 @@ class CarSprite : SKSpriteNode
     
     var moveUpAction    : SKAction?
     var moveBackAction  : SKAction?
+    
+    //TIRE STUFF ===============================
+    var FLeftTire       : SKShapeNode
+    var FRightTire      : SKShapeNode
+    var BRightTire      : SKShapeNode
+    var BLeftTire       : SKShapeNode
+    
+    var FLeftSkidPath   = SKShapeNode()
+    var FRightSkidPath  = SKShapeNode()
+    var BRightSkidPath  = SKShapeNode()
+    var BLeftSkidPath   = SKShapeNode()
+    
+    var FLeftTirePath   = CGPathCreateMutable();
+    var FRightTirePath  = CGPathCreateMutable();
+    var BRightTirePath  = CGPathCreateMutable();
+    var BLeftTirePath   = CGPathCreateMutable();
+    //==========================================
+    
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
         var tempDirection   = direction.dir
@@ -68,9 +86,14 @@ class CarSprite : SKSpriteNode
         smokeEmitter.name   = "Smoke-Emitter"
         fireSmokeEmitter.name = "fire-Emitter"
         fireEmitter.name    = "fire-Emitter"
-
         theParent           = Parent
     
+        //Tires
+        FLeftTire   = SKShapeNode(circleOfRadius: CGFloat(5))
+        FRightTire  = SKShapeNode(circleOfRadius: CGFloat(5))
+        BRightTire  = SKShapeNode(circleOfRadius: CGFloat(5))
+        BLeftTire   = SKShapeNode(circleOfRadius: CGFloat(5))
+        
         
         switch(self._type)
         {
@@ -132,25 +155,92 @@ class CarSprite : SKSpriteNode
         super.init(texture: self._textures[0], color: nil, size: self._size)
         
         self.position = self._currPos
+    
         self.addChild(smokeEmitter)
         
-        if (type == 6) {self.runAction(SKAction.colorizeWithColor(randCarColour(), colorBlendFactor: CGFloat(1.0), duration: 0))
-}
+        
+        //TIRE STUFF ===============================
+        //        FLeftSkidPath
+        //        FRightSkidPath
+        //        BRightSkidPath
+        //        BLeftSkidPath
+        
+        
+        self.addChild(FRightTire)
+        self.addChild(FLeftTire)
+        self.addChild(BRightTire)
+        self.addChild(BLeftTire)
+        
+        FLeftSkidPath.path = FLeftTirePath
+        FRightSkidPath.path = FLeftTirePath
+        BRightSkidPath.path = FLeftTirePath
+        BLeftSkidPath.path = FLeftTirePath
+        
+        FLeftSkidPath.strokeColor = SKColor.yellowColor()
+        FRightSkidPath.strokeColor = SKColor.yellowColor()
+        BRightSkidPath.strokeColor = SKColor.yellowColor()
+        BLeftSkidPath.strokeColor = SKColor.yellowColor()
+        
+        FLeftSkidPath.lineWidth = CGFloat(3)
+        FRightSkidPath.lineWidth = CGFloat(3)
+        BRightSkidPath.lineWidth = CGFloat(3)
+        BLeftSkidPath.lineWidth = CGFloat(3)
+        
+        FLeftSkidPath.name = "skid"
+        FRightSkidPath.name = "skid"
+        BRightSkidPath.name = "skid"
+        BLeftSkidPath.name = "skid"
+        
+
+        FLeftTire.zPosition = 4
+        FRightTire.zPosition = 4
+        BRightTire.zPosition = 4
+        BLeftTire.zPosition = 4
+        
+        FLeftTire.position.x    -= 60;  FLeftTire.position.y    -= 18;
+        FRightTire.position.x   -= 60; FRightTire.position.y    += 18;
+        BRightTire.position.x   += 60; BRightTire.position.y    += 18;
+        BLeftTire.position.x    += 60;  BLeftTire.position.y    -= 18;
+        
+        //        FLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
+        //        FRightTire.fillColor = SKColorWithRGB(255, 0, 0)
+        //        BRightTire.fillColor = SKColorWithRGB(255, 0, 0)
+        //        BLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
+        
+        FLeftTire.alpha = CGFloat(0)
+        FRightTire.alpha = CGFloat(0)
+        BRightTire.alpha = CGFloat(0)
+        BLeftTire.alpha = CGFloat(0)
+        
+        
+        FLeftSkidPath.position  = FLeftTire.position
+        FRightSkidPath.position = FRightTire.position
+        BRightSkidPath.position = BRightTire.position
+        BLeftSkidPath.position  = BLeftTire.position
+        
+//        self.addChild(FLeftSkidPath)
+//        self.addChild(FRightSkidPath)
+//        self.addChild(BRightSkidPath)
+//        self.addChild(BLeftSkidPath)
+        //==========================================
+        
+        
+        if (type == 6) {self.runAction(SKAction.colorizeWithColor(randCarColour(), colorBlendFactor: CGFloat(1.0), duration: 0))}
         
         let physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
-        physicsBody.allowsRotation = true
-        physicsBody.restitution = 0.8
-        physicsBody.friction = 0.2
-        physicsBody.linearDamping = 0.3
-        physicsBody.mass  = self._mass
-        physicsBody.categoryBitMask = PhysicsCategory.Car
-        physicsBody.contactTestBitMask = PhysicsCategory.All
-        physicsBody.collisionBitMask = PhysicsCategory.Car | PhysicsCategory.Person
-        physicsBody.affectedByGravity = false
-        physicsBody.angularDamping = 0.5
+        physicsBody.allowsRotation      = true
+        physicsBody.restitution         = 0.8
+        physicsBody.friction            = 0.2
+        physicsBody.linearDamping       = 0.3
+        physicsBody.mass                = self._mass
+        physicsBody.categoryBitMask     = PhysicsCategory.Car
+        physicsBody.contactTestBitMask  = PhysicsCategory.All
+        physicsBody.collisionBitMask    = PhysicsCategory.Car | PhysicsCategory.Person
+        physicsBody.affectedByGravity   = false
+        physicsBody.angularDamping      = 0.5
 
         
-        
+        //EMITTERS
         smokeEmitter.position.x += 85
         fireSmokeEmitter.position.x -= 70
         fireEmitter.position.x -= 70
@@ -243,6 +333,23 @@ class CarSprite : SKSpriteNode
             {
                 self.drive()
             }
+            
+            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
+            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
+            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
+            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
+            
+            
+        }else //CRASHED
+        {
+
+            
+            //ADD THESE IN UPDATES AS
+            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
+            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
+            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
+            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
+        
         }
       
     } 
