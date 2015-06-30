@@ -62,7 +62,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var pausedOn        : Bool
     var deSelecting     : Bool
     var levPassed       : Bool
-    
+    var numCrashes      : Int = 0
+    var totalPointsLost : Int = 0
+    var numPeopleHit    : Int = 0
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
@@ -283,6 +285,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             updatePeople()
             updatePoints()
         }
+        
+       
+
       
     }
     
@@ -319,13 +324,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         switch other2.categoryBitMask
         {
+            
             case PhysicsCategory.Car:   let Car = other2.node as! CarSprite
-            if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
             Car.crashed()
             Car.removeAllActions()
             explosion(contactPoint, force: collisionImpulse)
             crashedCars.append(Car)
-            
             default: break;
         }
         
@@ -333,14 +337,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             
             case PhysicsCategory.Car:   let Car = other.node as! CarSprite
+                if(Car._state != .CRASHED)
+                {
+                    numCrashes++
+                    addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
+
+                }
                 Car.crashed()
-                if(Car._state.hashValue != 4){addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)}
                 Car.removeAllActions()
                 explosion(contactPoint, force: collisionImpulse)
                 crashedCars.append(Car)
+                println("numCrashes = \(numCrashes)")
             
             
             case PhysicsCategory.Person: let Person = other.node as! PeopleSprite
+            
+//                if(Person._state != .DEAD)
+//                {
+//                  numPeopleHit++
+//                }
             
                 hitPeople.append(Person)
             
@@ -1218,6 +1233,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 if(pointsArray[i].getAddPoints())
                 {
+                      if(pointsArray[i].points < 0)
+                      {
+                        totalPointsLost += pointsArray[i].points
+                      }
                       currentScore += pointsArray[i].points
                       updateScore()
                 }
