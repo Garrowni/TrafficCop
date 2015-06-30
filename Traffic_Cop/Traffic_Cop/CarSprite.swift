@@ -166,10 +166,10 @@ class CarSprite : SKSpriteNode
         //        BLeftSkidPath
         
         
-        self.addChild(FRightTire)
-        self.addChild(FLeftTire)
-        self.addChild(BRightTire)
-        self.addChild(BLeftTire)
+//        self.addChild(FRightTire)
+//        self.addChild(FLeftTire)
+//        self.addChild(BRightTire)
+//        self.addChild(BLeftTire)
         
         FLeftSkidPath.path = FLeftTirePath
         FRightSkidPath.path = FLeftTirePath
@@ -334,21 +334,21 @@ class CarSprite : SKSpriteNode
                 self.drive()
             }
             
-            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
-            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
-            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
-            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
+//            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
+//            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
+//            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
+//            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
             
             
         }else //CRASHED
         {
 
             
-            //ADD THESE IN UPDATES AS
-            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
-            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
-            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
-            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
+//            //ADD THESE IN UPDATES AS
+//            CGPathAddLineToPoint(FLeftTirePath, nil, FLeftTire.position.x, FLeftTire.position.y);
+//            CGPathAddLineToPoint(FRightTirePath, nil, FRightTire.position.x, FRightTire.position.y);
+//            CGPathAddLineToPoint(BRightTirePath, nil, BRightTire.position.x, BRightTire.position.y);
+//            CGPathAddLineToPoint(BLeftTirePath, nil, BLeftTire.position.x, BLeftTire.position.y);
         
         }
       
