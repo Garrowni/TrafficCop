@@ -10,7 +10,6 @@
 import SpriteKit
 
 
-
 class CarSprite : SKSpriteNode
 {
     enum Direction
@@ -58,12 +57,12 @@ class CarSprite : SKSpriteNode
     var moveUpAction    : SKAction?
     var moveBackAction  : SKAction?
     
-    //TIRE STUFF ===============================
+    //TIRE STUFF ====================================================
     var FLeftTire       : SKShapeNode
     var FRightTire      : SKShapeNode
     var BRightTire      : SKShapeNode
     var BLeftTire       : SKShapeNode
-    //==========================================
+    //===============================================================
     
     init(type : Int , direction : SpawnPoint, Parent: SKNode)
     {
@@ -119,17 +118,17 @@ class CarSprite : SKSpriteNode
             
         case 3:
             self._MAXSPEED = 200
-            self._textures.append(SKTexture(imageNamed: "car_blue"))
+            self._textures.append(SKTexture(imageNamed: "car_white"))
             self._mass = 15
          
         case 4:
             self._MAXSPEED = 200
-            self._textures.append(SKTexture(imageNamed: "car_red"))
+            self._textures.append(SKTexture(imageNamed: "sedan_white"))
             self._mass = 15
          
         case 5:
             self._MAXSPEED = 200
-            self._textures.append(SKTexture(imageNamed: "pickup_green"))
+            self._textures.append(SKTexture(imageNamed: "pickup_white"))
             self._mass = 15
            
         case 6:
@@ -151,7 +150,7 @@ class CarSprite : SKSpriteNode
         self.addChild(smokeEmitter)
         
         
-        //TIRE STUFF =============================
+        //TIRE STUFF ==================================================
         self.addChild(FRightTire)
         self.addChild(FLeftTire)
         self.addChild(BRightTire)
@@ -162,31 +161,27 @@ class CarSprite : SKSpriteNode
         BRightTire.name = "tire"
         BLeftTire.name = "tire"
 
-//        FLeftTire.zPosition = 4
-//        FRightTire.zPosition = 4
-//        BRightTire.zPosition = 4
-//        BLeftTire.zPosition = 4
+//        FLeftTire.zPosition = 4;      FLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
+//        FRightTire.zPosition = 4;     FRightTire.fillColor = SKColorWithRGB(255, 0, 0)
+//        BRightTire.zPosition = 4;     BRightTire.fillColor = SKColorWithRGB(255, 0, 0)
+//        BLeftTire.zPosition = 4;      BLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
         
         FLeftTire.position.x    -= 30;  FLeftTire.position.y    -= 8;
         FRightTire.position.x   -= 30; FRightTire.position.y    += 8;
         BRightTire.position.x   += 30; BRightTire.position.y    += 8;
         BLeftTire.position.x    += 30;  BLeftTire.position.y    -= 8;
         
-//        FLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
-//        FRightTire.fillColor = SKColorWithRGB(255, 0, 0)
-//        BRightTire.fillColor = SKColorWithRGB(255, 0, 0)
-//        BLeftTire.fillColor = SKColorWithRGB(255, 0, 0)
-        
         FLeftTire.alpha = CGFloat(0)
         FRightTire.alpha = CGFloat(0)
         BRightTire.alpha = CGFloat(0)
         BLeftTire.alpha = CGFloat(0)
-        //==========================================
+        //===============================================================
         
+            //transport     bug         sedan       pickup
+        if (type == 6 || type == 3 || type == 4 || type == 5) {self.runAction(SKAction.colorizeWithColor(randCarColour(), colorBlendFactor: CGFloat(1.0), duration: 0))}
         
-        if (type == 6) {self.runAction(SKAction.colorizeWithColor(randCarColour(), colorBlendFactor: CGFloat(1.0), duration: 0))}
-        
-        let physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
+        //PHYSICS ====================================================
+        let physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: self.frame.size.width - 20, height: self.frame.size.height - 10))// INSET THE COLLISION AREA A BIT
         physicsBody.allowsRotation      = true
         physicsBody.restitution         = 0.8
         physicsBody.friction            = 0.2
@@ -197,7 +192,7 @@ class CarSprite : SKSpriteNode
         physicsBody.collisionBitMask    = PhysicsCategory.Car | PhysicsCategory.Person
         physicsBody.affectedByGravity   = false
         physicsBody.angularDamping      = 0.5
-
+        //===============================================================
         
         //EMITTERS
         smokeEmitter.position.x += 85
@@ -690,7 +685,7 @@ class CarSprite : SKSpriteNode
         var sequence = SKAction.sequence([self.moveUpAction!, self.moveBackAction!])
         self._arrow!.runAction(SKAction.repeatActionForever(sequence))
         choiceMade = true
-        println("CHOICE MADE --> \(self._wantDir!.hashValue)")
+        //println("CHOICE MADE --> \(self._wantDir!.hashValue)")
 
     }
     
@@ -699,7 +694,6 @@ class CarSprite : SKSpriteNode
         
         if(self._state.hashValue != 4)
         {
-           
             var hasFire = false
             for child in children
             {
@@ -714,12 +708,8 @@ class CarSprite : SKSpriteNode
                 if (rand > 6) {addChild(fireEmitter)}
                 fireSmokeEmitter.particleZPosition = 3
                 fireEmitter.particleZPosition = 4
-             
             }
         }
-
-        
-        
         self._state = .CRASHED
         //println("CRASH!")
     }

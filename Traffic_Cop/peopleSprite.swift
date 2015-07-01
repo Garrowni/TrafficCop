@@ -28,32 +28,34 @@ class PeopleSprite : SKSpriteNode
     }
 
     
-    let _MAXSPEED : CGFloat
-    var _dir : Direction = Direction.WEST
-    var _turnCount : Int = 0
-    var _person : SKTexture
-    var _spawn  : CGPoint
-    var _accel: CGFloat = 1
-    var _currSpeed: CGFloat = 0
-    var _deAccel: CGFloat = 0
-    var _isDone : Bool = false
-    var _type : Int
-    var _textures : [SKTexture] = []
-    var _size : CGSize
-    var _state : State = State.STOPPED
-    var _isSelected : Bool = false
-    var _glowCircle : GlowCircle
-    var _currPos : CGPoint
-    var _corner: Corner?
-    var canGoNorth : Bool = false
-    var canGoSouth : Bool = false
-    var canGoEast : Bool = false
-    var canGoWest : Bool = false
+    let _MAXSPEED       : CGFloat
+    var _dir            : Direction = Direction.WEST
+    var _turnCount      : Int = 0
+    var _person         : SKTexture
+    var _spawn          : CGPoint
+    var _accel          : CGFloat = 2
+    var _currSpeed      : CGFloat = 0
+    var _deAccel        : CGFloat = 0
+    var _isDone         : Bool = false
+    var _type           : Int
+    var _textures       : [SKTexture] = []
+    var _size           : CGSize
+    var _state          : State = State.STOPPED
+    var _isSelected     : Bool = false
+    var _glowCircle     : GlowCircle
+    var _currPos        : CGPoint
+    var _corner         : Corner?
+    var canGoNorth      : Bool = false
+    var canGoSouth      : Bool = false
+    var canGoEast       : Bool = false
+    var canGoWest       : Bool = false
+    var _mass           = CGFloat(1) // UNIVAERSAL MASS FOR ALL HUMANS , DONT THINK THERE IS A NEED TO VARY IT
+    let RotateRadPerSec : CGFloat = 2.0 * pie
     
-    var MadeChoice : Bool = false
-    var canTurnLeft : Bool    = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
-    var canTurnRight : Bool   = false
-    var canGoStraight :Bool   = false
+    var MadeChoice      : Bool = false
+    var canTurnLeft     : Bool = false //AVAILABLE CHOICES SENT FROM THE GAMESCENE AT ILLUMINATION OF ROADS
+    var canTurnRight    : Bool = false
+    var canGoStraight   : Bool = false
     
     
     init(type : Int , direction : SpawnPoint)
@@ -71,27 +73,40 @@ class PeopleSprite : SKSpriteNode
         case 1:
             
             self._person = SKTexture(imageNamed: "lady")
-            self._MAXSPEED = 3
+            self._MAXSPEED = 40
         case 2:
             self._person = SKTexture(imageNamed: "LadyBaby")
-            self._MAXSPEED = 3
+            self._MAXSPEED = 40
             self._size = CGSize(width: 40, height: 30)
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
-            self._MAXSPEED = 2
+            self._MAXSPEED = 25
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
-            self._MAXSPEED = 5
+            self._MAXSPEED = 60
             
         default :
             self._person = SKTexture(imageNamed: "")
             self._MAXSPEED = 0
         }
         
-        
         super.init(texture: _person, color: nil, size: self._size)
         self.position = self._currPos
         self.setScale(CGFloat(2.5))
+        
+        //PHYSICS ====================================================
+        let physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: self.frame.size.width - 40, height: self.frame.size.height - 40))// INSET THE COLLISION AREA A BIT
+        physicsBody.allowsRotation      = true
+        physicsBody.restitution         = 0.8
+        physicsBody.friction            = 0.2
+        physicsBody.linearDamping       = 1
+        physicsBody.mass                = self._mass
+        physicsBody.categoryBitMask     = PhysicsCategory.Person
+        physicsBody.contactTestBitMask  = PhysicsCategory.All
+        physicsBody.collisionBitMask    = PhysicsCategory.Car
+        physicsBody.affectedByGravity   = false
+        physicsBody.angularDamping      = 0.5
+        //===============================================================
         
         switch(tempDirection)
         {
@@ -100,21 +115,25 @@ class PeopleSprite : SKSpriteNode
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y - self._size.height
             self.position.y -= 50
+            self.zRotation = CGFloat(M_PI_2 * 3)
         case 1:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
             self.position.x += 50
+            self.zRotation = CGFloat(0)
         case 2:
             self._dir = Direction.EAST
             self._spawn.x = direction.pos.x - self._size.width
             self._spawn.y = direction.pos.y - self._size.height/2
             self.position.x -= 50
+            self.zRotation = CGFloat(M_PI_2 * 2)
         case 3:
             self._dir = Direction.SOUTH
             self._spawn.x = direction.pos.x - self._size.width/2
             self._spawn.y = direction.pos.y + self._size.height
-             self.position.y += 50
+            self.position.y += 50
+            self.zRotation = CGFloat(M_PI_2)
         default:
             self._dir = Direction.WEST
             self._spawn.x = direction.pos.x + self._size.height
@@ -122,7 +141,9 @@ class PeopleSprite : SKSpriteNode
             self.position.x += 50
             
         }
+        
         //////////////////////////////
+        self.physicsBody = physicsBody
         let myRect: CGRect
         myRect = CGRectMake(self.position.x+8, self.position.y+8, 16.0, 16.0)
     }
@@ -135,29 +156,19 @@ class PeopleSprite : SKSpriteNode
     //***************************Functions*************************
     func update()
     {
-        switch(self._dir)
-        {
-        case .NORTH:
-            self.zRotation = CGFloat(M_PI_2 * 3)
-        case .WEST:
-            self.zRotation = 0
-        case .EAST:
-            self.zRotation = CGFloat(M_PI_2 * 2)
-        case .SOUTH:
-            self.zRotation = CGFloat(M_PI_2)
-        default:
-            self.zRotation = 0
-        }
-        
-        self.position = self._currPos
-     
         if self._state == State.WALKING
         {
             goStraight()
         }
-        else if self._state == State.STOPPED
-        {
-            self._currSpeed = 0
+    }
+    
+    func rotatePeople(direction: String)
+    {
+            switch(direction)
+            {
+            case "left"  : self.runAction(SKAction.rotateByAngle(CGFloat(pie/2), duration: 2))
+            case "right" : self.runAction(SKAction.rotateByAngle(CGFloat(-pie/2), duration: 2))
+            default: break;
         }
     }
     
@@ -169,18 +180,22 @@ class PeopleSprite : SKSpriteNode
     func goStraight()
     {
         self._state = State.WALKING
-        self._currSpeed = self._MAXSPEED
+        
+        if (self._currSpeed < self._MAXSPEED)
+        {
+            self._currSpeed += self._accel
+        }
         
         switch(self._dir)
         {
         case .NORTH:
-            self._currPos.y += self._currSpeed
+            self.physicsBody!.velocity.dy = self._currSpeed
         case .SOUTH:
-            self._currPos.y -= self._currSpeed
+            self.physicsBody!.velocity.dy = -self._currSpeed
         case .WEST:
-            self._currPos.x -= self._currSpeed
+            self.physicsBody!.velocity.dx = -self._currSpeed
         case .EAST:
-            self._currPos.x += self._currSpeed
+            self.physicsBody!.velocity.dx = self._currSpeed
         default:
             println("No direction")
         }
@@ -188,9 +203,12 @@ class PeopleSprite : SKSpriteNode
     
     func stop()
     {
-        self._currSpeed = 0
+        //self.physicsBody!.velocity = CGVector(dx: 0, dy: 0)
         self._state = State.STOPPED
     }
+    
+
+    
     func isDone(rect : CGRect) -> Bool
     {
         if(self._dir == .NORTH && self.position.y - self._size.height * 2 > rect.maxY)
@@ -334,10 +352,10 @@ class PeopleSprite : SKSpriteNode
             time = 2
             time2 = 2
         }
-        if (self._type == 4)
+        if (self._type == 4)//KID
         {
             time = 0
-            time2 = 1
+            time2 = 2
         }
         
         
@@ -348,7 +366,7 @@ class PeopleSprite : SKSpriteNode
         var block2 = SKAction.runBlock(){self.walk()}
         var wait = SKAction.waitForDuration(NSTimeInterval(time))
         var stopblock = SKAction.runBlock(){self.stop()}
-        var sequence = SKAction.sequence([stopblock, wait,block2, wait2, block])
+        var sequence = SKAction.sequence([stopblock, wait, block2, wait2, block])
         self.runAction(sequence)
        
         
@@ -357,6 +375,7 @@ class PeopleSprite : SKSpriteNode
     //WEST, NORTH, EAST, SOUTH
     func TurnLeft()
     {
+      rotatePeople("left")
       switch(self._dir.hashValue)
       {
       case 0: //west
@@ -376,6 +395,7 @@ class PeopleSprite : SKSpriteNode
     }
     func TurnRight()
     {
+        rotatePeople("right")
         switch(self._dir.hashValue)
         {
         case 0: //west

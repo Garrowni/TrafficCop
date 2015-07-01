@@ -140,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         spawnAction = SKAction.repeatActionForever(spawnSequence)
         
         let spawn2 = SKAction.runBlock(){self.spawnPerson();}
-        let wait2 = SKAction.waitForDuration(2)                     //SPAWN PEOPLE TIME !
+        let wait2 = SKAction.waitForDuration(5)                     //SPAWN PEOPLE TIME !
         let spawnSequence2 = SKAction.sequence([spawn2, wait2])
         spawnAction2 = SKAction.repeatActionForever(spawnSequence2)
         
@@ -400,7 +400,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 }
                 else
                 {
-                    var car = CarSprite(type: Int.randomNumberFrom(1...6), direction: spawnsArray![theSpawn], Parent: self)
+                    //Decreased the chance of a Ambulance or police spawning to 10% form 32% .. 
+                    //was just a 1 and 6 cahnce for a cop or ambulance 
+                    //which if you do the math is a 32% chance it will be a cop or ambulance ..
+                    var rand = Int.randomNumberFrom(1...10) // == 10% leaving 90% chance of a different car .. bit more realistic..
+                    var num : Int
+                    if (rand == 1){num = Int.randomNumberFrom(1...2)}else{num = Int.randomNumberFrom(3...6)}
+                    
+                    var car = CarSprite(type: num, direction: spawnsArray![theSpawn], Parent: self)
                     vehicleArray.append(car)
                     car.drive()
                     addChild(car)

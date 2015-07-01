@@ -60,7 +60,7 @@ class MainMenuScreen: SKScene
         credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         
         spawn1 = SpawnPoint(position: CGPoint(x: playableRect.width + 200, y: 180), direction: "left")
-        spawn2 = SpawnPoint(position: CGPoint(x: -200, y: 64), direction: "right")
+        spawn2 = SpawnPoint(position: CGPoint(x: -200, y: 48), direction: "right")
         
         
 
