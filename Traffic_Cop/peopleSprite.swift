@@ -162,12 +162,12 @@ class PeopleSprite : SKSpriteNode
         }
     }
     
-    func rotatePeople(direction: String)
+    func rotatePerson(direction: String)
     {
-            switch(direction)
-            {
-            case "left"  : self.runAction(SKAction.rotateByAngle(CGFloat(pie/2), duration: 2))
-            case "right" : self.runAction(SKAction.rotateByAngle(CGFloat(-pie/2), duration: 2))
+        switch(direction)
+        {
+            case "left"  : self.runAction(SKAction.rotateByAngle(CGFloat(pie/2), duration: 2))  //90 degree turn
+            case "right" : self.runAction(SKAction.rotateByAngle(CGFloat(-pie/2), duration: 2)) //-90 degree turn
             default: break;
         }
     }
@@ -375,7 +375,7 @@ class PeopleSprite : SKSpriteNode
     //WEST, NORTH, EAST, SOUTH
     func TurnLeft()
     {
-      rotatePeople("left")
+      rotatePerson("left")
       switch(self._dir.hashValue)
       {
       case 0: //west
@@ -395,7 +395,7 @@ class PeopleSprite : SKSpriteNode
     }
     func TurnRight()
     {
-        rotatePeople("right")
+        rotatePerson("right")
         switch(self._dir.hashValue)
         {
         case 0: //west
