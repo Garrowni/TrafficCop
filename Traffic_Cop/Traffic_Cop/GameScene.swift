@@ -338,7 +338,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 Car.removeAllActions()
                 explosion(contactPoint, force: collisionImpulse)
                 crashedCars.append(Car)
-                println("numCrashes = \(numCrashes)")
+                //println("numCrashes = \(numCrashes)")
             
             
             case PhysicsCategory.Person: let Person = other.node as! PeopleSprite
@@ -521,13 +521,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for(var i = 0; i < skidArray.count; i++)
             {
-                println("\(skidArray.count) ...done? \(skidArray[i].done)")
                 //skidArray[i].update()
                 if(skidArray[i].done)
                 {
                     skidArray[i].removeKids();
                     skidArray.removeAtIndex(i);
-                    println("removed skids")
                 }
             }
         }
@@ -1344,7 +1342,7 @@ class Skid
         var wait2 = SKAction.waitForDuration(9) //total of wait and fade
         var sequence = SKAction.sequence([wait, fade])
         var block1 = SKAction.runBlock(){self.FLeftSkidPath.runAction(sequence); self.FRightSkidPath.runAction(sequence); self.BRightSkidPath.runAction(sequence);self.BLeftSkidPath.runAction(sequence);}
-        var block2 = SKAction.runBlock(){self.done = true; println("DONE SKID  done:\(self.done)")}
+        var block2 = SKAction.runBlock(){self.done = true;}
         var fullSequence = SKAction.sequence([block1 ,wait2, block2])
         theParent.runAction(fullSequence)
             
