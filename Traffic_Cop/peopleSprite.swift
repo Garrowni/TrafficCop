@@ -102,7 +102,7 @@ class PeopleSprite : SKSpriteNode
         physicsBody.linearDamping       = 1
         physicsBody.mass                = self._mass
         physicsBody.categoryBitMask     = PhysicsCategory.Person
-        physicsBody.contactTestBitMask  = PhysicsCategory.All
+        physicsBody.contactTestBitMask  = PhysicsCategory.Car
         physicsBody.collisionBitMask    = PhysicsCategory.Car
         physicsBody.affectedByGravity   = false
         physicsBody.angularDamping      = 0.5
