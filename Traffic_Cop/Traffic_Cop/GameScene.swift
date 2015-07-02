@@ -1298,7 +1298,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "Results:",                                       fontSize: 50, font: "font3", color: "white", align: "left")
         var crashNum    = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 160), says: "Crashes:  \(numCrashes)",                        fontSize: 50, font: "font3", color: "white", align: "left")
         var peopleHit   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 220), says: "Hit People:  \(numPeopleHit)",                   fontSize: 50, font: "font3", color: "white", align: "left")
-        var totPoints   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 280), says: "Total Points:  \(currentScore))",                fontSize: 50, font: "font3", color: "white", align: "left")
+        var totPoints   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 280), says: "Total Points:  \(currentScore)",                fontSize: 50, font: "font3", color: "white", align: "left")
         var pointsLost  = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 340), says: "Total Points Lost:  \(abs(totalPointsLost))",    fontSize: 50, font: "font3", color: "white", align: "left")
         
         results.get().zPosition = 100
@@ -1399,7 +1399,7 @@ class Skid
         
         }
         var updateSequence = SKAction.sequence([updateLines, updateWait])
-        self.theParent.runAction(SKAction.repeatAction(updateSequence, count: 45))
+        self.theParent.runAction(SKAction.repeatAction(updateSequence, count: 25))
     }
     
     func update()

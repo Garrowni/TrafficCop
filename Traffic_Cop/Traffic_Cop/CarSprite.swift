@@ -705,9 +705,9 @@ class CarSprite : SKSpriteNode
             }
             if(!hasFire)
             {
-                addChild(fireSmokeEmitter)
+                
                 var rand = Int.randomNumberFrom(1...10)
-                if (rand > 6) {addChild(fireEmitter)}
+                if (rand > 6) {addChild(fireEmitter)}else{addChild(fireSmokeEmitter)}
                 fireSmokeEmitter.particleZPosition = 3
                 fireEmitter.particleZPosition = 4
             }
