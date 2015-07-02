@@ -19,7 +19,7 @@ class PeopleSprite : SKSpriteNode
     }
     enum State
     {
-        case WALKING, STOPPED, TURNING
+        case WALKING, STOPPED, TURNING, DEAD
     }
     
     enum Options

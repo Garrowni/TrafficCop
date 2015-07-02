@@ -128,7 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         self.name = "The-Game-Scene"
         
         self.physicsWorld.gravity = CGVector.zeroVector
-         physicsWorld.contactDelegate = self
+        physicsWorld.contactDelegate = self
         
         updateScore()
         
@@ -289,9 +289,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             updateSkids()
         }
         
-       
-
-      
     }
     
     
@@ -303,18 +300,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
        // checkCollisions()
     }
 
-    
     override func didSimulatePhysics()
     {
-//        let target = getCenterPointWithTarget(player.position)
-//        worldNode.position += (target - worldNode.position) * 0.1
-//        
-//        if !bugsToRemove.isEmpty {
-//            for bug in bugsToRemove {
-//                bugHitEffects(bug)
-//            }
-//            bugsToRemove.removeAll()
-//        }
+
     }
     
     func didBeginContact(contact:SKPhysicsContact)
