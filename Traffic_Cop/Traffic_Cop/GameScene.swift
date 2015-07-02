@@ -343,10 +343,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             case PhysicsCategory.Person: let Person = other.node as! PeopleSprite
             
-//                if(Person._state != .DEAD)
-//                {
-//                  numPeopleHit++
-//                }
+                if(Person._state != .DEAD)
+                {
+                  Person._state = .DEAD
+                  numPeopleHit++
+                  addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
+                }
             
                 hitPeople.append(Person)
             
