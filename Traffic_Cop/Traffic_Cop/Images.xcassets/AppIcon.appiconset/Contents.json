@@ -31,13 +31,15 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "Icon57.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
       "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "Icon57x2.png",
       "scale" : "2x"
     },
     {
@@ -53,43 +55,51 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon29-1.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon29@2x-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "Icon40.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "Icon40@2x-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "Icon50.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "Icon50x2.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "Icon72.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "Icon72x2.png",
       "scale" : "2x"
     },
     {
@@ -105,14 +115,16 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "car",
       "size" : "120x120",
+      "idiom" : "car",
+      "filename" : "Icon120.png",
       "scale" : "1x"
     },
     {
       "size" : "24x24",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "Icon38mm.png",
       "role" : "notificationCenter",
       "subtype" : "38mm"
     },
@@ -120,6 +132,7 @@
       "size" : "27.5x27.5",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "Icon42mm-1.png",
       "role" : "notificationCenter",
       "subtype" : "42mm"
     },
@@ -146,6 +159,7 @@
       "size" : "44x44",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "Icon42mm1.png",
       "role" : "longLook",
       "subtype" : "42mm"
     },
@@ -153,6 +167,7 @@
       "size" : "86x86",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "Icon38mm-1.png",
       "role" : "quickLook",
       "subtype" : "38mm"
     },
@@ -160,6 +175,7 @@
       "size" : "98x98",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "Icon42mm.png",
       "role" : "quickLook",
       "subtype" : "42mm"
     }

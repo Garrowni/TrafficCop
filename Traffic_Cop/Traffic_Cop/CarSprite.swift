@@ -682,6 +682,8 @@ class CarSprite : SKSpriteNode
         }      
         self.addChild(self._arrow!)
         
+        self.moveUpAction!.timingMode = .EaseIn
+        self.moveBackAction!.timingMode = .EaseOut
         var sequence = SKAction.sequence([self.moveUpAction!, self.moveBackAction!])
         self._arrow!.runAction(SKAction.repeatActionForever(sequence))
         choiceMade = true
