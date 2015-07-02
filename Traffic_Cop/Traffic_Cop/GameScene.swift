@@ -521,8 +521,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for(var i = 0; i < skidArray.count; i++)
             {
-                skidArray[i].update()
-                if(skidArray[i].done){skidArray[i].removeKids(); skidArray.removeAtIndex(i)}
+                println("\(skidArray.count) ...done? \(skidArray[i].done)")
+                //skidArray[i].update()
+                if(skidArray[i].done)
+                {
+                    skidArray[i].removeKids();
+                    skidArray.removeAtIndex(i);
+                    println("removed skids")
+                }
             }
         }
     }
@@ -1079,6 +1085,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         if(currentScore >= goalScore)
         {
+            displayResults()
             fireWorksGo()
             levPassed = true
             addChild(levDonePopUp.getButtBG())
@@ -1099,6 +1106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
         else
         {
+            displayResults()
             levPassed = false
             addChild(notDonePopUp.getButtBG())
             addChild(notDonePopUp.getButtOL())
@@ -1284,11 +1292,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var sequence = SKAction.sequence([spawnExplosion,wait,block])
         self.runAction(sequence)
     }
+    
+    func displayResults()
+    {
+        var results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "Results:",                                       fontSize: 50, font: "font3", color: "white", align: "left")
+        var crashNum    = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 160), says: "Crashes:  \(numCrashes)",                        fontSize: 50, font: "font3", color: "white", align: "left")
+        var peopleHit   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 220), says: "Hit People:  \(numPeopleHit)",                   fontSize: 50, font: "font3", color: "white", align: "left")
+        var totPoints   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 280), says: "Total Points:  \(currentScore))",                fontSize: 50, font: "font3", color: "white", align: "left")
+        var pointsLost  = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 340), says: "Total Points Lost:  \(abs(totalPointsLost))",    fontSize: 50, font: "font3", color: "white", align: "left")
+        
+        results.get().zPosition = 100
+        crashNum.get().zPosition = 100
+        peopleHit.get().zPosition = 100
+        totPoints.get().zPosition = 100
+        pointsLost.get().zPosition = 100
+        
+        addChild(results.get())
+        addChild(crashNum.get())
+        addChild(peopleHit.get())
+        addChild(totPoints.get())
+        addChild(pointsLost.get())
+    }
 
 }
 
 
-struct Skid
+class Skid
 {
     var theParent       : SKNode
     var Car             : CarSprite
@@ -1315,7 +1344,7 @@ struct Skid
         var wait2 = SKAction.waitForDuration(9) //total of wait and fade
         var sequence = SKAction.sequence([wait, fade])
         var block1 = SKAction.runBlock(){self.FLeftSkidPath.runAction(sequence); self.FRightSkidPath.runAction(sequence); self.BRightSkidPath.runAction(sequence);self.BLeftSkidPath.runAction(sequence);}
-        var block2 = SKAction.runBlock(){self.done = true}
+        var block2 = SKAction.runBlock(){self.done = true; println("DONE SKID  done:\(self.done)")}
         var fullSequence = SKAction.sequence([block1 ,wait2, block2])
         theParent.runAction(fullSequence)
             
@@ -1348,24 +1377,47 @@ struct Skid
         theParent.addChild(FRightSkidPath)
         theParent.addChild(BRightSkidPath)
         theParent.addChild(BLeftSkidPath)
+        
+        var updateWait = SKAction.waitForDuration(0.2)
+        
+        var updateLines = SKAction.runBlock(){
+            
+            var FL  = self.Car.FLeftTire.convertPoint(self.Car.FLeftTire.position, toNode: self.theParent)
+            var FR  = self.Car.FRightTire.convertPoint(self.Car.FRightTire.position, toNode: self.theParent)
+            var BR  = self.Car.BRightTire.convertPoint(self.Car.BRightTire.position, toNode: self.theParent)
+            var BL  = self.Car.BLeftTire.convertPoint(self.Car.BLeftTire.position, toNode: self.theParent)
+            
+            CGPathAddLineToPoint(self.FLeftTirePath, nil, FL.x, FL.y);
+            CGPathAddLineToPoint(self.FRightTirePath, nil, FR.x, FR.y);
+            CGPathAddLineToPoint(self.BRightTirePath, nil, BR.x, BR.y);
+            CGPathAddLineToPoint(self.BLeftTirePath, nil, BL.x, BL.y);
+            
+            self.FLeftSkidPath.path = self.FLeftTirePath
+            self.FRightSkidPath.path = self.FRightTirePath
+            self.BRightSkidPath.path = self.BRightTirePath
+           self.BLeftSkidPath.path = self.BLeftTirePath
+        
+        }
+        var updateSequence = SKAction.sequence([updateLines, updateWait])
+        self.theParent.runAction(SKAction.repeatAction(updateSequence, count: 45))
     }
     
     func update()
     {
-        var FL  = Car.FLeftTire.convertPoint(Car.FLeftTire.position, toNode: theParent)
-        var FR  = Car.FRightTire.convertPoint(Car.FRightTire.position, toNode: theParent)
-        var BR  = Car.BRightTire.convertPoint(Car.BRightTire.position, toNode: theParent)
-        var BL  = Car.BLeftTire.convertPoint(Car.BLeftTire.position, toNode: theParent)
-        
-        CGPathAddLineToPoint(FLeftTirePath, nil, FL.x, FL.y);
-        CGPathAddLineToPoint(FRightTirePath, nil, FR.x, FR.y);
-        CGPathAddLineToPoint(BRightTirePath, nil, BR.x, BR.y);
-        CGPathAddLineToPoint(BLeftTirePath, nil, BL.x, BL.y);
-        
-        FLeftSkidPath.path = FLeftTirePath
-        FRightSkidPath.path = FRightTirePath
-        BRightSkidPath.path = BRightTirePath
-        BLeftSkidPath.path = BLeftTirePath
+//        var FL  = Car.FLeftTire.convertPoint(Car.FLeftTire.position, toNode: theParent)
+//        var FR  = Car.FRightTire.convertPoint(Car.FRightTire.position, toNode: theParent)
+//        var BR  = Car.BRightTire.convertPoint(Car.BRightTire.position, toNode: theParent)
+//        var BL  = Car.BLeftTire.convertPoint(Car.BLeftTire.position, toNode: theParent)
+//        
+//        CGPathAddLineToPoint(FLeftTirePath, nil, FL.x, FL.y);
+//        CGPathAddLineToPoint(FRightTirePath, nil, FR.x, FR.y);
+//        CGPathAddLineToPoint(BRightTirePath, nil, BR.x, BR.y);
+//        CGPathAddLineToPoint(BLeftTirePath, nil, BL.x, BL.y);
+//        
+//        FLeftSkidPath.path = FLeftTirePath
+//        FRightSkidPath.path = FRightTirePath
+//        BRightSkidPath.path = BRightTirePath
+//        BLeftSkidPath.path = BLeftTirePath
     }
     func removeKids()
     {

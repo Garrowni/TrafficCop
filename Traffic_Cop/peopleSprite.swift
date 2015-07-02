@@ -80,7 +80,7 @@ class PeopleSprite : SKSpriteNode
             self._size = CGSize(width: 40, height: 30)
         case 3:
             self._person = SKTexture(imageNamed: "OldMan")
-            self._MAXSPEED = 25
+            self._MAXSPEED = 30
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
             self._MAXSPEED = 60
