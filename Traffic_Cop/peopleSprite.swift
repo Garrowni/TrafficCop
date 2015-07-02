@@ -179,26 +179,30 @@ class PeopleSprite : SKSpriteNode
     
     func goStraight()
     {
-        self._state = State.WALKING
-        
-        if (self._currSpeed < self._MAXSPEED)
+        if(self._state != State.DEAD)
         {
-            self._currSpeed += self._accel
+            self._state = State.WALKING
+            
+            if (self._currSpeed < self._MAXSPEED)
+            {
+                self._currSpeed += self._accel
+            }
+            
+            switch(self._dir)
+            {
+            case .NORTH:
+                self.physicsBody!.velocity.dy = self._currSpeed
+            case .SOUTH:
+                self.physicsBody!.velocity.dy = -self._currSpeed
+            case .WEST:
+                self.physicsBody!.velocity.dx = -self._currSpeed
+            case .EAST:
+                self.physicsBody!.velocity.dx = self._currSpeed
+            default:
+                println("No direction")
+            }
         }
-        
-        switch(self._dir)
-        {
-        case .NORTH:
-            self.physicsBody!.velocity.dy = self._currSpeed
-        case .SOUTH:
-            self.physicsBody!.velocity.dy = -self._currSpeed
-        case .WEST:
-            self.physicsBody!.velocity.dx = -self._currSpeed
-        case .EAST:
-            self.physicsBody!.velocity.dx = self._currSpeed
-        default:
-            println("No direction")
-        }
+
     }
     
     func stop()
