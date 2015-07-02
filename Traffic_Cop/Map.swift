@@ -358,7 +358,7 @@ class Map
 
 
 
-struct Road
+class Road
 {
     var rect: CGRect
     var gotoPoint: CGPoint  //CENTER OF THE TILE CLOSEST TO THE CROSSWALK ..USED FOR TURNING CALCULATION
@@ -373,7 +373,7 @@ struct Road
 }
 
 
-struct Crosswalk
+class Crosswalk
 {
     let rect: CGRect
     init(Rect: CGRect)
@@ -381,7 +381,7 @@ struct Crosswalk
      rect       = Rect
     }
 }
-struct Corner
+class Corner
 {
     var rect: CGRect
     var North: Bool
@@ -403,7 +403,7 @@ struct Corner
 
 
 //CENTER POINT OF THE SPAWN LOCATION WILL HAVE TO OFFSET FROM IT THE HEIGHT/OR WIDTH OF VEHICLE DEPENDING ON DIRECTION
-struct SpawnPoint
+class SpawnPoint
 {
     let pos: CGPoint
     let dir: Int
