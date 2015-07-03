@@ -1138,7 +1138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var lvl = self.currentLevel + 1
         if(lvl > 4){lvl = 4} //MAX LEVEL FOR NOW
         if(retry){lvl = currentLevel}
-        var fadeOut = SKAction.fadeAlphaTo(CGFloat(0.0), duration: 1.5)
+        var fadeOut = SKAction.fadeAlphaTo(CGFloat(0.0), duration: 1)
         let transition = SKAction.group([SKAction.runBlock()
             {
                 if(retry)
