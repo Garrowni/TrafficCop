@@ -525,7 +525,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for(var i = 0; i < skidArray.count; i++)
             {
-                //skidArray[i].update()
                 if(skidArray[i].done)
                 {
                     skidArray[i].removeKids();
@@ -1404,23 +1403,6 @@ class Skid
         self.theParent.runAction(SKAction.repeatAction(updateSequence, count: 25))
     }
     
-    func update()
-    {
-//        var FL  = Car.FLeftTire.convertPoint(Car.FLeftTire.position, toNode: theParent)
-//        var FR  = Car.FRightTire.convertPoint(Car.FRightTire.position, toNode: theParent)
-//        var BR  = Car.BRightTire.convertPoint(Car.BRightTire.position, toNode: theParent)
-//        var BL  = Car.BLeftTire.convertPoint(Car.BLeftTire.position, toNode: theParent)
-//        
-//        CGPathAddLineToPoint(FLeftTirePath, nil, FL.x, FL.y);
-//        CGPathAddLineToPoint(FRightTirePath, nil, FR.x, FR.y);
-//        CGPathAddLineToPoint(BRightTirePath, nil, BR.x, BR.y);
-//        CGPathAddLineToPoint(BLeftTirePath, nil, BL.x, BL.y);
-//        
-//        FLeftSkidPath.path = FLeftTirePath
-//        FRightSkidPath.path = FRightTirePath
-//        BRightSkidPath.path = BRightTirePath
-//        BLeftSkidPath.path = BLeftTirePath
-    }
     func removeKids()
     {
         FLeftSkidPath.removeFromParent()
