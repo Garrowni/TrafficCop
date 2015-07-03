@@ -29,6 +29,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     let goalButt    : Button
     let soundButt   : Button
     let nextLevButt : Button
+    var results     : Text?
+    var crashNum    : Text?
+    var peopleHit   : Text?
+    var totPoints   : Text?
+    var pointsLost  : Text?
     var glowRoads   : [GlowBox]
     var glowCWs     : [GlowBox]
     var glowCorners : [GlowBox]
@@ -1133,7 +1138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var lvl = self.currentLevel + 1
         if(lvl > 4){lvl = 4} //MAX LEVEL FOR NOW
         if(retry){lvl = currentLevel}
-        
+        var fadeOut = SKAction.fadeAlphaTo(CGFloat(0.0), duration: 1.5)
         let transition = SKAction.group([SKAction.runBlock()
             {
                 if(retry)
@@ -1141,11 +1146,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 self.retryButt.zoomOUT()
                 self.notDonePopUp.FadeAway()
                 self.quitButt.FadeAway()
+                self.results!.get().runAction(fadeOut)
+                self.crashNum!.get().runAction(fadeOut)
+                self.peopleHit!.get().runAction(fadeOut)
+                self.totPoints!.get().runAction(fadeOut)
+                self.pointsLost!.get().runAction(fadeOut)
                 }
                 else{
                 self.nextLevButt.zoomOUT()
                 self.levDonePopUp.FadeAway()
-                self.quitButt.FadeAway()}
+                self.quitButt.FadeAway()
+                self.results!.get().runAction(fadeOut)
+                self.crashNum!.get().runAction(fadeOut)
+                self.peopleHit!.get().runAction(fadeOut)
+                self.totPoints!.get().runAction(fadeOut)
+                self.pointsLost!.get().runAction(fadeOut)
+                }
             }])
         
         let wait = SKAction.waitForDuration(0.2)
@@ -1296,23 +1312,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func displayResults()
     {
-        var results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "Results:",                                       fontSize: 50, font: "font3", color: "white", align: "left")
-        var crashNum    = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 160), says: "Crashes:  \(numCrashes)",                        fontSize: 50, font: "font3", color: "white", align: "left")
-        var peopleHit   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 220), says: "Hit People:  \(numPeopleHit)",                   fontSize: 50, font: "font3", color: "white", align: "left")
-        var totPoints   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 280), says: "Total Points:  \(currentScore)",                fontSize: 50, font: "font3", color: "white", align: "left")
-        var pointsLost  = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 340), says: "Total Points Lost:  \(abs(totalPointsLost))",    fontSize: 50, font: "font3", color: "white", align: "left")
         
-        results.get().zPosition = 100
-        crashNum.get().zPosition = 100
-        peopleHit.get().zPosition = 100
-        totPoints.get().zPosition = 100
-        pointsLost.get().zPosition = 100
         
-        addChild(results.get())
-        addChild(crashNum.get())
-        addChild(peopleHit.get())
-        addChild(totPoints.get())
-        addChild(pointsLost.get())
+        
+        
+        results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "Results:",                                       fontSize: 50, font: "font3", color: "white", align: "left")
+        crashNum    = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 160), says: "Crashes:  \(numCrashes)",                        fontSize: 50, font: "font3", color: "white", align: "left")
+        peopleHit   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 220), says: "Hit People:  \(numPeopleHit)",                   fontSize: 50, font: "font3", color: "white", align: "left")
+        totPoints   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 280), says: "Total Points:  \(currentScore)",                 fontSize: 50, font: "font3", color: "white", align: "left")
+        pointsLost  = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 340), says: "Total Points Lost:  \(abs(totalPointsLost))",    fontSize: 50, font: "font3", color: "white", align: "left")
+        
+        results!.get().zPosition     = 100
+        crashNum!.get().zPosition    = 100
+        peopleHit!.get().zPosition   = 100
+        totPoints!.get().zPosition   = 100
+        pointsLost!.get().zPosition  = 100
+        
+        results!.get().alpha     = CGFloat(0.0)
+        crashNum!.get().alpha    = CGFloat(0.0)
+        peopleHit!.get().alpha   = CGFloat(0.0)
+        totPoints!.get().alpha   = CGFloat(0.0)
+        pointsLost!.get().alpha  = CGFloat(0.0)
+        
+        
+        
+        addChild(results!.get())
+        addChild(crashNum!.get())
+        addChild(peopleHit!.get())
+        addChild(totPoints!.get())
+        addChild(pointsLost!.get())
+        
+        var fadeIn = SKAction.fadeAlphaTo(CGFloat(1.0), duration: 2.5)
+        results!.get().runAction(fadeIn)
+        crashNum!.get().runAction(fadeIn)
+        peopleHit!.get().runAction(fadeIn)
+        totPoints!.get().runAction(fadeIn)
+        pointsLost!.get().runAction(fadeIn)
+       
     }
 
 }
