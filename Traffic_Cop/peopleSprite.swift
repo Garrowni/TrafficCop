@@ -84,6 +84,10 @@ class PeopleSprite : SKSpriteNode
         case 4:
             self._person = SKTexture(imageNamed:"littleGirl")
             self._MAXSPEED = 60
+        case 5:
+            self._person = SKTexture(imageNamed:"carGuy")
+            self._size = CGSize(width: 40, height: 20)
+            self._MAXSPEED = 40
             
         default :
             self._person = SKTexture(imageNamed: "")
@@ -351,7 +355,7 @@ class PeopleSprite : SKSpriteNode
            time = 4
             time2 = 2
         }
-        if (self._type == 3)
+        if (self._type == 3 || self._type == 5)
         {
             time = 2
             time2 = 2

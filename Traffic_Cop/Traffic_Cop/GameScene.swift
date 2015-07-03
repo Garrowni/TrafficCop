@@ -145,7 +145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         spawnAction = SKAction.repeatActionForever(spawnSequence)
         
         let spawn2 = SKAction.runBlock(){self.spawnPerson();}
-        let wait2 = SKAction.waitForDuration(5)                     //SPAWN PEOPLE TIME !
+        let wait2 = SKAction.waitForDuration(3.5)                     //SPAWN PEOPLE TIME !
         let spawnSequence2 = SKAction.sequence([spawn2, wait2])
         spawnAction2 = SKAction.repeatActionForever(spawnSequence2)
         
@@ -424,7 +424,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             if(peopleArray.count < 20)
             {
-                var person = PeopleSprite(type: Int.randomNumberFrom(1...4), direction: peopleSpawns![Int.randomNumberFrom(0...peopleSpawns!.count-1)])
+                var person = PeopleSprite(type: Int.randomNumberFrom(1...5), direction: peopleSpawns![Int.randomNumberFrom(0...peopleSpawns!.count-1)])
                 peopleArray.append(person)
                 person.walk()
                 addChild(person)

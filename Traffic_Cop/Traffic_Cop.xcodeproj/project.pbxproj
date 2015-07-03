@@ -192,6 +192,8 @@
 		08E8DC3F1B46F9D6002667E8 /* SilverStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E8DC3D1B46F9D6002667E8 /* SilverStar.png */; };
 		08E8DC411B46FA18002667E8 /* StarOutline.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E8DC401B46FA18002667E8 /* StarOutline.png */; };
 		08E8DC421B46FA18002667E8 /* StarOutline.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E8DC401B46FA18002667E8 /* StarOutline.png */; };
+		08E8DC441B471F44002667E8 /* carGuy.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E8DC431B471F44002667E8 /* carGuy.png */; };
+		08E8DC451B471F44002667E8 /* carGuy.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E8DC431B471F44002667E8 /* carGuy.png */; };
 		08EB81BD1B33B22300E22D82 /* pointsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EB81BC1B33B22200E22D82 /* pointsPopUp.swift */; };
 		08EB81BE1B33B22300E22D82 /* pointsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EB81BC1B33B22200E22D82 /* pointsPopUp.swift */; };
 		08FC6D181B28881D004F4824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FC6D171B28881D004F4824 /* AppDelegate.swift */; };
@@ -334,6 +336,7 @@
 		08E8DC351B46F9A7002667E8 /* GoldStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoldStar.png; sourceTree = "<group>"; };
 		08E8DC3D1B46F9D6002667E8 /* SilverStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SilverStar.png; sourceTree = "<group>"; };
 		08E8DC401B46FA18002667E8 /* StarOutline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarOutline.png; sourceTree = "<group>"; };
+		08E8DC431B471F44002667E8 /* carGuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carGuy.png; sourceTree = "<group>"; };
 		08EB81BC1B33B22200E22D82 /* pointsPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pointsPopUp.swift; sourceTree = "<group>"; };
 		08FC6D131B28881D004F4824 /* Traffic_Cop_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traffic_Cop_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08FC6D161B28881D004F4824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -403,6 +406,7 @@
 		08D515A11B28CB8100E5289B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				08E8DC431B471F44002667E8 /* carGuy.png */,
 				08E8DC401B46FA18002667E8 /* StarOutline.png */,
 				08E8DC3D1B46F9D6002667E8 /* SilverStar.png */,
 				08E8DC341B46F9A7002667E8 /* BronzeStar.png */,
@@ -977,6 +981,7 @@
 				08E7B69D1B38A08100F32693 /* FireWork1.sks in Resources */,
 				08D5162E1B28CB8100E5289B /* car_cop2L.png in Resources */,
 				08D515EE1B28CB8100E5289B /* LadyBaby.png in Resources */,
+				08E8DC451B471F44002667E8 /* carGuy.png in Resources */,
 				08D5161C1B28CB8100E5289B /* Ambulence2R.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1030,6 +1035,7 @@
 				08D5163D1B28CB8100E5289B /* stoplight_green.png in Resources */,
 				7DE1464C1B223E95005DB874 /* Main.storyboard in Resources */,
 				08D515E91B28CB8100E5289B /* irritated.png in Resources */,
+				08E8DC441B471F44002667E8 /* carGuy.png in Resources */,
 				08D74BE91B290D4C00E1C8BA /* burnstown_dam.otf in Resources */,
 				08D5160D1B28CB8100E5289B /* single_green.png in Resources */,
 				08D516131B28CB8100E5289B /* Ambulence1L.png in Resources */,
