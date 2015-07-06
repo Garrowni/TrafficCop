@@ -58,10 +58,10 @@ class LevelScreen: SKScene
         //Rects
         backButtR   = CGRect(x: size.width/2-250, y: size.height-1800, width: 500, height: 200)
         titleButtR  = CGRect(x: size.width/2-350, y: size.height-250,  width: 700, height: 200)
-        lv1ButtR    = CGRect(x: size.width/2-385, y: size.height-650,  width: 300, height: 300)
-        lv2ButtR    = CGRect(x: size.width/2+85, y: size.height-650,   width: 300, height: 300)
-        lv3ButtR    = CGRect(x: size.width/2-385, y: size.height-1150, width: 300, height: 300)
-        lv4ButtR    = CGRect(x: size.width/2+85, y: size.height-1150,  width: 300, height: 300)
+        lv1ButtR    = CGRect(x: size.width/2-405, y: size.height-650,  width: 300, height: 300)
+        lv2ButtR    = CGRect(x: size.width/2+115, y: size.height-650,   width: 300, height: 300)
+        lv3ButtR    = CGRect(x: size.width/2-405, y: size.height-1150, width: 300, height: 300)
+        lv4ButtR    = CGRect(x: size.width/2+115, y: size.height-1150,  width: 300, height: 300)
         
         //Buttons
         backButt    = Button(pos: backButtR,    roundCorner: 100, text: backLbl,    BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)

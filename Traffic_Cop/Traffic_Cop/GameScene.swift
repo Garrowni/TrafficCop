@@ -1427,7 +1427,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var explosionEmit = SKEmitterNode(fileNamed: "Explosion.sks")
         explosionEmit.position = position
         explosionEmit.zPosition = 1000
-        explosionEmit.particleBirthRate = force; explosionEmit.numParticlesToEmit = Int(force/10)
+        explosionEmit.particleBirthRate = force*2; explosionEmit.numParticlesToEmit = Int((force*2)/10)
         var spawnExplosion = SKAction.runBlock(){self.addChild(explosionEmit)}
         var wait = SKAction.waitForDuration(3)
         var block = SKAction.runBlock(){explosionEmit.removeFromParent()}
