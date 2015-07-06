@@ -57,19 +57,19 @@ class LevelScreen: SKScene
         
         //Rects
         backButtR   = CGRect(x: size.width/2-250, y: size.height-1800, width: 500, height: 200)
-        titleButtR  = CGRect(x: size.width/2-350, y: size.height-300,  width: 700, height: 200)
-        lv1ButtR    = CGRect(x: size.width/2-375, y: size.height-750,  width: 300, height: 300)
-        lv2ButtR    = CGRect(x: size.width/2+75, y: size.height-750,   width: 300, height: 300)
-        lv3ButtR    = CGRect(x: size.width/2-375, y: size.height-1150, width: 300, height: 300)
-        lv4ButtR    = CGRect(x: size.width/2+75, y: size.height-1150,  width: 300, height: 300)
+        titleButtR  = CGRect(x: size.width/2-350, y: size.height-250,  width: 700, height: 200)
+        lv1ButtR    = CGRect(x: size.width/2-385, y: size.height-650,  width: 300, height: 300)
+        lv2ButtR    = CGRect(x: size.width/2+85, y: size.height-650,   width: 300, height: 300)
+        lv3ButtR    = CGRect(x: size.width/2-385, y: size.height-1150, width: 300, height: 300)
+        lv4ButtR    = CGRect(x: size.width/2+85, y: size.height-1150,  width: 300, height: 300)
         
         //Buttons
-        backButt    = Button(pos: backButtR,    roundCorner: 100, text: backLbl,    BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
-        titleButt   = Button(pos: titleButtR,   roundCorner: 100, text: titleLabel, BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: true, glowBulge: false)
-        lv1Butt     = Button(pos: lv1ButtR,     roundCorner: 150, text: lv1Lbl,     BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
-        lv2Butt     = Button(pos: lv2ButtR,     roundCorner: 150, text: lv2Lbl,     BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
-        lv3Butt     = Button(pos: lv3ButtR,     roundCorner: 150, text: lv3Lbl,     BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
-        lv4Butt     = Button(pos: lv4ButtR,     roundCorner: 150, text: lv4Lbl,     BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
+        backButt    = Button(pos: backButtR,    roundCorner: 100, text: backLbl,    BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
+        titleButt   = Button(pos: titleButtR,   roundCorner: 100, text: titleLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: true, glowBulge: false)
+        lv1Butt     = Button(pos: lv1ButtR,     roundCorner: 150, text: lv1Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
+        lv2Butt     = Button(pos: lv2ButtR,     roundCorner: 150, text: lv2Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
+        lv3Butt     = Button(pos: lv3ButtR,     roundCorner: 150, text: lv3Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
+        lv4Butt     = Button(pos: lv4ButtR,     roundCorner: 150, text: lv4Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         
         
         super.init(size: size)
@@ -82,13 +82,10 @@ class LevelScreen: SKScene
     
     override func didMoveToView(view: SKView)
     {
-        let shape2 = SKShapeNode()
-        let path2 = CGPathCreateMutable()
-        CGPathAddRect(path2, nil, playableRect)
-        shape2.path = path2
-        shape2.fillColor = SKColor.greenColor()
-        shape2.lineWidth = 35.0
-        addChild(shape2)
+        var background:SKSpriteNode
+        background = SKSpriteNode(imageNamed: "levelsBG")
+        background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
+        addChild(background)
         
         
         //BUTTON/Title

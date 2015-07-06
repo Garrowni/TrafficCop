@@ -88,22 +88,22 @@ class CreditsScreen: SKScene
         creditsSTR15 = "cars by Razeware LLC."
         creditsSTR16 = "Thanks For Playing!"
        
-        credits   = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR,   fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits2  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR2,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits3  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR3,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits4  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR4,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits5  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR5,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits6  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR6,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits7  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR7,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits8  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR8,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits9  = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR9,  fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits10 = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR10, fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits11 = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR11, fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits12 = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR12, fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits13 = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR13, fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits14 = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR14, fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits15 = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR15, fontSize: 70, font: "font2", color: "black",  align: "center")
-        credits16 = Text(pos: CGPoint(x: size.width/2, y:0),    says: creditsSTR16, fontSize: 70, font: "font2", color: "black",  align: "center")
+        credits   = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR,   fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits2  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR2,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits3  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR3,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits4  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR4,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits5  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR5,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits6  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR6,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits7  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR7,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits8  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR8,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits9  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR9,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits10 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR10, fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits11 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR11, fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits12 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR12, fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits13 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR13, fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits14 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR14, fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits15 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR15, fontSize: 70, font: "font2", color: "cyan",  align: "center")
+        credits16 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR16, fontSize: 70, font: "font2", color: "cyan",  align: "center")
         
 
         label1      = Text(pos: CGPoint(x: 0, y: 0),    says: "Back",        fontSize: 250, font: "font4", color: "green", align: "center")
@@ -125,7 +125,7 @@ class CreditsScreen: SKScene
         
         
         let scroll = SKAction.moveTo(CGPoint(x: size.width/2, y:size.height + 700), duration: 15)
-        let restart = SKAction.moveTo(CGPoint(x: size.width/2, y:0), duration: 0)
+        let restart = SKAction.moveTo(CGPoint(x: size.width/2, y:-40), duration: 0)
         let wait = SKAction.waitForDuration(1)
         let wait2 = SKAction.waitForDuration(5)
         let sequence = SKAction.sequence([scroll,restart])
@@ -179,13 +179,10 @@ class CreditsScreen: SKScene
     
     override func didMoveToView(view: SKView)
     {
-        let shape2 = SKShapeNode()
-        let path2 = CGPathCreateMutable()
-        CGPathAddRect(path2, nil, playableRect)
-        shape2.path = path2
-        shape2.fillColor = SKColor.greenColor()
-        shape2.lineWidth = 35.0
-        addChild(shape2)
+        var background:SKSpriteNode
+        background = SKSpriteNode(imageNamed: "Background2")
+        background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
+        addChild(background)
         
         
         addChild(credits.get())

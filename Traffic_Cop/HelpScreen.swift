@@ -89,22 +89,22 @@ class HelpScreen: SKScene
         helpSTR15 = ""
         helpSTR16 = ""
         
-        help   = Text(pos: CGPoint(x: size.width/2, y:size.height - 400),     says: helpSTR,   fontSize: 60, font: "font2", color: "black",  align: "center")
-        help2  = Text(pos: CGPoint(x: size.width/2, y:size.height - 500),     says: helpSTR2,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help3  = Text(pos: CGPoint(x: size.width/2, y:size.height - 600),     says: helpSTR3,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help4  = Text(pos: CGPoint(x: size.width/2, y:size.height - 700),     says: helpSTR4,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help5  = Text(pos: CGPoint(x: size.width/2, y:size.height - 800),     says: helpSTR5,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help6  = Text(pos: CGPoint(x: size.width/2, y:size.height - 900),     says: helpSTR6,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help7  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1000),    says: helpSTR7,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help8  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1100),    says: helpSTR8,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help9  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1200),    says: helpSTR9,  fontSize: 60, font: "font2", color: "black",  align: "center")
-        help10 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1300),    says: helpSTR10, fontSize: 60, font: "font2", color: "black",  align: "center")
-        help11 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1400),    says: helpSTR11, fontSize: 60, font: "font2", color: "black",  align: "center")
-        help12 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1500),    says: helpSTR12, fontSize: 60, font: "font2", color: "black",  align: "center")
-        help13 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1600),    says: helpSTR13, fontSize: 60, font: "font2", color: "black",  align: "center")
-        help14 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1700),    says: helpSTR14, fontSize: 60, font: "font2", color: "black",  align: "center")
-        help15 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1800),    says: helpSTR15, fontSize: 60, font: "font2", color: "black",  align: "center")
-        help16 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1900),    says: helpSTR16, fontSize: 60, font: "font2", color: "black",  align: "center")
+        help   = Text(pos: CGPoint(x: size.width/2, y:size.height - 400),     says: helpSTR,   fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help2  = Text(pos: CGPoint(x: size.width/2, y:size.height - 500),     says: helpSTR2,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help3  = Text(pos: CGPoint(x: size.width/2, y:size.height - 600),     says: helpSTR3,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help4  = Text(pos: CGPoint(x: size.width/2, y:size.height - 700),     says: helpSTR4,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help5  = Text(pos: CGPoint(x: size.width/2, y:size.height - 800),     says: helpSTR5,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help6  = Text(pos: CGPoint(x: size.width/2, y:size.height - 900),     says: helpSTR6,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help7  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1000),    says: helpSTR7,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help8  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1100),    says: helpSTR8,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help9  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1200),    says: helpSTR9,  fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help10 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1300),    says: helpSTR10, fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help11 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1400),    says: helpSTR11, fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help12 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1500),    says: helpSTR12, fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help13 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1600),    says: helpSTR13, fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help14 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1700),    says: helpSTR14, fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help15 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1800),    says: helpSTR15, fontSize: 60, font: "font2", color: "cyan",  align: "center")
+        help16 = Text(pos: CGPoint(x: size.width/2, y:size.height - 1900),    says: helpSTR16, fontSize: 60, font: "font2", color: "cyan",  align: "center")
         
         super.init(size: size)
     }
@@ -116,13 +116,10 @@ class HelpScreen: SKScene
     
     override func didMoveToView(view: SKView)
     {
-        let shape2 = SKShapeNode()
-        let path2 = CGPathCreateMutable()
-        CGPathAddRect(path2, nil, playableRect)
-        shape2.path = path2
-        shape2.fillColor = SKColor.greenColor()
-        shape2.lineWidth = 35.0
-        addChild(shape2)
+        var background:SKSpriteNode
+        background = SKSpriteNode(imageNamed: "Background2")
+        background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
+        addChild(background)
         
         
         addChild(help.get())

@@ -167,6 +167,10 @@
 		08D97CBA1B34FFB4002A2BDD /* PointSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB81B34FFB4002A2BDD /* PointSparks.sks */; };
 		08D9F3E71B29F8BB00FDA871 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F3E61B29F8BB00FDA871 /* Button.swift */; };
 		08D9F3E81B29F8C100FDA871 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F3E61B29F8BB00FDA871 /* Button.swift */; };
+		08DB99751B4B0A99000C0FF3 /* Background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DB99741B4B0A99000C0FF3 /* Background2.png */; };
+		08DB99761B4B0A99000C0FF3 /* Background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DB99741B4B0A99000C0FF3 /* Background2.png */; };
+		08DB99781B4B1603000C0FF3 /* levelsBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DB99771B4B1603000C0FF3 /* levelsBG.png */; };
+		08DB99791B4B1603000C0FF3 /* levelsBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DB99771B4B1603000C0FF3 /* levelsBG.png */; };
 		08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */; };
 		08E123D71B26689E00B2127F /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D61B26689E00B2127F /* MyUtils.swift */; };
 		08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
@@ -321,6 +325,8 @@
 		08D97CB51B34FDD5002A2BDD /* Exhaust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Exhaust.sks; sourceTree = "<group>"; };
 		08D97CB81B34FFB4002A2BDD /* PointSparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PointSparks.sks; sourceTree = "<group>"; };
 		08D9F3E61B29F8BB00FDA871 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		08DB99741B4B0A99000C0FF3 /* Background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background2.png; sourceTree = "<group>"; };
+		08DB99771B4B1603000C0FF3 /* levelsBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelsBG.png; sourceTree = "<group>"; };
 		08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMPLATESCREEN.swift; sourceTree = "<group>"; };
 		08E123D61B26689E00B2127F /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = Traffic_Cop/MyUtils.swift; sourceTree = "<group>"; };
 		08E123D81B266A2800B2127F /* MainMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScreen.swift; sourceTree = "<group>"; };
@@ -406,6 +412,8 @@
 		08D515A11B28CB8100E5289B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				08DB99771B4B1603000C0FF3 /* levelsBG.png */,
+				08DB99741B4B0A99000C0FF3 /* Background2.png */,
 				08E8DC431B471F44002667E8 /* carGuy.png */,
 				08E8DC401B46FA18002667E8 /* StarOutline.png */,
 				08E8DC3D1B46F9D6002667E8 /* SilverStar.png */,
@@ -908,6 +916,7 @@
 				08D710A91B445C6F00A285EE /* pickup_white.png in Resources */,
 				08D515E21B28CB8100E5289B /* bg_road_two_way_large.png in Resources */,
 				08D710AC1B445C7E00A285EE /* sedan_white.png in Resources */,
+				08DB99761B4B0A99000C0FF3 /* Background2.png in Resources */,
 				08D5161A1B28CB8100E5289B /* Ambulence2L.png in Resources */,
 				08D5160C1B28CB8100E5289B /* popo.png in Resources */,
 				08D515F21B28CB8100E5289B /* mad.png in Resources */,
@@ -984,6 +993,7 @@
 				08D515EE1B28CB8100E5289B /* LadyBaby.png in Resources */,
 				08E8DC451B471F44002667E8 /* carGuy.png in Resources */,
 				08D5161C1B28CB8100E5289B /* Ambulence2R.png in Resources */,
+				08DB99791B4B1603000C0FF3 /* levelsBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,6 +1013,7 @@
 				08D5162B1B28CB8100E5289B /* car_cop2.png in Resources */,
 				08D516251B28CB8100E5289B /* car_cop1.png in Resources */,
 				08D5163B1B28CB8100E5289B /* stoplight_2048.png in Resources */,
+				08DB99781B4B1603000C0FF3 /* levelsBG.png in Resources */,
 				08D516231B28CB8100E5289B /* car_cop.png in Resources */,
 				08D516271B28CB8100E5289B /* car_cop1L.png in Resources */,
 				08D74BEF1B290D4C00E1C8BA /* District.ttf in Resources */,
@@ -1058,6 +1069,7 @@
 				08D5161D1B28CB8100E5289B /* car_blue.png in Resources */,
 				08D515F11B28CB8100E5289B /* mad.png in Resources */,
 				08D74C0D1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */,
+				08DB99751B4B0A99000C0FF3 /* Background2.png in Resources */,
 				08D516431B28CB8100E5289B /* thought.png in Resources */,
 				08D5160F1B28CB8100E5289B /* single_red.png in Resources */,
 				08D74C031B290D4C00E1C8BA /* NEORS___.ttf in Resources */,
@@ -1374,7 +1386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1400,7 +1412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
