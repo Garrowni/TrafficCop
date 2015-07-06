@@ -146,17 +146,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         bronzeScoreStar!.name = "BronzeStar"
         bronzeScoreStar!.xScale = 0.25
         bronzeScoreStar!.yScale = 0.25
+        bronzeScoreStar!.zPosition = 7
         
         silverScoreStar = SKSpriteNode(imageNamed: "SilverStar")
         silverScoreStar!.name = "SilverStar"
         silverScoreStar!.xScale = 0.25
         silverScoreStar!.yScale = 0.25
+        silverScoreStar!.zPosition = 7
         
         goldScoreStar = SKSpriteNode(imageNamed: "GoldStar")
         goldScoreStar!.name = "GoldStar"
         goldScoreStar!.xScale = 0.25
         goldScoreStar!.yScale = 0.25
-        
+        goldScoreStar!.zPosition = 7
 
         bronzeScoreStar!.position = CGPoint(x: goalButt.label.position.x-65, y: goalButt.label.position.y-90)
         silverScoreStar!.position = CGPoint(x: goalButt.label.position.x, y: goalButt.label.position.y-90)
@@ -1101,6 +1103,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         bronzeScoreOutline!.position = CGPoint(x: goalButt.label.position.x-65, y: goalButt.label.position.y-90)
         silverScoreOutline!.position = CGPoint(x: goalButt.label.position.x, y: goalButt.label.position.y-90)
         goldScoreOutline!.position = CGPoint(x: goalButt.label.position.x+65, y: goalButt.label.position.y-90)
+        
+        
+        bronzeScoreOutline!.zPosition = 6
+        silverScoreOutline!.zPosition = 6
+        goldScoreOutline!.zPosition = 6
         
         addChild(bronzeScoreOutline!)
         addChild(silverScoreOutline!)
