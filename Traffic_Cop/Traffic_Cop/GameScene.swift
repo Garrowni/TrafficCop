@@ -1239,7 +1239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
         else
         {
-            levPassed = true
+            levPassed = false
             displayResults()
             addChild(notDonePopUp.getButtBG())
             addChild(notDonePopUp.getButtOL())
