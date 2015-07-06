@@ -313,56 +313,71 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func didBeginContact(contact:SKPhysicsContact)
     {
-        let car               = (contact.bodyA.categoryBitMask == PhysicsCategory.Car ? contact.bodyB : contact.bodyA)
-        let other2              = (contact.bodyB.categoryBitMask == PhysicsCategory.Car ? contact.bodyA : contact.bodyB)
-        let person              = (contact.bodyA.categoryBitMask == PhysicsCategory.Person ? contact.bodyB : contact.bodyA)
+        let other               = contact.bodyA
+        let other2              = contact.bodyB
+        
         let contactPoint        = contact.contactPoint
         let collisionImpulse    = contact.collisionImpulse
        
-        
-
-        
-        switch car.categoryBitMask
+        //TWO CARS CRASHED
+        if(other.categoryBitMask == PhysicsCategory.Car && other2.categoryBitMask == PhysicsCategory.Car)
         {
+            let Car = other.node as! CarSprite
+            let Car2 = other2.node as! CarSprite
             
-            case PhysicsCategory.Car:
-                let Car = car.node as! CarSprite
-                let Car2 = other2.node as! CarSprite
-                
-                if(Car._state != .CRASHED)
-                {
-                    numCrashes++
-                    addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
-
-                }
-                Car.crashed()
-                Car2.crashed()
+            if(Car._state != .CRASHED)
+            {
+                Car.crashed(false)
                 Car.removeAllActions()
-                Car2.removeAllActions()
-                explosion(contactPoint, force: collisionImpulse)
+                numCrashes++
+                addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
                 crashedCars.append(Car)
-                if(Car2._state != .CRASHED)
-                {
-                    crashedCars.append(Car2)
-                }
-                println("numCrashes = \(numCrashes)")
+            }
             
+            if(Car2._state != .CRASHED)
+            {
+                Car2.crashed(false)
+                Car2.removeAllActions()
+                crashedCars.append(Car2)
+            }
             
-            case PhysicsCategory.Person:
-                let Person = other2.node as! PeopleSprite
-                if(Person._state != .DEAD)
-                {
-                  Person._state = .DEAD
-                  numPeopleHit++
-                  addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
-                }
+            explosion(contactPoint, force: collisionImpulse)
+        }else if(other.categoryBitMask == PhysicsCategory.Car && other2.categoryBitMask == PhysicsCategory.Person)
+        {
+            let Car     = other.node as! CarSprite
+            let Person  = other2.node as! PeopleSprite
             
+            Car.crashed(true) //HIT PERSON
+            Car.removeAllActions()
+
+            if(Person._state != .DEAD)
+            {
+                Person._state = .DEAD
+                numPeopleHit++
+                addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
                 hitPeople.append(Person)
+            }
+
             
-            default: break;
+            
+        }else if(other.categoryBitMask == PhysicsCategory.Person && other2.categoryBitMask == PhysicsCategory.Car)
+        {
+            let Car     = other2.node as! CarSprite
+            let Person  = other.node as! PeopleSprite
+            
+            Car.crashed(true) //HIT PERSON
+            Car.removeAllActions()
+            
+            if(Person._state != .DEAD)
+            {
+                Person._state = .DEAD
+                numPeopleHit++
+                addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
+                hitPeople.append(Person)
+            }
         }
-        
-        
+
+  
     }
     
     func didEndContact(contact:SKPhysicsContact)

@@ -691,7 +691,7 @@ class CarSprite : SKSpriteNode
 
     }
     
-    func crashed()
+    func crashed(person: Bool)
     {
         
         if(self._state.hashValue != 4)
@@ -705,11 +705,13 @@ class CarSprite : SKSpriteNode
             }
             if(!hasFire)
             {
-                
-                var rand = Int.randomNumberFrom(1...10)
-                if (rand > 6) {addChild(fireEmitter)}else{addChild(fireSmokeEmitter)}
-                fireSmokeEmitter.particleZPosition = 3
-                fireEmitter.particleZPosition = 4
+                if(!person)
+                {
+                    var rand = Int.randomNumberFrom(1...10)
+                    if (rand > 6) {addChild(fireEmitter)}else{addChild(fireSmokeEmitter)}
+                    fireSmokeEmitter.particleZPosition = 3
+                    fireEmitter.particleZPosition = 4
+                }
             }
         }
         self._state = .CRASHED
