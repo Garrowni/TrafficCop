@@ -57,6 +57,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var currentScore: Int = 0
     var goalScore   : Int = 0
     var peopleStop  : Int = 0
+    var bronzeOutline : SKSpriteNode?
+    var silverOutline : SKSpriteNode?
+    var goldOutline   : SKSpriteNode?
+    var bronzeStar    : SKSpriteNode?
+    var silverStar    : SKSpriteNode?
+    var goldStar      : SKSpriteNode?
     
     var path            = CGPathCreateMutable()
     var spawnAction     = SKAction()
@@ -101,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pausedOn        = false
         deSelecting     = false
         levPassed       = false
-        clock           = Clock(playableR: playableRect, countFrom: 45)
+        clock           = Clock(playableR: playableRect, countFrom: 10)
         
         var pauseLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "ll",              fontSize: 70,   font: "font2", color: "green",  align: "center")
         var pausedLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Paused",          fontSize: 300,  font: "font2", color: "green",  align: "center")
@@ -292,6 +298,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             updatePeople()
             updatePoints()
             updateSkids()
+            
+
         }
         
     }
@@ -1106,9 +1114,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         if(currentScore >= goalScore)
         {
+            levPassed = true
             displayResults()
             fireWorksGo()
-            levPassed = true
             addChild(levDonePopUp.getButtBG())
             addChild(levDonePopUp.getButtOL())
             addChild(levDonePopUp.getLabel())
@@ -1127,8 +1135,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
         else
         {
+            levPassed = true
             displayResults()
-            levPassed = false
             addChild(notDonePopUp.getButtBG())
             addChild(notDonePopUp.getButtOL())
             addChild(notDonePopUp.getLabel())
@@ -1318,15 +1326,60 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func displayResults()
     {
+
+        
+        bronzeOutline = SKSpriteNode(imageNamed: "StarOutline")
+        silverOutline = SKSpriteNode(imageNamed: "StarOutline")
+        goldOutline = SKSpriteNode(imageNamed : "StarOutline")
+        
+        bronzeOutline!.position = CGPoint(x: self.size.width/2-300, y: self.size.height/2+285)
+        silverOutline!.position = CGPoint(x: self.size.width/2+300, y: self.size.height/2+285)
+        goldOutline!.position = CGPoint(x: self.size.width/2, y: self.size.height/2+350)
+        
+        let bronzeMove = SKAction.moveToX(bronzeOutline!.position.x, duration: 1.2)
+        let bronzeRotate = SKAction.repeatAction(SKAction.rotateByAngle(pie, duration: 0.6), count: 2)
+        let silverMove = SKAction.moveToX(silverOutline!.position.x, duration: 2.4)
+        let silverRotate = SKAction.repeatAction(SKAction.rotateByAngle(pie, duration: 0.6), count: 4)
+        let goldMove = SKAction.moveToX(goldOutline!.position.x, duration: 1.8)
+        let goldRotate = SKAction.repeatAction(SKAction.rotateByAngle(pie, duration: 0.9), count: 2)
         
         
+        bronzeStar = SKSpriteNode(imageNamed: "BronzeStar")
+        silverStar = SKSpriteNode(imageNamed: "SilverStar")
+        goldStar = SKSpriteNode(imageNamed: "GoldStar")
         
+        
+        bronzeOutline!.position = CGPoint(x: self.size.width/2-300, y: self.size.height/2+285)
+        silverOutline!.position = CGPoint(x: self.size.width/2+300, y: self.size.height/2+285)
+        goldOutline!.position = CGPoint(x: self.size.width/2, y: self.size.height/2+350)
+        if(levPassed)
+        {
+            bronzeStar!.position = CGPoint(x:-200, y:self.size.height/2+285)
+            bronzeStar!.runAction(bronzeRotate)
+            bronzeStar!.runAction(bronzeMove)
+            silverStar!.position = CGPoint(x:-200, y:self.size.height/2+285)
+            silverStar!.runAction(silverRotate)
+            silverStar!.runAction(silverMove)
+            goldStar!.position = CGPoint(x: -200, y: self.size.height/2+350)
+            goldStar!.runAction(goldRotate)
+            goldStar!.runAction(goldMove)
+  
+            
+
+        }
         
         results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "Results:",                                       fontSize: 50, font: "font3", color: "white", align: "left")
         crashNum    = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 160), says: "Crashes:  \(numCrashes)",                        fontSize: 50, font: "font3", color: "white", align: "left")
         peopleHit   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 220), says: "Hit People:  \(numPeopleHit)",                   fontSize: 50, font: "font3", color: "white", align: "left")
         totPoints   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 280), says: "Total Points:  \(currentScore)",                 fontSize: 50, font: "font3", color: "white", align: "left")
         pointsLost  = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 340), says: "Total Points Lost:  \(abs(totalPointsLost))",    fontSize: 50, font: "font3", color: "white", align: "left")
+        
+        bronzeOutline!.zPosition = 100
+        silverOutline!.zPosition = 100
+        goldOutline!.zPosition = 100
+        bronzeStar!.zPosition = 100
+        silverStar!.zPosition = 100
+        goldStar!.zPosition = 100
         
         results!.get().zPosition     = 100
         crashNum!.get().zPosition    = 100
@@ -1341,7 +1394,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pointsLost!.get().alpha  = CGFloat(0.0)
         
         
-        
+        addChild(bronzeOutline!)
+        addChild(silverOutline!)
+        addChild(goldOutline!)
+        addChild(bronzeStar!)
+        addChild(silverStar!)
+        addChild(goldStar!)
         addChild(results!.get())
         addChild(crashNum!.get())
         addChild(peopleHit!.get())
