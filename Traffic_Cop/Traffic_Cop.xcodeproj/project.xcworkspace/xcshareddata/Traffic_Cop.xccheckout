@@ -14,7 +14,7 @@
 		<string>https://github.com/Garrowni/TrafficCop.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Traffic_Cop/Traffic_Cop.xcodeproj</string>
+	<string>Traffic_Cop/Traffic_Cop.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B1B571B8437DB11A19643F1B1E65DD17B975D8CA</key>
