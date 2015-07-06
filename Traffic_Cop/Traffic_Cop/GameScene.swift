@@ -55,7 +55,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var chooseRoads : [Road]
     var currentLevel: Int = 0
     var currentScore: Int = 0
-    var goalScore   : Int = 0
     var peopleStop  : Int = 0
     var bronzeOutline : SKSpriteNode?
     var silverOutline : SKSpriteNode?
@@ -64,6 +63,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var silverStar    : SKSpriteNode?
     var goldStar      : SKSpriteNode?
     
+    var bronzeScoreOutline : SKSpriteNode?
+    var silverScoreOutline : SKSpriteNode?
+    var goldScoreOutline   : SKSpriteNode?
+    var bronzeScoreStar    : SKSpriteNode?
+    var silverScoreStar    : SKSpriteNode?
+    var goldScoreStar      : SKSpriteNode?
+    
+    var bronzeScore   : Int?
+    var silverScore   : Int?
+    var goldScore     : Int?
     var path            = CGPathCreateMutable()
     var spawnAction     = SKAction()
     var spawnAction2    = SKAction()
@@ -107,7 +116,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pausedOn        = false
         deSelecting     = false
         levPassed       = false
-        clock           = Clock(playableR: playableRect, countFrom: 10)
+        clock           = Clock(playableR: playableRect, countFrom: 50)
+        
+        
         
         var pauseLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "ll",              fontSize: 70,   font: "font2", color: "green",  align: "center")
         var pausedLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Paused",          fontSize: 300,  font: "font2", color: "green",  align: "center")
@@ -131,9 +142,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
         retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         
-
+        bronzeScoreStar = SKSpriteNode(imageNamed: "BronzeStar")
+        bronzeScoreStar!.name = "BronzeStar"
+        bronzeScoreStar!.xScale = 0.25
+        bronzeScoreStar!.yScale = 0.25
+        
+        silverScoreStar = SKSpriteNode(imageNamed: "SilverStar")
+        silverScoreStar!.name = "SilverStar"
+        silverScoreStar!.xScale = 0.25
+        silverScoreStar!.yScale = 0.25
+        
+        goldScoreStar = SKSpriteNode(imageNamed: "GoldStar")
+        goldScoreStar!.name = "GoldStar"
+        goldScoreStar!.xScale = 0.25
+        goldScoreStar!.yScale = 0.25
         
 
+        bronzeScoreStar!.position = CGPoint(x: goalButt.label.position.x-65, y: goalButt.label.position.y-90)
+        silverScoreStar!.position = CGPoint(x: goalButt.label.position.x, y: goalButt.label.position.y-90)
+        goldScoreStar!.position = CGPoint(x: goalButt.label.position.x+65, y: goalButt.label.position.y-90)
+
+        
         super.init(size: size)
         scene?.scaleMode = .AspectFit
         self.name = "The-Game-Scene"
@@ -141,7 +170,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         self.physicsWorld.gravity = CGVector.zeroVector
         physicsWorld.contactDelegate = self
         
-        updateScore()
+
+        
+        
         
         
         //SET ACTIONS
@@ -169,7 +200,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     override func didMoveToView(view: SKView)
     {
          startGame()
-        
+         updateScore()
 
         //WAIT 1 SEC BEFORE STARTING UP THE SPAWN ACTIONS
         let transition = SKAction.runBlock()
@@ -209,6 +240,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         scoreButt.getButtBG().zPosition = 100
         scoreButt.getButtOL().zPosition = 100
         scoreButt.getLabel().zPosition = 100
+        
         
         addChild(clock.clockButt.getButtBG())
         addChild(clock.clockButt.getButtOL())
@@ -292,6 +324,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         //UPDATE ALL OUR STUFFS HERE
         
+      
         if(!pausedOn)
         {
             updateVehicles()
@@ -1040,17 +1073,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         switch(currentLevel)
         {
-        case 1: tileMap = JSTileMap(named: "level1v2.tmx"); goalScore = 100; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
-        case 2: tileMap = JSTileMap(named: "level2v2.tmx"); goalScore = 500; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
-        case 3: tileMap = JSTileMap(named: "level3v2.tmx"); goalScore = 800; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
-        case 4: tileMap = JSTileMap(named: "level4v2.tmx"); goalScore = 1000; goalStr += String(goalScore); goalButt.getLabel().text = goalStr;
-        default: tileMap = JSTileMap(named: "level1v2.tmx"); println("error in the level assigning !"); goalScore = 1000;
+        case 1: tileMap = JSTileMap(named: "level1v2.tmx"); bronzeScore = 50; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 100; goldScore = 150;
+        case 2: tileMap = JSTileMap(named: "level2v2.tmx"); bronzeScore = 200; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 250; goldScore = 350;
+        case 3: tileMap = JSTileMap(named: "level3v2.tmx"); bronzeScore = 500; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 600; goldScore = 700;
+        case 4: tileMap = JSTileMap(named: "level4v2.tmx"); bronzeScore = 850; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 950; goldScore = 1050;
+        default: tileMap = JSTileMap(named: "level1v2.tmx"); println("error in the level assigning !"); bronzeScore = 1000;
         }
         
         if tileMap != nil
         {
             self.addChild(tileMap!)
         }
+        
+        bronzeScoreOutline = SKSpriteNode(imageNamed: "StarOutline")
+        bronzeScoreOutline!.xScale = 0.25
+        bronzeScoreOutline!.yScale = 0.25
+        
+        silverScoreOutline = SKSpriteNode(imageNamed: "StarOutline")
+        silverScoreOutline!.xScale = 0.25
+        silverScoreOutline!.yScale = 0.25
+        
+
+        goldScoreOutline = SKSpriteNode(imageNamed: "StarOutline")
+        goldScoreOutline!.xScale = 0.25
+        goldScoreOutline!.yScale = 0.25
+        
+        bronzeScoreOutline!.position = CGPoint(x: goalButt.label.position.x-65, y: goalButt.label.position.y-90)
+        silverScoreOutline!.position = CGPoint(x: goalButt.label.position.x, y: goalButt.label.position.y-90)
+        goldScoreOutline!.position = CGPoint(x: goalButt.label.position.x+65, y: goalButt.label.position.y-90)
+        
+        addChild(bronzeScoreOutline!)
+        addChild(silverScoreOutline!)
+        addChild(goldScoreOutline!)
         
         roadArray       = map!.getRoads()
         spawnsArray     = map!.getSpawns()
@@ -1099,11 +1153,61 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             currentScore = 0
             //LOSE GAME HERE
         }
-        
+
         var scoreStr = "Score: "
         scoreStr += String(currentScore)
         scoreButt.getLabel().text.removeAll(keepCapacity: false)
         scoreButt.getLabel().text = scoreStr
+        
+        let sequence = SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.2),SKAction.waitForDuration(0.2), SKAction.scaleTo(0.25, duration: 0.2)])
+        let removeSequence = SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.2),SKAction.waitForDuration(0.2),SKAction.scaleTo(0, duration: 0.2)])
+        if(currentScore >= bronzeScore! && currentScore < silverScore!)
+        {
+           goalButt.label.text = "Goal: \(silverScore!)"
+            if(bronzeScoreStar!.parent == nil)
+            {
+                
+                addChild(bronzeScoreStar!)
+                bronzeScoreStar!.runAction(sequence)
+            }
+            if(silverScoreStar!.parent != nil)
+            {
+                silverScoreStar!.runAction(removeSequence, completion: {self.silverScoreStar!.removeFromParent()})
+                
+            }
+            
+        }
+        else if(currentScore >= silverScore! && currentScore < goldScore!)
+        {
+            goalButt.label.text = "Goal: \(goldScore!)"
+            if(silverScoreStar!.parent == nil)
+            {
+                addChild(silverScoreStar!)
+                silverScoreStar!.runAction(sequence)
+            }
+            if(goldScoreStar!.parent != nil)
+            {
+                goldScoreStar!.runAction(removeSequence, completion: {self.goldScoreStar!.removeFromParent()})
+                
+            }
+        }
+        else if(currentScore >= goldScore!)
+        {
+            if(goldScoreStar!.parent == nil)
+            {
+                addChild(goldScoreStar!)
+                bronzeScoreStar!.runAction(sequence)
+            }
+        }
+        else
+        {
+            goalButt.label.text = "Goal: \(bronzeScore!)"
+            if(bronzeScoreStar!.parent != nil)
+            {
+                bronzeScoreStar!.runAction(removeSequence, completion: {self.bronzeScoreStar!.removeFromParent()})
+               
+            }
+        }
     }
     
     func levelDone()
@@ -1112,7 +1216,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         for cars in vehicleArray{cars.paused = true}
         
-        if(currentScore >= goalScore)
+        if(currentScore >= bronzeScore)
         {
             levPassed = true
             displayResults()
