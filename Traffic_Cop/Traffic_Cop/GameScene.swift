@@ -116,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pausedOn        = false
         deSelecting     = false
         levPassed       = false
-        clock           = Clock(playableR: playableRect, countFrom: 50)
+        clock           = Clock(playableR: playableRect, countFrom: 30)
         
         
         
@@ -1465,15 +1465,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         goldOutline!.position = CGPoint(x: self.size.width/2, y: self.size.height/2+350)
         if(levPassed)
         {
-            bronzeStar!.position = CGPoint(x:-200, y:self.size.height/2+285)
-            bronzeStar!.runAction(bronzeRotate)
-            bronzeStar!.runAction(bronzeMove)
-            silverStar!.position = CGPoint(x:-200, y:self.size.height/2+285)
-            silverStar!.runAction(silverRotate)
-            silverStar!.runAction(silverMove)
-            goldStar!.position = CGPoint(x: -200, y: self.size.height/2+350)
-            goldStar!.runAction(goldRotate)
-            goldStar!.runAction(goldMove)
+            if(currentScore >= bronzeScore)
+            {
+                bronzeStar!.position = CGPoint(x:-200, y:self.size.height/2+285)
+                bronzeStar!.runAction(bronzeRotate)
+                bronzeStar!.runAction(bronzeMove)
+                addChild(bronzeStar!)
+            }
+            if(currentScore >= silverScore)
+            {
+                silverStar!.position = CGPoint(x:-200, y:self.size.height/2+285)
+                silverStar!.runAction(silverRotate)
+                silverStar!.runAction(silverMove)
+                addChild(silverStar!)
+            }
+            if(currentScore >= goldScore)
+            {
+                goldStar!.position = CGPoint(x: -200, y: self.size.height/2+350)
+                goldStar!.runAction(goldRotate)
+                goldStar!.runAction(goldMove)
+                addChild(goldStar!)
+            }
   
             
 
@@ -1508,9 +1520,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         addChild(bronzeOutline!)
         addChild(silverOutline!)
         addChild(goldOutline!)
-        addChild(bronzeStar!)
-        addChild(silverStar!)
-        addChild(goldStar!)
+       
+        
         addChild(results!.get())
         addChild(crashNum!.get())
         addChild(peopleHit!.get())
