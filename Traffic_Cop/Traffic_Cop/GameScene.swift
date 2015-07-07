@@ -646,6 +646,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         let transSequence = SKAction.sequence([transition,wait,block])
         self.runAction(transSequence)
         
+       
         
     }
     

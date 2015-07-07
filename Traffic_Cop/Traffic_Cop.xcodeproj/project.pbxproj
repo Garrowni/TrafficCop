@@ -157,6 +157,10 @@
 		08D8875C1B321454007B860F /* level1v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D887591B321454007B860F /* level1v2.tmx */; };
 		08D8875D1B321454007B860F /* level3v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D8875A1B321454007B860F /* level3v2.tmx */; };
 		08D8875E1B321454007B860F /* level3v2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 08D8875A1B321454007B860F /* level3v2.tmx */; };
+		08D8E5F21B4C44A700771C23 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08D8E5F01B4C44A700771C23 /* CoreData.xcdatamodeld */; };
+		08D8E5F31B4C44A700771C23 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08D8E5F01B4C44A700771C23 /* CoreData.xcdatamodeld */; };
+		08D8E6011B4C64F200771C23 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8E6001B4C64F200771C23 /* CoreData.swift */; };
+		08D8E6021B4C64F200771C23 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8E6001B4C64F200771C23 /* CoreData.swift */; };
 		08D971091B2B44F100F44180 /* LevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D971081B2B44F100F44180 /* LevelScreen.swift */; };
 		08D9710A1B2B44F100F44180 /* LevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D971081B2B44F100F44180 /* LevelScreen.swift */; };
 		08D97CB31B34FAD6002A2BDD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 08D97CB01B34FAD6002A2BDD /* spark.png */; };
@@ -322,6 +326,8 @@
 		08D74BE81B290D4C00E1C8BA /* RADIOLANDSLIM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RADIOLANDSLIM.ttf; sourceTree = "<group>"; };
 		08D887591B321454007B860F /* level1v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level1v2.tmx; sourceTree = "<group>"; };
 		08D8875A1B321454007B860F /* level3v2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level3v2.tmx; sourceTree = "<group>"; };
+		08D8E5F11B4C44A700771C23 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		08D8E6001B4C64F200771C23 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		08D971081B2B44F100F44180 /* LevelScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelScreen.swift; sourceTree = "<group>"; };
 		08D97CB01B34FAD6002A2BDD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		08D97CB51B34FDD5002A2BDD /* Exhaust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Exhaust.sks; sourceTree = "<group>"; };
@@ -696,6 +702,8 @@
 		08FC6D671B28895E004F4824 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				08D8E6001B4C64F200771C23 /* CoreData.swift */,
+				08D8E5F01B4C44A700771C23 /* CoreData.xcdatamodeld */,
 				080168E01B3B972C00424A67 /* Types.swift */,
 				7DD850741B28ADEB00C47FD7 /* TrafficCop-Bridging-Header.h */,
 				7DE146661B223F4F005DB874 /* CarSprite.swift */,
@@ -1122,6 +1130,7 @@
 				08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */,
 				08EB81BE1B33B22300E22D82 /* pointsPopUp.swift in Sources */,
 				080168E21B3B972C00424A67 /* Types.swift in Sources */,
+				08D8E6021B4C64F200771C23 /* CoreData.swift in Sources */,
 				05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */,
 				05E0007A1B3338B6008F60E5 /* Feels.swift in Sources */,
 				08E3B3431B2FBB0D0074DC3E /* Clock.swift in Sources */,
@@ -1138,6 +1147,7 @@
 				08C464FF1B2F25A600DC56F8 /* GlowCircle.swift in Sources */,
 				08C464FC1B2F0F7900DC56F8 /* GlowBox.swift in Sources */,
 				08D515A01B28C49400E5289B /* DrawText.swift in Sources */,
+				08D8E5F31B4C44A700771C23 /* CoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1155,6 +1165,7 @@
 			files = (
 				08D5159A1B28BAB200E5289B /* DrawText.swift in Sources */,
 				7DE146471B223E95005DB874 /* GameScene.swift in Sources */,
+				08D8E5F21B4C44A700771C23 /* CoreData.xcdatamodeld in Sources */,
 				08C464F51B2CCA1300DC56F8 /* Map.swift in Sources */,
 				080168E11B3B972C00424A67 /* Types.swift in Sources */,
 				08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */,
@@ -1166,6 +1177,7 @@
 				08E123DE1B266C8700B2127F /* CreditsScreen.swift in Sources */,
 				08E123D71B26689E00B2127F /* MyUtils.swift in Sources */,
 				08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */,
+				08D8E6011B4C64F200771C23 /* CoreData.swift in Sources */,
 				05E39ADD1B31DE7300D0F164 /* peopleSprite.swift in Sources */,
 				08E123DB1B266A7300B2127F /* HelpScreen.swift in Sources */,
 				08EB81BD1B33B22300E22D82 /* pointsPopUp.swift in Sources */,
@@ -1521,6 +1533,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		08D8E5F01B4C44A700771C23 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				08D8E5F11B4C44A700771C23 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 08D8E5F11B4C44A700771C23 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7DE146351B223E95005DB874 /* Project object */;
 }
