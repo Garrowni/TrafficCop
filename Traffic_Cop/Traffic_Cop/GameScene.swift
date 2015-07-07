@@ -1253,6 +1253,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 map!.highScore = currentScore
             }
             
+            switch(currentLevel)
+            {
+            case 1:
+                lev2 = true
+            case 2:
+                lev3 = true
+            case 3:
+                lev4 = true
+            case 4:
+                lev4 = true
+            default:
+                println("no level")
+            }
+            
         }
         else
         {
@@ -1491,8 +1505,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 goldStar!.runAction(goldMove)
                 addChild(goldStar!)
             }
-  
-            
 
         }
         
@@ -1623,7 +1635,7 @@ class Skid
             self.FLeftSkidPath.path = self.FLeftTirePath
             self.FRightSkidPath.path = self.FRightTirePath
             self.BRightSkidPath.path = self.BRightTirePath
-           self.BLeftSkidPath.path = self.BLeftTirePath
+            self.BLeftSkidPath.path = self.BLeftTirePath
         
         }
         var updateSequence = SKAction.sequence([updateLines, updateWait])
