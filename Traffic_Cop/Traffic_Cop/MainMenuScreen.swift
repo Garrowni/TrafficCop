@@ -85,6 +85,8 @@ class MainMenuScreen: SKScene
     override func didMoveToView(view: SKView)
     {
         var background:SKSpriteNode
+        playBackgroundMusic("Sunshine A.mp3")
+
         background = SKSpriteNode(imageNamed: "MainMenu")
         background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
         
@@ -184,6 +186,7 @@ class MainMenuScreen: SKScene
     //TRANSITION
     func goToGame()
     {
+    
         let transition = SKAction.group([SKAction.runBlock(){
             self.playButt.zoomOUT()
             self.titlButt.FadeAway()

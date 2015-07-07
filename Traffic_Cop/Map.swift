@@ -18,7 +18,7 @@ class Map
     var roadArray       : [Road]
 	var crossWArray     : [Crosswalk]
     var cornerArray     : [Corner]
-    
+    var highScore       : Int?
     
     
     //LEVEL1 SPAWNS/ROAD CHOICES

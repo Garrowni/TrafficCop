@@ -201,6 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     //******************************************SCENE INITIALIZATION******************************
     override func didMoveToView(view: SKView)
     {
+        
          startGame()
          updateScore()
 
@@ -1143,7 +1144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             gotoPoints.append(GlowCircle(pos: road.gotoPoint, radius: 20, OLcolor: "blue", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
-        
+         
     }
     
     class func level(levelNum: Int) -> GameScene?
@@ -1220,6 +1221,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func levelDone()
     {
+        
+        backgroundMusicPlayer.stop()
+        
+
         deSelectCars()
         
         for cars in vehicleArray{cars.paused = true}
@@ -1243,6 +1248,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             nextLevButt.zoomIN()
             levDonePopUp.zoomIN()
             quitButt.zoomIN()
+            
+            if(currentScore > map!.highScore)
+            {
+                map!.highScore = currentScore
+            }
+            
+            switch(currentLevel)
+            {
+            case 1:
+                lev2 = true
+            case 2:
+                lev3 = true
+            case 3:
+                lev4 = true
+            case 4:
+                lev4 = true
+            default:
+                println("no level")
+            }
             
         }
         else
@@ -1438,8 +1462,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func displayResults()
     {
-
-        
         bronzeOutline = SKSpriteNode(imageNamed: "StarOutline")
         silverOutline = SKSpriteNode(imageNamed: "StarOutline")
         goldOutline = SKSpriteNode(imageNamed : "StarOutline")
@@ -1461,9 +1483,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         goldStar = SKSpriteNode(imageNamed: "GoldStar")
         
         
-        bronzeOutline!.position = CGPoint(x: self.size.width/2-300, y: self.size.height/2+285)
-        silverOutline!.position = CGPoint(x: self.size.width/2+300, y: self.size.height/2+285)
-        goldOutline!.position = CGPoint(x: self.size.width/2, y: self.size.height/2+350)
         if(levPassed)
         {
             if(currentScore >= bronzeScore)
@@ -1487,8 +1506,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 goldStar!.runAction(goldMove)
                 addChild(goldStar!)
             }
-  
-            
 
         }
         
@@ -1619,7 +1636,7 @@ class Skid
             self.FLeftSkidPath.path = self.FLeftTirePath
             self.FRightSkidPath.path = self.FRightTirePath
             self.BRightSkidPath.path = self.BRightTirePath
-           self.BLeftSkidPath.path = self.BLeftTirePath
+            self.BLeftSkidPath.path = self.BLeftTirePath
         
         }
         var updateSequence = SKAction.sequence([updateLines, updateWait])

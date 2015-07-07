@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
-import Foundation
 
 import Foundation
 import SpriteKit
@@ -27,18 +26,24 @@ class LevelScreen: SKScene
     let lv1Butt         : Button
     let lv1ButtR        : CGRect
     
+    
     let lv2Lbl          : Text
     let lv2Butt         : Button
     let lv2ButtR        : CGRect
+
+    var lv2Lock         : SKSpriteNode = SKSpriteNode(imageNamed: "PadLockLocked")
     
     let lv3Lbl          : Text
     let lv3Butt         : Button
     let lv3ButtR        : CGRect
+  
+    var lv3Lock         : SKSpriteNode = SKSpriteNode(imageNamed: "PadLockLocked")
     
     let lv4Lbl          : Text
     let lv4Butt         : Button
     let lv4ButtR        : CGRect
-    
+ 
+    var lv4Lock         : SKSpriteNode = SKSpriteNode(imageNamed: "PadLockLocked")
     
     override init(size: CGSize)
     {
@@ -87,6 +92,41 @@ class LevelScreen: SKScene
         background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
         addChild(background)
         
+        lv2Lock.position = lv2Butt.label.position
+        lv3Lock.position = lv3Butt.label.position
+        lv4Lock.position = lv4Butt.label.position
+        
+        lv2Lock.zPosition = 10
+        lv3Lock.zPosition = 10
+        lv4Lock.zPosition = 10
+        
+       
+        if(!lev2)
+        {
+            addChild(lv2Lock)
+        }
+        else
+        {
+            lv2Lock.removeFromParent()
+        }
+        
+        if(!lev3)
+        {
+            addChild(lv3Lock)
+        }
+        else
+        {
+            lv3Lock.removeFromParent()
+        }
+        
+        if(!lev4)
+        {
+            addChild(lv4Lock)
+        }
+        else
+        {
+            lv4Lock.removeFromParent()
+        }
         
         //BUTTON/Title
         addChild(titleButt.getButtBG())
@@ -125,9 +165,9 @@ class LevelScreen: SKScene
         let location = touch.locationInNode(self)
         if(backButtR.contains(location)){goToGame(0)}
         if(lv1ButtR.contains(location)){goToGame(1)}
-        if(lv2ButtR.contains(location)){goToGame(2)}
-        if(lv3ButtR.contains(location)){goToGame(3)}
-        if(lv4ButtR.contains(location)){goToGame(4)}
+        if(lv2ButtR.contains(location) && lev2){goToGame(2)}
+        if(lv3ButtR.contains(location) && lev3){goToGame(3)}
+        if(lv4ButtR.contains(location) && lev4){goToGame(4)}
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
@@ -154,9 +194,11 @@ class LevelScreen: SKScene
     
     //TRANSITION
     func goToGame(lvl: Int)
-    {
-        var transition = SKAction()
+    {  backgroundMusicPlayer.stop()
         
+        
+        var transition = SKAction()
+        playBackgroundMusic("Life of Riley.mp3")
         switch(lvl)
         {
         case 0:
@@ -204,10 +246,24 @@ class LevelScreen: SKScene
                 self.lv3Butt.FadeAway()
                 self.lv4Butt.zoomOUT()
                 }])
+            
+            
         default: transition = SKAction.group([SKAction.runBlock(){println("big boo boo!")}])
 
         }
-    
+        if(lv2Lock.parent != nil)
+        {
+            lv2Lock.removeFromParent()
+        }
+        if(lv3Lock.parent != nil)
+        {
+            lv3Lock.removeFromParent()
+        }
+        if(lv4Lock.parent != nil)
+        {
+            lv4Lock.removeFromParent()
+        }
+        
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock
         {
