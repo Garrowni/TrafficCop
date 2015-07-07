@@ -1142,7 +1142,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             gotoPoints.append(GlowCircle(pos: road.gotoPoint, radius: 20, OLcolor: "blue", OLSize: 4, glowWidth: 30, ZoomIn: true, glowBulge: true, alpha: CGFloat(0.5)))
         }
-        
+         
     }
     
     class func level(levelNum: Int) -> GameScene?
@@ -1242,6 +1242,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             nextLevButt.zoomIN()
             levDonePopUp.zoomIN()
             quitButt.zoomIN()
+            
+            if(currentScore > map!.highScore)
+            {
+                map!.highScore = currentScore
+            }
             
         }
         else
@@ -1460,9 +1465,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         goldStar = SKSpriteNode(imageNamed: "GoldStar")
         
         
-        bronzeOutline!.position = CGPoint(x: self.size.width/2-300, y: self.size.height/2+285)
-        silverOutline!.position = CGPoint(x: self.size.width/2+300, y: self.size.height/2+285)
-        goldOutline!.position = CGPoint(x: self.size.width/2, y: self.size.height/2+350)
         if(levPassed)
         {
             if(currentScore >= bronzeScore)
