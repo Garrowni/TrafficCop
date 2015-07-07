@@ -201,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     //******************************************SCENE INITIALIZATION******************************
     override func didMoveToView(view: SKView)
     {
-         playBackgroundMusic("Life of Riley.mp3")
+        
          startGame()
          updateScore()
 

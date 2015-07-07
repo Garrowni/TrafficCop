@@ -194,9 +194,11 @@ class LevelScreen: SKScene
     
     //TRANSITION
     func goToGame(lvl: Int)
-    {
+    {  backgroundMusicPlayer.stop()
+        
+        
         var transition = SKAction()
-         backgroundMusicPlayer.stop()
+        playBackgroundMusic("Life of Riley.mp3")
         switch(lvl)
         {
         case 0:
