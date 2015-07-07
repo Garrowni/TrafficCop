@@ -180,6 +180,8 @@
 		08E229A91B41CE26003EBDA1 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E229A71B41CE26003EBDA1 /* Arrow.png */; };
 		08E3B3421B2FBB0D0074DC3E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3B3411B2FBB0C0074DC3E /* Clock.swift */; };
 		08E3B3431B2FBB0D0074DC3E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3B3411B2FBB0C0074DC3E /* Clock.swift */; };
+		08E5F2C01B4C208000664121 /* fireHydrant.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E5F2BF1B4C208000664121 /* fireHydrant.png */; };
+		08E5F2C11B4C208000664121 /* fireHydrant.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E5F2BF1B4C208000664121 /* fireHydrant.png */; };
 		08E7B6991B389D5D00F32693 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6981B389D5D00F32693 /* Explosion.sks */; };
 		08E7B69A1B389D5D00F32693 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B6981B389D5D00F32693 /* Explosion.sks */; };
 		08E7B69C1B38A08100F32693 /* FireWork1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08E7B69B1B38A08100F32693 /* FireWork1.sks */; };
@@ -334,6 +336,7 @@
 		08E123DD1B266C8700B2127F /* CreditsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScreen.swift; sourceTree = "<group>"; };
 		08E229A71B41CE26003EBDA1 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
 		08E3B3411B2FBB0C0074DC3E /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		08E5F2BF1B4C208000664121 /* fireHydrant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fireHydrant.png; sourceTree = "<group>"; };
 		08E7B6981B389D5D00F32693 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		08E7B69B1B38A08100F32693 /* FireWork1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireWork1.sks; sourceTree = "<group>"; };
 		08E7B6A41B38A22B00F32693 /* FireWork2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireWork2.sks; sourceTree = "<group>"; };
@@ -412,6 +415,7 @@
 		08D515A11B28CB8100E5289B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				08E5F2BF1B4C208000664121 /* fireHydrant.png */,
 				08DB99771B4B1603000C0FF3 /* levelsBG.png */,
 				08DB99741B4B0A99000C0FF3 /* Background2.png */,
 				08E8DC431B471F44002667E8 /* carGuy.png */,
@@ -921,6 +925,7 @@
 				08D5160C1B28CB8100E5289B /* popo.png in Resources */,
 				08D515F21B28CB8100E5289B /* mad.png in Resources */,
 				08D516361B28CB8100E5289B /* truck.png in Resources */,
+				08E5F2C11B4C208000664121 /* fireHydrant.png in Resources */,
 				08D516101B28CB8100E5289B /* single_red.png in Resources */,
 				08D516081B28CB8100E5289B /* RoadTilesV2.png in Resources */,
 				08D74C161B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */,
@@ -1058,6 +1063,7 @@
 				08D516391B28CB8100E5289B /* truckR.png in Resources */,
 				08D97CB31B34FAD6002A2BDD /* spark.png in Resources */,
 				08E8DC3E1B46F9D6002667E8 /* SilverStar.png in Resources */,
+				08E5F2C01B4C208000664121 /* fireHydrant.png in Resources */,
 				08D515E11B28CB8100E5289B /* bg_road_two_way_large.png in Resources */,
 				08D74C051B290D4C00E1C8BA /* nervous_rex.ttf in Resources */,
 				08E8DC371B46F9A7002667E8 /* BronzeStar.png in Resources */,
