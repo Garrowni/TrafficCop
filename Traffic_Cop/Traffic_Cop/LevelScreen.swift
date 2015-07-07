@@ -156,7 +156,7 @@ class LevelScreen: SKScene
     func goToGame(lvl: Int)
     {
         var transition = SKAction()
-        
+         backgroundMusicPlayer.stop()
         switch(lvl)
         {
         case 0:

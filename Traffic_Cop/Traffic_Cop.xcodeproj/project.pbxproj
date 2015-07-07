@@ -11,6 +11,16 @@
 		05E0007A1B3338B6008F60E5 /* Feels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E000781B3338B6008F60E5 /* Feels.swift */; };
 		05E39ADD1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
+		05ED49A91B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */; };
+		05ED49AA1B4C4B2E00ED4B06 /* babyCry.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A01B4C4B2E00ED4B06 /* babyCry.aif */; };
+		05ED49AB1B4C4B2E00ED4B06 /* car-horn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */; };
+		05ED49AC1B4C4B2E00ED4B06 /* carBreakSkid.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */; };
+		05ED49AD1B4C4B2E00ED4B06 /* carCrash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A31B4C4B2E00ED4B06 /* carCrash.wav */; };
+		05ED49AE1B4C4B2E00ED4B06 /* IfyouUseSunshineorLifeofRiley.docx in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A41B4C4B2E00ED4B06 /* IfyouUseSunshineorLifeofRiley.docx */; };
+		05ED49AF1B4C4B2E00ED4B06 /* Life of Riley.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A51B4C4B2E00ED4B06 /* Life of Riley.mp3 */; };
+		05ED49B01B4C4B2E00ED4B06 /* policeSiren.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A61B4C4B2E00ED4B06 /* policeSiren.wav */; };
+		05ED49B11B4C4B2E00ED4B06 /* scaredMan.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A71B4C4B2E00ED4B06 /* scaredMan.wav */; };
+		05ED49B21B4C4B2E00ED4B06 /* Sunshine A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A81B4C4B2E00ED4B06 /* Sunshine A.mp3 */; };
 		080168E11B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
 		080168E21B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
 		080168E41B3C405A00424A67 /* BlackSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 080168E31B3C405A00424A67 /* BlackSmoke.sks */; };
@@ -249,6 +259,16 @@
 /* Begin PBXFileReference section */
 		05E000781B3338B6008F60E5 /* Feels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feels.swift; sourceTree = "<group>"; };
 		05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = peopleSprite.swift; sourceTree = "<group>"; };
+		05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AmbulenceSiren.mp3; sourceTree = "<group>"; };
+		05ED49A01B4C4B2E00ED4B06 /* babyCry.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = babyCry.aif; sourceTree = "<group>"; };
+		05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "car-horn.wav"; sourceTree = "<group>"; };
+		05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carBreakSkid.wav; sourceTree = "<group>"; };
+		05ED49A31B4C4B2E00ED4B06 /* carCrash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carCrash.wav; sourceTree = "<group>"; };
+		05ED49A41B4C4B2E00ED4B06 /* IfyouUseSunshineorLifeofRiley.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = IfyouUseSunshineorLifeofRiley.docx; sourceTree = "<group>"; };
+		05ED49A51B4C4B2E00ED4B06 /* Life of Riley.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Life of Riley.mp3"; sourceTree = "<group>"; };
+		05ED49A61B4C4B2E00ED4B06 /* policeSiren.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = policeSiren.wav; sourceTree = "<group>"; };
+		05ED49A71B4C4B2E00ED4B06 /* scaredMan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scaredMan.wav; sourceTree = "<group>"; };
+		05ED49A81B4C4B2E00ED4B06 /* Sunshine A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunshine A.mp3"; sourceTree = "<group>"; };
 		080168E01B3B972C00424A67 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		080168E31B3C405A00424A67 /* BlackSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlackSmoke.sks; sourceTree = "<group>"; };
 		08C464F41B2CCA1300DC56F8 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -412,6 +432,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05ED499E1B4C4B2E00ED4B06 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */,
+				05ED49A01B4C4B2E00ED4B06 /* babyCry.aif */,
+				05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */,
+				05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */,
+				05ED49A31B4C4B2E00ED4B06 /* carCrash.wav */,
+				05ED49A41B4C4B2E00ED4B06 /* IfyouUseSunshineorLifeofRiley.docx */,
+				05ED49A51B4C4B2E00ED4B06 /* Life of Riley.mp3 */,
+				05ED49A61B4C4B2E00ED4B06 /* policeSiren.wav */,
+				05ED49A71B4C4B2E00ED4B06 /* scaredMan.wav */,
+				05ED49A81B4C4B2E00ED4B06 /* Sunshine A.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		08D515A11B28CB8100E5289B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +684,7 @@
 		08FC6D0E1B2887CE004F4824 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				05ED499E1B4C4B2E00ED4B06 /* Sound */,
 				08D97CAE1B34FA1B002A2BDD /* Particles */,
 				08D515A11B28CB8100E5289B /* Assets */,
 				7DD881D71B28C8CA00C47FD7 /* JSTileMap */,
@@ -1016,6 +1054,7 @@
 				08D516071B28CB8100E5289B /* RoadTilesV2.png in Resources */,
 				08E8DC391B46F9A7002667E8 /* GoldStar.png in Resources */,
 				08D5162B1B28CB8100E5289B /* car_cop2.png in Resources */,
+				05ED49AA1B4C4B2E00ED4B06 /* babyCry.aif in Resources */,
 				08D516251B28CB8100E5289B /* car_cop1.png in Resources */,
 				08D5163B1B28CB8100E5289B /* stoplight_2048.png in Resources */,
 				08DB99781B4B1603000C0FF3 /* levelsBG.png in Resources */,
@@ -1032,9 +1071,12 @@
 				08D515DB1B28CB8100E5289B /* bg_grass.png in Resources */,
 				08E8DC411B46FA18002667E8 /* StarOutline.png in Resources */,
 				08D516091B28CB8100E5289B /* OldMan.png in Resources */,
+				05ED49AD1B4C4B2E00ED4B06 /* carCrash.wav in Resources */,
 				08E229A81B41CE26003EBDA1 /* Arrow.png in Resources */,
 				7DE146511B223E95005DB874 /* LaunchScreen.xib in Resources */,
 				08D515F31B28CB8100E5289B /* MainMenu.png in Resources */,
+				05ED49B21B4C4B2E00ED4B06 /* Sunshine A.mp3 in Resources */,
+				05ED49A91B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 in Resources */,
 				08D8875B1B321454007B860F /* level1v2.tmx in Resources */,
 				08D515DF1B28CB8100E5289B /* bg_road_two_way.png in Resources */,
 				08D516151B28CB8100E5289B /* Ambulence1R.png in Resources */,
@@ -1060,6 +1102,7 @@
 				08D74C0B1B290D4C00E1C8BA /* old_stamper.ttf in Resources */,
 				08D516211B28CB8100E5289B /* car_blue_right.png in Resources */,
 				08D515ED1B28CB8100E5289B /* LadyBaby.png in Resources */,
+				05ED49AB1B4C4B2E00ED4B06 /* car-horn.wav in Resources */,
 				08D516391B28CB8100E5289B /* truckR.png in Resources */,
 				08D97CB31B34FAD6002A2BDD /* spark.png in Resources */,
 				08E8DC3E1B46F9D6002667E8 /* SilverStar.png in Resources */,
@@ -1076,12 +1119,16 @@
 				08D515F11B28CB8100E5289B /* mad.png in Resources */,
 				08D74C0D1B290D4C00E1C8BA /* Operatinginstructions.ttf in Resources */,
 				08DB99751B4B0A99000C0FF3 /* Background2.png in Resources */,
+				05ED49AC1B4C4B2E00ED4B06 /* carBreakSkid.wav in Resources */,
 				08D516431B28CB8100E5289B /* thought.png in Resources */,
 				08D5160F1B28CB8100E5289B /* single_red.png in Resources */,
 				08D74C031B290D4C00E1C8BA /* NEORS___.ttf in Resources */,
 				08D515EB1B28CB8100E5289B /* lady.png in Resources */,
+				05ED49B11B4C4B2E00ED4B06 /* scaredMan.wav in Resources */,
+				05ED49B01B4C4B2E00ED4B06 /* policeSiren.wav in Resources */,
 				08D516011B28CB8100E5289B /* RoadTiles.pdn in Resources */,
 				08D74C151B290D4C00E1C8BA /* RADIOLANDSLIM.ttf in Resources */,
+				05ED49AF1B4C4B2E00ED4B06 /* Life of Riley.mp3 in Resources */,
 				08D515F91B28CB8100E5289B /* level2v2.tmx in Resources */,
 				08D97CB61B34FDD5002A2BDD /* Exhaust.sks in Resources */,
 				08D5161F1B28CB8100E5289B /* car_blue_left.png in Resources */,
@@ -1099,6 +1146,7 @@
 				08D516311B28CB8100E5289B /* car_red.png in Resources */,
 				08D710A51B445C6100A285EE /* car_white.png in Resources */,
 				08D74BF11B290D4C00E1C8BA /* JUNEBUG_.ttf in Resources */,
+				05ED49AE1B4C4B2E00ED4B06 /* IfyouUseSunshineorLifeofRiley.docx in Resources */,
 				08D5162D1B28CB8100E5289B /* car_cop2L.png in Resources */,
 				08D5163F1B28CB8100E5289B /* stoplight_red.png in Resources */,
 			);

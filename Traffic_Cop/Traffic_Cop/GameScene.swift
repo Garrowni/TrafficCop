@@ -201,6 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     //******************************************SCENE INITIALIZATION******************************
     override func didMoveToView(view: SKView)
     {
+         playBackgroundMusic("Life of Riley.mp3")
          startGame()
          updateScore()
 
@@ -1219,6 +1220,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func levelDone()
     {
+        
+        backgroundMusicPlayer.stop()
+        
+
         deSelectCars()
         
         for cars in vehicleArray{cars.paused = true}
@@ -1442,8 +1447,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func displayResults()
     {
-
-        
         bronzeOutline = SKSpriteNode(imageNamed: "StarOutline")
         silverOutline = SKSpriteNode(imageNamed: "StarOutline")
         goldOutline = SKSpriteNode(imageNamed : "StarOutline")

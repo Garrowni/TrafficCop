@@ -44,6 +44,15 @@ class CreditsScreen: SKScene
     let credits14       : Text
     let credits15       : Text
     let credits16       : Text
+    let credits17        : Text
+    let credits18        : Text
+    let credits19        : Text
+    let credits20       : Text
+    let credits21       : Text
+    let credits22       : Text
+    let credits23       : Text
+    let credits24       : Text
+    let credits25       : Text
     
     let creditsSTR       : String
     let creditsSTR2      : String
@@ -61,7 +70,15 @@ class CreditsScreen: SKScene
     let creditsSTR14     : String
     let creditsSTR15     : String
     let creditsSTR16     : String
-    
+    let creditsSTR17     : String
+    let creditsSTR18     : String
+    let creditsSTR19      : String
+    let creditsSTR20     : String
+    let creditsSTR21     : String
+    let creditsSTR22     : String
+    let creditsSTR23     : String
+    let creditsSTR24     : String
+    let creditsSTR25     : String
     
     override init(size: CGSize)
     {
@@ -86,7 +103,16 @@ class CreditsScreen: SKScene
         creditsSTR13 = "Matt Manton!"
         creditsSTR14 = " "
         creditsSTR15 = "cars by Razeware LLC."
-        creditsSTR16 = "Thanks For Playing!"
+        creditsSTR16 = " "
+        creditsSTR17 = "“Sunshine” Kevin MacLeod (incompetech.com)"
+        creditsSTR18 = "Licensed under Creative Commons: By Attribution 3.0"
+        creditsSTR19 = "http://creativecommons.org/licenses/by/3.0"
+        creditsSTR20 = " "
+        creditsSTR21 = "“Life of Riley” Kevin MacLeod (incompetech.com)"
+        creditsSTR22 = "Licensed under Creative Commons: By Attribution 3.0"
+        creditsSTR23 = "http://creativecommons.org/licenses/by/3.0"
+        creditsSTR24 = " "
+        creditsSTR25 = "Thanks For Playing!"
        
         credits   = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR,   fontSize: 70, font: "font2", color: "cyan",  align: "center")
         credits2  = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR2,  fontSize: 70, font: "font2", color: "cyan",  align: "center")
@@ -104,7 +130,15 @@ class CreditsScreen: SKScene
         credits14 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR14, fontSize: 70, font: "font2", color: "cyan",  align: "center")
         credits15 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR15, fontSize: 70, font: "font2", color: "cyan",  align: "center")
         credits16 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR16, fontSize: 70, font: "font2", color: "cyan",  align: "center")
-        
+         credits17 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR17, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+         credits18 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR18, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+         credits19 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR19, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+         credits20 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR20, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+        credits21 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR21, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+        credits22 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR22, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+        credits23 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR23, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+        credits24 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR24, fontSize: 35, font: "font2", color: "cyan",  align: "center")
+        credits25 = Text(pos: CGPoint(x: size.width/2, y:-40),    says: creditsSTR25, fontSize: 50, font: "font2", color: "cyan",  align: "center")
 
         label1      = Text(pos: CGPoint(x: 0, y: 0),    says: "Back",        fontSize: 250, font: "font4", color: "green", align: "center")
         titleLabel  = Text(pos: CGPoint(x: 0, y: 0),    says: "Credits !",   fontSize: 150, font: "font1", color: "yellow", align: "center")
@@ -148,6 +182,16 @@ class CreditsScreen: SKScene
         let credBlock14 = SKAction.runBlock(){self.credits14.get().runAction(sequence)}
         let credBlock15 = SKAction.runBlock(){self.credits15.get().runAction(sequence)}
         let credBlock16 = SKAction.runBlock(){self.credits16.get().runAction(sequence)}
+        let credBlock17  = SKAction.runBlock(){self.credits17.get().runAction(sequence)}
+        let credBlock18  = SKAction.runBlock(){self.credits18.get().runAction(sequence)}
+        let credBlock19  = SKAction.runBlock(){self.credits19.get().runAction(sequence)}
+        let credBlock20 = SKAction.runBlock(){self.credits20.get().runAction(sequence)}
+        let credBlock21 = SKAction.runBlock(){self.credits21.get().runAction(sequence)}
+        let credBlock22 = SKAction.runBlock(){self.credits22.get().runAction(sequence)}
+        let credBlock23 = SKAction.runBlock(){self.credits23.get().runAction(sequence)}
+        let credBlock24 = SKAction.runBlock(){self.credits24.get().runAction(sequence)}
+        let credBlock25 = SKAction.runBlock(){self.credits25.get().runAction(sequence)}
+
         
         let FullCreds = SKAction.sequence([ credBlock1,wait,
                                             credBlock2,wait,
@@ -164,7 +208,16 @@ class CreditsScreen: SKScene
                                             credBlock13,wait,
                                             credBlock14,wait,
                                             credBlock15,wait,
-                                            credBlock16,wait2])
+                                            credBlock16,wait,
+                                            credBlock17,wait,
+                                            credBlock18,wait,
+                                            credBlock19,wait,
+                                            credBlock20,wait,
+                                            credBlock21,wait,
+                                            credBlock22,wait,
+                                            credBlock23,wait,
+                                            credBlock24,wait,
+                                            credBlock25,wait2])
         
         let fullCredSeq = SKAction.repeatActionForever(FullCreds)
         
@@ -201,6 +254,16 @@ class CreditsScreen: SKScene
         addChild(credits14.get())
         addChild(credits15.get())
         addChild(credits16.get())
+        addChild(credits17.get())
+        addChild(credits18.get())
+        addChild(credits19.get())
+        addChild(credits20.get())
+        addChild(credits21.get())
+        addChild(credits22.get())
+        addChild(credits23.get())
+        addChild(credits24.get())
+        addChild(credits25.get())
+
    
         
         
