@@ -80,6 +80,26 @@ func saveContext () {
 }
 
 
+//*********Star Goals***********
+let lv1Bronze = 50
+let lv1Silver = 100
+let lv1Gold   = 150
+
+let lv2Bronze = 200
+let lv2Silver = 250
+let lv2Gold   = 350
+
+let lv3Bronze = 500
+let lv3Silver = 600
+let lv3Gold   = 700
+
+let lv4Bronze = 850
+let lv4Silver = 950
+let lv4Gold   = 1050
+
+
+//*********End Star Goals*******
+
 
 //GETTERS
 func Lev2() -> Bool

@@ -523,7 +523,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 }
                 else
                 {
-                    //Decreased the chance of a Ambulance or police spawning to 10% form 32% .. 
+                    //Decreased the chance of a Ambulance or police spawning to 10% form 32% ..
                     //was just a 1 and 6 cahnce for a cop or ambulance 
                     //which if you do the math is a 32% chance it will be a cop or ambulance ..
                     var rand = Int.randomNumberFrom(1...10) // == 10% leaving 90% chance of a different car .. bit more realistic..
