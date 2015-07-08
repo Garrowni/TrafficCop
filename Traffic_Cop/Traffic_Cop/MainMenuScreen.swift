@@ -22,7 +22,7 @@ class MainMenuScreen: SKScene
     let helpButt: Button
     let credButt: Button
     let soundButt: Button
-    //let statsButt: Button
+    let statsButt: Button
     
     let playableRect : CGRect
     let titlR: CGRect
@@ -47,6 +47,7 @@ class MainMenuScreen: SKScene
       
         //Labels
         var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,               fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var statsLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Stats",               fontSize: 70,   font: "font2", color: "green",  align: "center")
         titleLabel      = Text(pos: CGPoint(x: 0, y: 0),    says: "Traffic Cop",    fontSize: 150, font: "font1", color: "yellow", align: "center")
         playLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Play",           fontSize: 200, font: "font4", color: "black", align: "center")
         helpLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Help",           fontSize: 200, font: "font4", color: "black", align: "center")
@@ -63,7 +64,8 @@ class MainMenuScreen: SKScene
         playButt = Button(pos: playR, roundCorner: 200, text: playLabel, BGcolor: "green", OLcolor: "white",    OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         helpButt = Button(pos: helpR, roundCorner: 200, text: helpLabel, BGcolor: "yellow", OLcolor: "white",   OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
-        soundButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*11), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        soundButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*11), size: CGSize(width: 128, height: 128)),  roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        statsButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*2), size: CGSize(width: 128, height: 128)),    roundCorner: 64, text: statsLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
 
         
         
@@ -119,6 +121,10 @@ class MainMenuScreen: SKScene
         addChild(soundButt.getButtBG())
         addChild(soundButt.getButtOL())
         addChild(soundButt.getLabel())
+        
+        addChild(statsButt.getButtBG())
+        addChild(statsButt.getButtOL())
+        addChild(statsButt.getLabel())
       
         self.runAction(self.spawnAction)
 
@@ -152,6 +158,10 @@ class MainMenuScreen: SKScene
         if credR.contains(location)
         {
             goToCredits()
+        }
+        if statsButt.origRect.contains(location)
+        {
+            goToStats()
         }
     }
     #else
@@ -197,6 +207,29 @@ class MainMenuScreen: SKScene
         
     }
     
+    func goToStats()
+    {
+        let transition = SKAction.group([SKAction.runBlock(){
+            self.playButt.FadeAway()
+            self.titlButt.FadeAway()
+            self.credButt.FadeAway()
+            self.helpButt.FadeAway()
+            self.soundButt.FadeAway()
+            self.statsButt.zoomOUT()
+            }])
+        let wait = SKAction.waitForDuration(0.5)
+        let block = SKAction.runBlock
+            {
+                let myScene = StatsScreen(size: self.size)
+                myScene.scaleMode = self.scaleMode
+                let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+                self.view?.presentScene(myScene, transition: reveal)
+        }
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
+    }
+    
+    
     //TRANSITION
     func goToGame()
     {
@@ -207,6 +240,7 @@ class MainMenuScreen: SKScene
             self.credButt.FadeAway()
             self.helpButt.FadeAway()
             self.soundButt.FadeAway()
+            self.statsButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock
@@ -229,6 +263,7 @@ class MainMenuScreen: SKScene
             self.credButt.FadeAway()
             self.helpButt.zoomOUT()
             self.soundButt.FadeAway()
+            self.statsButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock{

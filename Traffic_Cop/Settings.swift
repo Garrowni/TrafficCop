@@ -81,7 +81,7 @@ func saveContext () {
 
 
 
-
+//GETTERS
 func Lev2() -> Bool
 {
     if let variables = fetchResults
@@ -152,6 +152,161 @@ func Music() -> Bool
     return false
 }
 
+func PeopleHit() -> Int
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.peopleHit.integerValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return -1
+}
+
+func TimePlayed() -> String
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        
+        var fullSecs = VAR.timePlayed.integerValue
+        
+        var string : String  = ""
+        var hours       = fullSecs/3600
+        var minutesLeft = fullSecs/60 - (hours*60)
+        var secsLeft    = fullSecs - (minutesLeft*60)
+        var strHours    = String(hours)
+        var strSecs     = String(secsLeft)
+        var strMin      = String(minutesLeft)
+        
+        string += "Hr: "
+        if(hours < 10){string += String(0)}
+        string += strHours
+        
+        string += "  Min: "
+        if(minutesLeft < 10){string += String(0)}
+        string += strMin
+        
+        string += "  Sec: "
+        if(secsLeft < 10){string += String(0)}
+        string += strSecs
+        
+        return string
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return ""
+}
+
+func CarsHit() -> Int
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.carsCrashed.integerValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return -1
+}
+
+func LevelsBeat() -> Int
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.levelsBeat.integerValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return -1
+}
+
+func HighScore(lev: Int) -> Int
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        switch(lev)
+        {
+        case 1: return VAR.hsLev1.integerValue
+        case 2: return VAR.hsLev2.integerValue
+        case 3: return VAR.hsLev3.integerValue
+        case 4: return VAR.hsLev4.integerValue
+        default: break
+        }
+    }
+    return 1
+}
+
+
+
+
+//SETTERS
+func IncreaseCarsHit()
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        var tp = VAR.carsCrashed.integerValue + 1
+        VAR.carsCrashed = NSNumber(int: Int32(tp))
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+}
+
+func IncreasePeopleHit()
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        var tp = VAR.peopleHit.integerValue + 1
+        VAR.peopleHit = NSNumber(int: Int32(tp))
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+}
+
+func IncreaseTimePlayed()
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        var tp = VAR.timePlayed.integerValue + 1
+        VAR.timePlayed = NSNumber(int: Int32(tp))
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+}
+
+func IncreaseLevelsBeat()
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        var tp = VAR.levelsBeat.integerValue + 1
+        VAR.levelsBeat = NSNumber(int: Int32(tp))
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+}
 
 func TurnSound(on: Bool)
 {
@@ -181,22 +336,7 @@ func TurnMusic(on: Bool)
    saveGame()
 }
 
-func HighScore(lev: Int) -> Int
-{
-    if let variables = fetchResults
-    {
-        var VAR = variables[0]
-        switch(lev)
-        {
-        case 1: return VAR.hsLev1.integerValue
-        case 2: return VAR.hsLev2.integerValue
-        case 3: return VAR.hsLev3.integerValue
-        case 4: return VAR.hsLev4.integerValue
-        default: break
-        }
-    }
-    return 1
-}
+
 
 
 

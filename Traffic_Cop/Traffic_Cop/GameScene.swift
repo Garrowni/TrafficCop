@@ -324,6 +324,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             //ONE SECOND HAS PASSED
             timerCount = 0
             timePassed++
+            IncreaseTimePlayed()
             clock.upDateTime(-1)
             if(clock.countDownDone){levelDone()}
             //println("\(timePassed)")
@@ -378,6 +379,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 Car.crashed(false)
                 Car.removeAllActions()
                 numCrashes++
+                IncreaseCarsHit()
                 addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
                 crashedCars.append(Car)
             }
@@ -402,6 +404,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 Person._state = .DEAD
                 numPeopleHit++
+                IncreasePeopleHit()
                 addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
                 hitPeople.append(Person)
             }
@@ -420,6 +423,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 Person._state = .DEAD
                 numPeopleHit++
+                IncreasePeopleHit()
                 addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
                 hitPeople.append(Person)
             }
@@ -1242,6 +1246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         if(currentScore >= bronzeScore)
         {
+            IncreaseLevelsBeat()
             levPassed = true
             displayResults()
             fireWorksGo()
@@ -1296,7 +1301,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
         
         if(currentScore > HighScore(currentLevel)){ newHighScore(currentLevel, currentScore) } //ASSIGN NEW HIGHSCORE IF ONE
-        
+        saveGame()
         quitButt.zoomIN()
         pausedOn = true;
     }
