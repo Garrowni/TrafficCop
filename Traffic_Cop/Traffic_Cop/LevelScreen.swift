@@ -49,6 +49,8 @@ class LevelScreen: SKScene
  
     var lv4Lock         : SKSpriteNode = SKSpriteNode(imageNamed: "PadLockLocked")
     
+    var loading: Bool = false
+    
     override init(size: CGSize)
     {
         let maxAspectRatio:CGFloat = 9.0/16.0
@@ -206,12 +208,17 @@ class LevelScreen: SKScene
         
         var transition = SKAction()
 
+        if(!loading)
+        {
+            addChild(loadingButt.getButtBG())
+            addChild(loadingButt.getButtOL())
+            addChild(loadingButt.getLabel())
+            loadingButt.zoomIN()
+            loading = true
+        }
+   
         
-        addChild(loadingButt.getButtBG())
-        addChild(loadingButt.getButtOL())
-        addChild(loadingButt.getLabel())
         
-        loadingButt.zoomIN()
         
         playBackgroundMusic("Life of Riley.mp3")
         
