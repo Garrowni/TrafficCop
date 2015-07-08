@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     let level       : Int               = 0
     var map         : Map?
     var tileMap     : JSTileMap?
-    let clock       : Clock
+    var clock       : Clock
     let pauseButt   : Button
     let pausedPopUp : Button
     let levDonePopUp: Button
@@ -116,7 +116,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pausedOn        = false
         deSelecting     = false
         levPassed       = false
-        clock           = Clock(playableR: playableRect, countFrom: 30)
+        println("\(currentLevel)")
+        switch(currentLevel)
+        {
+        case 1:
+            clock = Clock(playableR: playableRect, countFrom: 45)
+        case 2:
+            clock = Clock(playableR: playableRect, countFrom: 60)
+        case 3:
+            clock = Clock(playableR: playableRect, countFrom: 90)
+        case 4:
+            clock = Clock(playableR: playableRect, countFrom: 120)
+        default:
+            clock = Clock(playableR: playableRect, countFrom: 0)
+
+
+
+        }
         
         
         var str : String //IF SOUND IS ALREADY ON
@@ -144,6 +160,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         nextLevButt     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: nextLevLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
         retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
+        clock = Clock(playableR: playableRect, countFrom: 0)
         
         bronzeScoreStar = SKSpriteNode(imageNamed: "BronzeStar")
         bronzeScoreStar!.name = "BronzeStar"
@@ -206,6 +223,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         
          startGame()
+        switch(currentLevel)
+        {
+        case 1:
+            clock = Clock(playableR: playableRect, countFrom: 45)
+        case 2:
+            clock = Clock(playableR: playableRect, countFrom: 60)
+        case 3:
+            clock = Clock(playableR: playableRect, countFrom: 90)
+        case 4:
+            clock = Clock(playableR: playableRect, countFrom: 120)
+        default:
+            clock = Clock(playableR: playableRect, countFrom: 0)
+        
+        }
          updateScore()
 
         //WAIT 1 SEC BEFORE STARTING UP THE SPAWN ACTIONS
