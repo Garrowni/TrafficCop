@@ -88,9 +88,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var numPeopleHit    : Int = 0
     
     
-    let personCollisionSound: SKAction = SKAction.playSoundFileNamed(
-        "scaredMan.wav", waitForCompletion: false)
-    let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.aif", waitForCompletion: false)
+    //let personCollisionSound : SKAction
+   // let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.aif", waitForCompletion: false)
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
@@ -394,20 +393,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             let Car = other.node as! CarSprite
             let Car2 = other2.node as! CarSprite
             
-            if(Car._state != .CRASHED)
+            if(Car._state != .CRASHED || Car2._state != .CRASHED)
             {
                 Car.crashed(false)
                 Car.removeAllActions()
+                Car.physicsBody!.allowsRotation = true
+                Car.physicsBody!.dynamic = true
+                
+                Car2.crashed(false)
+                Car.physicsBody!.allowsRotation = true
+                Car.physicsBody!.dynamic = true
+                Car2.removeAllActions()
+                crashedCars.append(Car2)
+                
                 numCrashes++
                 addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
                 crashedCars.append(Car)
-            }
-            
-            if(Car2._state != .CRASHED)
-            {
-                Car2.crashed(false)
-                Car2.removeAllActions()
-                crashedCars.append(Car2)
             }
             
             explosion(contactPoint, force: collisionImpulse)
@@ -421,15 +422,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
             if (Person._type == 2)
             {
-                runAction(babyCollisionSound)
+              //  runAction(babyCollisionSound)
             }
             else
             {
-               runAction(personCollisionSound)
+            //   runAction(personCollisionSound)
             }
             }
-            Car.crashed(true) //HIT PERSON
-            Car.removeAllActions()
+            if(Car._state != .CRASHED)
+            {
+                Car.physicsBody!.dynamic = false
+                Car.physicsBody!.allowsRotation = false
+            }
+
 
             if(Person._state != .DEAD)
             {
@@ -439,7 +444,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 hitPeople.append(Person)
             }
 
-            
+           Car.physicsBody!.dynamic = true
             
         }else if(other.categoryBitMask == PhysicsCategory.Person && other2.categoryBitMask == PhysicsCategory.Car)
         {
@@ -452,16 +457,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             if (Person._type == 2)
             {
                 
-                    runAction(babyCollisionSound)
+               //     runAction(babyCollisionSound)
                 
             }
             else
             {
-                runAction(personCollisionSound)
+            //    runAction(personCollisionSound)
             }
             }
-            Car.crashed(true) //HIT PERSON
-            Car.removeAllActions()
+            
+            if(Car._state != .CRASHED)
+            {
+                Car.physicsBody!.dynamic = false
+                Car.physicsBody!.allowsRotation = false
+            }
             
             if(Person._state != .DEAD)
             {
@@ -470,6 +479,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
                 hitPeople.append(Person)
             }
+            Car.physicsBody!.dynamic = true
         }
 
   
