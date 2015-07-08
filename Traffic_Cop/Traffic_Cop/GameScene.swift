@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     let level       : Int               = 0
     var map         : Map?
     var tileMap     : JSTileMap?
-    let clock       : Clock
+    var clock       : Clock
     let pauseButt   : Button
     let pausedPopUp : Button
     let levDonePopUp: Button
@@ -86,6 +86,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var numCrashes      : Int = 0
     var totalPointsLost : Int = 0
     var numPeopleHit    : Int = 0
+    
+    
+    //let personCollisionSound : SKAction
+   // let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.aif", waitForCompletion: false)
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
@@ -116,7 +120,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pausedOn        = false
         deSelecting     = false
         levPassed       = false
-        clock           = Clock(playableR: playableRect, countFrom: 30)
+        clock           = Clock(playableR: playableRect, countFrom: 45)
+
         
         
         var str : String //IF SOUND IS ALREADY ON
@@ -144,6 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         nextLevButt     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: nextLevLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
         quitButt        = Button(pos: CGRect(origin: CGPoint(x: 32, y: (TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                        roundCorner: 70, text: quitlbl,         BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: true)
         retryButt       = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: retryLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
+        clock = Clock(playableR: playableRect, countFrom: 0)
         
         bronzeScoreStar = SKSpriteNode(imageNamed: "BronzeStar")
         bronzeScoreStar!.name = "BronzeStar"
@@ -206,6 +212,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         
          startGame()
+        switch(currentLevel)
+        {
+        case 1:
+            clock = Clock(playableR: playableRect, countFrom: 45)
+        case 2:
+            clock = Clock(playableR: playableRect, countFrom: 60)
+        case 3:
+            clock = Clock(playableR: playableRect, countFrom: 90)
+        case 4:
+            clock = Clock(playableR: playableRect, countFrom: 120)
+        default:
+            clock = Clock(playableR: playableRect, countFrom: 0)
+        
+        }
          updateScore()
 
         //WAIT 1 SEC BEFORE STARTING UP THE SPAWN ACTIONS
@@ -374,7 +394,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             let Car = other.node as! CarSprite
             let Car2 = other2.node as! CarSprite
             
-            if(Car._state != .CRASHED)
+            if(Car._state != .CRASHED || Car2._state != .CRASHED)
             {
                 Car.crashed(false)
                 Car.removeAllActions()
@@ -387,18 +407,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             if(Car2._state != .CRASHED)
             {
                 Car2.crashed(false)
+                Car.physicsBody!.allowsRotation = true
+                Car.physicsBody!.dynamic = true
                 Car2.removeAllActions()
                 crashedCars.append(Car2)
+                
+                numCrashes++
+                addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
+                crashedCars.append(Car)
             }
             
             explosion(contactPoint, force: collisionImpulse)
         }else if(other.categoryBitMask == PhysicsCategory.Car && other2.categoryBitMask == PhysicsCategory.Person)
         {
+            
+
             let Car     = other.node as! CarSprite
             let Person  = other2.node as! PeopleSprite
-            
-            Car.crashed(true) //HIT PERSON
-            Car.removeAllActions()
+            if (Sound())
+            {
+            if (Person._type == 2)
+            {
+              //  runAction(babyCollisionSound)
+            }
+            else
+            {
+            //   runAction(personCollisionSound)
+            }
+            }
+            if(Car._state != .CRASHED)
+            {
+                Car.physicsBody!.dynamic = false
+                Car.physicsBody!.allowsRotation = false
+            }
+
 
             if(Person._state != .DEAD)
             {
@@ -409,15 +451,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 hitPeople.append(Person)
             }
 
-            
+           Car.physicsBody!.dynamic = true
             
         }else if(other.categoryBitMask == PhysicsCategory.Person && other2.categoryBitMask == PhysicsCategory.Car)
         {
+            
+            
             let Car     = other2.node as! CarSprite
             let Person  = other.node as! PeopleSprite
+            if (Sound())
+            {
+            if (Person._type == 2)
+            {
+                
+               //     runAction(babyCollisionSound)
+                
+            }
+            else
+            {
+            //    runAction(personCollisionSound)
+            }
+            }
             
-            Car.crashed(true) //HIT PERSON
-            Car.removeAllActions()
+            if(Car._state != .CRASHED)
+            {
+                Car.physicsBody!.dynamic = false
+                Car.physicsBody!.allowsRotation = false
+            }
             
             if(Person._state != .DEAD)
             {
@@ -427,6 +487,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
                 hitPeople.append(Person)
             }
+            Car.physicsBody!.dynamic = true
         }
 
   
