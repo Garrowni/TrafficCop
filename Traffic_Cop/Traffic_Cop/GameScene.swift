@@ -1678,7 +1678,15 @@ class Skid
         var sequence = SKAction.sequence([wait, fade])
         var block1 = SKAction.runBlock(){self.FLeftSkidPath.runAction(sequence); self.FRightSkidPath.runAction(sequence); self.BRightSkidPath.runAction(sequence);self.BLeftSkidPath.runAction(sequence);}
         var block2 = SKAction.runBlock(){self.done = true;}
-        var fullSequence = SKAction.sequence([block1 ,wait2, block2])
+        var block3 = SKAction.runBlock(){
+            var skidLength = CGFloat(0.0)
+            skidLength += self.FLeftSkidPath.lineLength
+            skidLength += self.FRightSkidPath.lineLength
+            skidLength += self.BRightSkidPath.lineLength
+            skidLength += self.BLeftSkidPath.lineLength
+            if(skidLength > CGFloat(LongestSkid())){NewLongestSkid(Int(skidLength))}
+        }
+        var fullSequence = SKAction.sequence([block1 ,wait2, block3, block2])
         theParent.runAction(fullSequence)
             
         FLeftSkidPath.strokeColor = SKColor.blackColor()
@@ -1730,6 +1738,7 @@ class Skid
             self.BRightSkidPath.path = self.BRightTirePath
             self.BLeftSkidPath.path = self.BLeftTirePath
         
+            
         }
         var updateSequence = SKAction.sequence([updateLines, updateWait])
         self.theParent.runAction(SKAction.repeatAction(updateSequence, count: 25))
