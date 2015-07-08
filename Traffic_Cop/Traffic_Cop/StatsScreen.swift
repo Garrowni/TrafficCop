@@ -29,6 +29,10 @@ class StatsScreen: SKScene
     let help6         : Text
     let help7         : Text
     let help8         : Text
+    let help9         : Text
+    let help10        : Text
+    let help11        : Text
+    let help12        : Text
 
     
     let helpSTR       : String
@@ -39,6 +43,10 @@ class StatsScreen: SKScene
     let helpSTR6      : String
     let helpSTR7      : String
     let helpSTR8      : String
+    let helpSTR9      : String
+    let helpSTR10     : String
+    let helpSTR11     : String
+    let helpSTR12     : String
 
     
     override init(size: CGSize)
@@ -66,16 +74,23 @@ class StatsScreen: SKScene
         helpSTR6  = "\(CarsHit())"
         helpSTR7  = "Total Levels Completed"
         helpSTR8  = "\(LevelsBeat())"
-
+        helpSTR9  = "Longest Skid"
+        helpSTR10  = "\(LongestSkid())"
+        helpSTR11  = "Hardest Crash"
+        helpSTR12  = "\(HardestCrash())"
         
-        help   = Text(pos: CGPoint(x: size.width/2, y:size.height - 600),     says: helpSTR,   fontSize: 90, font: "font2", color: "green",  align: "center")
-        help2  = Text(pos: CGPoint(x: size.width/2, y:size.height - 700),     says: helpSTR2,  fontSize: 60, font: "font3", color: "white",  align: "center")
-        help3  = Text(pos: CGPoint(x: size.width/2, y:size.height - 800),     says: helpSTR3,  fontSize: 90, font: "font2", color: "green",  align: "center")
-        help4  = Text(pos: CGPoint(x: size.width/2, y:size.height - 900),     says: helpSTR4,  fontSize: 90, font: "font3", color: "white",  align: "center")
-        help5  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1000),     says: helpSTR5,  fontSize: 90, font: "font2", color: "green",  align: "center")
-        help6  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1100),     says: helpSTR6,  fontSize: 90, font: "font3", color: "white",  align: "center")
-        help7  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1200),    says: helpSTR7,  fontSize: 90, font: "font2", color: "green",  align: "center")
-        help8  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1300),    says: helpSTR8,  fontSize: 90, font: "font3", color: "white",  align: "center")
+        help   = Text(pos: CGPoint(x: size.width/2, y:size.height - 400),     says: helpSTR,   fontSize: 90, font: "font2", color: "green",  align: "center")
+        help2  = Text(pos: CGPoint(x: size.width/2, y:size.height - 500),     says: helpSTR2,  fontSize: 60, font: "font3", color: "white",  align: "center")
+        help3  = Text(pos: CGPoint(x: size.width/2, y:size.height - 600),     says: helpSTR3,  fontSize: 90, font: "font2", color: "green",  align: "center")
+        help4  = Text(pos: CGPoint(x: size.width/2, y:size.height - 700),     says: helpSTR4,  fontSize: 90, font: "font3", color: "white",  align: "center")
+        help5  = Text(pos: CGPoint(x: size.width/2, y:size.height - 800),     says: helpSTR5,  fontSize: 90, font: "font2", color: "green",  align: "center")
+        help6  = Text(pos: CGPoint(x: size.width/2, y:size.height - 900),     says: helpSTR6,  fontSize: 90, font: "font3", color: "white",  align: "center")
+        help7  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1000),    says: helpSTR7,  fontSize: 90, font: "font2", color: "green",  align: "center")
+        help8  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1100),    says: helpSTR8,  fontSize: 90, font: "font3", color: "white",  align: "center")
+        help9  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1200),     says: helpSTR9,  fontSize: 90, font: "font2", color: "green",  align: "center")
+        help10  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1300),     says: helpSTR10,  fontSize: 90, font: "font3", color: "white",  align: "center")
+        help11  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1400),    says: helpSTR11,  fontSize: 90, font: "font2", color: "green",  align: "center")
+        help12  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1500),    says: helpSTR12,  fontSize: 90, font: "font3", color: "white",  align: "center")
         
         super.init(size: size)
     }
@@ -101,6 +116,10 @@ class StatsScreen: SKScene
         addChild(help6.get())
         addChild(help7.get())
         addChild(help8.get())
+        addChild(help9.get())
+        addChild(help10.get())
+        addChild(help11.get())
+        addChild(help12.get())
 
         
         

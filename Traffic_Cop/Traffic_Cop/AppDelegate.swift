@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [CoreData]
         if let variables = fetchResults{
         var VAR = variables[0]
+            VAR.initialized = NSNumber(bool: false)
         //println("\(VAR.initialized.boolValue)")
         if(!VAR.initialized.boolValue)
             {
@@ -45,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 VAR.hsLev1 = NSNumber(int: 0)
                 VAR.hsLev2 = NSNumber(int: 0)
                 VAR.hsLev3 = NSNumber(int: 0)
+                VAR.longestSkid = NSNumber(int: 0)
+                VAR.hardestCrash = NSNumber(int: 0)
                 VAR.hsLev4 = NSNumber(int: 0)
                 VAR.initialized = NSNumber(bool: true)
                 

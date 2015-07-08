@@ -26,5 +26,7 @@ class CoreData: NSManagedObject {
     @NSManaged var levelsBeat: NSNumber
     @NSManaged var peopleHit: NSNumber
     @NSManaged var timePlayed: NSNumber
+    @NSManaged var longestSkid: NSNumber
+    @NSManaged var hardestCrash: NSNumber
 
 }

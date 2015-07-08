@@ -396,6 +396,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             if(Car._state != .CRASHED || Car2._state != .CRASHED)
             {
+                if(collisionImpulse > CGFloat(HardestCrash())){NewHardestCrash(Int(collisionImpulse))}
                 Car.crashed(false)
                 Car.removeAllActions()
                 numCrashes++

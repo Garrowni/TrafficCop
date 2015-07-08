@@ -248,10 +248,63 @@ func HighScore(lev: Int) -> Int
     return 1
 }
 
+func LongestSkid() -> Int
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.longestSkid.integerValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return -1
+}
+
+func HardestCrash() -> Int
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.hardestCrash.integerValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return -1
+}
 
 
 
 //SETTERS
+func NewHardestCrash(new: Int)
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        VAR.hardestCrash = NSNumber(int: Int32(new))
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+}
+
+func NewLongestSkid(new: Int)
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        VAR.longestSkid = NSNumber(int: Int32(new))
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+}
+
 func IncreaseCarsHit()
 {
     if let variables = fetchResults
