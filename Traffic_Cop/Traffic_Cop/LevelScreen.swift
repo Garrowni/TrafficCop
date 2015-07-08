@@ -18,6 +18,10 @@ class LevelScreen: SKScene
     let titleButt       : Button
     let titleButtR      : CGRect
     
+    let loadingLabel      : Text
+    let loadingButt       : Button
+    let loadingButtR      : CGRect
+    
     let backLbl          : Text
     let backButt         : Button
     let backButtR        : CGRect
@@ -55,6 +59,7 @@ class LevelScreen: SKScene
         //Labels
         backLbl     = Text(pos: CGPoint(x: 0, y: 0),    says: "Back",           fontSize: 250, font: "font4", color: "green", align: "center")
         titleLabel  = Text(pos: CGPoint(x: 0, y: 0),    says: "Levels !",       fontSize: 150, font: "font1", color: "yellow", align: "center")
+        loadingLabel  = Text(pos: CGPoint(x: 0, y: 0),    says: "Loading...",       fontSize: 150, font: "font1", color: "yellow", align: "center")
         lv1Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "1",              fontSize: 200, font: "font3", color: "green", align: "center")
         lv2Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "2",              fontSize: 200, font: "font3", color: "green", align: "center")
         lv3Lbl      = Text(pos: CGPoint(x: 0, y: 0),    says: "3",              fontSize: 200, font: "font3", color: "green", align: "center")
@@ -63,6 +68,7 @@ class LevelScreen: SKScene
         //Rects
         backButtR   = CGRect(x: size.width/2-250, y: size.height-1800, width: 500, height: 200)
         titleButtR  = CGRect(x: size.width/2-350, y: size.height-250,  width: 700, height: 200)
+        loadingButtR = CGRect(x: size.width/2-450, y: size.height/2-400,  width: 900, height: 800)
         lv1ButtR    = CGRect(x: size.width/2-405, y: size.height-650,  width: 300, height: 300)
         lv2ButtR    = CGRect(x: size.width/2+115, y: size.height-650,  width: 300, height: 300)
         lv3ButtR    = CGRect(x: size.width/2-405, y: size.height-1150, width: 300, height: 300)
@@ -71,11 +77,13 @@ class LevelScreen: SKScene
         //Buttons
         backButt    = Button(pos: backButtR,    roundCorner: 100, text: backLbl,    BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         titleButt   = Button(pos: titleButtR,   roundCorner: 100, text: titleLabel, BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: true, glowBulge: false)
+        loadingButt = Button(pos: loadingButtR, roundCorner: 100, text: loadingLabel, BGcolor: "blue", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: true, glowBulge: false)
         lv1Butt     = Button(pos: lv1ButtR,     roundCorner: 150, text: lv1Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         lv2Butt     = Button(pos: lv2ButtR,     roundCorner: 150, text: lv2Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         lv3Butt     = Button(pos: lv3ButtR,     roundCorner: 150, text: lv3Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         lv4Butt     = Button(pos: lv4ButtR,     roundCorner: 150, text: lv4Lbl,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: false, glowBulge: true)
         
+
         
         super.init(size: size)
     }
@@ -101,7 +109,7 @@ class LevelScreen: SKScene
         lv4Lock.zPosition = 10
         
        
-        if(!lev2)
+        if(!Lev2())
         {
             addChild(lv2Lock)
         }
@@ -110,7 +118,7 @@ class LevelScreen: SKScene
             lv2Lock.removeFromParent()
         }
         
-        if(!lev3)
+        if(!Lev3())
         {
             addChild(lv3Lock)
         }
@@ -119,7 +127,7 @@ class LevelScreen: SKScene
             lv3Lock.removeFromParent()
         }
         
-        if(!lev4)
+        if(!Lev4())
         {
             addChild(lv4Lock)
         }
@@ -165,9 +173,9 @@ class LevelScreen: SKScene
         let location = touch.locationInNode(self)
         if(backButtR.contains(location)){goToGame(0)}
         if(lv1ButtR.contains(location)){goToGame(1)}
-        if(lv2ButtR.contains(location) && lev2){goToGame(2)}
-        if(lv3ButtR.contains(location) && lev3){goToGame(3)}
-        if(lv4ButtR.contains(location) && lev4){goToGame(4)}
+        if(lv2ButtR.contains(location) && Lev2()){goToGame(2)}
+        if(lv3ButtR.contains(location) && Lev3()){goToGame(3)}
+        if(lv4ButtR.contains(location) && Lev4()){goToGame(4)}
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
@@ -196,9 +204,17 @@ class LevelScreen: SKScene
     func goToGame(lvl: Int)
     {  backgroundMusicPlayer.stop()
         
-        
         var transition = SKAction()
+
+        
+        addChild(loadingButt.getButtBG())
+        addChild(loadingButt.getButtOL())
+        addChild(loadingButt.getLabel())
+        
+        loadingButt.zoomIN()
+        
         playBackgroundMusic("Life of Riley.mp3")
+        
         switch(lvl)
         {
         case 0:

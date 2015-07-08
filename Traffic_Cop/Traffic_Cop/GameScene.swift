@@ -119,10 +119,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         clock           = Clock(playableR: playableRect, countFrom: 30)
         
         
+        var str : String //IF SOUND IS ALREADY ON
+        if(Sound()){backgroundMusicPlayer.play(); str = "(="}else{backgroundMusicPlayer.pause(); str = "("}
+        
         
         var pauseLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "ll",              fontSize: 70,   font: "font2", color: "green",  align: "center")
         var pausedLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Paused",          fontSize: 300,  font: "font2", color: "green",  align: "center")
-        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "(=",              fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,               fontSize: 70,   font: "font2", color: "green",  align: "center")
         var levDoneLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Level Complete!", fontSize: 130,  font: "font2", color: "green",  align: "center")
         var notDoneLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Not Complete!",   fontSize: 130,  font: "font2", color: "green",  align: "center")
         var quitlbl      = Text(pos: CGPoint(x: 0, y:0),    says: "Quit",            fontSize: 150,  font: "font2", color: "green",  align: "center")
@@ -264,6 +267,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         addChild(soundButt.getButtBG())
         addChild(soundButt.getButtOL())
         addChild(soundButt.getLabel())
+        
         addChild(selection.OL)
     
        //debugDrawPLayableArea()
@@ -684,6 +688,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 deSelectCars()
                 pauseGame()
+            }
+            
+            if(soundButt.origRect.contains(location))
+            {
+                SoundOffOn()
             }
         
             if(carSelected)
@@ -1229,6 +1238,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         for cars in vehicleArray{cars.paused = true}
         
+        
+        
         if(currentScore >= bronzeScore)
         {
             levPassed = true
@@ -1249,21 +1260,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             levDonePopUp.zoomIN()
             quitButt.zoomIN()
             
-            if(currentScore > map!.highScore)
-            {
-                map!.highScore = currentScore
-            }
-            
             switch(currentLevel)
             {
             case 1:
-                lev2 = true
+                unlockLev(2)
             case 2:
-                lev3 = true
+                unlockLev(3)
             case 3:
-                lev4 = true
-            case 4:
-                lev4 = true
+                unlockLev(4)
+            case 4: break;
+                
             default:
                 println("no level")
             }
@@ -1288,6 +1294,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             retryButt.zoomIN()
             quitButt.zoomIN()
         }
+        
+        if(currentScore > HighScore(currentLevel)){ newHighScore(currentLevel, currentScore) } //ASSIGN NEW HIGHSCORE IF ONE
+        
         quitButt.zoomIN()
         pausedOn = true;
     }
@@ -1462,6 +1471,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func displayResults()
     {
+        var newHS = false
+        if(currentScore > HighScore(currentLevel)){ newHS = true }
+        
         bronzeOutline = SKSpriteNode(imageNamed: "StarOutline")
         silverOutline = SKSpriteNode(imageNamed: "StarOutline")
         goldOutline = SKSpriteNode(imageNamed : "StarOutline")
@@ -1508,8 +1520,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             }
 
         }
+        if(newHS)
+        {
+        results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "NEW HIGH SCORE !!",   fontSize: 70, font: "font3", color: "white", align: "left")
+        }else
+        {
+        results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "OLD HIGH SCORE: \(HighScore(currentLevel))", fontSize: 50, font: "font3", color: "white", align: "left")
+        }
         
-        results     = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 100), says: "Results:",                                       fontSize: 50, font: "font3", color: "white", align: "left")
         crashNum    = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 160), says: "Crashes:  \(numCrashes)",                        fontSize: 50, font: "font3", color: "white", align: "left")
         peopleHit   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 220), says: "Hit People:  \(numPeopleHit)",                   fontSize: 50, font: "font3", color: "white", align: "left")
         totPoints   = Text(pos: CGPoint(x: self.size.width/2-450, y: self.size.height/2 - 280), says: "Total Points:  \(currentScore)",                 fontSize: 50, font: "font3", color: "white", align: "left")
@@ -1553,6 +1571,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         totPoints!.get().runAction(fadeIn)
         pointsLost!.get().runAction(fadeIn)
        
+    }
+    
+    func SoundOffOn()
+    {
+        if(Sound())
+        {
+            backgroundMusicPlayer.pause(); TurnSound(false); soundButt.getLabel().text = "(";
+        }
+        else
+        {
+            backgroundMusicPlayer.play(); TurnSound(true); soundButt.getLabel().text = "(=";
+        }
     }
 
 }

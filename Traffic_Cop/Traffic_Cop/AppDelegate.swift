@@ -13,90 +13,49 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var error: NSError?
 
+    
+    
+    func saveSomething()
+    {
+        
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-//        let entity = NSEntityDescription.entityForName("SaveData", inManagedObjectContext: managedObjectContext!)
-//        let saveData = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext!)
-//        
         //FETCH
-        var error: NSError?
-        let fetchRequest = NSFetchRequest(entityName: "SaveData")
+        var fetchRequest = NSFetchRequest(entityName: "SaveData")
         let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [CoreData]
-        
-        
         if let variables = fetchResults{
-            
         var VAR = variables[0]
         println("\(VAR.initialized.boolValue)")
         if(!VAR.initialized.boolValue)
             {
-                
-//                saveData.setValue(false, forKey: "lev2")
-//                saveData.setValue(false, forKey: "lev3")
-//                saveData.setValue(false, forKey: "lev4")
-//                saveData.setValue(NSNumber(bool: true), forKey: "initialized")
-//                
-//                
+                VAR.lev2 = NSNumber(bool: false)
+                VAR.lev3 = NSNumber(bool: false)
+                VAR.lev4 = NSNumber(bool: false)
+                VAR.sound = NSNumber(bool: false)
+                VAR.music = NSNumber(bool: false)
+                VAR.hsLev1 = NSNumber(int: 0)
+                VAR.hsLev2 = NSNumber(int: 0)
+                VAR.hsLev3 = NSNumber(int: 0)
+                VAR.hsLev4 = NSNumber(int: 0)
                 VAR.initialized = NSNumber(bool: true)
                 
                 println("\(VAR.initialized.boolValue)")
                 
-                if managedObjectContext!.save(&error){
-                    println("TRUE !! WAS INITIALIZED")
-                }else{
-                    println("Could not save \(error), \(error!.userInfo)")
-                }
-            
+                //SAVE
+                if managedObjectContext!.save(&error){ println("TRUE !! WAS INITIALIZED")
+                }else{println("Could not save \(error), \(error!.userInfo)")}
             }
-      
             
         }else{
             println("Could not fetch \(error), \(error!.userInfo)")
         }
         
-        
-        
-            
-            
     
-        
-    
-        
-        
-//        let saveData = NSEntityDescription.insertNewObjectForEntityForName("SaveData",
-//            inManagedObjectContext: self.managedObjectContext!) as! SaveData
-//        if (saveData.initialized == false)
-//        {
-//            saveData.lev2 = false
-//            saveData.lev3 = false
-//            saveData.lev4 = false
-//            saveData.sound = true
-//            saveData.music = true
-//            saveData.hsLev1 = 0
-//            saveData.hsLev2 = 0
-//            saveData.hsLev3 = 0
-//            saveData.hsLev4 = 0
-//            saveData.initialized = true
-//        }
-     
-        
-//        var e: NSError?
-//        if !self.managedObjectContext!.save(&e) {
-//            println("insert error: \(e!.localizedDescription)")
-//            abort()
-//        }
-        
-        
-        
-        
-        
-        
-        
-        
         
         return true
     }

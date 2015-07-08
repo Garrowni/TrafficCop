@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../CoreData.swift">
-   </FileRef>
-   <FileRef
       location = "self:Traffic_Cop.xcodeproj">
    </FileRef>
 </Workspace>

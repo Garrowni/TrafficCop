@@ -368,4 +368,5 @@ func playBackgroundMusic(filename: String)
     backgroundMusicPlayer.numberOfLoops = -1
     backgroundMusicPlayer.prepareToPlay()
     backgroundMusicPlayer.play()
+    if(!Sound()){ backgroundMusicPlayer.pause()}
 }

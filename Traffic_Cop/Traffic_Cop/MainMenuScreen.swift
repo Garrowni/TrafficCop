@@ -21,6 +21,7 @@ class MainMenuScreen: SKScene
     let playButt: Button
     let helpButt: Button
     let credButt: Button
+    let soundButt: Button
     
     let playableRect : CGRect
     let titlR: CGRect
@@ -40,8 +41,11 @@ class MainMenuScreen: SKScene
         let playableMargin = (size.height-playableHeight)/2.0
         playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
         
-        
+        var str : String //IF SOUND IS ALREADY ON
+        if(Sound()){str = "(="}else{str = "("}
+      
         //Labels
+        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,               fontSize: 70,   font: "font2", color: "green",  align: "center")
         titleLabel      = Text(pos: CGPoint(x: 0, y: 0),    says: "Traffic Cop",    fontSize: 150, font: "font1", color: "yellow", align: "center")
         playLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Play",           fontSize: 200, font: "font4", color: "black", align: "center")
         helpLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Help",           fontSize: 200, font: "font4", color: "black", align: "center")
@@ -58,6 +62,9 @@ class MainMenuScreen: SKScene
         playButt = Button(pos: playR, roundCorner: 200, text: playLabel, BGcolor: "green", OLcolor: "white",    OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         helpButt = Button(pos: helpR, roundCorner: 200, text: helpLabel, BGcolor: "yellow", OLcolor: "white",   OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
+        soundButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*11), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+
+        
         
         spawn1 = SpawnPoint(position: CGPoint(x: playableRect.width + 200, y: 180), direction: "left")
         spawn2 = SpawnPoint(position: CGPoint(x: -200, y: 48), direction: "right")
@@ -108,7 +115,9 @@ class MainMenuScreen: SKScene
         addChild(credButt.getButtOL())
         addChild(credButt.getLabel())
         
-        
+        addChild(soundButt.getButtBG())
+        addChild(soundButt.getButtOL())
+        addChild(soundButt.getLabel())
       
         self.runAction(self.spawnAction)
 
@@ -130,6 +139,10 @@ class MainMenuScreen: SKScene
         if playR.contains(location)
         {
             goToGame()
+        }
+        if(soundButt.origRect.contains(location))
+        {
+            SoundOffOn()
         }
         if helpR.contains(location)
         {
@@ -192,6 +205,7 @@ class MainMenuScreen: SKScene
             self.titlButt.FadeAway()
             self.credButt.FadeAway()
             self.helpButt.FadeAway()
+            self.soundButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock
@@ -213,6 +227,7 @@ class MainMenuScreen: SKScene
             self.titlButt.FadeAway()
             self.credButt.FadeAway()
             self.helpButt.zoomOUT()
+            self.soundButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock{
@@ -232,6 +247,7 @@ class MainMenuScreen: SKScene
             self.titlButt.FadeAway()
             self.credButt.zoomOUT()
             self.helpButt.FadeAway()
+            self.soundButt.FadeAway()
             }])
 
         let wait = SKAction.waitForDuration(0.5)
@@ -247,6 +263,19 @@ class MainMenuScreen: SKScene
         
         
     }
+    
+    func SoundOffOn()
+    {
+        if(Sound())
+        {
+            backgroundMusicPlayer.pause(); TurnSound(false); soundButt.getLabel().text = "(";
+        }
+        else
+        {
+            backgroundMusicPlayer.play(); TurnSound(true); soundButt.getLabel().text = "(=";
+        }
+    }
+
     
     func spawnVehicle()
     {
