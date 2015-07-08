@@ -86,6 +86,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var numCrashes      : Int = 0
     var totalPointsLost : Int = 0
     var numPeopleHit    : Int = 0
+    
+    
+    let personCollisionSound: SKAction = SKAction.playSoundFileNamed(
+        "scaredMan.wav", waitForCompletion: false)
+
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
@@ -116,23 +121,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pausedOn        = false
         deSelecting     = false
         levPassed       = false
-        println("\(currentLevel)")
-        switch(currentLevel)
-        {
-        case 1:
-            clock = Clock(playableR: playableRect, countFrom: 45)
-        case 2:
-            clock = Clock(playableR: playableRect, countFrom: 60)
-        case 3:
-            clock = Clock(playableR: playableRect, countFrom: 90)
-        case 4:
-            clock = Clock(playableR: playableRect, countFrom: 120)
-        default:
-            clock = Clock(playableR: playableRect, countFrom: 0)
+        clock           = Clock(playableR: playableRect, countFrom: 45)
 
-
-
-        }
         
         
         var str : String //IF SOUND IS ALREADY ON
@@ -423,6 +413,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             explosion(contactPoint, force: collisionImpulse)
         }else if(other.categoryBitMask == PhysicsCategory.Car && other2.categoryBitMask == PhysicsCategory.Person)
         {
+             runAction(personCollisionSound)
+           
+
             let Car     = other.node as! CarSprite
             let Person  = other2.node as! PeopleSprite
             
@@ -441,6 +434,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
         }else if(other.categoryBitMask == PhysicsCategory.Person && other2.categoryBitMask == PhysicsCategory.Car)
         {
+             runAction(personCollisionSound)
+            
+            
             let Car     = other2.node as! CarSprite
             let Person  = other.node as! PeopleSprite
             
