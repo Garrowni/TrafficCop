@@ -402,20 +402,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 IncreaseCarsHit()
                 addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
                 crashedCars.append(Car)
-            }
-            
-            if(Car2._state != .CRASHED)
-            {
+                
                 Car2.crashed(false)
                 Car.physicsBody!.allowsRotation = true
                 Car.physicsBody!.dynamic = true
                 Car2.removeAllActions()
                 crashedCars.append(Car2)
-                
-                numCrashes++
-                addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
                 crashedCars.append(Car)
             }
+
             
             explosion(contactPoint, force: collisionImpulse)
         }else if(other.categoryBitMask == PhysicsCategory.Car && other2.categoryBitMask == PhysicsCategory.Person)
