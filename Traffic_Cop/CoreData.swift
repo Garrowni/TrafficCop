@@ -21,5 +21,10 @@ class CoreData: NSManagedObject {
     @NSManaged var hsLev3: NSNumber
     @NSManaged var hsLev4: NSNumber
     @NSManaged var initialized: NSNumber
+    
+    @NSManaged var carsCrashed: NSNumber
+    @NSManaged var levelsBeat: NSNumber
+    @NSManaged var peopleHit: NSNumber
+    @NSManaged var timePlayed: NSNumber
 
 }
