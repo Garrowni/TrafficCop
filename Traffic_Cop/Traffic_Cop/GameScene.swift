@@ -90,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     let personCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "scaredMan.wav", waitForCompletion: false)
-
+    let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.aif", waitForCompletion: false)
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
@@ -413,12 +413,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             explosion(contactPoint, force: collisionImpulse)
         }else if(other.categoryBitMask == PhysicsCategory.Car && other2.categoryBitMask == PhysicsCategory.Person)
         {
-             runAction(personCollisionSound)
-           
+            
 
             let Car     = other.node as! CarSprite
             let Person  = other2.node as! PeopleSprite
-            
+            if (Sound())
+            {
+            if (Person._type == 2)
+            {
+                runAction(babyCollisionSound)
+            }
+            else
+            {
+               runAction(personCollisionSound)
+            }
+            }
             Car.crashed(true) //HIT PERSON
             Car.removeAllActions()
 
@@ -434,12 +443,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
         }else if(other.categoryBitMask == PhysicsCategory.Person && other2.categoryBitMask == PhysicsCategory.Car)
         {
-             runAction(personCollisionSound)
             
             
             let Car     = other2.node as! CarSprite
             let Person  = other.node as! PeopleSprite
-            
+            if (Sound())
+            {
+            if (Person._type == 2)
+            {
+                
+                    runAction(babyCollisionSound)
+                
+            }
+            else
+            {
+                runAction(personCollisionSound)
+            }
+            }
             Car.crashed(true) //HIT PERSON
             Car.removeAllActions()
             
