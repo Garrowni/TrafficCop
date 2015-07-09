@@ -232,6 +232,8 @@
 		08FC6D371B2888EA004F4824 /* HelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DA1B266A7300B2127F /* HelpScreen.swift */; };
 		08FC6D381B2888EA004F4824 /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
 		08FC6D391B2888EA004F4824 /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123DD1B266C8700B2127F /* CreditsScreen.swift */; };
+		7D4CB4BE1B4EE58B00795ACC /* AchievementsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CB4BC1B4EE58B00795ACC /* AchievementsHelper.swift */; };
+		7D4CB4BF1B4EE58B00795ACC /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CB4BD1B4EE58B00795ACC /* GameKitHelper.swift */; };
 		7D6D04EA1B4C5776001A1D14 /* PadLockLocked.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D6D04E91B4C5776001A1D14 /* PadLockLocked.png */; };
 		7DD850731B28AC8100C47FD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD850721B28AC8100C47FD7 /* libz.dylib */; };
 		7DD881CC1B28B50100C47FD7 /* TmxTileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD881CA1B28B50100C47FD7 /* TmxTileMapLayer.swift */; };
@@ -391,6 +393,8 @@
 		08FC6D261B28881D004F4824 /* Traffic_Cop_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Traffic_Cop_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08FC6D2B1B28881D004F4824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08FC6D2C1B28881D004F4824 /* Traffic_Cop_MacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traffic_Cop_MacTests.swift; sourceTree = "<group>"; };
+		7D4CB4BC1B4EE58B00795ACC /* AchievementsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementsHelper.swift; sourceTree = "<group>"; };
+		7D4CB4BD1B4EE58B00795ACC /* GameKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameKitHelper.swift; sourceTree = "<group>"; };
 		7D6D04E91B4C5776001A1D14 /* PadLockLocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PadLockLocked.png; sourceTree = "<group>"; };
 		7DD850721B28AC8100C47FD7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7DD850741B28ADEB00C47FD7 /* TrafficCop-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TrafficCop-Bridging-Header.h"; path = "Traffic_Cop/TrafficCop-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -755,6 +759,8 @@
 		08FC6D671B28895E004F4824 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7D4CB4BC1B4EE58B00795ACC /* AchievementsHelper.swift */,
+				7D4CB4BD1B4EE58B00795ACC /* GameKitHelper.swift */,
 				08D8E6001B4C64F200771C23 /* CoreData.swift */,
 				08D8E5F01B4C44A700771C23 /* CoreData.xcdatamodeld */,
 				080168E01B3B972C00424A67 /* Types.swift */,
@@ -1238,6 +1244,7 @@
 				080168E11B3B972C00424A67 /* Types.swift in Sources */,
 				08C464F81B2CE5B900DC56F8 /* Settings.swift in Sources */,
 				08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */,
+				7D4CB4BE1B4EE58B00795ACC /* AchievementsHelper.swift in Sources */,
 				05E000791B3338B6008F60E5 /* Feels.swift in Sources */,
 				08C464FE1B2F25A600DC56F8 /* GlowCircle.swift in Sources */,
 				08D971091B2B44F100F44180 /* LevelScreen.swift in Sources */,
@@ -1259,6 +1266,7 @@
 				08D6EB041B4D9BF9000873B6 /* StatsScreen.swift in Sources */,
 				7DD881DD1B28C8CA00C47FD7 /* JSTileMap.m in Sources */,
 				7DE146671B223F4F005DB874 /* CarSprite.swift in Sources */,
+				7D4CB4BF1B4EE58B00795ACC /* GameKitHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
