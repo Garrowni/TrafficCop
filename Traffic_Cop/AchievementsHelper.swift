@@ -32,17 +32,17 @@ class AchievementsHelper {
     static let MaxPeopleHit = 300
     static let MaxPlayTime = 3600
     //Play 1 Hour
-    static let DailyDriverId = "DailyDriver"
+    static let DailyDriverId = "com.Garrow.Traffic-Cop.DailyDriver"
     //3000+ Skid
-    static let AnyTreadLeftId = "AnyTreadLeft"
+    static let AnyTreadLeftId = "com.Garrow.Traffic-Cop.AnyTreadLeft"
     //200 Crashes
-    static let BentMetalId = "BentMetal"
+    static let BentMetalId = "com.Garrow.Traffic-Cop.BentMetal"
     //Beat 50 Levels
-    static let CompletionistId = "Completionist"
+    static let CompletionistId = "com.Garrow.Traffic-Cop.Completionist"
     //3000+ NS
-    static let HeadOnCollisionId = "HeadOnCollision"
+    static let HeadOnCollisionId = "com.Garrow.Traffic-Cop.HeadOnCollision"
     //300 people hit
-    static let VehicularManSlaughterId = "VehicularManslaughter"
+    static let VehicularManSlaughterId = "com.Garrow.Traffic-Cop.VehicularManslaughter"
 }
   
   class func bentMetalAchievement(noOfCollisions: Int) -> GKAchievement
