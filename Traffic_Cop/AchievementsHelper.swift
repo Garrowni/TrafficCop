@@ -26,24 +26,25 @@ import GameKit
 
 class AchievementsHelper {
   
-  struct Constants {
+  struct Constants
+  {
     static let MaxCollisions = 200
     static let MaxLevelsCompleted = 50
     static let MaxPeopleHit = 300
     static let MaxPlayTime = 3600
     //Play 1 Hour
-    static let DailyDriverId = "com.Garrow.Traffic-Cop.DailyDriver"
+    static let DailyDriverId = "DailyDriver"
     //3000+ Skid
-    static let AnyTreadLeftId = "com.Garrow.Traffic-Cop.AnyTreadLeft"
+    static let AnyTreadLeftId = "AnyTreadLeft"
     //200 Crashes
-    static let BentMetalId = "com.Garrow.Traffic-Cop.BentMetal"
+    static let BentMetalId = "BentMetal"
     //Beat 50 Levels
-    static let CompletionistId = "com.Garrow.Traffic-Cop.Completionist"
+    static let CompletionistId = "Completionist"
     //3000+ NS
-    static let HeadOnCollisionId = "com.Garrow.Traffic-Cop.HeadOnCollision"
+    static let HeadOnCollisionId = "HeadOnCollision"
     //300 people hit
-    static let VehicularManSlaughterId = "com.Garrow.Traffic-Cop.VehicularManslaughter"
-}
+    static let VehicularManSlaughterId = "VehicularManslaughter"
+    }
   
   class func bentMetalAchievement(noOfCollisions: Int) -> GKAchievement
   {

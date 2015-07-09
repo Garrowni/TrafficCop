@@ -103,7 +103,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
   }
     
     
-   func reportScore(score: Int64, forLeaderBoardId leaderBoardId: String)
+   func reportScore(score: Int64, leaderBoardId: String)
    {
         
         if !gameCenterEnabled {
@@ -112,8 +112,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
         }
         
         //1
-        let scoreReporter =
-        GKScore(leaderboardIdentifier: leaderBoardId)
+        let scoreReporter = GKScore(leaderboardIdentifier: leaderBoardId)
         scoreReporter.value = score
         scoreReporter.context = 0
         

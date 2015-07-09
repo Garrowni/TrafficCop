@@ -585,26 +585,28 @@ func ResetSaveFile()
 
 /*
 
-leader reference : TimePlayedLB
-lb id: TheTrafficCopLB1
+lr set ref name:        TheTrafficCopLeaderBoards
+id:                     TheTrafficCopLB
 
-leader reference : PeopleHitLB
-lb id : TheTrafficCopLB2
+leader reference :      TimePlayedLB
+lb id:                  TheTrafficCopLB1
 
-lr: CarsHitLB
-id: TheTrafficCopLB3
+leader reference :      PeopleHitLB
+lb id :                 TheTrafficCopLB2
 
-lr: LongestSkidLB
-id: TheTrafficCopLB4
+lr:                     CarsHitLB
+id:                     TheTrafficCopLB3
 
-lr: LevelsBeatLB
-id: TheTrafficCopLB5
+lr:                     LongestSkidLB
+id:                     TheTrafficCopLB4
 
-lr: HardestCrashLB
-id: TheTrafficCopLB6
+lr:                     LevelsBeatLB
+id:                     TheTrafficCopLB5
 
-lr set ref name: TheTrafficCopLeaderBoards
-id: TheTrafficCopLB
+lr:                     HardestCrashLB
+id:                     TheTrafficCopLB6
+
+
 
 ach: DailyDriverId
 id:  DailyDriver

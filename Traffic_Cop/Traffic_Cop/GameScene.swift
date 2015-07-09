@@ -1681,7 +1681,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func reportScoreToGameCenter()
     {
-        //GameKitHelper.sharedInstance.reportScore(Int64(timeToComplete), forLeaderBoardId:leaderboardIDMap["\(carType.rawValue)_\(levelType.rawValue)"]!)
+        GameKitHelper.sharedInstance.reportScore(Int64(TotalTimePlayed()),  leaderBoardId: "TheTrafficCopLB1")
+        GameKitHelper.sharedInstance.reportScore(Int64(PeopleHit()),        leaderBoardId: "TheTrafficCopLB2")
+        GameKitHelper.sharedInstance.reportScore(Int64(CarsHit()),          leaderBoardId: "TheTrafficCopLB3")
+        GameKitHelper.sharedInstance.reportScore(Int64(LongestSkid()),      leaderBoardId: "TheTrafficCopLB4")
+        GameKitHelper.sharedInstance.reportScore(Int64(LevelsBeat()),       leaderBoardId: "TheTrafficCopLB5")
+        GameKitHelper.sharedInstance.reportScore(Int64(HardestCrash()),     leaderBoardId: "TheTrafficCopLB6")
     }
 
 }
