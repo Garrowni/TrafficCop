@@ -12,7 +12,6 @@
 		05E39ADD1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		05ED49A91B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */; };
-		05ED49AA1B4C4B2E00ED4B06 /* babyCry.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A01B4C4B2E00ED4B06 /* babyCry.aif */; };
 		05ED49AB1B4C4B2E00ED4B06 /* car-horn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */; };
 		05ED49AC1B4C4B2E00ED4B06 /* carBreakSkid.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */; };
 		05ED49AD1B4C4B2E00ED4B06 /* carCrash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A31B4C4B2E00ED4B06 /* carCrash.wav */; };
@@ -273,7 +272,6 @@
 		05E000781B3338B6008F60E5 /* Feels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feels.swift; sourceTree = "<group>"; };
 		05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = peopleSprite.swift; sourceTree = "<group>"; };
 		05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AmbulenceSiren.mp3; sourceTree = "<group>"; };
-		05ED49A01B4C4B2E00ED4B06 /* babyCry.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = babyCry.aif; sourceTree = "<group>"; };
 		05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "car-horn.wav"; sourceTree = "<group>"; };
 		05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carBreakSkid.wav; sourceTree = "<group>"; };
 		05ED49A31B4C4B2E00ED4B06 /* carCrash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carCrash.wav; sourceTree = "<group>"; };
@@ -457,7 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */,
-				05ED49A01B4C4B2E00ED4B06 /* babyCry.aif */,
 				05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */,
 				05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */,
 				05ED49A31B4C4B2E00ED4B06 /* carCrash.wav */,
@@ -1084,7 +1081,6 @@
 				08D516071B28CB8100E5289B /* RoadTilesV2.png in Resources */,
 				08E8DC391B46F9A7002667E8 /* GoldStar.png in Resources */,
 				08D5162B1B28CB8100E5289B /* car_cop2.png in Resources */,
-				05ED49AA1B4C4B2E00ED4B06 /* babyCry.aif in Resources */,
 				08D516251B28CB8100E5289B /* car_cop1.png in Resources */,
 				08D5163B1B28CB8100E5289B /* stoplight_2048.png in Resources */,
 				08DB99781B4B1603000C0FF3 /* levelsBG.png in Resources */,
