@@ -22,6 +22,7 @@ class CoreData: NSManagedObject {
     @NSManaged var hsLev4: NSNumber
     @NSManaged var initialized: NSNumber
     
+    //STATS
     @NSManaged var carsCrashed: NSNumber
     @NSManaged var levelsBeat: NSNumber
     @NSManaged var peopleHit: NSNumber
@@ -29,7 +30,7 @@ class CoreData: NSManagedObject {
     @NSManaged var longestSkid: NSNumber
     @NSManaged var hardestCrash: NSNumber
 
-    
+    //ACHIEVEMENTS
     @NSManaged var completionist: NSNumber
     @NSManaged var dailyDriver: NSNumber
     @NSManaged var lotsOfCrashes: NSNumber

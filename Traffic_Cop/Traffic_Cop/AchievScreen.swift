@@ -67,17 +67,17 @@ class AchieveScreen: SKScene
         titleButt   = Button(pos: titleButtR,   roundCorner: 100, text: titleLabel, BGcolor: "halfblack", OLcolor: "red", OLSize: 10, glowWidth: 20, ZoomIn: true, Bulge: true, glowBulge: false)
         
         helpSTR   = "Daily Driver (play 1 hour)"
-        helpSTR2  = "true ?"
+        helpSTR2  = "\(DailyDriver())"
         helpSTR3  = "Any Tread Left? (3000+ skid)"
-        helpSTR4  = ""
+        helpSTR4  = "\(TreadLeft())"
         helpSTR5  = "Vehicular ManSlaughter (hit 300 people)"
-        helpSTR6  = "false ?"
+        helpSTR6  = "\(LotsOfPeopleHit())"
         helpSTR7  = "Bent Metal! (200 crashes)"
-        helpSTR8  = ""
+        helpSTR8  = "\(LotsOfCrashes())"
         helpSTR9  = "Completionist (Beat 50 levels)"
-        helpSTR10  = "true ?"
+        helpSTR10  = "\(Completionist())"
         helpSTR11  = "Head On Collision (3000+ ns)"
-        helpSTR12  = ""
+        helpSTR12  = "\(HardHit())"
         
         help   = Text(pos: CGPoint(x: size.width/2, y:size.height - 400),     says: helpSTR,   fontSize: 60, font: "font2", color: "green",  align: "center")
         help2  = Text(pos: CGPoint(x: size.width/2, y:size.height - 500),     says: helpSTR2,  fontSize: 90, font: "font3", color: "white",  align: "center")
