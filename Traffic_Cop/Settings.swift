@@ -100,6 +100,90 @@ let lv4Gold   = 1050
 
 
 //GETTERS
+func DailyDriver() -> Bool
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.dailyDriver.boolValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return false
+}
+
+func Completionist() -> Bool
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.completionist.boolValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return false
+}
+
+func LotsOfCrashes() -> Bool
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.lotsOfCrashes.boolValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return false
+}
+
+func LotsOfPeopleHit() -> Bool
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.lotsPeopleHit.boolValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return false
+}
+
+func TreadLeft() -> Bool
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.treadLeft.boolValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return false
+}
+
+func HardHit() -> Bool
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.hardHit.boolValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return false
+}
+
 func Lev2() -> Bool
 {
     if let variables = fetchResults
@@ -175,6 +259,7 @@ func PeopleHit() -> Int
     if let variables = fetchResults
     {
         var VAR = variables[0]
+         if(!LotsOfPeopleHit() && VAR.peopleHit.integerValue >= 300){VAR.lotsPeopleHit = NSNumber(bool: true)}
         return VAR.peopleHit.integerValue
     }
     else
@@ -205,6 +290,7 @@ func TimePlayed() -> String
         var VAR = variables[0]
         
         var fullSecs = VAR.timePlayed.integerValue
+        if(!DailyDriver() && fullSecs >= 3600){VAR.dailyDriver = NSNumber(bool: true)}
         
         var string : String  = ""
         var hours       = fullSecs/3600
@@ -239,7 +325,9 @@ func CarsHit() -> Int
 {
     if let variables = fetchResults
     {
+        
         var VAR = variables[0]
+        if(!LotsOfCrashes() && VAR.carsCrashed.integerValue >= 200){VAR.lotsOfCrashes = NSNumber(bool: true)}
         return VAR.carsCrashed.integerValue
     }
     else
@@ -254,6 +342,7 @@ func LevelsBeat() -> Int
     if let variables = fetchResults
     {
         var VAR = variables[0]
+         if(!Completionist() && VAR.levelsBeat.integerValue >= 50){VAR.completionist = NSNumber(bool: true)}
         return VAR.levelsBeat.integerValue
     }
     else
@@ -285,6 +374,7 @@ func LongestSkid() -> Int
     if let variables = fetchResults
     {
         var VAR = variables[0]
+        if(!TreadLeft() && VAR.treadLeft.integerValue >= 3000){VAR.treadLeft = NSNumber(bool: true)}
         return VAR.longestSkid.integerValue
     }
     else
@@ -299,6 +389,7 @@ func HardestCrash() -> Int
     if let variables = fetchResults
     {
         var VAR = variables[0]
+         if(!HardHit() && VAR.hardestCrash.integerValue >= 3000){VAR.hardHit = NSNumber(bool: true)}
         return VAR.hardestCrash.integerValue
     }
     else
