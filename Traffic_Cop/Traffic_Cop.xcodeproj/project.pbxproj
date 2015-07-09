@@ -12,6 +12,7 @@
 		05E39ADD1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		05E6844B1B4EE2EE00C07545 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6844A1B4EE2EE00C07545 /* GameKit.framework */; };
+		05E684501B4F00B300C07545 /* babyCry.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E6844F1B4F00B300C07545 /* babyCry.wav */; };
 		05ED49A91B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */; };
 		05ED49AB1B4C4B2E00ED4B06 /* car-horn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */; };
 		05ED49AC1B4C4B2E00ED4B06 /* carBreakSkid.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */; };
@@ -278,6 +279,7 @@
 		05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = peopleSprite.swift; sourceTree = "<group>"; };
 		05E6844A1B4EE2EE00C07545 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		05E6844C1B4EE30400C07545 /* Traffic_Cop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Traffic_Cop.entitlements; sourceTree = "<group>"; };
+		05E6844F1B4F00B300C07545 /* babyCry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = babyCry.wav; sourceTree = "<group>"; };
 		05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AmbulenceSiren.mp3; sourceTree = "<group>"; };
 		05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "car-horn.wav"; sourceTree = "<group>"; };
 		05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carBreakSkid.wav; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */,
+				05E6844F1B4F00B300C07545 /* babyCry.wav */,
 				05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */,
 				05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */,
 				05ED49A31B4C4B2E00ED4B06 /* carCrash.wav */,
@@ -1144,6 +1147,7 @@
 				08E7B6A51B38A22B00F32693 /* FireWork2.sks in Resources */,
 				08D5163D1B28CB8100E5289B /* stoplight_green.png in Resources */,
 				7DE1464C1B223E95005DB874 /* Main.storyboard in Resources */,
+				05E684501B4F00B300C07545 /* babyCry.wav in Resources */,
 				08D515E91B28CB8100E5289B /* irritated.png in Resources */,
 				08E8DC441B471F44002667E8 /* carGuy.png in Resources */,
 				08D74BE91B290D4C00E1C8BA /* burnstown_dam.otf in Resources */,
