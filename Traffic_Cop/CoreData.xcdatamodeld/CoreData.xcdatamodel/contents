@@ -2,7 +2,10 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SaveData" representedClassName="Traffic_Cop.CoreData" syncable="YES">
         <attribute name="carsCrashed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="completionist" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="dailyDriver" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="hardestCrash" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="hardHit" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="hsLev1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="hsLev2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="hsLev3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -13,12 +16,15 @@
         <attribute name="lev4" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="levelsBeat" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="longestSkid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lotsOfCrashes" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="lotsPeopleHit" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="music" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="peopleHit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sound" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="timePlayed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="treadLeft" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SaveData" positionX="-4860" positionY="-2781" width="128" height="283"/>
+        <element name="SaveData" positionX="-4860" positionY="-2781" width="128" height="375"/>
     </elements>
 </model>

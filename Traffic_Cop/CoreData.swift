@@ -29,4 +29,12 @@ class CoreData: NSManagedObject {
     @NSManaged var longestSkid: NSNumber
     @NSManaged var hardestCrash: NSNumber
 
+    
+    @NSManaged var completionist: NSNumber
+    @NSManaged var dailyDriver: NSNumber
+    @NSManaged var lotsOfCrashes: NSNumber
+    @NSManaged var lotsPeopleHit: NSNumber
+    @NSManaged var treadLeft: NSNumber
+    @NSManaged var hardHit: NSNumber
+    
 }

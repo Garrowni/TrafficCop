@@ -23,6 +23,7 @@ class MainMenuScreen: SKScene
     let credButt: Button
     let soundButt: Button
     let statsButt: Button
+    let achievButt: Button
     
     let playableRect : CGRect
     let titlR: CGRect
@@ -46,8 +47,9 @@ class MainMenuScreen: SKScene
         if(Sound()){str = "(="}else{str = "("}
       
         //Labels
-        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,               fontSize: 70,   font: "font2", color: "green",  align: "center")
-        var statsLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Stats",               fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,              fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var statsLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Stats",          fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var achievLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Awards",        fontSize: 55,   font: "font2", color: "green",  align: "center")
         titleLabel      = Text(pos: CGPoint(x: 0, y: 0),    says: "Traffic Cop",    fontSize: 150, font: "font1", color: "yellow", align: "center")
         playLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Play",           fontSize: 200, font: "font4", color: "black", align: "center")
         helpLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Help",           fontSize: 200, font: "font4", color: "black", align: "center")
@@ -66,7 +68,7 @@ class MainMenuScreen: SKScene
         credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         soundButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*11), size: CGSize(width: 128, height: 128)),  roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         statsButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*2), size: CGSize(width: 128, height: 128)),    roundCorner: 64, text: statsLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
-
+        achievButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*5), size: CGSize(width: 128, height: 128)),    roundCorner: 64, text: achievLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         
         
         spawn1 = SpawnPoint(position: CGPoint(x: playableRect.width + 200, y: 180), direction: "left")
@@ -125,6 +127,10 @@ class MainMenuScreen: SKScene
         addChild(statsButt.getButtBG())
         addChild(statsButt.getButtOL())
         addChild(statsButt.getLabel())
+        
+        addChild(achievButt.getButtBG())
+        addChild(achievButt.getButtOL())
+        addChild(achievButt.getLabel())
       
         self.runAction(self.spawnAction)
 
@@ -150,6 +156,10 @@ class MainMenuScreen: SKScene
         if(soundButt.origRect.contains(location))
         {
             SoundOffOn()
+        }
+        if(achievButt.origRect.contains(location))
+        {
+            goToAchieveScreen()
         }
         if helpR.contains(location)
         {
@@ -216,6 +226,7 @@ class MainMenuScreen: SKScene
             self.helpButt.FadeAway()
             self.soundButt.FadeAway()
             self.statsButt.zoomOUT()
+            self.achievButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock
@@ -241,6 +252,7 @@ class MainMenuScreen: SKScene
             self.helpButt.FadeAway()
             self.soundButt.FadeAway()
             self.statsButt.FadeAway()
+            self.achievButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock
@@ -264,6 +276,7 @@ class MainMenuScreen: SKScene
             self.helpButt.zoomOUT()
             self.soundButt.FadeAway()
             self.statsButt.FadeAway()
+            self.achievButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock{
@@ -284,6 +297,8 @@ class MainMenuScreen: SKScene
             self.credButt.zoomOUT()
             self.helpButt.FadeAway()
             self.soundButt.FadeAway()
+            self.statsButt.FadeAway()
+            self.achievButt.FadeAway()
             }])
 
         let wait = SKAction.waitForDuration(0.5)
@@ -327,5 +342,31 @@ class MainMenuScreen: SKScene
             car.drive()
             addChild(car)
         }
+    }
+    
+    func goToAchieveScreen()
+    {
+        let transition = SKAction.group([SKAction.runBlock(){
+            self.playButt.FadeAway()
+            self.titlButt.FadeAway()
+            self.credButt.FadeAway()
+            self.helpButt.FadeAway()
+            self.soundButt.FadeAway()
+            self.statsButt.FadeAway()
+            self.achievButt.zoomOUT()
+            }])
+        
+        let wait = SKAction.waitForDuration(0.5)
+        let block = SKAction.runBlock
+            {
+                let myScene = AchieveScreen(size: self.size)
+                myScene.scaleMode = self.scaleMode
+                let reveal = SKTransition.doorsCloseHorizontalWithDuration(1.5)
+                self.view?.presentScene(myScene, transition: reveal)
+        }
+        let transSequence = SKAction.sequence([transition,wait,block])
+        self.runAction(transSequence)
+        
+        
     }
 }

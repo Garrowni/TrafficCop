@@ -189,6 +189,8 @@
 		08DB99761B4B0A99000C0FF3 /* Background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DB99741B4B0A99000C0FF3 /* Background2.png */; };
 		08DB99781B4B1603000C0FF3 /* levelsBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DB99771B4B1603000C0FF3 /* levelsBG.png */; };
 		08DB99791B4B1603000C0FF3 /* levelsBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DB99771B4B1603000C0FF3 /* levelsBG.png */; };
+		08DC8C9C1B4EDB90000AE7F3 /* AchievScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC8C9B1B4EDB90000AE7F3 /* AchievScreen.swift */; };
+		08DC8C9D1B4EDB90000AE7F3 /* AchievScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC8C9B1B4EDB90000AE7F3 /* AchievScreen.swift */; };
 		08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */; };
 		08E123D71B26689E00B2127F /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D61B26689E00B2127F /* MyUtils.swift */; };
 		08E123D91B266A2800B2127F /* MainMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E123D81B266A2800B2127F /* MainMenuScreen.swift */; };
@@ -362,6 +364,7 @@
 		08D9F3E61B29F8BB00FDA871 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		08DB99741B4B0A99000C0FF3 /* Background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background2.png; sourceTree = "<group>"; };
 		08DB99771B4B1603000C0FF3 /* levelsBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelsBG.png; sourceTree = "<group>"; };
+		08DC8C9B1B4EDB90000AE7F3 /* AchievScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievScreen.swift; sourceTree = "<group>"; };
 		08E123D41B2667CB00B2127F /* TEMPLATESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMPLATESCREEN.swift; sourceTree = "<group>"; };
 		08E123D61B26689E00B2127F /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = Traffic_Cop/MyUtils.swift; sourceTree = "<group>"; };
 		08E123D81B266A2800B2127F /* MainMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScreen.swift; sourceTree = "<group>"; };
@@ -693,6 +696,7 @@
 				08E123DD1B266C8700B2127F /* CreditsScreen.swift */,
 				08D971081B2B44F100F44180 /* LevelScreen.swift */,
 				08D6EB031B4D9BF9000873B6 /* StatsScreen.swift */,
+				08DC8C9B1B4EDB90000AE7F3 /* AchievScreen.swift */,
 			);
 			name = Screens;
 			path = Traffic_Cop;
@@ -1209,6 +1213,7 @@
 				08C464F61B2CCA1300DC56F8 /* Map.swift in Sources */,
 				08C464FF1B2F25A600DC56F8 /* GlowCircle.swift in Sources */,
 				08C464FC1B2F0F7900DC56F8 /* GlowBox.swift in Sources */,
+				08DC8C9D1B4EDB90000AE7F3 /* AchievScreen.swift in Sources */,
 				08D515A01B28C49400E5289B /* DrawText.swift in Sources */,
 				08D8E5F31B4C44A700771C23 /* CoreData.xcdatamodeld in Sources */,
 			);
@@ -1239,6 +1244,7 @@
 				7DD881DE1B28C8CA00C47FD7 /* LFCGzipUtility.m in Sources */,
 				08E123DE1B266C8700B2127F /* CreditsScreen.swift in Sources */,
 				08E123D71B26689E00B2127F /* MyUtils.swift in Sources */,
+				08DC8C9C1B4EDB90000AE7F3 /* AchievScreen.swift in Sources */,
 				08E123D51B2667CB00B2127F /* TEMPLATESCREEN.swift in Sources */,
 				08D8E6011B4C64F200771C23 /* CoreData.swift in Sources */,
 				05E39ADD1B31DE7300D0F164 /* peopleSprite.swift in Sources */,

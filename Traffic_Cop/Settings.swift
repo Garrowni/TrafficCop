@@ -65,8 +65,6 @@ var managedObjectContext: NSManagedObjectContext? = {
     return managedObjectContext
     }()
 
-// MARK: - Core Data Saving support
-
 func saveContext () {
     if let moc = managedObjectContext {
         var error: NSError? = nil
@@ -178,6 +176,20 @@ func PeopleHit() -> Int
     {
         var VAR = variables[0]
         return VAR.peopleHit.integerValue
+    }
+    else
+    {
+        println("Could not fetch \(error), \(error!.userInfo)")
+    }
+    return -1
+}
+
+func TotalTimePlayed() -> Int
+{
+    if let variables = fetchResults
+    {
+        var VAR = variables[0]
+        return VAR.timePlayed.integerValue
     }
     else
     {
