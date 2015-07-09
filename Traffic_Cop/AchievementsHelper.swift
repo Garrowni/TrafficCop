@@ -44,7 +44,8 @@ class AchievementsHelper {
     static let HeadOnCollisionId = "HeadOnCollision"
     //300 people hit
     static let VehicularManSlaughterId = "VehicularManslaughter"
-    }
+}
+
   
   class func bentMetalAchievement(noOfCollisions: Int) -> GKAchievement
   {
