@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Mat_Nicole_Justin. All rights reserved.
 //
 
+// TYPE THIS IN TERMINAL FOR LINES OF CODE ADD UP ---> 
+// -------------------->    find . "(" -name "*.m" -or -name "*.h" -or -name "*.swift" ")" -print0 | xargs -0 wc -l
+// -------------------->    find . "(" -name "*.swift" ")" -print0 | xargs -0 wc -l       <---- JUST SWIFT
+
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate
@@ -1678,12 +1682,13 @@ class Skid
         var sequence = SKAction.sequence([wait, fade])
         var block1 = SKAction.runBlock(){self.FLeftSkidPath.runAction(sequence); self.FRightSkidPath.runAction(sequence); self.BRightSkidPath.runAction(sequence);self.BLeftSkidPath.runAction(sequence);}
         var block2 = SKAction.runBlock(){self.done = true;}
-        var block3 = SKAction.runBlock(){
+        var block3 = SKAction.runBlock()//SKID LENGTH ESTIMATE CALCULATION (DONE THIS WAY BECAUSE THE SHAPENODES LINELENGTH WAS NOT WORKING)
+        {
             var skidLength = CGFloat(0.0)
-            skidLength += self.FLeftSkidPath.lineLength
-            skidLength += self.FRightSkidPath.lineLength
-            skidLength += self.BRightSkidPath.lineLength
-            skidLength += self.BLeftSkidPath.lineLength
+            skidLength += (CGPathGetBoundingBox(self.FLeftTirePath).width + CGPathGetBoundingBox(self.FLeftTirePath).height)
+            skidLength += (CGPathGetBoundingBox(self.FRightTirePath).width + CGPathGetBoundingBox(self.FRightTirePath).height)
+            skidLength += (CGPathGetBoundingBox(self.BRightTirePath).width + CGPathGetBoundingBox(self.BRightTirePath).height)
+            skidLength += (CGPathGetBoundingBox(self.BLeftTirePath).width + CGPathGetBoundingBox(self.BLeftTirePath).height)
             if(skidLength > CGFloat(LongestSkid())){NewLongestSkid(Int(skidLength))}
         }
         var fullSequence = SKAction.sequence([block1 ,wait2, block3, block2])
@@ -1708,7 +1713,9 @@ class Skid
         let FR  = car.FRightTire.convertPoint(car.FRightTire.position, toNode: theParent)
         let BR  = car.BRightTire.convertPoint(car.BRightTire.position, toNode: theParent)
         let BL  = car.BLeftTire.convertPoint(car.BLeftTire.position, toNode: theParent)
-            
+        
+        
+        
         CGPathMoveToPoint(FLeftTirePath, nil, FL.x, FL.y);
         CGPathMoveToPoint(FRightTirePath, nil, FR.x, FR.y);
         CGPathMoveToPoint(BRightTirePath, nil, BR.x, BR.y);
@@ -1737,7 +1744,6 @@ class Skid
             self.FRightSkidPath.path = self.FRightTirePath
             self.BRightSkidPath.path = self.BRightTirePath
             self.BLeftSkidPath.path = self.BLeftTirePath
-        
             
         }
         var updateSequence = SKAction.sequence([updateLines, updateWait])

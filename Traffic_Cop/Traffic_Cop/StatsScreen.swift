@@ -74,9 +74,9 @@ class StatsScreen: SKScene
         helpSTR6  = "\(CarsHit())"
         helpSTR7  = "Total Levels Completed"
         helpSTR8  = "\(LevelsBeat())"
-        helpSTR9  = "Longest Skid"
+        helpSTR9  = "Longest Skid (Inches)"
         helpSTR10  = "\(LongestSkid())"
-        helpSTR11  = "Hardest Crash"
+        helpSTR11  = "Hardest Crash Impulse (Ns)"
         helpSTR12  = "\(HardestCrash())"
         
         help   = Text(pos: CGPoint(x: size.width/2, y:size.height - 400),     says: helpSTR,   fontSize: 90, font: "font2", color: "green",  align: "center")
@@ -89,7 +89,7 @@ class StatsScreen: SKScene
         help8  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1100),    says: helpSTR8,  fontSize: 90, font: "font3", color: "white",  align: "center")
         help9  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1200),     says: helpSTR9,  fontSize: 90, font: "font2", color: "green",  align: "center")
         help10  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1300),     says: helpSTR10,  fontSize: 90, font: "font3", color: "white",  align: "center")
-        help11  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1400),    says: helpSTR11,  fontSize: 90, font: "font2", color: "green",  align: "center")
+        help11  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1400),    says: helpSTR11,  fontSize: 70, font: "font2", color: "green",  align: "center")
         help12  = Text(pos: CGPoint(x: size.width/2, y:size.height - 1500),    says: helpSTR12,  fontSize: 90, font: "font3", color: "white",  align: "center")
         
         super.init(size: size)
