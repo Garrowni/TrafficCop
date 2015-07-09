@@ -11,7 +11,6 @@
 // -------------------->    find . "(" -name "*.swift" ")" -print0 | xargs -0 wc -l       <---- JUST SWIFT
 
 import SpriteKit
-import GameKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate
 {
@@ -1366,8 +1365,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         saveGame()
         quitButt.zoomIN()
         pausedOn = true;
-        
-        reportAchievementsForGame()
     }
     
     func nextLevel(retry: Bool)
@@ -1653,28 +1650,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             backgroundMusicPlayer.play(); TurnSound(true); soundButt.getLabel().text = "(=";
         }
     }
-    
-    func reportAchievementsForGame() {
-         //1
-        var achievements = [GKAchievement]()
-        
-        //2
-        achievements.append(AchievementsHelper.bentMetalAchievement(CarsHit()))
-        achievements.append(AchievementsHelper.dailyDriverachievement(TotalTimePlayed()))
-        achievements.append(AchievementsHelper.vehicularManslaughterAchievement(PeopleHit()))
-        achievements.append(AchievementsHelper.completionistAchievement(LevelsBeat()))
-        //3
-        if LongestSkid() >= 3000
-        {
-            achievements.append(AchievementsHelper.anyTreadLeftAchievement())
-        }
-        if HardestCrash() >= 3000
-        {
-            achievements.append(AchievementsHelper.headOnCollisionAchievement())
-        }
-        //4
-        GameKitHelper.sharedInstance.reportAchievements(achievements)
-    }
 
 }
 
@@ -1782,7 +1757,6 @@ class Skid
         BRightSkidPath.removeFromParent()
         BLeftSkidPath.removeFromParent()
     }
-    
 }
 
 

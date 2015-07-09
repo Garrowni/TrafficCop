@@ -101,23 +101,24 @@ class AchievementsHelper {
                 return dailyDriverAchievement
     }
     
-    class func anyTreadLeftAchievement() -> GKAchievement
+    class func anyTreadLeftAchievement(skidLength : Int) -> GKAchievement
     {
         let skidAchievement = GKAchievement(identifier: Constants.AnyTreadLeftId)
-        
-        
-        skidAchievement.percentComplete = 100
-        
+        if(skidLength >= 3000)
+        {
+            skidAchievement.percentComplete = 100
+        }
         skidAchievement.showsCompletionBanner = true
         return skidAchievement
     }
     
-    class func headOnCollisionAchievement() -> GKAchievement
+    class func headOnCollisionAchievement(collision : Int) -> GKAchievement
     {
         let headOnAchievement = GKAchievement(identifier: Constants.HeadOnCollisionId)
-                
-        headOnAchievement.percentComplete = 100
-        
+        if(collision >= 3000)
+        {
+            headOnAchievement.percentComplete = 100
+        }
         headOnAchievement.showsCompletionBanner = true
         return headOnAchievement
     }
