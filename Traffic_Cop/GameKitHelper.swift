@@ -101,4 +101,29 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
     
     gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
   }
+    
+    
+   func reportScore(score: Int64, forLeaderBoardId leaderBoardId: String)
+   {
+        
+        if !gameCenterEnabled {
+            println("Local player is not authenticated")
+            return
+        }
+        
+        //1
+        let scoreReporter =
+        GKScore(leaderboardIdentifier: leaderBoardId)
+        scoreReporter.value = score
+        scoreReporter.context = 0
+        
+        let scores = [scoreReporter]
+        
+        //2
+        GKScore.reportScores(scores) {(error) in
+            self.lastError = error
+        }
+    }
+  
+    
 }

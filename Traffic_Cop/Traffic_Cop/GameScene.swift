@@ -1654,7 +1654,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
     }
     
-    func reportAchievementsForGame() {
+    func reportAchievementsForGame()
+    {
          //1
         var achievements = [GKAchievement]()
         
@@ -1674,6 +1675,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
         //4
         GameKitHelper.sharedInstance.reportAchievements(achievements)
+        
+        reportScoreToGameCenter()
+    }
+    
+    func reportScoreToGameCenter()
+    {
+        //GameKitHelper.sharedInstance.reportScore(Int64(timeToComplete), forLeaderBoardId:leaderboardIDMap["\(carType.rawValue)_\(levelType.rawValue)"]!)
     }
 
 }

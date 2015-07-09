@@ -137,6 +137,8 @@ class MainMenuScreen: SKScene
         background.zPosition = -1
         addChild(background)
         
+        GameKitHelper.sharedInstance.authenticateLocalPlayer()
+        
     }
     
     
