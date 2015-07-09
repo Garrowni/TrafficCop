@@ -11,6 +11,7 @@
 		05E0007A1B3338B6008F60E5 /* Feels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E000781B3338B6008F60E5 /* Feels.swift */; };
 		05E39ADD1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
 		05E39ADE1B31DE7300D0F164 /* peopleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */; };
+		05E6844B1B4EE2EE00C07545 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6844A1B4EE2EE00C07545 /* GameKit.framework */; };
 		05ED49A91B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */; };
 		05ED49AB1B4C4B2E00ED4B06 /* car-horn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */; };
 		05ED49AC1B4C4B2E00ED4B06 /* carBreakSkid.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */; };
@@ -20,6 +21,10 @@
 		05ED49B01B4C4B2E00ED4B06 /* policeSiren.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A61B4C4B2E00ED4B06 /* policeSiren.wav */; };
 		05ED49B11B4C4B2E00ED4B06 /* scaredMan.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A71B4C4B2E00ED4B06 /* scaredMan.wav */; };
 		05ED49B21B4C4B2E00ED4B06 /* Sunshine A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05ED49A81B4C4B2E00ED4B06 /* Sunshine A.mp3 */; };
+		05F24EE91B4DBACE00CF63E6 /* babyCry.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05F24EE81B4DBACE00CF63E6 /* babyCry.wav */; };
+		05F24EEA1B4DBACE00CF63E6 /* babyCry.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05F24EE81B4DBACE00CF63E6 /* babyCry.wav */; };
+		05F24EEB1B4DBACE00CF63E6 /* babyCry.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05F24EE81B4DBACE00CF63E6 /* babyCry.wav */; };
+		05F24EEC1B4DBACE00CF63E6 /* babyCry.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05F24EE81B4DBACE00CF63E6 /* babyCry.wav */; };
 		080168E11B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
 		080168E21B3B972C00424A67 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080168E01B3B972C00424A67 /* Types.swift */; };
 		080168E41B3C405A00424A67 /* BlackSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 080168E31B3C405A00424A67 /* BlackSmoke.sks */; };
@@ -271,6 +276,8 @@
 /* Begin PBXFileReference section */
 		05E000781B3338B6008F60E5 /* Feels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feels.swift; sourceTree = "<group>"; };
 		05E39ADC1B31DE7300D0F164 /* peopleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = peopleSprite.swift; sourceTree = "<group>"; };
+		05E6844A1B4EE2EE00C07545 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		05E6844C1B4EE30400C07545 /* Traffic_Cop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Traffic_Cop.entitlements; sourceTree = "<group>"; };
 		05ED499F1B4C4B2E00ED4B06 /* AmbulenceSiren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AmbulenceSiren.mp3; sourceTree = "<group>"; };
 		05ED49A11B4C4B2E00ED4B06 /* car-horn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "car-horn.wav"; sourceTree = "<group>"; };
 		05ED49A21B4C4B2E00ED4B06 /* carBreakSkid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carBreakSkid.wav; sourceTree = "<group>"; };
@@ -280,6 +287,7 @@
 		05ED49A61B4C4B2E00ED4B06 /* policeSiren.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = policeSiren.wav; sourceTree = "<group>"; };
 		05ED49A71B4C4B2E00ED4B06 /* scaredMan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scaredMan.wav; sourceTree = "<group>"; };
 		05ED49A81B4C4B2E00ED4B06 /* Sunshine A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunshine A.mp3"; sourceTree = "<group>"; };
+		05F24EE81B4DBACE00CF63E6 /* babyCry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = babyCry.wav; sourceTree = "<group>"; };
 		080168E01B3B972C00424A67 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		080168E31B3C405A00424A67 /* BlackSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlackSmoke.sks; sourceTree = "<group>"; };
 		08C464F41B2CCA1300DC56F8 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -438,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DD850731B28AC8100C47FD7 /* libz.dylib in Frameworks */,
+				05E6844B1B4EE2EE00C07545 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,6 +803,7 @@
 		7DE146341B223E95005DB874 = {
 			isa = PBXGroup;
 			children = (
+				05E6844A1B4EE2EE00C07545 /* GameKit.framework */,
 				7DD850721B28AC8100C47FD7 /* libz.dylib */,
 				08FC6D0E1B2887CE004F4824 /* Shared */,
 				7DE1463F1B223E95005DB874 /* Traffic_Cop */,
@@ -818,6 +828,7 @@
 		7DE1463F1B223E95005DB874 /* Traffic_Cop */ = {
 			isa = PBXGroup;
 			children = (
+				05E6844C1B4EE30400C07545 /* Traffic_Cop.entitlements */,
 				7DE146481B223E95005DB874 /* GameViewController.swift */,
 				7DE146421B223E95005DB874 /* AppDelegate.swift */,
 				7DE1464F1B223E95005DB874 /* LaunchScreen.xib */,
@@ -945,6 +956,17 @@
 					7DE1463C1B223E95005DB874 = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = 45ZPD83ZTY;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.Passbook = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					7DE146551B223E96005DB874 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -984,6 +1006,7 @@
 				08D710A91B445C6F00A285EE /* pickup_white.png in Resources */,
 				08D515E21B28CB8100E5289B /* bg_road_two_way_large.png in Resources */,
 				08D710AC1B445C7E00A285EE /* sedan_white.png in Resources */,
+				05F24EEB1B4DBACE00CF63E6 /* babyCry.wav in Resources */,
 				08DB99761B4B0A99000C0FF3 /* Background2.png in Resources */,
 				08D5161A1B28CB8100E5289B /* Ambulence2L.png in Resources */,
 				08D5160C1B28CB8100E5289B /* popo.png in Resources */,
@@ -1071,6 +1094,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F24EEC1B4DBACE00CF63E6 /* babyCry.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,6 +1137,7 @@
 				08E7B6A81B38A37E00F32693 /* FireWork3.sks in Resources */,
 				08D516171B28CB8100E5289B /* Ambulence2.png in Resources */,
 				08D74BFB1B290D4C00E1C8BA /* Lintsec.ttf in Resources */,
+				05F24EE91B4DBACE00CF63E6 /* babyCry.wav in Resources */,
 				7DE1464E1B223E95005DB874 /* Images.xcassets in Resources */,
 				08D515E51B28CB8100E5289B /* exclamation.png in Resources */,
 				080168E41B3C405A00424A67 /* BlackSmoke.sks in Resources */,
@@ -1184,6 +1209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F24EEA1B4DBACE00CF63E6 /* babyCry.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,6 +1503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1493,6 +1520,7 @@
 					Labels/BitmapFont/BitmapFont,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Traffic_Cop/TrafficCop-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1503,6 +1531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1519,6 +1548,7 @@
 					Labels/BitmapFont/BitmapFont,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Traffic_Cop/TrafficCop-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
