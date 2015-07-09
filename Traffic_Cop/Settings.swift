@@ -582,3 +582,56 @@ func ResetSaveFile()
     }
 }
 
+
+/*
+
+leader reference : TimePlayedLB
+lb id: TheTrafficCopLB1
+
+leader reference : PeopleHitLB
+lb id : TheTrafficCopLB2
+
+lr: CarsHitLB
+id: TheTrafficCopLB3
+
+lr: LongestSkidLB
+id: TheTrafficCopLB4
+
+lr: LevelsBeatLB
+id: TheTrafficCopLB5
+
+lr: HardestCrashLB
+id: TheTrafficCopLB6
+
+lr set ref name: TheTrafficCopLeaderBoards
+id: TheTrafficCopLB
+
+ach: DailyDriverId
+id:  DailyDriver
+
+ach: AnyTreadLeftId
+id: AnyTreadLeft
+
+
+ach: BentMetalId
+
+id:BentMetal
+
+
+
+ach: CompletionistId
+
+id: Completionist
+
+
+
+ach: HeadOnCollisionId
+
+id: HeadOnCollision
+
+ach: VehicularManSlaughterId
+
+id: VehicularManslaughter
+
+*/
+
