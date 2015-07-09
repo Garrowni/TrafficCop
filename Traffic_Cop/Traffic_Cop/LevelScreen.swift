@@ -208,31 +208,31 @@ class LevelScreen: SKScene
         lv4SilverStar.zPosition = 6
         lv4GoldStar.zPosition = 6
         
-        lv1BronzeStar.xScale = 0.25
-        lv1SilverStar.xScale = 0.25
-        lv1GoldStar.xScale = 0.25
-        lv2BronzeStar.xScale = 0.25
-        lv2SilverStar.xScale = 0.25
-        lv2GoldStar.xScale = 0.25
-        lv3BronzeStar.xScale = 0.25
-        lv3SilverStar.xScale = 0.25
-        lv3GoldStar.xScale = 0.25
-        lv4BronzeStar.xScale = 0.25
-        lv4SilverStar.xScale = 0.25
-        lv4GoldStar.xScale = 0.25
+        lv1BronzeStar.xScale = 0.5
+        lv1SilverStar.xScale = 0.5
+        lv1GoldStar.xScale = 0.5
+        lv2BronzeStar.xScale = 0.5
+        lv2SilverStar.xScale = 0.5
+        lv2GoldStar.xScale = 0.5
+        lv3BronzeStar.xScale = 0.5
+        lv3SilverStar.xScale = 0.5
+        lv3GoldStar.xScale = 0.5
+        lv4BronzeStar.xScale = 0.5
+        lv4SilverStar.xScale = 0.5
+        lv4GoldStar.xScale = 0.5
         
-        lv1BronzeStar.yScale = 0.25
-        lv1SilverStar.yScale = 0.25
-        lv1GoldStar.yScale = 0.25
-        lv2BronzeStar.yScale = 0.25
-        lv2SilverStar.yScale = 0.25
-        lv2GoldStar.yScale = 0.25
-        lv3BronzeStar.yScale = 0.25
-        lv3SilverStar.yScale = 0.25
-        lv3GoldStar.yScale = 0.25
-        lv4BronzeStar.yScale = 0.25
-        lv4SilverStar.yScale = 0.25
-        lv4GoldStar.yScale = 0.25
+        lv1BronzeStar.yScale = 0.5
+        lv1SilverStar.yScale = 0.5
+        lv1GoldStar.yScale = 0.5
+        lv2BronzeStar.yScale = 0.5
+        lv2SilverStar.yScale = 0.5
+        lv2GoldStar.yScale = 0.5
+        lv3BronzeStar.yScale = 0.5
+        lv3SilverStar.yScale = 0.5
+        lv3GoldStar.yScale = 0.5
+        lv4BronzeStar.yScale = 0.5
+        lv4SilverStar.yScale = 0.5
+        lv4GoldStar.yScale = 0.5
         
         lv1BronzeStar.position = lv1BronzeStarOutline.position
         lv1SilverStar.position = lv1SilverStarOutline.position
@@ -261,8 +261,7 @@ class LevelScreen: SKScene
     override func didMoveToView(view: SKView)
     {
         
-        let sequence = SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.2),SKAction.waitForDuration(0.2), SKAction.scaleTo(0.25, duration: 0.2)])
-        
+        let action = SKAction.scaleTo(0.25, duration: 0.5)
         var background:SKSpriteNode
         background = SKSpriteNode(imageNamed: "levelsBG")
         background.position =  CGPoint(x: self.size.width/2, y: self.size.height/2)
@@ -283,20 +282,20 @@ class LevelScreen: SKScene
         if(HighScore(1) >= lv1Bronze)
         {
             
-            lv1BronzeStar.runAction(sequence)
+            lv1BronzeStar.runAction(action)
             addChild(lv1BronzeStar)
         }
          if(HighScore(1) >= lv1Silver)
         {
             
-            lv1SilverStar.runAction(sequence)
+            lv1SilverStar.runAction(action)
             addChild(lv1SilverStar)
         
         }
          if(HighScore(1) >= lv1Gold)
         {
            
-            lv1GoldStar.runAction(sequence)
+            lv1GoldStar.runAction(action)
             addChild(lv1GoldStar)
         }
         
@@ -317,19 +316,19 @@ class LevelScreen: SKScene
             if(HighScore(2) >= lv2Bronze )
             {
                 
-                lv2BronzeStar.runAction(sequence)
+                lv2BronzeStar.runAction(action)
                 addChild(lv2BronzeStar)
             }
             if(HighScore(2) >= lv2Silver)
             {
               
-                lv2SilverStar.runAction(sequence)
+                lv2SilverStar.runAction(action)
                 addChild(lv2SilverStar)
             }
             if(HighScore(2) >= lv2Gold)
             {
                 
-                lv2GoldStar.runAction(sequence)
+                lv2GoldStar.runAction(action)
                 addChild(lv2GoldStar)
             }
         }
@@ -348,19 +347,19 @@ class LevelScreen: SKScene
             if(HighScore(3) >= lv3Bronze)
             {
                 
-                lv3BronzeStar.runAction(sequence)
+                lv3BronzeStar.runAction(action)
                 addChild(lv3BronzeStar)
             }
             if(HighScore(3) >= lv3Silver)
             {
                 
-                lv3SilverStar.runAction(sequence)
+                lv3SilverStar.runAction(action)
                 addChild(lv3SilverStar)
             }
             if(HighScore(3) >= lv3Gold)
             {
                 
-                lv3GoldStar.runAction(sequence)
+                lv3GoldStar.runAction(action)
                 addChild(lv3GoldStar)
             }
         }
@@ -380,19 +379,19 @@ class LevelScreen: SKScene
             if(HighScore(4) >= lv4Bronze)
             {
                
-                lv4BronzeStar.runAction(sequence)
+                lv4BronzeStar.runAction(action)
                  addChild(lv4BronzeStar)
             }
             if(HighScore(4) >= lv4Silver)
             {
                 
-                lv4SilverStar.runAction(sequence)
+                lv4SilverStar.runAction(action)
                 addChild(lv4SilverStar)
             }
             if(HighScore(4) >= lv4Gold)
             {
                 
-                lv4GoldStar.runAction(sequence)
+                lv4GoldStar.runAction(action)
                 addChild(lv4GoldStar)
             }
         }

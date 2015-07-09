@@ -1310,22 +1310,110 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             IncreaseLevelsBeat()
             levPassed = true
-            displayResults()
-            fireWorksGo()
-            addChild(levDonePopUp.getButtBG())
-            addChild(levDonePopUp.getButtOL())
-            addChild(levDonePopUp.getLabel())
+            if(bronzeScoreStar!.parent != nil)
+            {
+                bronzeScoreStar!.runAction(SKAction.scaleTo(0.5, duration: 0.5), completion:
+                {
+                    self.bronzeScoreStar!.runAction(SKAction.moveToX(-200, duration: 1.2))
+                    self.bronzeScoreStar!.runAction(SKAction.repeatAction(SKAction.rotateByAngle(-pie, duration: 0.6), count: 2), completion: {
+                        
+                    if(self.silverScoreStar!.parent == nil)
+                    {
+                    self.displayResults()
+                        
+                        self.fireWorksGo()
+                        self.addChild(self.levDonePopUp.getButtBG())
+                        self.addChild(self.levDonePopUp.getButtOL())
+                        self.addChild(self.levDonePopUp.getLabel())
+                        
+                        self.addChild(self.nextLevButt.getButtBG())
+                        self.addChild(self.nextLevButt.getButtOL())
+                        self.addChild(self.nextLevButt.getLabel())
+                        
+                        self.addChild(self.quitButt.getButtBG())
+                        self.addChild(self.quitButt.getButtOL())
+                        self.addChild(self.quitButt.getLabel())
+                        self.nextLevButt.zoomIN()
+                        self.levDonePopUp.zoomIN()
+                        self.quitButt.zoomIN()
+                    }
+                    })
+                    
+                })
+                
+            }
             
-            addChild(nextLevButt.getButtBG())
-            addChild(nextLevButt.getButtOL())
-            addChild(nextLevButt.getLabel())
+            if(self.silverScoreStar!.parent != nil)
+            {
+                self.silverScoreStar!.runAction(SKAction.scaleTo(0.5, duration: 0.5), completion:{
+                    self.silverScoreStar!.runAction(SKAction.moveToX(-200, duration: 1.2))
+                    self.silverScoreStar!.runAction(SKAction.repeatAction(SKAction.rotateByAngle(-pie, duration: 0.6), count: 2), completion: {
+                    
+                    if(self.goldScoreStar!.parent == nil)
+                    {
+                        self.displayResults()
+                        
+                        self.fireWorksGo()
+                        self.addChild(self.levDonePopUp.getButtBG())
+                        self.addChild(self.levDonePopUp.getButtOL())
+                        self.addChild(self.levDonePopUp.getLabel())
+                        
+                        self.addChild(self.nextLevButt.getButtBG())
+                        self.addChild(self.nextLevButt.getButtOL())
+                        self.addChild(self.nextLevButt.getLabel())
+                        
+                        self.addChild(self.quitButt.getButtBG())
+                        self.addChild(self.quitButt.getButtOL())
+                        self.addChild(self.quitButt.getLabel())
+                        self.nextLevButt.zoomIN()
+                        self.levDonePopUp.zoomIN()
+                        self.quitButt.zoomIN()
+                    }
+                    
+                    
+                    })
+                    
+                
+                })
+           
+            }
             
-            addChild(quitButt.getButtBG())
-            addChild(quitButt.getButtOL())
-            addChild(quitButt.getLabel())
-            nextLevButt.zoomIN()
-            levDonePopUp.zoomIN()
-            quitButt.zoomIN()
+            
+            if(self.goldScoreStar!.parent != nil)
+            {
+                self.goldScoreStar!.runAction(SKAction.scaleTo(0.5, duration: 0.5), completion:{
+                    self.goldScoreStar!.runAction(SKAction.moveToX(-200, duration: 1.2))
+                    self.goldScoreStar!.runAction(SKAction.repeatAction(SKAction.rotateByAngle(-pie, duration: 0.6), count: 2), completion: {
+                        
+                      
+                            self.displayResults()
+                            
+                            self.fireWorksGo()
+                            self.addChild(self.levDonePopUp.getButtBG())
+                            self.addChild(self.levDonePopUp.getButtOL())
+                            self.addChild(self.levDonePopUp.getLabel())
+                            
+                            self.addChild(self.nextLevButt.getButtBG())
+                            self.addChild(self.nextLevButt.getButtOL())
+                            self.addChild(self.nextLevButt.getLabel())
+                            
+                            self.addChild(self.quitButt.getButtBG())
+                            self.addChild(self.quitButt.getButtOL())
+                            self.addChild(self.quitButt.getLabel())
+                            self.nextLevButt.zoomIN()
+                            self.levDonePopUp.zoomIN()
+                            self.quitButt.zoomIN()
+                        
+                        
+                        
+                    })
+                    
+                    
+                })
+                
+            }
+
+
             
             switch(currentLevel)
             {
@@ -1542,6 +1630,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         var newHS = false
         if(currentScore > HighScore(currentLevel)){ newHS = true }
+        
+        
         
         bronzeOutline = SKSpriteNode(imageNamed: "StarOutline")
         silverOutline = SKSpriteNode(imageNamed: "StarOutline")
