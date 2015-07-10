@@ -875,6 +875,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
         for car in vehicleArray
         {
+            car.physicsBody!.velocity = CGVector(dx: 0, dy: 0)
             car.paused = true
         }
     }
