@@ -22,6 +22,7 @@ class MainMenuScreen: SKScene
     let helpButt: Button
     let credButt: Button
     let soundButt: Button
+    let musicButt: Button
     let statsButt: Button
     let achievButt: Button
     
@@ -44,12 +45,15 @@ class MainMenuScreen: SKScene
         playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: playableHeight)
         
         var str : String //IF SOUND IS ALREADY ON
-        if(Sound()){str = "(="}else{str = "("}
+        var str2 : String //IF MUSIC IS ALREADY ON
+        if(Sound()){str = "FX (="}else{str = "FX ("}
+        if(Music()){str2 = "Music (="}else{str2 = "Music ("}
       
         //Labels
-        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,              fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,              fontSize: 45,   font: "font2", color: "green",  align: "center")
+        var musicLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str2,             fontSize: 45,   font: "font2", color: "green",  align: "center")
         var statsLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Stats",          fontSize: 70,   font: "font2", color: "green",  align: "center")
-        var achievLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "Awards",        fontSize: 55,   font: "font2", color: "green",  align: "center")
+        var achievLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Awards",        fontSize: 55,   font: "font2", color: "green",  align: "center")
         titleLabel      = Text(pos: CGPoint(x: 0, y: 0),    says: "Traffic Cop",    fontSize: 150, font: "font1", color: "yellow", align: "center")
         playLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Play",           fontSize: 200, font: "font4", color: "black", align: "center")
         helpLabel       = Text(pos: CGPoint(x: 0, y: 0),    says: "Help",           fontSize: 200, font: "font4", color: "black", align: "center")
@@ -66,8 +70,9 @@ class MainMenuScreen: SKScene
         playButt = Button(pos: playR, roundCorner: 200, text: playLabel, BGcolor: "green", OLcolor: "white",    OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         helpButt = Button(pos: helpR, roundCorner: 200, text: helpLabel, BGcolor: "yellow", OLcolor: "white",   OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
         credButt = Button(pos: credR, roundCorner: 200, text: credLabel, BGcolor: "red", OLcolor: "white",      OLSize: 10, glowWidth: 30, ZoomIn: true, Bulge: false, glowBulge: true)
-        soundButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*11), size: CGSize(width: 128, height: 128)),  roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
-        statsButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*2), size: CGSize(width: 128, height: 128)),    roundCorner: 64, text: statsLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        soundButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*11), size: CGSize(width: 128, height: 128)),    roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        musicButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*10), size: CGSize(width: 128, height: 128)),     roundCorner: 64, text: musicLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        statsButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*2), size: CGSize(width: 128, height: 128)),     roundCorner: 64, text: statsLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         achievButt = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*5), size: CGSize(width: 128, height: 128)),    roundCorner: 64, text: achievLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         
         
@@ -124,6 +129,10 @@ class MainMenuScreen: SKScene
         addChild(soundButt.getButtOL())
         addChild(soundButt.getLabel())
         
+        addChild(musicButt.getButtBG())
+        addChild(musicButt.getButtOL())
+        addChild(musicButt.getLabel())
+        
         addChild(statsButt.getButtBG())
         addChild(statsButt.getButtOL())
         addChild(statsButt.getLabel())
@@ -158,6 +167,10 @@ class MainMenuScreen: SKScene
         if(soundButt.origRect.contains(location))
         {
             SoundOffOn()
+        }
+        if(musicButt.origRect.contains(location))
+        {
+            MusicOffOn()
         }
         if(achievButt.origRect.contains(location))
         {
@@ -321,11 +334,23 @@ class MainMenuScreen: SKScene
     {
         if(Sound())
         {
-            backgroundMusicPlayer.pause(); TurnSound(false); soundButt.getLabel().text = "(";
+             TurnSound(false); soundButt.getLabel().text = "FX (";
         }
         else
         {
-            backgroundMusicPlayer.play(); TurnSound(true); soundButt.getLabel().text = "(=";
+             TurnSound(true); soundButt.getLabel().text = "FX (=";
+        }
+    }
+    
+    func MusicOffOn()
+    {
+        if(Music())
+        {
+            backgroundMusicPlayer.pause(); TurnMusic(false); musicButt.getLabel().text = "Music (";
+        }
+        else
+        {
+            backgroundMusicPlayer.play(); TurnMusic(true); musicButt.getLabel().text = "Music (=";
         }
     }
 

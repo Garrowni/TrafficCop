@@ -33,6 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     let scoreButt   : Button
     let goalButt    : Button
     let soundButt   : Button
+    let musicButt   : Button
     let nextLevButt : Button
     var results     : Text?
     var crashNum    : Text?
@@ -132,12 +133,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         
         var str : String //IF SOUND IS ALREADY ON
-        if(Sound()){backgroundMusicPlayer.play(); str = "(="}else{backgroundMusicPlayer.pause(); str = "("}
+        var str2 : String //IF MUSIC IS ALREADY ON
+        if(Sound()){str = "FX (="}else{str = "FX ("}
+        if(Music()){str2 = "Music (="; backgroundMusicPlayer.play();}else{str2 = "Music ("; backgroundMusicPlayer.pause();}
         
         
         var pauseLabel   = Text(pos: CGPoint(x: 0, y:0),    says: "ll",              fontSize: 70,   font: "font2", color: "green",  align: "center")
         var pausedLabel  = Text(pos: CGPoint(x: 0, y:0),    says: "Paused",          fontSize: 300,  font: "font2", color: "green",  align: "center")
-        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,               fontSize: 70,   font: "font2", color: "green",  align: "center")
+        var musicLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str2,              fontSize: 40,   font: "font2", color: "green",  align: "center")
+        var soundLabel   = Text(pos: CGPoint(x: 0, y:0),    says: str,               fontSize: 40,   font: "font2", color: "green",  align: "center")
         var levDoneLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Level Complete!", fontSize: 130,  font: "font2", color: "green",  align: "center")
         var notDoneLabel = Text(pos: CGPoint(x: 0, y:0),    says: "Not Complete!",   fontSize: 130,  font: "font2", color: "green",  align: "center")
         var quitlbl      = Text(pos: CGPoint(x: 0, y:0),    says: "Quit",            fontSize: 150,  font: "font2", color: "green",  align: "center")
@@ -150,7 +154,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         pausedPopUp     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*9)),                    roundCorner: 70, text: pausedLabel,     BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: true, glowBulge: true)
         levDonePopUp    = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*4+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*7)),                    roundCorner: 70, text: levDoneLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: false, glowBulge: true)
         notDonePopUp    = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*4+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW*7)),                    roundCorner: 70, text: notDoneLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 10,   glowWidth: 8, ZoomIn: true, Bulge: false, glowBulge: true)
-        soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-32, y: TW*14), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        soundButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-22, y: TW*14), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: soundLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
+        musicButt       = Button(pos: CGRect(origin: CGPoint(x: TW*7-22, y: TW*13), size: CGSize(width: 128, height: 128)),                                     roundCorner: 64, text: musicLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         scoreButt       = Button(pos: CGRect(origin: CGPoint(x: CGFloat(playableRect.width/2+64), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),   roundCorner: 50, text: scoreLabel,      BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         goalButt        = Button(pos: CGRect(origin: CGPoint(x: CGFloat(48), y: CGFloat(TW*12)), size: CGSize(width: 400, height: 100)),                        roundCorner: 50, text: goalLabel,       BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: false, glowBulge: false)
         nextLevButt     = Button(pos: CGRect(origin: CGPoint(x: 32, y: TW*2+(TW/2)), size: CGSize(width: Int(size.width-64), height: TW+64)),                   roundCorner: 70, text: nextLevLabel,    BGcolor: "halfblack", OLcolor: "red", OLSize: 2,    glowWidth: 3, ZoomIn: true, Bulge: true, glowBulge: true)
@@ -294,6 +299,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         addChild(soundButt.getButtBG())
         addChild(soundButt.getButtOL())
         addChild(soundButt.getLabel())
+        
+        addChild(musicButt.getButtBG())
+        addChild(musicButt.getButtOL())
+        addChild(musicButt.getLabel())
         
         addChild(selection.OL)
     
@@ -774,6 +783,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             if(soundButt.origRect.contains(location))
             {
                 SoundOffOn()
+            }
+            
+            if(musicButt.origRect.contains(location))
+            {
+                MusicOffOn()
             }
         
             if(carSelected)
@@ -1751,11 +1765,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         if(Sound())
         {
-            backgroundMusicPlayer.pause(); TurnSound(false); soundButt.getLabel().text = "(";
+             TurnSound(false); soundButt.getLabel().text = "FX (";
         }
         else
         {
-            backgroundMusicPlayer.play(); TurnSound(true); soundButt.getLabel().text = "(=";
+             TurnSound(true); soundButt.getLabel().text = "FX (=";
+        }
+    }
+    
+    func MusicOffOn()
+    {
+        if(Music())
+        {
+            backgroundMusicPlayer.pause(); TurnMusic(false); musicButt.getLabel().text = "Music (";
+        }
+        else
+        {
+            backgroundMusicPlayer.play(); TurnMusic(true); musicButt.getLabel().text = "Music (=";
         }
     }
     
