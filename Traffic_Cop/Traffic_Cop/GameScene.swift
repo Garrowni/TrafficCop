@@ -295,6 +295,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         addChild(selection.OL)
     
+        
+        GameKitHelper.sharedInstance.authenticateLocalPlayer()
+    
        //debugDrawPLayableArea()
     }
     

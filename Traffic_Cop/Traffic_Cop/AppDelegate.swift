@@ -34,8 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [CoreData]
         if let variables = fetchResults{
         var VAR = variables[0]
-            VAR.initialized = NSNumber(bool: false)
-        //println("\(VAR.initialized.boolValue)")
+
         if(!VAR.initialized.boolValue)
             {
                 VAR.lev2 = NSNumber(bool: false)
@@ -51,10 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 VAR.hsLev4 = NSNumber(int: 0)
                 VAR.initialized = NSNumber(bool: true)
                 
-                //println("\(VAR.initialized.boolValue)")
                 
                 //SAVE
-                if managedObjectContext!.save(&error){ println("TRUE !! WAS INITIALIZED")
+                if managedObjectContext!.save(&error){ //println("TRUE !! WAS INITIALIZED")
                 }else{println("Could not save \(error), \(error!.userInfo)")}
             }
             
