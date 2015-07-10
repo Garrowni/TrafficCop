@@ -227,13 +227,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         switch(currentLevel)
         {
         case 1:
-            clock = Clock(playableR: playableRect, countFrom: 45)
-        case 2:
             clock = Clock(playableR: playableRect, countFrom: 60)
-        case 3:
+        case 2:
             clock = Clock(playableR: playableRect, countFrom: 90)
+        case 3:
+            clock = Clock(playableR: playableRect, countFrom: 150)
         case 4:
-            clock = Clock(playableR: playableRect, countFrom: 120)
+            clock = Clock(playableR: playableRect, countFrom: 300)
         default:
             clock = Clock(playableR: playableRect, countFrom: 0)
         
@@ -250,26 +250,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         let wait = SKAction.waitForDuration(1)
         let transSequence = SKAction.sequence([wait,transition])
         self.runAction(transSequence)
-// FOR DEBUG
-      //  for corner in glowCorners
-     //   {
-     //       addChild(corner.getOL())
-     //   }
-
-   //    for cw in glowCWs
-   //   {
-     //       addChild(cw.getOL())
-      //  }
-//
-//        for spawn in glowSpawns
-//        {
-//            addChild(spawn.getOL())
-//        }
-//        
-//       for goto in gotoPoints
-//       {
-//           addChild(goto.getOL())
-//       }
     
         clock.clockButt.getButtBG().zPosition = 100
         clock.clockButt.getButtOL().zPosition = 100
@@ -1181,10 +1161,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         switch(currentLevel)
         {
-        case 1: tileMap = JSTileMap(named: "level1v2.tmx"); bronzeScore = 50; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 100; goldScore = 150;
-        case 2: tileMap = JSTileMap(named: "level2v2.tmx"); bronzeScore = 200; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 250; goldScore = 350;
-        case 3: tileMap = JSTileMap(named: "level3v2.tmx"); bronzeScore = 500; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 600; goldScore = 700;
-        case 4: tileMap = JSTileMap(named: "level4v2.tmx"); bronzeScore = 850; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = 950; goldScore = 1050;
+        case 1: tileMap = JSTileMap(named: "level1v2.tmx"); bronzeScore = lv1Bronze; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = lv1Silver; goldScore = lv1Gold;
+        case 2: tileMap = JSTileMap(named: "level2v2.tmx"); bronzeScore = lv2Bronze; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = lv2Silver; goldScore = lv2Gold;
+        case 3: tileMap = JSTileMap(named: "level3v2.tmx"); bronzeScore = lv3Bronze; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = lv3Silver; goldScore = lv3Gold;
+        case 4: tileMap = JSTileMap(named: "level4v2.tmx"); bronzeScore = lv4Bronze; goalStr += String(bronzeScore!); goalButt.getLabel().text = goalStr; silverScore = lv4Silver; goldScore = lv4Gold;
         default: tileMap = JSTileMap(named: "level1v2.tmx"); println("error in the level assigning !"); bronzeScore = 1000;
         }
         
