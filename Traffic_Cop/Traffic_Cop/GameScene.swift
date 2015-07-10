@@ -93,8 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var totalPointsLost : Int = 0
     var numPeopleHit    : Int = 0
     
-    
-    //let carCollisionSound: SKAction = SKAction.playSoundFileNamed("carCrash.wav", waitForCompletion:false)
+
     
     let personCollisionSound: SKAction = SKAction.playSoundFileNamed("scaredMan.wav", waitForCompletion:true)
     let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.wav", waitForCompletion: false)
@@ -287,7 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         addChild(selection.OL)
     
         
-        GameKitHelper.sharedInstance.authenticateLocalPlayer()
+ 
     
        //debugDrawPLayableArea()
     }
@@ -399,7 +398,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 if (Sound())
                 {
-                    //runAction(carCollisionSound)
+                    var wait = SKAction.waitForDuration(0.2)
+                    var crashRoll = Int.randomNumberFrom(1...4)
+                    var skidRoll = Int.randomNumberFrom(1...5)
+                    var crashFX = SKAction.playSoundFileNamed("crash\(crashRoll).mp3", waitForCompletion: false)
+                    var skidFX = SKAction.playSoundFileNamed("skid\(skidRoll).mp3", waitForCompletion: false)
+                    var sequence = SKAction.sequence([crashFX,wait,skidFX])
+                    runAction(sequence)
                 }
                 
                 if(collisionImpulse > CGFloat(HardestCrash())){NewHardestCrash(Int(collisionImpulse))}
