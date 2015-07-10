@@ -1289,7 +1289,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             if(goldScoreStar!.parent == nil)
             {
                 addChild(goldScoreStar!)
-                bronzeScoreStar!.runAction(sequence)
+                goldScoreStar!.runAction(sequence)
             }
         }
         else
