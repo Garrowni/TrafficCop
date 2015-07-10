@@ -80,8 +80,8 @@ func saveContext () {
 
 //*********Star Goals***********
 let lv1Bronze = 50
-let lv1Silver = 75
-let lv1Gold   = 125
+let lv1Silver = 100
+let lv1Gold   = 150
 
 let lv2Bronze = 125
 let lv2Silver = 175
