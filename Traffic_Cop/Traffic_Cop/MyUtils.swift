@@ -108,6 +108,18 @@ func == (left : CGPoint, right : CGPoint) -> Bool
     }
 }
 
+func > (left : CGVector, right : CGVector) -> Bool
+{
+    if left.dx > right.dx && left.dy > right.dy
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
+
 
 //CLASS EXTENTIONS
 #if !(arch(x86_64) || arch(arm64))
