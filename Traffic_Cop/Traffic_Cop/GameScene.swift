@@ -407,7 +407,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 Car.removeAllActions()
                 numCrashes++
                 IncreaseCarsHit()
-                addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
+                if(!pausedOn)
+                {
+                    addPoints(-Int.randomNumberFrom(10...15), pos: contactPoint)
+                }
                 crashedCars.append(Car)
                 
                 Car2.crashed(false)
@@ -450,7 +453,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 Person._state = .DEAD
                 numPeopleHit++
                 IncreasePeopleHit()
-                addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
+                if(!pausedOn)
+                {
+                    addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
+                }
                 hitPeople.append(Person)
             }
 
@@ -489,7 +495,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 Person._state = .DEAD
                 numPeopleHit++
                 IncreasePeopleHit()
-                addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
+                if(!pausedOn)
+                {
+                    addPoints(-Int.randomNumberFrom(15...20), pos: contactPoint)
+                }
                 hitPeople.append(Person)
             }
             Car.physicsBody!.dynamic = true
@@ -979,7 +988,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.goStraight()
                 
-                if(car._wantDir == .NORTH && car._state != .CRASHED)
+                if(car._wantDir == .NORTH && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -991,7 +1000,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnLeft(path)
                 
-                if(car._wantDir == .WEST && car._state != .CRASHED)
+                if(car._wantDir == .WEST && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1004,7 +1013,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnRight(path)
                 
-                if(car._wantDir == .EAST && car._state != .CRASHED)
+                if(car._wantDir == .EAST && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1021,7 +1030,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.goStraight()
                 
-                if(car._wantDir == .SOUTH && car._state != .CRASHED)
+                if(car._wantDir == .SOUTH && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1034,7 +1043,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnRight(path)
                 
-                if(car._wantDir == .WEST && car._state != .CRASHED)
+                if(car._wantDir == .WEST && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1047,7 +1056,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnLeft(path)
                 
-                if(car._wantDir == .EAST && car._state != .CRASHED)
+                if(car._wantDir == .EAST && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1066,7 +1075,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.goStraight()
                 
-                if(car._wantDir == .EAST && car._state != .CRASHED)
+                if(car._wantDir == .EAST && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1079,7 +1088,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnLeft(path)
                 
-                if(car._wantDir == .NORTH && car._state != .CRASHED)
+                if(car._wantDir == .NORTH && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1092,7 +1101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnRight(path)
                 
-                if(car._wantDir == .SOUTH && car._state != .CRASHED)
+                if(car._wantDir == .SOUTH && car._state != .CRASHED && !pausedOn )
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1110,7 +1119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.goStraight()
                 
-                if(car._wantDir == .WEST && car._state != .CRASHED)
+                if(car._wantDir == .WEST && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1123,7 +1132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnRight(path)
                 
-                if(car._wantDir == .NORTH && car._state != .CRASHED)
+                if(car._wantDir == .NORTH && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
@@ -1136,7 +1145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 car.turnLeft(path)
                 
-                if(car._wantDir == .SOUTH && car._state != .CRASHED)
+                if(car._wantDir == .SOUTH && car._state != .CRASHED && !pausedOn)
                 {
                     addPoints(Int.randomNumberFrom(10...15), pos: car.position)
                 }
