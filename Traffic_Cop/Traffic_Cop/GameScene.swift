@@ -93,8 +93,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var numPeopleHit    : Int = 0
     
     
-    //let personCollisionSound : SKAction
-   // let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.aif", waitForCompletion: false)
+    let carCollisionSound: SKAction = SKAction.playSoundFileNamed("carCrash.wav", waitForCompletion:false)
+    
+    let personCollisionSound: SKAction = SKAction.playSoundFileNamed("scaredMan.wav", waitForCompletion:true)
+    let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.wav", waitForCompletion: false)
     //*******************************INIT / SCREEN BOUNDS CALC******************************
     override init(size: CGSize)
     {
@@ -402,8 +404,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             let Car = other.node as! CarSprite
             let Car2 = other2.node as! CarSprite
             
+            
+           
             if(Car._state != .CRASHED || Car2._state != .CRASHED)
             {
+                if (Sound())
+                {
+                    runAction(carCollisionSound)
+                }
+                
                 if(collisionImpulse > CGFloat(HardestCrash())){NewHardestCrash(Int(collisionImpulse))}
                 Car.crashed(false)
                 Car.removeAllActions()
@@ -428,18 +437,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
 
             let Car     = other.node as! CarSprite
             let Person  = other2.node as! PeopleSprite
-            if (Sound())
-            {
-            if (Person._type == 2)
-            {
-              //  runAction(babyCollisionSound)
-            }
-            else
-            {
-            //   runAction(personCollisionSound)
-            }
-            }
-            if(Car._state != .CRASHED)
+                        if(Car._state != .CRASHED)
             {
                 Car.physicsBody!.dynamic = false
                 Car.physicsBody!.allowsRotation = false
@@ -448,6 +446,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
 
             if(Person._state != .DEAD)
             {
+                if (Sound())
+                {
+                    if (Person._type == 2)
+                    {
+                        runAction(babyCollisionSound)
+                    }
+                    else
+                    {
+                        runAction(personCollisionSound)
+                    }
+                }
+
                 Person._state = .DEAD
                 numPeopleHit++
                 IncreasePeopleHit()
@@ -463,28 +473,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             
             let Car     = other2.node as! CarSprite
             let Person  = other.node as! PeopleSprite
-            if (Sound())
-            {
-            if (Person._type == 2)
-            {
-                
-               //     runAction(babyCollisionSound)
-                
-            }
-            else
-            {
-            //    runAction(personCollisionSound)
-            }
-            }
             
             if(Car._state != .CRASHED)
             {
+                
                 Car.physicsBody!.dynamic = false
                 Car.physicsBody!.allowsRotation = false
             }
             
             if(Person._state != .DEAD)
             {
+                if (Sound())
+                {
+                    if (Person._type == 2)
+                    {
+                        
+                        runAction(babyCollisionSound)
+                        
+                    }
+                    else
+                    {
+                        runAction(personCollisionSound)
+                    }
+                }
+
                 Person._state = .DEAD
                 numPeopleHit++
                 IncreasePeopleHit()
