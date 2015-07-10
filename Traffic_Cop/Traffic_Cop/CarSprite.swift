@@ -26,9 +26,8 @@ class CarSprite : SKSpriteNode
     var _dir            : Direction = Direction.WEST
     var _turnCount      : Int = 0
     var _spawn          : CGPoint
-    var _accel          : CGFloat = 3
+    var _accel          : CGFloat = 5
     var _currSpeed      : CGFloat = 0
-    var _impulse        : CGFloat = 0
     var _isDone         : Bool = false
     var _type           : Int
     var _textures       : [SKTexture] = []
@@ -90,7 +89,7 @@ class CarSprite : SKSpriteNode
         {
             
         case 1:
-            self._MAXSPEED = 150
+            self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "Ambulence1"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1L"))
             self._textures.append(SKTexture(imageNamed: "Ambulence1R"))
@@ -132,7 +131,7 @@ class CarSprite : SKSpriteNode
             self._mass = 15
            
         case 6:
-            self._MAXSPEED = 150
+            self._MAXSPEED = 200
             self._textures.append(SKTexture(imageNamed: "truck"))
             self._mass = 27
             
