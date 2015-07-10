@@ -94,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var numPeopleHit    : Int = 0
     
     
-    let carCollisionSound: SKAction = SKAction.playSoundFileNamed("carCrash.wav", waitForCompletion:false)
+    //let carCollisionSound: SKAction = SKAction.playSoundFileNamed("carCrash.wav", waitForCompletion:false)
     
     let personCollisionSound: SKAction = SKAction.playSoundFileNamed("scaredMan.wav", waitForCompletion:true)
     let babyCollisionSound: SKAction = SKAction.playSoundFileNamed("babyCry.wav", waitForCompletion: false)
@@ -399,7 +399,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 if (Sound())
                 {
-                    runAction(carCollisionSound)
+                    //runAction(carCollisionSound)
                 }
                 
                 if(collisionImpulse > CGFloat(HardestCrash())){NewHardestCrash(Int(collisionImpulse))}

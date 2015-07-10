@@ -240,6 +240,7 @@ class MainMenuScreen: SKScene
             self.credButt.FadeAway()
             self.helpButt.FadeAway()
             self.soundButt.FadeAway()
+            self.musicButt.FadeAway()
             self.statsButt.zoomOUT()
             self.achievButt.FadeAway()
             }])
@@ -267,6 +268,7 @@ class MainMenuScreen: SKScene
             self.helpButt.FadeAway()
             self.soundButt.FadeAway()
             self.statsButt.FadeAway()
+            self.musicButt.FadeAway()
             self.achievButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
@@ -292,6 +294,7 @@ class MainMenuScreen: SKScene
             self.soundButt.FadeAway()
             self.statsButt.FadeAway()
             self.achievButt.FadeAway()
+            self.musicButt.FadeAway()
             }])
         let wait = SKAction.waitForDuration(0.5)
         let block = SKAction.runBlock{
@@ -314,6 +317,7 @@ class MainMenuScreen: SKScene
             self.soundButt.FadeAway()
             self.statsButt.FadeAway()
             self.achievButt.FadeAway()
+            self.musicButt.FadeAway()
             }])
 
         let wait = SKAction.waitForDuration(0.5)
