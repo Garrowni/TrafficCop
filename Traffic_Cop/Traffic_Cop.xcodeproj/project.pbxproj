@@ -1557,18 +1557,7 @@
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/mathewmanton/Documents/iOS,
-					Games,
-					by,
-					Tutorials,
-					Second,
-					Edition/Chapter,
-					7,
-					"-",
-					Labels/BitmapFont/BitmapFont,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Traffic_Cop/TrafficCop-Bridging-Header.h";
@@ -1585,18 +1574,7 @@
 				INFOPLIST_FILE = Traffic_Cop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/mathewmanton/Documents/iOS,
-					Games,
-					by,
-					Tutorials,
-					Second,
-					Edition/Chapter,
-					7,
-					"-",
-					Labels/BitmapFont/BitmapFont,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Traffic_Cop/TrafficCop-Bridging-Header.h";
